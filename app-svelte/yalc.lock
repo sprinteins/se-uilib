@@ -2,8 +2,7 @@
   "version": "v1",
   "packages": {
     "@dp/ui-lib": {
-      "signature": "eb02ed6b47022c090a39100c473b5137",
-      "file": true
+      "signature": "2eb55a672c5551b43550f904cba04ee5"
     }
   }
 }

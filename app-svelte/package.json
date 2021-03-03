@@ -24,7 +24,6 @@
     "typescript": "^4.0.0"
   },
   "dependencies": {
-    "@dp/ui-lib": "file:.yalc/@dp/ui-lib",
     "sirv-cli": "^1.0.0"
   }
 }
