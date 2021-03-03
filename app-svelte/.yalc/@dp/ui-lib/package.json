@@ -1,6 +1,6 @@
 {
   "name": "@dp/ui-lib",
-  "version": "0.1.0",
+  "version": "0.1.0+eb02ed6b",
   "svelte": "src/index.js",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
@@ -8,17 +8,12 @@
     "build": "rollup -c",
     "prepublishOnly": "npm run build"
   },
-  "devDependencies": {
-    "@rollup/plugin-node-resolve": "^9.0.0",
-    "rollup": "^2.0.0",
-    "rollup-plugin-svelte": "^6.0.0",
-    "svelte": "^3.0.0"
-  },
   "keywords": [
     "svelte"
   ],
   "files": [
     "src",
     "dist"
-  ]
+  ],
+  "yalcSig": "eb02ed6b47022c090a39100c473b5137"
 }
