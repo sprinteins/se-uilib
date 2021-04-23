@@ -1,6 +1,7 @@
 import svelte from 'rollup-plugin-svelte';
 import resolve from '@rollup/plugin-node-resolve';
 import pkg from './package.json';
+import sveltePreprocess from 'svelte-preprocess';
 
 const name = pkg.name
 	.replace(/^(@\S+\/)?(svelte-)?(\S+)/, '$3')
@@ -15,7 +16,11 @@ export default {
 	],
 	plugins: [
 		svelte({
+			preprocess: sveltePreprocess(),
             customElement: true,
+			// css: css => {
+			// 	css.write('public/bundle.css')
+			// },
 		}),
 		resolve()
 	]

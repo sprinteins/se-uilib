@@ -1,7 +1,7 @@
 <script>
-    import { ThemeBase } from '../src/themes/theme-base'
+    import { ThemeProvider } from '../src/themes'
 </script>
 
-<ThemeBase>
+<ThemeProvider>
     <slot />
-</ThemeBase>
+</ThemeProvider>

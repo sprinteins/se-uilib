@@ -1,6 +1,6 @@
 {
   "name": "@dp/ui-lib",
-  "version": "0.1.0+5e975681",
+  "version": "0.1.0+b6279044",
   "svelte": "src/index.js",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
@@ -18,5 +18,5 @@
     "dist"
   ],
   "dependencies": {},
-  "yalcSig": "5e9756813fcbbcd4e470a65b9a12c9bb"
+  "yalcSig": "b6279044d9bbfd048d9bc5ac666b5568"
 }

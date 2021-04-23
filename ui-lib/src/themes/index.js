@@ -1,2 +1,1 @@
-export * from './theme-base'
-export * from './theme-dpdhl'
+export * from './theme-provider';

@@ -1,12 +1,12 @@
 <script>
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf';
-    import Button from './Button.svelte';
+    import DPHLButton from './dpdhl-button.svelte';
 </script>
   
-<Meta title="Components/Button" component={Button}/>
+<Meta title="Components/Button" component={DPHLButton}/>
 
 <Template let:args>
-  <Button {...args}>{args.label}</Button>
+  <DPHLButton {...args}>{args.label}</DPHLButton>
 </Template>
   
 <Story name="Primary" args={{

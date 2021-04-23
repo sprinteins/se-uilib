@@ -15,7 +15,7 @@
     //#endregion Size
 
 </script>
-<svelte:options tag={"se-button"}/>
+<svelte:options tag={"dpdhl-button"}/>
 
 
 <button
@@ -33,13 +33,16 @@
 <style>
 
     button {
-        color:            var(--color-primary);
+        --button-color: var(--color-primary);
+
+
+        color:            var(--button-color);
         background-color: var(--color-secondary);
         
         border:        var(--color-primary) solid thin;
         border-radius: var(--button-border-radius);
 
-        padding: var(--button-padding);
+        padding: calc( var(--unit) * 0.5 );
 
         cursor: pointer;
         
@@ -52,18 +55,23 @@
     }
 
     button.tiny {
-        padding: calc( var(--button-padding) * 0.5 );
+        padding: calc( var(--unit) * 0.5 );
     }
 
     button.small{
-        padding: calc( var(--button-padding) * 0.75 );
+        padding: calc( var(--unit) * 0.75 );
     }
 
     button.medium {
-        padding: calc( var(--button-padding) * 2 );
+        padding: calc( var(--unit) * 2 );
     }
     
     button.large {
-        padding: calc( var(--button-padding) * 4 );
+        padding: calc( var(--unit) * 4 );
     }
+
+
+
+
+
 </style>
