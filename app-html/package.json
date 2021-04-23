@@ -1,0 +1,16 @@
+{
+    "name": "app-html",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "start": "http-server -p 8080 -c-1 ."
+    },
+    "devDependencies": {
+        "http-server": "^0.12.3"
+    },
+    "dependencies": {
+        "@dp/ui-lib": "file:.yalc/@dp/ui-lib"
+    }
+}

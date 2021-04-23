@@ -1,0 +1,40 @@
+<html>
+<script type="module"
+        src="./node_modules/@dp/ui-lib/dist/index.mjs"></script>
+
+<body>
+
+    <h1>HTML Kitchen Sink</h1>
+
+    <theme-base>
+        <se-button id="se-button-base"
+                   primary="true"
+                   size="large">Bases Button</se-button>
+    </theme-base>
+
+
+    <theme-dpdhl>
+        <se-button id="se-button-themed"
+                   primary="true"
+                   size="normal">Themed Button</se-button>
+    </theme-dpdhl>
+
+    <div>
+        <pre id="log"></pre>
+    </div>
+
+
+    <script>
+        document.querySelector("#se-button-base").addEventListener("click", () => {
+            document.querySelector("#log").innerHTML = "Base Button Clicked"
+        })
+
+        document.querySelector("#se-button-themed").addEventListener("click", () => {
+            document.querySelector("#log").innerHTML = "Themed Button Clicked"
+        })
+    </script>
+
+</body>
+
+
+</html>
