@@ -1,42 +1,69 @@
 <script>
-  import './button.css';
-  import { createEventDispatcher } from 'svelte';
-  /**
-   * Is this the principal call to action on the page?
-   */
-  export let primary = false;
+    export let primary = false
+    
+    //#region Size
+    
+    const Size = {
+        Tiny: 'tiny',
+        Small: 'small',
+        Normal: 'normal',
+        Medium: 'medium',
+        Large: 'large',
+    }
+    export let size = Size.Normal
 
-  /**
-   * What background color to use
-   */
-  export let backgroundColor;
-  /**
-   * How large should the button be?
-   */
-  export let size = 'medium';
-  /**
-   * Button contents
-   */
-  export let label = '';
+    //#endregion Size
 
-  let mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
-
-  let style = backgroundColor ? `background-color: ${backgroundColor}` : '';
-
-  const dispatch = createEventDispatcher();
-
-  /**
-   * Optional click handler
-   */
-  function onClick(event) {
-    dispatch('click', event);
-  }
 </script>
+<svelte:options tag={"se-button"}/>
+
 
 <button
-  type="button"
-  class={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-  {style}
-  on:click={onClick}>
-  {label}
+    on:click 
+
+    class:primary
+    class:tiny   = {size === Size.Tiny}
+    class:small  = {size === Size.Small}
+    class:medium = {size === Size.Medium}
+    class:large  = {size === Size.Large}
+>
+    <slot />
 </button>
+
+<style>
+
+    button {
+        color:            var(--color-primary);
+        background-color: var(--color-secondary);
+        
+        border:        var(--color-primary) solid thin;
+        border-radius: var(--button-border-radius);
+
+        padding: var(--button-padding);
+
+        cursor: pointer;
+        
+    }
+    
+    button.primary {
+        border:           var(--color-secondary) solid thin;
+        background-color: var(--color-primary);
+        color:            var(--color-secondary);
+    }
+
+    button.tiny {
+        padding: calc( var(--button-padding) * 0.5 );
+    }
+
+    button.small{
+        padding: calc( var(--button-padding) * 0.75 );
+    }
+
+    button.medium {
+        padding: calc( var(--button-padding) * 2 );
+    }
+    
+    button.large {
+        padding: calc( var(--button-padding) * 4 );
+    }
+</style>

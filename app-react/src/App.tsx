@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+// @ts-ignore
+import {adapt} from "webcomponents-with-react"
 
 import '@dp/ui-lib'
 
@@ -8,17 +10,12 @@ function App() {
 
 
   const user = {name:'John'}
+  const HelloWorld = adapt('hello-world');
 
   function handleOnClick(){
     alert('Hello, World!');
   }
 
-  const TableRow = (
-    <div>
-      <span>1</span>|<span>2</span>
-    </div>
-  )
-  
   return (
     <div className="App">
       <header className="App-header">
@@ -35,21 +32,8 @@ function App() {
           Learn React?
         </a>
       </header>
-      {TableRow}
 
-      {/* @ts-ignore  */}
-      <hello-world onClick={handleOnClick}>
-        <span slot="greeting">
-          Welcome
-	      </span>
-        <span slot="name">
-          P. Sherman
-	      </span>
-      {/* @ts-ignore */}
-      </hello-world>
-      
-      {/* @ts-ignore  */}
-      {/* <hello-world onClick={handleOnClick}>{TableRow}</hello-world> */}
+      <HelloWorld user={user} />
 
     </div>
     

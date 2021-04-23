@@ -17,7 +17,8 @@
     "typescript": "^4.1.2",
     "use-custom-element": "^1.0.5",
     "web-component-essentials": "^0.0.4",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "webcomponents-in-react": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

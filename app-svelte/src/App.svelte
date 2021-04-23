@@ -1,15 +1,24 @@
-<script lang="ts">
+<script>
 
-	import { HelloWorld } from '@dp/ui-lib'
+	import { HelloWorld, ThemeDPDHL, ThemeBase } from '@dp/ui-lib'
+import ThemeBases from '@dp/ui-lib/src/themes/theme-base/theme-bases.svelte';
+import ThemeDpdhl from '@dp/ui-lib/src/themes/theme-dpdhl/theme-dpdhl.svelte';
 
-	export let name: string;
+	export let name
 </script>
 
 <main>
 	<h1>Hello {name}!</h1>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 	
-	<HelloWorld user={{name: 'John'}}/>
+	<button>simple</button>
+
+	<ThemeBases>
+		<button>in theme base</button>
+		<ThemeDpdhl>
+			<button primary="true">in theme DPDHL</button>
+		</ThemeDpdhl>
+	</ThemeBases>
 </main>
 
 <style>

@@ -1,1 +1,3 @@
-export { default as HelloWorld } from './hello-world.svelte';
+
+export * from './components';
+export * from './themes'
