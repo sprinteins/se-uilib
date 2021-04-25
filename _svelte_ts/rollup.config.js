@@ -8,6 +8,7 @@ import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
 import pkg from './package.json';
 import copy from "rollup-plugin-copy-assets";
+import sveld from "sveld";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -75,12 +76,16 @@ export default {
 			sourceMap: !production,
 			inlineSources: !production
 		}),
+
+		// copying assets like fonts to the build
 		copy({
 			assets: [
 			  // You can include directories
-			  "src/assets",
+			  "assets",
 			],
 		}),
+
+		sveld(),
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
