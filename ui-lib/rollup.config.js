@@ -38,7 +38,7 @@ const name = pkg.name
 	.replace(/-\w/g, m => m[1].toUpperCase());
 
 export default {
-	input: 'src/main.ts',
+	input: 'src/index.ts',
 	// output: {
 	// 	sourcemap: true,
 	// 	format: 'iife',
@@ -54,8 +54,10 @@ export default {
 			preprocess: sveltePreprocess({ sourceMap: !production }),
 			compilerOptions: {
 				// enable run-time checks when not in production
-				dev: !production
-			}
+				customElement: true,
+				dev: !production,
+			},
+			
 		}),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance

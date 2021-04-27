@@ -1,6 +1,6 @@
 <html>
 <script type="module"
-        src="./node_modules/@dp/ui-lib/dist/index.mjs"></script>
+        src="./node_modules/dpdhl-ui-lib/dist/index.mjs"></script>
 
 <body>
 
@@ -9,7 +9,9 @@
     <theme-dpdhl>
         <dpdhl-button id="se-button-themed"
                       primary="true"
-                      size="normal">Themed Button</dpdhl-button>
+                      size="normal">
+            Themed Button
+        </dpdhl-button>
     </theme-dpdhl>
 
     <div>
@@ -18,9 +20,9 @@
 
 
     <script>
-        document.querySelector("#se-button-base").addEventListener("click", () => {
-            document.querySelector("#log").innerHTML = "Base Button Clicked"
-        })
+        // document.querySelector("#se-button-base").addEventListener("click", () => {
+        //     document.querySelector("#log").innerHTML = "Base Button Clicked"
+        // })
 
         document.querySelector("#se-button-themed").addEventListener("click", () => {
             document.querySelector("#log").innerHTML = "Themed Button Clicked"

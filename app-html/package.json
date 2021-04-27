@@ -11,6 +11,6 @@
         "http-server": "^0.12.3"
     },
     "dependencies": {
-        "@dp/ui-lib": "file:.yalc/@dp/ui-lib"
+        "dpdhl-ui-lib": "file:../ui-lib"
     }
 }

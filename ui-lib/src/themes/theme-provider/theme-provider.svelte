@@ -1,8 +1,13 @@
 <script>
 </script>
 
+
+<svelte:options tag={'theme-dpdhl'} />
+
+<slot />
+
 <style>
-    :root {
+    :host {
         --unit: 16px;
 
         --color-black:      #000000;
@@ -87,9 +92,3 @@
     font-display: swap;
 }
 </style>
-
-<svelte:options tag={'theme-dpdhl'} />
-
-<!-- <theme class="dpdhl"> -->
-        <slot />
-<!-- </theme> -->
