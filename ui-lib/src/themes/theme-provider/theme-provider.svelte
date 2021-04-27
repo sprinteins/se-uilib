@@ -7,7 +7,7 @@
 <slot />
 
 <style>
-    :host {
+    :host, :root {
         --unit: 16px;
 
         --color-black:      #000000;
