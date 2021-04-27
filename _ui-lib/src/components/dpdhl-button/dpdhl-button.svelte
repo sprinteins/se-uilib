@@ -1,17 +1,19 @@
-<script context="module" lang="ts">
-  export enum Size {
-        Tiny   = 'Tiny',
-        Small  = 'Small',
-        Normal = 'Normal',
-        Medium = 'Medium',
-        Large  = 'Large',
-    }
-</script>
-<script lang="ts">
-
-    export let primary:boolean = false
-    export let size: Size = Size.Normal
+<script>
+    export let primary = false
     
+    //#region Size
+    
+    const Size = {
+        Tiny: 'tiny',
+        Small: 'small',
+        Normal: 'normal',
+        Medium: 'medium',
+        Large: 'large',
+    }
+    export let size = Size.Normal
+
+    //#endregion Size
+
 </script>
 <svelte:options tag={"dpdhl-button"}/>
 
@@ -33,12 +35,16 @@
     button {
         --button-color: var(--color-primary);
 
-        cursor:           pointer;
+
         color:            var(--button-color);
-        background-color: var(--color-secondary);        
-        border:           var(--color-primary) solid thin;
-        border-radius:    var(--button-border-radius);
-        padding:          calc( var(--unit) * 0.5 );
+        background-color: var(--color-secondary);
+        
+        border:        var(--color-primary) solid thin;
+        border-radius: var(--button-border-radius);
+
+        padding: calc( var(--unit) * 0.5 );
+
+        cursor: pointer;
         
     }
     

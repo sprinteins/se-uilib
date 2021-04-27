@@ -1,39 +1,46 @@
 {
-  "name": "@dp/ui-lib",
-  "version": "0.1.0",
-  "svelte": "src/index.js",
+  "name": "dpdhl-ui-lib",
+  "version": "0.1",
+  "private": true,
   "module": "dist/index.mjs",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rollup -c",
-    "prepublishOnly": "npm run build",
-    "storybook": "start-storybook -p 6006 --ci",
-    "build-storybook": "build-storybook"
+    "build": "yarn clean && rollup -c",
+    "clean": "rm -rf ./dist",
+    "dev": "rollup -c -w",
+    "start": "sirv public --no-clear",
+    "validate": "svelte-check",
+    "sb": "start-storybook -p 6006 --ci -s ./src/assets",
+    "build:sb": "build-storybook --output-dir public-sb --static-dir ./src/assets --quiet"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",
-    "@rollup/plugin-node-resolve": "^9.0.0",
-    "@storybook/addon-actions": "^6.2.8",
-    "@storybook/addon-essentials": "^6.2.8",
-    "@storybook/addon-links": "^6.2.8",
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-node-resolve": "^11.0.0",
+    "@rollup/plugin-typescript": "^8.0.0",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
     "@storybook/addon-svelte-csf": "^1.0.0",
-    "@storybook/svelte": "^6.2.8",
+    "@storybook/svelte": "^6.2.9",
+    "@tsconfig/svelte": "^1.0.0",
     "babel-loader": "^8.2.2",
-    "postcss": "^8.2.12",
-    "postcss-load-config": "^3.0.1",
+    "node-sass": "^5.0.0",
     "react-is": "^17.0.2",
-    "rollup": "^2.0.0",
-    "rollup-plugin-svelte": "^6.0.0",
+    "rollup": "^2.3.4",
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-svelte": "^7.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "svelte": "^3.37.0",
+    "svelte-check": "^1.0.0",
     "svelte-loader": "^3.1.1",
-    "svelte-preprocess": "^4.7.2"
+    "svelte-preprocess": "^4.7.2",
+    "tslib": "^2.0.0",
+    "typescript": "^4.0.0"
   },
-  "keywords": [
-    "svelte"
-  ],
-  "files": [
-    "src",
-    "dist"
-  ],
-  "dependencies": {}
+  "dependencies": {
+    "rollup-plugin-copy-assets": "^2.0.3",
+    "sirv-cli": "^1.0.0"
+  }
 }

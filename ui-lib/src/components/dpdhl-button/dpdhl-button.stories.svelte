@@ -1,6 +1,7 @@
-<script>
+<script lang="ts">
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf';
     import DPHLButton from './dpdhl-button.svelte';
+    import { Size } from './dpdhl-button.svelte';
 </script>
   
 <Meta title="Components/Button" component={DPHLButton}/>
@@ -22,23 +23,23 @@
 <Story name="Tiny" args={{
       primary: false,
       label:"Tiny",
-      size: "tiny",
+      size: Size.Tiny,
 }}/>
 
 <Story name="Small" args={{
       primary: false,
       label:"Small",
-      size: "small",
+      size: Size.Small,
 }}/>
 
 <Story name="Medium" args={{
       primary: false,
       label:"Medium",
-      size: "medium",
+      size: Size.Medium,
 }}/>
 
 <Story name="Large" args={{
       primary: false,
       label:"Large",
-      size: "large",
+      size: Size.Large,
 }}/>

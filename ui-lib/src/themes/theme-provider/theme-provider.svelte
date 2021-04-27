@@ -1,40 +1,37 @@
 <script>
-    // import { ThemeBase } from '../theme-base'
 </script>
 
 <style>
     :root {
-    --unit: 16px;
+        --unit: 16px;
 
-    --color-black:      #000000;
-    --color-white:      #ffffff;
-    --color-postyellow: #FFCC00;
-    --color-dhlred:     #D40511;
-    --color-gray80:     #333333;
-    --color-gray60:     #666666;
-    --color-gray45:     #8c8c8c;
-    --color-gray30:     #b2b2b2;
-    --color-gray20:     #cccccc;
-    --color-gray10:     #e5e5e5;
-    --color-gray08:     #ebebeb;
-    --color-gray05:     #f2f2f2;
-    
-    --color-primary:   var(--color-dhlred);
-    --color-secondary: var(--color-white);
+        --color-black:      #000000;
+        --color-white:      #ffffff;
+        --color-postyellow: #FFCC00;
+        --color-dhlred:     #D40511;
+        --color-gray80:     #333333;
+        --color-gray60:     #666666;
+        --color-gray45:     #8c8c8c;
+        --color-gray30:     #b2b2b2;
+        --color-gray20:     #cccccc;
+        --color-gray10:     #e5e5e5;
+        --color-gray08:     #ebebeb;
+        --color-gray05:     #f2f2f2;
+        
+        --color-primary:   var(--color-dhlred);
+        --color-secondary: var(--color-white);
 
-    --font-size-normal: 14px;
-    --font-size-medium: 18px;
-    --font-size-large:  24px;
+        --font-size-normal: 14px;
+        --font-size-medium: 18px;
+        --font-size-large:  24px;
 
-    --font-family: "DeliveryRegular";
+        --font-family: "DeliveryRegular";
 
-    --button-border-radius: 6px;
-    --button-padding:       var(--unit);
+        --button-border-radius: 6px;
+        --button-padding:       var(--unit);
 
-    --button-color: var(--color-secondary);
-
-
-}
+        --button-color: var(--color-secondary);
+    }
 
 :global(*){
     font-family: var(--font-family);
