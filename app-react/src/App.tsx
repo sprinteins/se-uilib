@@ -8,16 +8,11 @@ import 'dpdhl-ui-lib';
 
 function App() {
 
-    const user = {name:'John'}
     const ThemeDPDHL = adapt('theme-dpdhl');
     const DPDHLButton = adapt('dpdhl-button');
 
     const [log, setLog] = useState('')
-    
-    function handleOnClick(){
-        alert('Hello, World!');
-    }
-    
+
     return (
         <div className="App">
             <header className="App-header">
