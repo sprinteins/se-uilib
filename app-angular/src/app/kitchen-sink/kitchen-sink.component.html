@@ -1,17 +1,13 @@
 <h1>Angular Kitchen Sink</h1>
 
-<theme-base>
-    <se-button primary
-               (click)="handleClick('base button')"
-               size="large">Bases Button</se-button>
-</theme-base>
-
-
 <theme-dpdhl>
-    <se-button primary="true"
-               (click)="handleClick('theme button')"
-               size="normal">Themed Button</se-button>
+    <dpdhl-button primary="true"
+                  (click)="handleClick('base button')"
+                  size="normal">
+        Base Button
+    </dpdhl-button>
 </theme-dpdhl>
+
 
 <div>
     <pre>{{log}}</pre>

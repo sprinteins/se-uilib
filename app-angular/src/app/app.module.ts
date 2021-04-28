@@ -3,7 +3,8 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { KitchenSinkModule } from './kitchen-sink'
-import '@dp/ui-lib'
+
+import 'dpdhl-ui-lib';
 
 @NgModule({
     schemas:[CUSTOM_ELEMENTS_SCHEMA],
