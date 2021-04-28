@@ -4,11 +4,12 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve --port 4100",
-        "build": "ng build --output-path ./public",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "build:lib": "cd ../ui-lib && yarn && yarn build && cd ../app-angular"
+        "build": "yarn build:lib && yarn build:ng",
+        "build:ng": "ng build --output-path ./public",
+        "build:lib": "cd ../ui-lib && yarn && yarn build && yarn link && cd ../app-angular && yarn link dpdhl-ui-lib"
     },
     "private": true,
     "dependencies": {
