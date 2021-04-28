@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@dp/ui-lib": "file:.yalc/@dp/ui-lib",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -14,17 +13,15 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.3",
-    "typescript": "^4.1.2",
-    "use-custom-element": "^1.0.5",
-    "web-component-essentials": "^0.0.4",
-    "web-vitals": "^1.0.1",
-    "webcomponents-in-react": "^1.0.1"
+    "typescript": "^4.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build": "yarn build:lib && yarn build:react",
+    "build:react": "react-scripts build",
+    "build:lib": "cd ../ui-lib && yarn && yarn build && yarn link && cd ../app-react && yarn link dpdhl-ui-lib"
   },
   "eslintConfig": {
     "extends": [
