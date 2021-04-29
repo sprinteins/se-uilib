@@ -50,11 +50,12 @@
 <style>
 
     button {
+        font-size:     var(--font-size);
         cursor:        pointer;
         color:         var(--color-black);
         border-radius: var(--border-radius);
-        padding:       1rem;
-        min-width:     11rem;
+        padding:       1em;
+        min-width:     11em;
         
     }
 
@@ -69,7 +70,7 @@
     }
 
     button.secondary {
-        border:           var(--color-dhlred) 0.2rem solid;
+        border:           var(--color-dhlred) 0.2em solid;
         color:            var(--color-dhlred);
         background-color: var(--color-white);
     }
@@ -86,13 +87,13 @@
     }
     
     button.small{
-        padding-top:    0.75rem;
-        padding-bottom: 0.75rem;
+        padding-top:    0.75em;
+        padding-bottom: 0.75em;
     }
 
     button.tiny {
-        padding-top:    0.5rem;
-        padding-bottom: 0.5rem;
+        padding-top:    0.5em;
+        padding-bottom: 0.5em;
     }
 
 </style>
