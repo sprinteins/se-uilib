@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf';
-    import DPHLButton from './dpdhl-button.svelte';
+    import DPHLButton, { Type } from './dpdhl-button.svelte';
     import { Size } from './dpdhl-button.svelte';
 </script>
   
@@ -9,37 +9,35 @@
 <Template let:args>
   <DPHLButton {...args}>{args.label}</DPHLButton>
 </Template>
-  
+
 <Story name="Primary" args={{
-      primary: true,
-      label:"Primary",
+      type:  Type.Primary,
+      label: "Primary",
 }}/>
   
 <Story name="Secondary" args={{
-      primary: false,
-      label:"Normal",
+      type:  Type.Secondary,
+      label: "Secondary",
 }}/>
 
-<Story name="Tiny" args={{
-      primary: false,
-      label:"Tiny",
-      size: Size.Tiny,
+<Story name="Text" args={{
+      type:  Type.Text,
+      label: "Text",
+}}/>
+
+<Story name="Postyellow" args={{
+      type:  Type.Postyellow,
+      label: "Text",
 }}/>
 
 <Story name="Small" args={{
-      primary: false,
+      type: Type.Primary,
       label:"Small",
       size: Size.Small,
 }}/>
 
-<Story name="Medium" args={{
-      primary: false,
-      label:"Medium",
-      size: Size.Medium,
-}}/>
-
-<Story name="Large" args={{
-      primary: false,
-      label:"Large",
-      size: Size.Large,
+<Story name="Tiny" args={{
+      type: Type.Primary,
+      label:"Tiny",
+      size: Size.Tiny,
 }}/>
