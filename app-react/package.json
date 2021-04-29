@@ -21,7 +21,7 @@
     "eject": "react-scripts eject",
     "build": "yarn build:lib && yarn build:react",
     "build:react": "react-scripts build",
-    "build:lib": "cd ../uilib && yarn && yarn build && yarn link && cd ../app-react && yarn link dpdhl-ui-lib"
+    "build:lib": "cd ../uilib && yarn && yarn build && yarn link && cd ../app-react && yarn link dpdhl-uilib"
   },
   "eslintConfig": {
     "extends": [

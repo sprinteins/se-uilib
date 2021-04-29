@@ -1,5 +1,5 @@
 {
-  "name": "dpdhl-ui-lib",
+  "name": "dpdhl-uilib",
   "version": "0.1.0",
   "private": false,
   "module": "dist/index.mjs",
