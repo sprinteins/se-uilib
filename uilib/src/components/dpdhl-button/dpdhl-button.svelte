@@ -41,6 +41,10 @@
         padding:          calc( var(--unit) * 0.5 );
         
     }
+
+    button:hover{
+        background-color: var(--color-dhlred-light);
+    }
     
     button.primary {
         border:           var(--color-secondary) solid thin;
