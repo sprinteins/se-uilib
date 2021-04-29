@@ -9,7 +9,7 @@
         "e2e": "ng e2e",
         "build": "yarn build:lib && yarn build:ng",
         "build:ng": "ng build --output-path ./public",
-        "build:lib": "cd ../ui-lib && yarn && yarn build && yarn link && cd ../app-angular && yarn link dpdhl-ui-lib"
+        "build:lib": "cd ../uilib && yarn && yarn build && yarn link && cd ../app-angular && yarn link dpdhl-ui-lib"
     },
     "private": true,
     "dependencies": {
