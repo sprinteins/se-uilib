@@ -4,7 +4,7 @@ import './App.css';
 
 import {adapt} from "./adapter";
 
-import 'dpdhl-ui-lib';
+import 'dpdhl-uilib';
 
 function App() {
 
