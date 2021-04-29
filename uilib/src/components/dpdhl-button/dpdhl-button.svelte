@@ -51,11 +51,13 @@
 
     button {
         font-size:     var(--font-size);
+        font-weight:   bold;
         cursor:        pointer;
         color:         var(--color-black);
         border-radius: var(--border-radius);
         padding:       1em;
         min-width:     11em;
+        line-height:   20px;
         
     }
 
@@ -87,13 +89,13 @@
     }
     
     button.small{
-        padding-top:    0.75em;
-        padding-bottom: 0.75em;
+        padding-top:    0.5em;
+        padding-bottom: 0.5em;
     }
 
     button.tiny {
-        padding-top:    0.5em;
-        padding-bottom: 0.5em;
+        padding-top:    0.2em;
+        padding-bottom: 0.2em;
     }
 
 </style>

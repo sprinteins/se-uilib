@@ -1,4 +1,14 @@
 <html>
+
+<head>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+    </style>
+</head>
 <script type="module"
         src="./lib/index.mjs"></script>
 
@@ -6,26 +16,103 @@
 
     <h1>HTML Kitchen Sink</h1>
 
+    <pre id="log"></pre>
+
     <theme-dpdhl>
-        <dpdhl-button id="se-button-themed"
-                      primary="true"
-                      size="normal">
-            Themed Button
-        </dpdhl-button>
+        <div class="container">
+            <div>
+                <dpdhl-button id="se-button-themed"
+                              type="Primary"
+                              size="normal">
+                    Button
+                </dpdhl-button>
+            </div>
+            <div>
+                <dpdhl-button type="Secondary"
+                              size="normal">
+                    Button
+                </dpdhl-button>
+            </div>
+            <div>
+                <dpdhl-button type="Text"
+                              size="normal">
+                    Button
+                </dpdhl-button>
+            </div>
+            <div>
+                <dpdhl-button type="Postyellow"
+                              size="normal">
+                    Button
+                </dpdhl-button>
+            </div>
+
+            <!-- Small -->
+            <div>
+                <dpdhl-button id="se-button-themed"
+                              type="Primary"
+                              size="Small">
+                    Button
+                </dpdhl-button>
+            </div>
+            <div>
+                <dpdhl-button type="Secondary"
+                              size="Small">
+                    Button
+                </dpdhl-button>
+            </div>
+            <div>
+                <dpdhl-button type="Text"
+                              size="Small">
+                    Button
+                </dpdhl-button>
+            </div>
+            <div>
+                <dpdhl-button type="Postyellow"
+                              size="Small">
+                    Button
+                </dpdhl-button>
+            </div>
+
+
+            <!-- Tiny -->
+            <div>
+                <dpdhl-button id="se-button-themed"
+                              type="Primary"
+                              size="Tiny">
+                    Button
+                </dpdhl-button>
+            </div>
+            <div>
+                <dpdhl-button type="Secondary"
+                              size="Tiny">
+                    Button
+                </dpdhl-button>
+            </div>
+            <div>
+                <dpdhl-button type="Text"
+                              size="Tiny">
+                    Button
+                </dpdhl-button>
+            </div>
+            <div>
+                <dpdhl-button type="Postyellow"
+                              size="Tiny">
+                    Button
+                </dpdhl-button>
+            </div>
+
+
+        </div>
     </theme-dpdhl>
 
     <div>
-        <pre id="log"></pre>
     </div>
 
 
     <script>
-        // document.querySelector("#se-button-base").addEventListener("click", () => {
-        //     document.querySelector("#log").innerHTML = "Base Button Clicked"
-        // })
 
         document.querySelector("#se-button-themed").addEventListener("click", () => {
-            document.querySelector("#log").innerHTML = "Themed Button Clicked"
+            document.querySelector("#log").innerHTML = "Button Clicked"
         })
     </script>
 
