@@ -1,5 +1,5 @@
 
-<div class="dpdhl-card"> 
+<div class="card"> 
     <header>
         <slot name="header">No header was provided</slot>
     </header>
@@ -15,12 +15,16 @@
 <svelte:options tag={'dpdhl-card'} />
 
 <style>
-    .dpdhl-card {
-        background:  #FFFFFF;
+    .card {
+        font-family: var(--font);
+
+        background:    var(--color-white);
         box-shadow:    0px 0px 1px rgba(0, 0, 0, 0.1), 0px 2px 12px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.1);
-        border-radius: 4px;
-        padding:       calc( var(--unit) * 2 );
-        min-height:    300px;
+        border-radius: var(--border-radius);
+
+        padding:       2em;
+        height:        100%;
+        width:         100%; 
         
         display:         flex;
         flex-direction:  column;
@@ -28,21 +32,28 @@
         justify-content: flex-start;
         align-content:   stretch;
         align-items:     flex-start;
-        gap:             calc( var(--unit) * 1);
+        gap:             1em;
+    }
+
+    header,
+    main,
+    footer {
+        display: inline-block;
+        width:   100%;
     }
 
     header {
-        flex: 0 1 auto;
+        flex:       0 1 auto;
         align-self: start;
     }
 
     main {
-        flex: 1 1 auto;
+        flex:       1 1 auto;
         align-self: start;
         }
 
     footer {
-        flex: 0 1 auto;
-        align-self: end;
+        flex:       0 1 auto;
+        align-self: start;
     }
 </style>

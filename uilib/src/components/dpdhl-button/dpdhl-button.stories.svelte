@@ -1,7 +1,8 @@
 <script lang="ts">
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf';
-    import DPHLButton, { Type } from './dpdhl-button.svelte';
-    import { Size } from './dpdhl-button.svelte';
+    import DPHLButton from './dpdhl-button.svelte';
+    import { Type } from './type'
+    import { Size } from './size'
 </script>
   
 <Meta title="Components/Button" component={DPHLButton}/>

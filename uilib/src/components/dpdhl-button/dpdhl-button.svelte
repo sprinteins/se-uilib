@@ -1,28 +1,13 @@
-<script context="module" lang="ts">
-    export enum Size {
-        Tiny   = 'Tiny',
-        Small  = 'Small',
-        Normal = 'Normal',
-        Medium = 'Medium',
-        Large  = 'Large',
-    }
-
-    export enum Type {
-        Primary    = 'Primary',
-        Text       = 'Text',
-        Secondary  = 'Secondary',
-        Postyellow = 'Postyellow',
-    }
-</script>
 <script lang="ts">
+    import { Size } from './size'
+    import { Type } from './type'
+
      /**
       * A Button Component
       * @component
       */
 
     export const disabled = false;
-
-    export let primary:boolean = false
     export let size: Size = Size.Normal
     /**
      * Type of the button: Primary, Secondary, Text, Postyellow
@@ -50,14 +35,17 @@
 <style>
 
     button {
-        font-size:     var(--font-size);
-        font-weight:   bold;
-        cursor:        pointer;
-        color:         var(--color-black);
-        border-radius: var(--border-radius);
-        padding:       1em;
-        min-width:     11em;
-        line-height:   20px;
+        font-size:     var(--button__font-size, var(--font-size));
+        font-weight:   var(--button__font-weight, bold);
+        color:         var(--button__color, var(--color-black));
+        text-align:    var(--button__text-align, center);
+
+        cursor:        var(--button__cursor, pointer);
+
+        border-radius: var(--button__border-radius, var(--border-radius));
+        padding:       var(--button__padding, 1em);
+        min-width:     var(--button__min-width, 11em);
+        line-height:   var(--button__line-height, 20px);
         
     }
 
