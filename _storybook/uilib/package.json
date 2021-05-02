@@ -1,0 +1,39 @@
+{
+  "name": "dpdhl-uilib",
+  "version": "0.1.0",
+  "private": false,
+  "module": "dist/index.mjs",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "yarn clean && rollup -c",
+    "build:watch": "yarn clean && rollup -c -w",
+    "clean": "rm -rf ./dist",
+    "validate": "svelte-check",
+    "sb": "start-storybook -p 6006 --ci -s ./src/assets",
+    "push": "yarn build && yalc push",
+    "build:sb": "build-storybook --output-dir public-sb --static-dir ./src/assets --quiet"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.16",
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-node-resolve": "^11.0.0",
+    "@rollup/plugin-typescript": "^8.0.0",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@tsconfig/svelte": "^1.0.0",
+    "babel-loader": "^8.2.2",
+    "node-sass": "^5.0.0",
+    "rollup": "^2.3.4",
+    "rollup-plugin-copy-assets": "^2.0.3",
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-svelte": "^7.0.0",
+    "rollup-plugin-terser": "^7.0.0",
+    "sirv-cli": "^1.0.0",
+    "svelte": "^3.37.0",
+    "svelte-check": "^1.0.0",
+    "svelte-loader": "^3.1.1",
+    "svelte-preprocess": "^4.7.2",
+    "tslib": "^2.0.0",
+    "typescript": "^4.0.0"
+  }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport'
+		  content='width=device-width,initial-scale=1'>
+
+	<title>Svelte app</title>
+
+	<link rel='icon'
+		  type='image/png'
+		  href='/favicon.png'>
+
+
+	<script defer
+			src='/build/bundle.js'></script>
+</head>
+
+<body>
+
+	<x-card>
+		<span slot="name">
+			P. Sherman
+		</span>
+
+		<span slot="address">
+			42 Wallaby Way<br>
+			Sydney
+		</span>
+	</x-card>
+
+	<br />
+
+	<x-contact-card name="P. Sherman"
+					address="42 Wallaby Way, Sydney"
+					email="p.sherman@test.com" />
+</body>
+
+</html>

@@ -2,7 +2,7 @@
 </script>
 
 
-<svelte:options tag={'theme-dpdhl'} />
+<svelte:options tag={'dpdhl-theme'} />
 
 <slot />
 
