@@ -7,9 +7,10 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "build": "yarn build:lib && yarn build:ng",
+        "build": "yarn lib:build && yarn lib:link && yarn build:ng",
         "build:ng": "ng build --output-path ./public",
-        "build:lib": "cd ../uilib && yarn && yarn build && yarn link && cd ../app-angular && yarn link dpdhl-uilib"
+        "lib:link": "yarn link dpdhl-uilib",
+        "lib:build": "../scripts/build-lib.sh"
     },
     "private": true,
     "dependencies": {

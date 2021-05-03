@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "rollup -c",
+    "build": "yarn --cwd ./uilib build",
     "dev": "concurrently \"yarn sb\" \"yarn lib:build:watch\" ",
     "start": "sirv public --no-clear",
     "sb": "start-storybook -p 6006 --ci -s ./uilib/src/assets",
     "build-sb": "build-storybook",
+    "link": "yarn lib:link",
     "lib:link": "cd ./uilib && yarn link && cd .. && yarn link dpdhl-uilib",
     "lib:build:watch": "cd ./uilib && yarn build:watch",
     "postinstall": "yarn lib:link"

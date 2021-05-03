@@ -1,6 +1,6 @@
 <h1>Angular Kitchen Sink</h1>
 
-<theme-dpdhl>
+<dpdhl-theme>
     <div class="container">
         <div>
             <dpdhl-button type="Primary"
@@ -53,8 +53,15 @@
                           type="Postyellow">Button</dpdhl-button>
         </div>
 
+        <div style="width: 300px;">
+            <dpdhl-card-simple title="Card Title"
+                               content="Some Text..."
+                               button_label="Main Action"
+                               [menu_items]="menuItems"></dpdhl-card-simple>
+        </div>
+
     </div>
-</theme-dpdhl>
+</dpdhl-theme>
 
 
 <div>

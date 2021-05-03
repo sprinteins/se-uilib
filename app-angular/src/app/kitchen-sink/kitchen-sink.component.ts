@@ -13,4 +13,10 @@ export class KitchenSinkComponent {
         this.log = `clicked on ${buttonName}`
     }
 
+    menuItems = [
+        { label: "Menu 1", click: () => { alert('You have selected "Menu 1"') }},
+        { label: "Menu 2", click: () => { alert('You have selected "Menu 2"') }},
+        { label: "Menu 3", click: () => { alert('You have selected "Menu 3"') }},
+    ]
+
 }
