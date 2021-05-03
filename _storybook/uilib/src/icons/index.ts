@@ -1,0 +1,1 @@
+export * from './more_vertical_rgb_black'

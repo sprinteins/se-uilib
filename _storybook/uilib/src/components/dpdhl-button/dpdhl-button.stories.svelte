@@ -1,14 +1,14 @@
 <script lang="ts">
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf';
-    import DPHLButton from './dpdhl-button.svelte';
+    import 'dpdhl-uilib';
     import { Type } from './type'
     import { Size } from './size'
 </script>
   
-<Meta title="Components/Button" component={DPHLButton}/>
+<Meta title="Components/Button" component={null}/>
 
 <Template let:args>
-  <DPHLButton {...args}>{args.label}</DPHLButton>
+  <dpdhl-button {...args}>{args.label}</dpdhl-button>
 </Template>
 
 <Story name="Primary" args={{

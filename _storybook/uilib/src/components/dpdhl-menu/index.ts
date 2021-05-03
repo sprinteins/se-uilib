@@ -1,0 +1,1 @@
+export { default as DPDHLMenu } from './dpdhl-menu.svelte' 
