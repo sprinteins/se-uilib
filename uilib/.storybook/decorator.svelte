@@ -1,7 +1,7 @@
 <script lang="ts">
-    import ThemeProvider from  '../src/themes/theme-provider/theme-provider.svelte'
+    import 'dpdhl-uilib'
 </script>
 
-<ThemeProvider>
+<dpdhl-theme>
     <slot />
-</ThemeProvider>
+</dpdhl-theme>
