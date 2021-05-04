@@ -4,3 +4,4 @@ export * from './dpdhl-card-simple';
 export * from './dpdhl-input';
 export * from './dpdhl-menu';
 export * from './dpdhl-icon';
+export * from './dpdhl-table';

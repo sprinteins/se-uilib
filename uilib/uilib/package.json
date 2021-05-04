@@ -8,10 +8,7 @@
     "build": "yarn clean && rollup -c",
     "build:watch": "yarn clean && rollup -c -w",
     "clean": "rm -rf ./dist",
-    "validate": "svelte-check",
-    "sb": "start-storybook -p 6006 --ci -s ./src/assets",
-    "push": "yarn build && yalc push",
-    "build:sb": "build-storybook --output-dir public-sb --static-dir ./src/assets --quiet"
+    "validate": "svelte-check"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",
