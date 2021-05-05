@@ -1,10 +1,8 @@
 
 <script>
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf';
-    import { action } from '@storybook/addon-actions';
     
     import 'dpdhl-uilib'
-
 
 </script>
 
@@ -12,23 +10,29 @@
 <Meta title="Components/Table" component={null}/>
 
 <Template let:args>
-    <dpdhl-table>
+
+    <dpdhl-table title={args.title} footer={args.footer}>
+
         <thead slot="head">
             <tr>
             {#each args.headers as header}
-                <td>{header}</td>
+                <th>{header}</th>
             {/each}
             </tr>
         </thead>
+
         <tbody slot="body">
-        {#each args.rows as row }
-            <tr>
-                <td>{row.id}</td>
-                <td>{row.label}</td>
-            </tr>
-        {/each}
+            {#each args.rows as row }
+                <tr>
+                    <th>{row.title}</th>
+                    <td>{row.column1}</td>
+                    <td>{row.column2}</td>
+                </tr>
+            {/each}
         </tbody>
+
     </dpdhl-table>
+
 </Template>
 
 <style>
@@ -36,10 +40,12 @@
 </style>
 
 <Story name="Primary" args={{
+    title: "Table heading",
+    footer: "*Table footer annotation",
     rows: [
-        {id:0, label: "row 0"},
-        {id:1, label: "row 1"},
-        {id:2, label: "row 2"},
+        {title:"Row title", column1: "Table cell", column2: "Table cell"},
+        {title:"Row title", column1: "Table cell", column2: "Table cell"},
+        {title:"Row title", column1: "Table cell", column2: "Table cell"},
     ],
-    headers: ["ID", "Label"],
+    headers: ["","Column title 1", "Column title 2"],
 }}/>
