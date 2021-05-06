@@ -18,10 +18,10 @@
 
     <pre id="log"></pre>
 
-    <theme-dpdhl>
+    <dpdhl-theme>
         <div class="container">
             <div>
-                <dpdhl-button id="se-button-themed"
+                <dpdhl-button id="clickable-button"
                               type="Primary"
                               size="normal">
                     Button
@@ -120,8 +120,59 @@
             </div>
 
 
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>C1</th>
+                            <th>C2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>R1</td>
+                            <td>R1</td>
+                        </tr>
+                        <tr>
+                            <td>R1</td>
+                            <td>R1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                <dpdhl-table title="Table header"
+                             footer="*footer">
+
+                    <dpdhl-thead slot="head"
+                                 class="table-head">
+                        <dpdhl-tr>
+                            <dpdhl-th></dpdhl-th>
+                            <dpdhl-th>Column title 1</dpdhl-th>
+                            <dpdhl-th>Column title 2</dpdhl-th>
+                        </dpdhl-tr>
+                    </dpdhl-thead>
+
+                    <dpdhl-tbody slot="body"
+                                 class="table-body">
+                        <dpdhl-tr>
+                            <dpdhl-th>Row title</dpdhl-th>
+                            <dpdhl-td>Table Cell 1</dpdhl-td>
+                            <dpdhl-td>Table Cell 2</dpdhl-td>
+                        </dpdhl-tr>
+                        <dpdhl-tr>
+                            <dpdhl-th>Row title</dpdhl-th>
+                            <dpdhl-td>Table Cell 1</dpdhl-td>
+                            <dpdhl-td>Table Cell 2</dpdhl-td>
+                        </dpdhl-tr>
+                    </dpdhl-tbody>
+                </dpdhl-table>
+            </div>
+
+
         </div>
-    </theme-dpdhl>
+    </dpdhl-theme>
 
     <div>
     </div>
@@ -129,7 +180,7 @@
 
     <script>
 
-        document.querySelector("#se-button-themed").addEventListener("click", () => {
+        document.querySelector("#clickable-button").addEventListener("click", () => {
             document.querySelector("#log").innerHTML = "Button Clicked"
         })
     </script>

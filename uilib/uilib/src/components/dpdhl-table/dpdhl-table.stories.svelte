@@ -13,23 +13,23 @@
 
     <dpdhl-table title={args.title} footer={args.footer}>
 
-        <thead slot="head">
-            <tr>
+        <dpdhl-thead slot="head">
+            <dpdhl-tr>
             {#each args.headers as header}
-                <th>{header}</th>
+                <dpdhl-th>{header}</dpdhl-th>
             {/each}
-            </tr>
-        </thead>
+            </dpdhl-tr>
+        </dpdhl-thead>
 
-        <tbody slot="body">
+        <dpdhl-tbody slot="body">
             {#each args.rows as row }
-                <tr>
-                    <th>{row.title}</th>
-                    <td>{row.column1}</td>
-                    <td>{row.column2}</td>
-                </tr>
+                <dpdhl-tr>
+                    <dpdhl-th>{row.title}</dpdhl-th>
+                    <dpdhl-td>{row.column1}</dpdhl-td>
+                    <dpdhl-td>{row.column2}</dpdhl-td>
+                </dpdhl-tr>
             {/each}
-        </tbody>
+        </dpdhl-tbody>
 
     </dpdhl-table>
 

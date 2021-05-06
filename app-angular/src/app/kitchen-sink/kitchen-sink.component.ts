@@ -19,4 +19,13 @@ export class KitchenSinkComponent {
         { label: "Menu 3", click: () => { alert('You have selected "Menu 3"') }},
     ]
 
+    tableTitle = "Table heading"
+    tableFooter = "*Table footer annotation"
+    tableRows = [
+        {title:"Row title", column1: "Table cell", column2: "Table cell"},
+        {title:"Row title", column1: "Table cell", column2: "Table cell"},
+        {title:"Row title", column1: "Table cell", column2: "Table cell"},
+    ]
+    tableHeaders = ["","Column title 1", "Column title 2"]
+
 }

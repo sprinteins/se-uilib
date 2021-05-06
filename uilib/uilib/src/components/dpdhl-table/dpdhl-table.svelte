@@ -1,6 +1,17 @@
 <script lang="ts">
+
+    import { onMount } from 'svelte'
+
     export let title = ""
     export let footer = ""
+
+    let slotHead: HTMLElement;
+
+
+
+    onMount(()=>{
+        console.debug('🐞 ', slotHead.childNodes );
+    })
 </script>
 
 <svelte:options tag="dpdhl-table" />
@@ -26,38 +37,3 @@
     }
 
 </style>
-
-<!-- Styling slotted elements -->
-<svelte:head>
-    <style lang="scss">
-
-        dpdhl-table {
-            td, th {
-                padding-top:    1em;
-                padding-bottom: 1em;
-                padding-right:  3em;
-                padding-left:   0;
-                text-align: left;
-            }
-           
-            thead th {
-                font-family: var(--font-bold);
-                font-weight: normal;
-            }
-
-            tbody td,
-            tbody th,{
-                border-top: var(--color-gray30) 1px solid;
-            }
-
-            tbody tr:hover td,
-            tbody tr:hover th,{
-                background-color: var(--color-gray05)
-            }
-        }
-
-    </style>
-</svelte:head>
-<!-- 
-    FOOTNOTE: `:global()` does not work for web-components
--->

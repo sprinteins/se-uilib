@@ -9,6 +9,12 @@
                 Button
             </dpdhl-button>
         </div>
+
+        <div>
+            <pre>{{log}}</pre>
+        </div>
+
+
         <div>
             <dpdhl-button type="Secondary">Button</dpdhl-button>
         </div>
@@ -60,10 +66,27 @@
                                [menu_items]="menuItems"></dpdhl-card-simple>
         </div>
 
+        <div>
+
+            <dpdhl-table [title]="tableTitle"
+                         [footer]="tableFooter">
+
+                <thead slot="head">
+                    <tr>
+                        <th *ngFor="let header of tableHeaders">{{header}}</th>
+                    </tr>
+                </thead>
+
+                <tbody slot="body">
+                    <tr *ngFor="let row of tableRows">
+                        <td *ngFor="let cell of row | keyvalue">{{cell.value}}</td>
+
+                    </tr>
+                </tbody>
+
+            </dpdhl-table>
+
+        </div>
+
     </div>
 </dpdhl-theme>
-
-
-<div>
-    <pre>{{log}}</pre>
-</div>

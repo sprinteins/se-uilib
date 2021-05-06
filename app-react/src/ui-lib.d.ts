@@ -1,1 +1,0 @@
-declare module '@dp/ui-lib'
