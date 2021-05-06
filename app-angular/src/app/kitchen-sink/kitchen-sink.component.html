@@ -71,18 +71,17 @@
             <dpdhl-table [title]="tableTitle"
                          [footer]="tableFooter">
 
-                <thead slot="head">
-                    <tr>
-                        <th *ngFor="let header of tableHeaders">{{header}}</th>
-                    </tr>
-                </thead>
+                <dpdhl-thead slot="head">
+                    <dpdhl-tr>
+                        <dpdhl-th *ngFor="let header of tableHeaders">{{header}}</dpdhl-th>
+                    </dpdhl-tr>
+                </dpdhl-thead>
 
-                <tbody slot="body">
-                    <tr *ngFor="let row of tableRows">
-                        <td *ngFor="let cell of row | keyvalue">{{cell.value}}</td>
-
-                    </tr>
-                </tbody>
+                <dpdhl-tbody slot="body">
+                    <dpdhl-tr *ngFor="let row of tableRows">
+                        <dpdhl-td *ngFor="let cell of row | keyvalue">{{cell.value}}</dpdhl-td>
+                    </dpdhl-tr>
+                </dpdhl-tbody>
 
             </dpdhl-table>
 
