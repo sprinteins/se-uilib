@@ -7,8 +7,8 @@
     "build": "yarn lib:install && yarn build:react",
     "build:react": "tsc && vite build",
     "lib:install": "yarn lib:build && yarn lib:link",
-    "lib:build": "cd ../uilib && yarn && yarn build && cd ../app-react",
-    "lib:link": "cd ../uilib && yarn link && cd ../app-react",
+    "lib:build": "cd ../uilib && yarn lib:build && cd ../app-react",
+    "lib:link": "cd ../uilib  && yarn lib:link  && cd ../app-react",
     "postinstall": "yarn lib:link"
   },
   "dependencies": {

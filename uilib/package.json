@@ -11,7 +11,7 @@
     "link": "yarn lib:link",
     "lib:build": "yarn --cwd ./uilib install && yarn --cwd ./uilib build",
     "lib:link": "cd ./uilib && yarn link && cd .. && yarn link dpdhl-uilib",
-    "lib:build:watch": "cd ./uilib && yarn build:watch",
+    "lib:build:watch": "yarn --cwd ./uilib build:watch",
     "postinstall": "yarn lib:link"
   },
   "devDependencies": {
