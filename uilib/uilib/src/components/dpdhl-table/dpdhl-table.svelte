@@ -7,11 +7,6 @@
 
     let slotHead: HTMLElement;
 
-
-
-    onMount(()=>{
-        console.debug('🐞 ', slotHead.childNodes );
-    })
 </script>
 
 <svelte:options tag="dpdhl-table" />

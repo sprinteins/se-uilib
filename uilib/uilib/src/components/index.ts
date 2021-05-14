@@ -5,3 +5,4 @@ export * from './dpdhl-input';
 export * from './dpdhl-menu';
 export * from './dpdhl-icon';
 export * from './dpdhl-table';
+export * from './dpdhl-tabs';
