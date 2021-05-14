@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "yarn --cwd ./uilib build",
+    "build": "yarn lib:build",
     "dev": "concurrently \"yarn sb\" \"yarn lib:build:watch\" ",
     "start": "sirv public --no-clear",
     "sb": "start-storybook -p 6006 --ci -s ./uilib/src/assets",
