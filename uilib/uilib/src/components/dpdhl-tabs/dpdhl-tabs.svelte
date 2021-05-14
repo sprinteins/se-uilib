@@ -43,9 +43,12 @@
             on:click={() => activateTab(index)}
             class:active={activeIndex === index}
         >
-            {label}
+            <span class="label">
+                {label}
+            </span>
         </li>
     {/each}
+    <li class="spacer">&nbsp;</li>
 </ul>
 
 <span bind:this={container}>
@@ -60,21 +63,35 @@
         padding:        0;
         margin:         0;
         margin-bottom:  1em;
+        
     }
     li{
         cursor:         pointer;
         text-align:     center;
 
-        padding:        1em;
+        padding:        0.5em;
         padding-bottom: 1.25em;
+        flex-grow:      0;
         border-bottom:  1px var(--color-black) solid;
-        flex-grow:      1;
+        text-align:     left;
         
-        
+    }
+    li.spacer{
+        flex-grow: 1;
     }
     li.active {
-        padding-bottom: unset;
-        border-bottom:  0.25em var(--color-dhlred) solid;
-        transition:     border 0.1s linear;
+        padding-bottom: 0.3em;
+        border-bottom:  unset;
+        
     }
+    .label{
+        display: inline-block;
+        height:  100%;
+        padding: 0 1em;
+    }
+    li.active .label{
+        border-bottom:  0.25em var(--color-dhlred) solid;
+        transition:     border-bottom 0.1s linear;
+    }
+
 </style>

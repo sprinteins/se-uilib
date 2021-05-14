@@ -1,13 +1,13 @@
 import svelte from 'rollup-plugin-svelte';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
-import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
 import pkg from './package.json';
 import copy from "rollup-plugin-copy-assets";
+import url from '@rollup/plugin-url';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -39,19 +39,20 @@ const name = pkg.name
 
 export default {
 	input: 'src/index.ts',
-	// output: {
-	// 	sourcemap: true,
-	// 	format: 'iife',
-	// 	name: 'app',
-	// 	file: 'public/build/bundle.js'
-	// },
 	output: [
 		{ file: pkg.module, 'format': 'es' },
 		{ file: pkg.main, 'format': 'umd', name }
 	],
 	plugins: [
 		svelte({
-			preprocess: sveltePreprocess({ sourceMap: !production }),
+			preprocess: sveltePreprocess({
+				sourceMap: !production,
+				postcss: production && {
+					plugins: [
+						require('postcss-font-base64'),
+					]
+				}
+			}),
 			compilerOptions: {
 				// enable run-time checks when not in production
 				customElement: true,
@@ -62,6 +63,14 @@ export default {
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
 		css({ output: 'bundle.css' }),
+
+		url({
+			// by default, rollup-plugin-url will not handle font files
+			include: ['**/*.svg'],
+			// setting infinite limit will ensure that the files 
+			// are always bundled with the code, not copied to /dist
+			limit: Infinity,
+		}),
 
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In

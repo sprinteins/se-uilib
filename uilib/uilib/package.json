@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "yarn clean && rollup -c",
-    "build:watch": "yarn clean && rollup -c -w",
+    "build:watch": "rollup -c -w",
     "clean": "rm -rf ./dist",
     "validate": "svelte-check"
   },
@@ -15,6 +15,7 @@
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
     "@rollup/plugin-typescript": "^8.0.0",
+    "@rollup/plugin-url": "^6.0.0",
     "@storybook/addon-essentials": "^6.2.9",
     "@tsconfig/svelte": "^1.0.0",
     "babel-loader": "^8.2.2",

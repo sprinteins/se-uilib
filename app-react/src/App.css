@@ -1,26 +1,29 @@
+
+
 .App {
-    text-align: center;
+  text-align: center;
 }
 
 .App-logo {
-    height: 40vmin;
-    pointer-events: none;
+  height: 40vmin;
+  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+  .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+  }
 }
 
 .container{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 10rem;
 }
 
 .container > div {
-    margin:     0 auto;
-    text-align: center;
-    max-width:  400px;
+  margin:     0 auto;
+  text-align: center;
+  max-width:  600px;
 }

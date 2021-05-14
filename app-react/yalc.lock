@@ -1,9 +1,0 @@
-{
-  "version": "v1",
-  "packages": {
-    "@dp/ui-lib": {
-      "signature": "b6279044d9bbfd048d9bc5ac666b5568",
-      "file": true
-    }
-  }
-}

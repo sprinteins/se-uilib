@@ -1,9 +1,11 @@
 <script>
+
 </script>
 
 <svelte:options tag={'dpdhl-theme'} />
 
 <slot />
+
 
 <style>
     :host, :root {
@@ -43,58 +45,58 @@
         font-size:   var(--font-size);
     }
 
+
 </style>
 
 
 <svelte:head>
     <style>
+    @font-face {
+        font-family: "DeliveryRegular";
+        src: url("../fonts/delivery/Delivery_W_Rg.woff2") format("woff2");
+        font-display: swap;
+    }
 
-        @font-face {
-            font-family: "DeliveryRegular";
-            src: url("../fonts/delivery/Delivery_W_Rg.woff2") format("woff2");
-            font-display: swap;
-        }
+    @font-face {
+        font-family: "DeliveryBold";
+        src: url("../fonts/delivery/Delivery_W_Bd.woff2") format("woff2");
+        font-display: swap;
+    }
 
-        @font-face {
-            font-family: "DeliveryBold";
-            src: url("../fonts/delivery/Delivery_W_Bd.woff2") format("woff2");
-            font-display: swap;
-        }
+    @font-face {
+        font-family: "DeliveryBoldItalic";
+        src: url("../fonts/delivery/Delivery_W_BdIt.woff2") format("woff2");
+        font-display: swap;
+    }
 
-        @font-face {
-            font-family: "DeliveryBoldItalic";
-            src: url("../fonts/delivery/Delivery_W_BdIt.woff2") format("woff2");
-            font-display: swap;
-        }
+    @font-face {
+        font-family: "DeliveryBlackCondensed";
+        src: url("../fonts/delivery/Delivery_W_CdBlk.woff2") format("woff2");
+        font-display: swap;
+    }
 
-        @font-face {
-            font-family: "DeliveryBlackCondensed";
-            src: url("../fonts/delivery/Delivery_W_CdBlk.woff2") format("woff2");
-            font-display: swap;
-        }
+    @font-face {
+        font-family: 'DeliveryLightCondensed';
+        src: url('../fonts/delivery/Delivery_W_CdLt.woff2') format("woff2");
+        font-display: swap;
+    }
 
-        @font-face {
-            font-family: 'DeliveryLightCondensed';
-            src: url('../fonts/delivery/Delivery_W_CdLt.woff2') format("woff2");
-            font-display: swap;
-        }
+    @font-face {
+        font-family: "DeliveryItalic";
+        src: url("../fonts/delivery/Delivery_W_It.woff2") format("woff2");
+        font-display: swap;
+    }
 
-        @font-face {
-            font-family: "DeliveryItalic";
-            src: url("../fonts/delivery/Delivery_W_It.woff2") format("woff2");
-            font-display: swap;
-        }
+    @font-face {
+        font-family: "DeliveryLight";
+        src: url("../fonts/delivery/Delivery_W_Lt.woff2") format("woff2");
+        font-display: swap;
+    }
 
-        @font-face {
-            font-family: "DeliveryLight";
-            src: url("../fonts/delivery/Delivery_W_Lt.woff2") format("woff2");
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: "DeliveryLightItalic";
-            src: url("../fonts/delivery/Delivery_W_LtIt.woff2") format("woff2");
-            font-display: swap;
-        }
+    @font-face {
+        font-family: "DeliveryLightItalic";
+        src: url("../fonts/delivery/Delivery_W_LtIt.woff2") format("woff2");
+        font-display: swap;
+    } 
     </style>
 </svelte:head>

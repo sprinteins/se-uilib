@@ -37,6 +37,7 @@ export default {
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
+
 		svelte({
 			compilerOptions: {
 				// enable run-time checks when not in production
@@ -64,11 +65,13 @@ export default {
 
 		// Watch the `public` directory and refresh the
 		// browser on changes when not in production
-		!production && livereload('public'),
+		!production && livereload({watch:'public'}),
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+		production && terser(),
+
+		
 	],
 	watch: {
 		clearScreen: false
