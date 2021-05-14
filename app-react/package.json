@@ -4,10 +4,11 @@
   "scripts": {
     "dev": "vite",
     "serve": "vite preview",
-    "build": "yarn build:lib && yarn build:react",
+    "build": "yarn lib:install && yarn build:react",
     "build:react": "tsc && vite build",
-    "build:lib": "yarn lib:link && yarn link dpdhl-uilib",
-    "lib:link": "cd ../uilib && yarn && yarn build && yarn link && cd ../app-react",
+    "lib:install": "yarn lib:build && yarn lib:link",
+    "lib:build": "cd ../uilib && yarn && yarn build && cd ../app-react",
+    "lib:link": "cd ../uilib && yarn link && cd ../app-react",
     "postinstall": "yarn lib:link"
   },
   "dependencies": {
