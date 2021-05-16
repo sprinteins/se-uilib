@@ -34,6 +34,8 @@
         --color-gray10:     #e5e5e5;
         --color-gray08:     #ebebeb;
         --color-gray05:     #f2f2f2;
+
+        --color-dark-green: #007c39;
         
         --color-primary:   var(--color-dhlred);
         --color-secondary: var(--color-white);
