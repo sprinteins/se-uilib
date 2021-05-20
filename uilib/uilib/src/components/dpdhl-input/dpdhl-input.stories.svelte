@@ -1,14 +1,11 @@
 <script>
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf';
-    import { action } from '@storybook/addon-actions';
     
     import 'dpdhl-uilib'
-
-
 </script>
 
 
-<Meta title="Components/Input" component={null}/>
+<Meta title="Components/Input/Text" component={null}/>
 
 <Template let:args>
     <p><dpdhl-input {...args} /></p>
@@ -27,7 +24,7 @@
     
 </style>
 
-<Story name="Text" args={{
+<Story name="Primary" args={{
     label: 'Shipping Code',
     placeholder: 'Ab34-5'
 }}/>

@@ -9,7 +9,7 @@
 
 
 <Meta 
-    title="Components/Input" 
+    title="Components/Input/Textarea"
     component={null}
     argTypes={{
         width: {
@@ -65,7 +65,7 @@
     
 </style>
 
-<Story name="Text Area" args={{
+<Story name="Primary" args={{
     label: 'Shipping Code',
     placeholder: 'Ab34-5',
     value: [
