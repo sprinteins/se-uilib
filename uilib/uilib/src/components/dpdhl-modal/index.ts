@@ -1,0 +1,1 @@
+export { default as DPDHLModal } from './dpdhl-modal.svelte'

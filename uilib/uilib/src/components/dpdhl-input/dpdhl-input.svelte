@@ -57,7 +57,7 @@
         {#if _success || _error}
             <span class="validation" class:with-msg={_msg}>
                 {#if _success}
-                    <dpdhl-icon width=16 height=16 color="var(--color-dark-green)" icon="checkmark_circle" />
+                    <dpdhl-icon width=16 height=16 color="var(--color-green-bright)" icon="checkmark_circle" />
                     <span class="validation-messsage">{_msg}</span>
                 {/if}
                 {#if _error}
