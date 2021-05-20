@@ -8,10 +8,14 @@
     export let height = 16
     export let name = ''
     export let icon = '';
+    export let color = 'black';
 
     $: style = `
         width:  ${width}px;
         height: ${height}px;
+
+        --icon:        url(${icons[icon]});
+        --icon__color: ${color};
     `
     $: _name = name ? name : icon
 
@@ -22,16 +26,18 @@
 </script>
 <svelte:options tag="dpdhl-icon" />
 
-<img 
-    {style}
-    src={icons[icon]} 
-    alt={_name}  
-/>
+<i {style} alt={_name} />
 
 
 <style>
     :host{
         display:     grid;
         place-items: center;
+    }
+
+    i{
+        background-color: var(--icon__color, var(--color-black));
+        mask-size: cover;
+        mask-image: var(--icon);
     }
 </style>
