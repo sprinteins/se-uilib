@@ -22,7 +22,7 @@
         --font-light-condensed: "DeliveryLightCondensed";
         --font-light-italic:    "DeliveryLightItalic";
 
-        --color-black:      #000000;
+        --color-black:      rgba(0,0,0,0.9);
         --color-white:      #ffffff;
         --color-postyellow: #FFCC00;
         --color-dhlred:     #D40511;

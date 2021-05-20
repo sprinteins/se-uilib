@@ -26,6 +26,7 @@
 
 <Story name="Primary" args={{
     label: 'Shipping Code',
-    placeholder: 'Ab34-5'
+    placeholder: 'Ab34-5',
+    isRequired: false,
 }}/>
 

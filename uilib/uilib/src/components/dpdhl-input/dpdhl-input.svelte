@@ -6,6 +6,7 @@
     export let placeholder = '';
     export let value: string | number = '';
     
+    
     export let disabled
     $: _disabled = disabled !== undefined
 
@@ -23,6 +24,18 @@
     } else if(successmsg) {
         _msg = successmsg
     }
+
+    const requiredSign = '*'
+    let _isRequiredText = ''
+    export let isRequired = false;
+    $: if( isRequired ) {
+        _isRequiredText = requiredSign;
+    }else{
+        _isRequiredText = ''
+    }
+
+
+
 </script>
 
 <svelte:options tag="dpdhl-input" />
@@ -34,7 +47,7 @@
     class:extra-margin={_msg}
 >
     <label>
-        <span class="label">{label}</span>
+        <span class="label">{label}{_isRequiredText}</span>
         <input 
             disabled={_disabled} 
             {value} 
@@ -44,11 +57,11 @@
         {#if _success || _error}
             <span class="validation" class:with-msg={_msg}>
                 {#if _success}
-                    <dpdhl-icon width=16 height=16 icon="checkmark_circle" />
+                    <dpdhl-icon width=16 height=16 color="var(--color-dark-green)" icon="checkmark_circle" />
                     <span class="validation-messsage">{_msg}</span>
                 {/if}
                 {#if _error}
-                    <dpdhl-icon width=16 height=16 icon="cancel_circle" />
+                    <dpdhl-icon width=16 height=16 color="var(--color-dhlred)" icon="cancel_circle" />
                     <span class="validation-messsage">{_msg}</span>
                 {/if}
             </span>
