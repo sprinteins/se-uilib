@@ -1,35 +1,35 @@
 <script lang="ts">
     import { onDestroy, onMount } from 'svelte'
-    import { KeyLabelChange } from './dpdhl-tab.svelte';
+    import { KeyLabelChange } from './dpdhl-tab.svelte'
 
     // const eventActivate = "activate"
-    const keyActivate = "active";
+    const keyActivate = 'active'
     
-    let container: HTMLSpanElement;
-    let labels: string[] = [];
+    let container: HTMLSpanElement
+    let labels: string[] = []
     let assignedElements: HTMLElement[] = []
     onMount(()=>{
         const slot = container.childNodes[0] as HTMLSlotElement
-        assignedElements = slot.assignedElements() as HTMLElement[];
+        assignedElements = slot.assignedElements() as HTMLElement[]
         assignedElements.forEach( (el, ei) => el.addEventListener(KeyLabelChange, onLabelChange.bind(undefined, ei)))
         assignedElements.forEach( (el, ei) => {
-            if(!el.hasAttribute(keyActivate)){ return; }
+            if(!el.hasAttribute(keyActivate)){ return }
 
-            activateTab(ei);
-            return false;
+            activateTab(ei)
+            return false
         } )
     })
 
     function onLabelChange(index:number, event: CustomEvent){
-        const newLabel = event.detail;
+        const newLabel = event.detail
         labels[index] = newLabel
     }
 
-    let activeIndex = -1;
+    let activeIndex = -1
     function activateTab(index){
         assignedElements.forEach(el => el.removeAttribute(keyActivate))
         assignedElements[index].setAttribute(keyActivate,keyActivate)
-        activeIndex = index;
+        activeIndex = index
     }
 
 

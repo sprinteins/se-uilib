@@ -1,11 +1,11 @@
 <script lang="ts">
-    export let label = '';
-    export let placeholder = '';
-    export let disabled;
-    export let value = '';
-    export let width: number;
-    export let height: number;
-    export let description = '';
+    export let label = ''
+    export let placeholder = ''
+    export let disabled
+    export let value = ''
+    export let width: number
+    export let height: number
+    export let description = ''
 
     $: _disabled = disabled !== undefined
 </script>

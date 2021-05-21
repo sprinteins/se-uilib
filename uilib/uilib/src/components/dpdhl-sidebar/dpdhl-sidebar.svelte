@@ -4,22 +4,22 @@
     import {EventRegister} from './dpdhl-sidebar-item.svelte'
     import '../dpdhl-icon'
     
-    const size=32;
+    const size=32
 
     
 
-    export let open = undefined;
-    $: _open = open !== undefined;
+    export let open = undefined
+    $: _open = open !== undefined
 
-    let container: HTMLElement;
+    let container: HTMLElement
     onMount(()=>{
         container.addEventListener(EventRegister, onRegisterItem)
     })
 
-    let items: SidebarItem[] = [];
+    let items: SidebarItem[] = []
     function onRegisterItem(event: CustomEvent){
         const details = event.detail as SidebarItem
-        items = [...items, details];
+        items = [...items, details]
     }
 
     

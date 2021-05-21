@@ -1,6 +1,6 @@
 <script>
-    import { Meta, Template, Story } from '@storybook/addon-svelte-csf';
-    import { action } from '@storybook/addon-actions';
+    import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
+    import { action } from '@storybook/addon-actions'
     
     import 'dpdhl-uilib'
 
@@ -43,15 +43,15 @@
 <Story name="Primary" args={{
     width: 360,
     height: 380,
-    title: "Card Header",
-    content: "Amet nulla facilisi morbi tempus iaculis urna id volutpat " +
-                   "lacus. Sed faucibus turpis in eu mi bibendum. Amet consectetur" +
-                   "adipiscing elit pellentesque habitant morbi tristique.",
-    buttonLabel: "Main Action",
+    title: 'Card Header',
+    content: 'Amet nulla facilisi morbi tempus iaculis urna id volutpat ' +
+                   'lacus. Sed faucibus turpis in eu mi bibendum. Amet consectetur' +
+                   'adipiscing elit pellentesque habitant morbi tristique.',
+    buttonLabel: 'Main Action',
     menuItems: [
-        { label:"Menu 1", click: action("Menu 1") },
-        { label:"Menu 2", click: action("Menu 2") },
-        { label:"Menu 3", click: action("Menu 3") },
+        { label:'Menu 1', click: action('Menu 1') },
+        { label:'Menu 2', click: action('Menu 2') },
+        { label:'Menu 3', click: action('Menu 3') },
     ]
 }}/>
 

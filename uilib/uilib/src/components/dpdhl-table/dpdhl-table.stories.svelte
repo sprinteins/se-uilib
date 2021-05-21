@@ -1,6 +1,6 @@
 
 <script>
-    import { Meta, Template, Story } from '@storybook/addon-svelte-csf';
+    import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
     
     import 'dpdhl-uilib'
 
@@ -40,12 +40,12 @@
 </style>
 
 <Story name="Primary" args={{
-    title: "Table heading",
-    footer: "*Table footer annotation",
+    title: 'Table heading',
+    footer: '*Table footer annotation',
     rows: [
-        {title:"Row title", column1: "Table cell", column2: "Table cell"},
-        {title:"Row title", column1: "Table cell", column2: "Table cell"},
-        {title:"Row title", column1: "Table cell", column2: "Table cell"},
+        {title:'Row title', column1: 'Table cell', column2: 'Table cell'},
+        {title:'Row title', column1: 'Table cell', column2: 'Table cell'},
+        {title:'Row title', column1: 'Table cell', column2: 'Table cell'},
     ],
-    headers: ["","Column title 1", "Column title 2"],
+    headers: ['','Column title 1', 'Column title 2'],
 }}/>

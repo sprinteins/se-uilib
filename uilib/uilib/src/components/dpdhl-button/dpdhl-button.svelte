@@ -2,12 +2,12 @@
     import { Size } from './size'
     import { Type } from './type'
 
-     /**
+    /**
       * A Button Component
       * @component
       */
 
-    export const disabled = false;
+    export const disabled = false
     export let size: Size = Size.Normal
     /**
      * Type of the button: Primary, Secondary, Text, Postyellow
@@ -15,7 +15,7 @@
     export let type: string = Type.Secondary
     
 </script>
-<svelte:options tag={"dpdhl-button"}/>
+<svelte:options tag={'dpdhl-button'}/>
 
 
 <button

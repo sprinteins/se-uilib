@@ -3,7 +3,7 @@
     import '../dpdhl-button'
     import '../dpdhl-menu'
     import { Type } from '../dpdhl-button'
-    import type { MenuItem } from '../dpdhl-menu/menu-item';
+    import type { MenuItem } from '../dpdhl-menu/menu-item'
 
     export let title = ''
     export let content = ''
@@ -11,7 +11,7 @@
     export let menu_items: MenuItem[] = []
 
 </script>
-<svelte:options tag={"dpdhl-card-simple"} />
+<svelte:options tag={'dpdhl-card-simple'} />
 {@debug Type}
 <dpdhl-card>
         <section slot="header" class="header">

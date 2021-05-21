@@ -1,16 +1,16 @@
 <script>
-    import { Meta, Template, Story } from '@storybook/addon-svelte-csf';
+    import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
     
     import 'dpdhl-uilib'
 
-    let open = '';
+    let open = ''
 
     function openDialog(){
-        open = '';
+        open = ''
     }
 
     function closeDialog(){
-        open = undefined;
+        open = undefined
     }
 
 

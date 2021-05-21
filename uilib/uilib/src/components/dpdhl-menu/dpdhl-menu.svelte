@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { MenuItem } from "./menu-item";
+    import type { MenuItem } from './menu-item'
 
 
     export let isOpen = false
@@ -9,9 +9,9 @@
 <svelte:options tag="dpdhl-menu" />
 
 <svelte:body on:click={ () => { 
-    console.debug('🐞 body click', {isOpen} );
+    console.debug('🐞 body click', {isOpen} )
     if(!isOpen){
-        return;
+        return
     }
     isOpen = false
 }} />

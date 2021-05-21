@@ -13,7 +13,7 @@ module.exports = {
         'sourceType': 'module'
     },
     'plugins': [
-        "@typescript-eslint",
+        '@typescript-eslint',
         'svelte3',
     ],
     'overrides': [{
@@ -43,5 +43,5 @@ module.exports = {
         // OR
         'svelte3/typescript': true, // load TypeScript as peer dependency
         // ...
-      }
+    }
 }

@@ -1,65 +1,65 @@
 <script lang="ts">
-	import { onDestroy } from 'svelte';
-    import '../dpdhl-card';
+	import { onDestroy } from 'svelte'
+import '../dpdhl-card'
 
 
-    export let cancelable = undefined;
-    $: _cancelable = cancelable !== undefined;
+export let cancelable = undefined
+$: _cancelable = cancelable !== undefined
 
-    export let open = undefined;
-    $: _open = open !== undefined;
+export let open = undefined
+$: _open = open !== undefined
 
     
-	let modal: HTMLElement;
+	let modal: HTMLElement
 
-    const previously_focused = typeof document !== 'undefined' && document.activeElement as HTMLElement;
+const previously_focused = typeof document !== 'undefined' && document.activeElement as HTMLElement
 
 	if (previously_focused) {
-		onDestroy(() => {
-			previously_focused.focus();
-		});
+	    onDestroy(() => {
+	        previously_focused.focus()
+	    })
 	}
 
 	function onKeydown(e:KeyboardEvent) {
-		if ( _cancelable && e.key === 'Escape') {
-			close();
-			return;
-		}
+	    if ( _cancelable && e.key === 'Escape') {
+	        close()
+	        return
+	    }
 
-		if (e.key === 'Tab') {
-			// trap focus
-			const nodes = modal.querySelectorAll<HTMLElement>('*');
-			const tabbable = Array.from(nodes).filter(n => n.tabIndex >= 0);
+	    if (e.key === 'Tab') {
+	        // trap focus
+	        const nodes = modal.querySelectorAll<HTMLElement>('*')
+	        const tabbable = Array.from(nodes).filter(n => n.tabIndex >= 0)
 
-            const activeElement = document.activeElement as HTMLElement;
-			let index = tabbable.indexOf(activeElement);
-			if (index === -1 && e.shiftKey) {
-                index = 0;
-            }
-
-            // TODO: no-clever-code
-			index += tabbable.length + (e.shiftKey ? -1 : 1);
-			index %= tabbable.length;
-
-			tabbable[index].focus();
-			e.preventDefault();
-		}
-	};
-
-    function close () {
-        modal.dispatchEvent(new Event('close', {
-            bubbles: true,
-            composed: true,
-        }))
-    }
-
-    function onBackgroundClick(){
-        if( !_cancelable ){
-            return;
+        const activeElement = document.activeElement as HTMLElement
+	        let index = tabbable.indexOf(activeElement)
+	        if (index === -1 && e.shiftKey) {
+            index = 0
         }
 
-        close();
+        // TODO: no-clever-code
+	        index += tabbable.length + (e.shiftKey ? -1 : 1)
+	        index %= tabbable.length
+
+	        tabbable[index].focus()
+	        e.preventDefault()
+	    }
+	}
+
+function close () {
+    modal.dispatchEvent(new Event('close', {
+        bubbles: true,
+        composed: true,
+    }))
+}
+
+function onBackgroundClick(){
+    if( !_cancelable ){
+        return
     }
+
+    close()
+}
 
 	
 

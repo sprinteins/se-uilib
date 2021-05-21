@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { Meta, Template, Story } from '@storybook/addon-svelte-csf';
-    import 'dpdhl-uilib';
+    import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
+    import 'dpdhl-uilib'
     import { Type } from './type'
     import { Size } from './size'
 </script>
@@ -13,32 +13,32 @@
 
 <Story name="Primary" args={{
       type:  Type.Primary,
-      label: "Primary",
+      label: 'Primary',
 }}/>
   
 <Story name="Secondary" args={{
       type:  Type.Secondary,
-      label: "Secondary",
+      label: 'Secondary',
 }}/>
 
 <Story name="Text" args={{
       type:  Type.Text,
-      label: "Text",
+      label: 'Text',
 }}/>
 
 <Story name="Postyellow" args={{
       type:  Type.Postyellow,
-      label: "Text",
+      label: 'Text',
 }}/>
 
 <Story name="Small" args={{
       type: Type.Primary,
-      label:"Small",
+      label:'Small',
       size: Size.Small,
 }}/>
 
 <Story name="Tiny" args={{
       type: Type.Primary,
-      label:"Tiny",
+      label:'Tiny',
       size: Size.Tiny,
 }}/>

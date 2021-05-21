@@ -1,24 +1,24 @@
 <script lang="ts">
-    import '../dpdhl-icon';
+    import '../dpdhl-icon'
 
 
-    export let label = '';
-    export let placeholder = '';
-    export let value: string | number = '';
+    export let label = ''
+    export let placeholder = ''
+    export let value: string | number = ''
     
     
     export let disabled
     $: _disabled = disabled !== undefined
 
-    export let errormsg = ""
+    export let errormsg = ''
     export let error
     $: _error = error !== undefined
 
-    export let successmsg = ""
+    export let successmsg = ''
     export let success
     $: _success = success !== undefined
 
-    let _msg = ""
+    let _msg = ''
     $: if( errormsg ){
         _msg = errormsg
     } else if(successmsg) {
@@ -27,9 +27,9 @@
 
     const requiredSign = '*'
     let _isRequiredText = ''
-    export let isRequired = false;
+    export let isRequired = false
     $: if( isRequired ) {
-        _isRequiredText = requiredSign;
+        _isRequiredText = requiredSign
     }else{
         _isRequiredText = ''
     }

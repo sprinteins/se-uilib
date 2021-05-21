@@ -1,13 +1,13 @@
 <script lang="ts" context="module">
-    export const KeyLabelChange = "label"
+    export const KeyLabelChange = 'label'
 </script>
 <script lang="ts">
     import { onMount } from 'svelte'
 
     export let label = ''
-    export let active: boolean;
+    export let active: boolean
 
-    let contentRef: HTMLSpanElement;
+    let contentRef: HTMLSpanElement
     $: onLabelChange(label)
     onMount(() => onLabelChange(label))
     function onLabelChange(newLabel: string) {

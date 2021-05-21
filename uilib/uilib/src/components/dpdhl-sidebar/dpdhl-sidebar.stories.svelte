@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { Meta, Template, Story } from '@storybook/addon-svelte-csf';    
+    import { Meta, Template, Story } from '@storybook/addon-svelte-csf'    
     import 'dpdhl-uilib'
 
 
-    let open = true;
+    let open = true
     // function toggleSidebar(){
     //     open = !open;
     // }

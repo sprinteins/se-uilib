@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    export const EventRegister = 'registeritem';
+    export const EventRegister = 'registeritem'
     export function newRegisterEvent(detail?: any): CustomEvent {
         return new CustomEvent(
             EventRegister,
@@ -11,7 +11,7 @@
         )
     }
 
-    export const EventDeregister = 'deregister-item';
+    export const EventDeregister = 'deregister-item'
     export function newDeregisterEvent(detail?: any): CustomEvent{
         return new CustomEvent(
             EventDeregister, 
@@ -27,11 +27,11 @@
     import { onMount, onDestroy } from 'svelte'
     import type { SidebarItem } from './sidebar-item'
 
-    const id = Math.random().toString(36);
+    const id = Math.random().toString(36)
 
-    export let label: string;
-    export let icon: string;
-    export let link: string;
+    export let label: string
+    export let icon: string
+    export let link: string
 
     let container: HTMLElement
 
