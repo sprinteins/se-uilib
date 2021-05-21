@@ -4,9 +4,9 @@
 
 
     let open = true;
-    function toggleSidebar(){
-        open = !open;
-    }
+    // function toggleSidebar(){
+    //     open = !open;
+    // }
 
 
 </script>
@@ -18,16 +18,18 @@
     <div class="container">
         <dpdhl-icon
             class:open
-            class="menu-toggler" 
+            class="sidebar-toggler" 
             width="32" 
             height="32" 
             icon="menu_burger" 
-            on:click={toggleSidebar}
+            on:click={() => open = !open }
         />
         <dpdhl-sidebar open={open?'':undefined} >
-            {#each args.items as item } 
-                <dpdhl-sidebar-item label={item.label} link={item.link} icon={item.icon} />
-            {/each}
+            <dpdhl-sidebar-item label="Product Launches" link="https://www.deutschepost.de" icon="product_launches" />
+            <dpdhl-sidebar-item label="Send Parcel"      link="https://www.deutschepost.de" icon="send_parcel" />
+            <dpdhl-sidebar-item label="Public Sector"    link="https://www.deutschepost.de" icon="public_sector" />
+            <dpdhl-sidebar-item label="Coffee Break"     link="https://www.deutschepost.de" icon="coffee_break" />
+            <dpdhl-sidebar-item label="Departed"         link="https://www.deutschepost.de" icon="departed" />
         </dpdhl-sidebar>
     </div>
 </Template>
@@ -39,7 +41,7 @@
         flex-direction: column;
         height:         100%;
     }
-    .menu-toggler{
+    .sidebar-toggler{
         width:  2em;
         height: 2em;
 
@@ -47,7 +49,7 @@
         cursor:     pointer;
         transition: transform 0.2s;
     }
-    .menu-toggler.open {
+    .sidebar-toggler.open {
         transform: rotate(0);
     }
     dpdhl-sidebar{
@@ -63,11 +65,4 @@
     }
 </style>
 
-<Story name="Primary" args={{
-    items: [
-        {label: 'Send Parcel', link: 'https://www.deutschepost.de',icon:'send_parcel'},
-        {label: 'Public Sector', link: 'https://www.deutschepost.de',icon:'public_sector'},
-        {label: 'Coffee Break', link: 'https://www.deutschepost.de',icon:'coffee_break'},
-        {label: 'Departed', link: 'https://www.deutschepost.de',icon:'departed'},
-    ]
-}}/>
+<Story name="Primary" args={{}}/>
