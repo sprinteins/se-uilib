@@ -1,0 +1,73 @@
+<script lang="ts">
+    import { Meta, Template, Story } from '@storybook/addon-svelte-csf';    
+    import 'dpdhl-uilib'
+
+
+    let open = true;
+    function toggleSidebar(){
+        open = !open;
+    }
+
+
+</script>
+
+
+<Meta title="Components/Sidebar" component={null} />
+
+<Template let:args>
+    <div class="container">
+        <dpdhl-icon
+            class:open
+            class="menu-toggler" 
+            width="32" 
+            height="32" 
+            icon="menu_burger" 
+            on:click={toggleSidebar}
+        />
+        <dpdhl-sidebar open={open?'':undefined} >
+            {#each args.items as item } 
+                <dpdhl-sidebar-item label={item.label} link={item.link} icon={item.icon} />
+            {/each}
+        </dpdhl-sidebar>
+    </div>
+</Template>
+
+
+<style>
+    .container{
+        display:        flex;
+        flex-direction: column;
+        height:         100%;
+    }
+    .menu-toggler{
+        width:  2em;
+        height: 2em;
+
+        transform:  rotate(90deg);
+        cursor:     pointer;
+        transition: transform 0.2s;
+    }
+    .menu-toggler.open {
+        transform: rotate(0);
+    }
+    dpdhl-sidebar{
+        flex-grow: 1;
+    }
+
+    :global(html, body, #root){
+        height: 100%;
+    }
+    :global(body.sb-show-main.sb-main-padded){
+        margin:  0;
+        padding: 0;
+    }
+</style>
+
+<Story name="Primary" args={{
+    items: [
+        {label: 'Send Parcel', link: 'https://www.deutschepost.de',icon:'send_parcel'},
+        {label: 'Public Sector', link: 'https://www.deutschepost.de',icon:'public_sector'},
+        {label: 'Coffee Break', link: 'https://www.deutschepost.de',icon:'coffee_break'},
+        {label: 'Departed', link: 'https://www.deutschepost.de',icon:'departed'},
+    ]
+}}/>

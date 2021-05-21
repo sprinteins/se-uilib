@@ -7,3 +7,4 @@ export * from './dpdhl-icon';
 export * from './dpdhl-table';
 export * from './dpdhl-tabs';
 export * from './dpdhl-modal';
+export * from './dpdhl-sidebar';

@@ -13,6 +13,9 @@
         open = undefined;
     }
 
+
+    
+
 </script>
 
 
@@ -46,4 +49,6 @@
    }
 </style>
 
-<Story name="Primary" args={{}}/>
+<Story name="Primary" args={{
+    open: false,
+}}/>
