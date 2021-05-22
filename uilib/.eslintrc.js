@@ -48,5 +48,8 @@ module.exports = {
         // OR
         'svelte3/typescript': true, // load TypeScript as peer dependency
         // ...
+        'svelte3/compiler-options': {
+            customElement: true,
+        },
     }
 }

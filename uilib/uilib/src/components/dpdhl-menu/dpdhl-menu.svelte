@@ -1,7 +1,6 @@
 <script lang="ts">
     import type { MenuItem } from './menu-item'
 
-
     export let isOpen = false
     export let items: MenuItem[] = []
 </script>
@@ -41,14 +40,6 @@
         outline:    none;
         background: none;
         border:     none;
-    }
-
-    dpdhl-button {
-        position: relative;
-
-        --button__padding:     0;
-        --button__min-width:   0;
-        --button__line-height: 1;
     }
 
     ul {

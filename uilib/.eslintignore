@@ -1,5 +1,6 @@
 .eslintrc.js
 rollup.config.js
+*.stories.svelte
 public-sb
 node_modules
 uilib/dist

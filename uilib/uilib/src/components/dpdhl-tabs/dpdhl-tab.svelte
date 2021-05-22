@@ -19,8 +19,6 @@
         }))
     }
 
-
-    const id = 'tab-'+Math.random().toString(36).slice(2)
 </script>
 
 

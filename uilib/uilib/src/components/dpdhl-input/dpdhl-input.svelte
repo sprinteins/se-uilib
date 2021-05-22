@@ -45,7 +45,7 @@
     class:error={_error}
     class:success={_success}
     class:extra-margin={_msg}
-    class:no-label={!Boolean(label)}
+    class:no-label={!label}
 >
     <label>
         <span class="label">{label}{_isRequiredText}</span>
