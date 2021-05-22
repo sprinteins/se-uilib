@@ -1,11 +1,7 @@
 <script lang="ts">
 
-    import { onMount } from 'svelte'
-
     export let title = ''
     export let footer = ''
-
-    let slotHead: HTMLElement
 
 </script>
 

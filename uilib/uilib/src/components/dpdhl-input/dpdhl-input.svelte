@@ -45,6 +45,7 @@
     class:error={_error}
     class:success={_success}
     class:extra-margin={_msg}
+    class:no-label={!Boolean(label)}
 >
     <label>
         <span class="label">{label}{_isRequiredText}</span>
@@ -118,6 +119,10 @@
     }
     .container.error input{
         border-color: var(--color-dhlred);
+    }
+    .container.no-label input{
+        padding-top: 1em;
+        padding-bottom: 1em;
     }
     input:hover{
         border: 1px solid var(--color-black);

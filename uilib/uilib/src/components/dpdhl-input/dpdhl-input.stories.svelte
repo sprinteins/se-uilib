@@ -8,6 +8,8 @@
 <Meta title="Components/Input/Text" component={null}/>
 
 <Template let:args>
+    <p><dpdhl-input/></p>
+    <p><dpdhl-input placeholder={args.placeholder} /></p>
     <p><dpdhl-input {...args} /></p>
     <p><dpdhl-input disabled {...args} /></p>
     <p><dpdhl-input value="CDx93B" {...args}  /></p>

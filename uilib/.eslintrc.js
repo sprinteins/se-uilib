@@ -1,3 +1,7 @@
+const OFF = 0
+// const WARN = 1
+// const ERROR = 2
+
 module.exports = {
     'env': {
         'browser': true,
@@ -36,7 +40,8 @@ module.exports = {
         'semi': [
             'error',
             'never'
-        ]
+        ],
+        'missing-custom-element-compile-options': OFF,
     },
     'settings': {
         // 'svelte3/typescript': () => require('typescript'), // pass the TypeScript package to the Svelte plugin
