@@ -8,7 +8,7 @@
     "build:react": "tsc && vite build",
     "lib:install": "yarn lib:build && yarn lib:link",
     "lib:build": "cd ../uilib && yarn lib:build && cd ../app-react",
-    "lib:link": "cd ../uilib  && yarn lib:link  && cd ../app-react",
+    "lib:link": "cd ../uilib  && yarn lib:link  && cd ../app-react && yarn link dpdhl-uilib",
     "postinstall": "yarn lib:link"
   },
   "dependencies": {
