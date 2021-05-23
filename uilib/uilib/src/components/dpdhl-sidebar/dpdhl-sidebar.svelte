@@ -4,9 +4,7 @@
     import {EventRegister} from './dpdhl-sidebar-item.svelte'
     import '../dpdhl-icon'
     
-    const size=32
-
-    
+    const size = 32
 
     export let open = undefined
     $: _open = open !== undefined

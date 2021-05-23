@@ -6,4 +6,4 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 cd $DIR/../uilib/uilib
 
-yarn && yarn build && yarn link
+yarn install && yarn build && yarn link

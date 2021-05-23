@@ -20,6 +20,7 @@
     "@tsconfig/svelte": "^1.0.0",
     "babel-loader": "^8.2.2",
     "node-sass": "^5.0.0",
+    "postcss-font-base64": "^1.0.5",
     "rollup": "^2.3.4",
     "rollup-plugin-copy-assets": "^2.0.3",
     "rollup-plugin-css-only": "^3.1.0",

@@ -1,29 +1,55 @@
 <script lang="ts">
     import { onMount } from 'svelte'
-    import { KeyLabelChange } from './dpdhl-tab.svelte'
+    import { KeyLabelChange, KeyTabAdded } from './dpdhl-tab.svelte'
 
-    // const eventActivate = "activate"
     const keyActivate = 'active'
     
     let container: HTMLSpanElement
     let labels: string[] = []
     let assignedElements: HTMLElement[] = []
     onMount(()=>{
-        const slot = container.childNodes[0] as HTMLSlotElement
-        assignedElements = slot.assignedElements() as HTMLElement[]
-        assignedElements.forEach( (el, ei) => el.addEventListener(KeyLabelChange, onLabelChange.bind(undefined, ei)))
-        assignedElements.forEach( (el, ei) => {
-            if(!el.hasAttribute(keyActivate)){ return }
-
-            activateTab(ei)
-            return false
-        } )
+        // pure html already has the slots, angular just later
+        registerTabs();
+        container.addEventListener(KeyTabAdded, registerTabs)
     })
 
-    function onLabelChange(index:number, event: CustomEvent){
-        const newLabel = event.detail
-        labels[index] = newLabel
+    
+
+    function registerTabs(){
+        const slot = container.childNodes[0] as HTMLSlotElement
+
+        assignedElements = slot.assignedElements() as HTMLElement[]
+
+
+        // TODO: unify `forEaches`
+        assignedElements.forEach( (el, ei)  => {
+            const alreadyRegistered = el.hasAttribute('registered')
+            if( alreadyRegistered ){
+                return;
+            }
+            el.setAttribute('registered','');
+            
+
+            // Label
+            const label = el.getAttribute('label')
+            if(label){ 
+                labels[ei] = label;
+            }
+            
+            // event
+            // el.addEventListener(KeyLabelChange, onLabelChange.bind(undefined, ei))
+        
+            // activate tab
+            if(el.hasAttribute(keyActivate)){ 
+                activateTab(ei)
+            }
+        });
     }
+
+    // function onLabelChange(index:number, event: CustomEvent){
+    //     const newLabel = event.detail
+    //     labels[index] = newLabel
+    // }
 
     let activeIndex = -1
     function activateTab(index){
@@ -50,6 +76,8 @@
     {/each}
     <li class="spacer">&nbsp;</li>
 </ul>
+
+
 
 <span bind:this={container}>
 <slot />

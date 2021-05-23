@@ -1,5 +1,6 @@
 <script lang="ts" context="module">
     export const KeyLabelChange = 'label'
+    export const KeyTabAdded = 'tabadded'
 </script>
 <script lang="ts">
     import { onMount } from 'svelte'
@@ -9,15 +10,33 @@
 
     let contentRef: HTMLSpanElement
     $: onLabelChange(label)
+    
+    const id = Math.random().toString();
+
     onMount(() => onLabelChange(label))
+    
     function onLabelChange(newLabel: string) {
         if(!contentRef) { return }
+        // console.debug('🐞 tab::dispatching event', {newLabel,contentRef} );
         contentRef.dispatchEvent(new CustomEvent(KeyLabelChange,{
             bubbles: true,
             composed: true,
-            detail: newLabel,
+            detail: {
+                id,
+                label: newLabel,
+            },
         }))
     }
+
+    function tabAdded(){
+        if(!contentRef) { return }
+        console.debug('🐞 tab::tab added');
+        contentRef.dispatchEvent(new CustomEvent(KeyTabAdded,{
+            bubbles: true,
+            composed: true,
+        }))
+    }
+    onMount(tabAdded);
 
 </script>
 
