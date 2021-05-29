@@ -1,4 +1,7 @@
 <div class="container">
+
+    <h3 id="buttons">Buttons</h3>
+
     <div>
         <dpdhl-button type="Primary"
                       (click)="handleClick('base button')"
@@ -56,12 +59,18 @@
                       type="Postyellow">Button</dpdhl-button>
     </div>
 
+    <h3 id="cards">Cards</h3>
+
     <div style="width: 300px;">
         <dpdhl-card-simple title="Card Title"
                            content="Some Text..."
                            button_label="Main Action"
-                           [menu_items]="menuItems"></dpdhl-card-simple>
+                           [menu_items]="menuItems">
+        </dpdhl-card-simple>
     </div>
+
+
+    <h3 id="tables">Tables</h3>
 
     <div>
 
