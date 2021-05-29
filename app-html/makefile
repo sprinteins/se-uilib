@@ -1,2 +1,2 @@
 run: 
-	yarn start
+	yarn lib:copy && yarn start

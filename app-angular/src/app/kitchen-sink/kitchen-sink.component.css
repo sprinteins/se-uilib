@@ -1,5 +1,9 @@
 .container{
-    display: flex;
+    display:        flex;
     flex-direction: column;
-    gap: 20px;
+    gap:            20px;
+    align-items:    center;
+
+    width:  70%;
+    margin: 5em auto;
 }

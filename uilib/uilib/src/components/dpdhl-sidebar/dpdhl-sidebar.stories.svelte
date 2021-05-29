@@ -56,7 +56,11 @@
         flex-grow: 1;
     }
 
-    :global(html, body, #root){
+    :global(html){
+        height: calc( 100% - 20px );
+        overflow: hidden;
+    }
+    :global(body, #root){
         height: 100%;
     }
     :global(body.sb-show-main.sb-main-padded){

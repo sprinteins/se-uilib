@@ -8,12 +8,12 @@
     export let label = ''
     export let active: boolean
 
-    let contentRef: HTMLSpanElement
-    $: onLabelChange(label)
-    
     const id = Math.random().toString();
 
-    onMount(() => onLabelChange(label))
+    let contentRef: HTMLSpanElement
+
+    $: onLabelChange(label)
+    onMount(() => onLabelChange(label))    
     
     function onLabelChange(newLabel: string) {
         if(!contentRef) { return }

@@ -7,4 +7,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     title = 'app-angular';
+
+    public open = false;
+    public _open;
+
+    onMenuClick(){
+        this.open = !this.open
+        this.syncOpen();
+    }
+
+    syncOpen(){
+        if (!this.open){
+            this._open = undefined
+            return;
+        }
+
+        this._open = "";
+    }
 }

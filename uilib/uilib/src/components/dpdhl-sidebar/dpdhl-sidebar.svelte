@@ -7,19 +7,66 @@
     const size = 32
 
     export let open = undefined
-    $: _open = open !== undefined
+    $: _open = open !== undefined && open !== null
 
     let container: HTMLElement
     onMount(()=>{
+        registerSidebarItems(); 
         container.addEventListener(EventRegister, onRegisterItem)
     })
 
     let items: SidebarItem[] = []
     function onRegisterItem(event: CustomEvent){
-        const details = event.detail as SidebarItem
-        items = [...items, details]
+        // const item = event.detail as SidebarItem
+        // registerSidebarItem(item)
+        registerSidebarItems();
     }
 
+    function registerSidebarItem(item: SidebarItem){
+        items = [...items, item]
+    }
+
+    let assignedElements: HTMLElement[] = []
+    let itemsContainer: HTMLElement
+    function registerSidebarItems(){
+        const slot = itemsContainer.childNodes[0] as HTMLSlotElement
+
+        assignedElements = slot.assignedElements() as HTMLElement[]
+
+
+        // TODO: unify `forEaches`
+        assignedElements.forEach( (el, ei)  => {
+            const alreadyRegistered = el.hasAttribute('registered')
+            if( alreadyRegistered ){
+                return;
+            }
+            el.setAttribute('registered','')
+            
+
+            // Label
+            const label = getPropOrAttribute(el, 'label')
+            const icon = getPropOrAttribute(el, 'icon')
+            const link = getPropOrAttribute(el, 'link')
+
+            const item: SidebarItem = {
+                id:'not used',
+                icon,
+                link,
+                label,
+            }
+
+            registerSidebarItem(item)
+        });
+    }
+
+    function getPropOrAttribute(el: HTMLElement, key: string): string {
+        const prop = el[key]
+        if ( prop !== undefined) {
+            return prop;
+        }
+
+        return el.getAttribute(key)
+    }
     
 
 </script>
@@ -29,7 +76,7 @@
     <ul>
         {#each items as item}
             <li>
-                <a target="_blank" rel="noreferrer noopener" href={item.link}> 
+                <a rel="noreferrer noopener" href={item.link}> 
                     {#if item.icon}
                         <dpdhl-icon width={size} height={size} icon={item.icon}></dpdhl-icon>
                     {/if}
@@ -39,7 +86,7 @@
         {/each}
     </ul>
 
-    <div class="items">
+    <div class="items" bind:this={itemsContainer}>
         <slot />
     </div>
 </main>
@@ -48,14 +95,15 @@
     main{
         --width: 23.5em;
 
-        position: relative;
-        top:      0;
-        left:     calc(-1 * (var(--width) + 1em));
+        position:   absolute;
+        top:        0;
+        left:       calc(-1 * (var(--width) + 1em));
         transition: left 0.2s;
 
-        height:      100%;
-        width:       23.5em;
-        padding-top: 3em;
+        height:           100%;
+        width:            23.5em;
+        padding-top:      3em;
+        background-color: var(--color-white);
 
         box-shadow: var(--shadow);
     }
