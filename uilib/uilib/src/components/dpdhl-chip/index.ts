@@ -1,0 +1,1 @@
+export { default as DPDHLChip } from './dpdhl-chip.svelte' 

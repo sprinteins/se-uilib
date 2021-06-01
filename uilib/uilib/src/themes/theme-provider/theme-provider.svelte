@@ -57,6 +57,7 @@
 
 <svelte:head>
     <style>
+        
     @font-face {
         font-family: "DeliveryRegular";
         src: url("../fonts/delivery/Delivery_W_Rg.woff2") format("woff2");

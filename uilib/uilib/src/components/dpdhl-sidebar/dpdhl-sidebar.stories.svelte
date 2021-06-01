@@ -56,17 +56,6 @@
         flex-grow: 1;
     }
 
-    :global(html){
-        height: calc( 100% - 20px );
-        overflow: hidden;
-    }
-    :global(body, #root){
-        height: 100%;
-    }
-    :global(body.sb-show-main.sb-main-padded){
-        margin:  0;
-        padding: 0;
-    }
 </style>
 
 <Story name="Primary" args={{}}/>

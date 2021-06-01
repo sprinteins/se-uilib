@@ -6,17 +6,21 @@ import {adapt} from "./adapter";
 import 'dpdhl-uilib';
 
 function App() {
-    const ThemeDPDHL = adapt('dpdhl-theme');
-    const DPDHLButton = adapt('dpdhl-button');
-    const DPDHLCardSimple = adapt('dpdhl-card-simple')
-    const DPDHLTable = adapt('dpdhl-table');
-    const DPDHLTr = adapt('dpdhl-tr');
-    const DPDHLTd = adapt('dpdhl-td');
-    const DPDHLTh = adapt('dpdhl-th');
-    const DPDHLThead = adapt('dpdhl-thead');
-    const DPDHLTbody = adapt('dpdhl-tbody');
-    const DPDHLTabs = adapt('dpdhl-tabs')
-    const DPDHLTab = adapt('dpdhl-tab')
+    const Theme = adapt('dpdhl-theme');
+    const UIShell = adapt('dpdhl-ui-shell')
+    const AppBar = adapt('dpdhl-app-bar')
+    const Sidebar = adapt('dpdhl-sidebar')
+    const SidebarItem = adapt('dpdhl-sidebar-item')
+    const Button = adapt('dpdhl-button');
+    const CardSimple = adapt('dpdhl-card-simple')
+    const Table = adapt('dpdhl-table');
+    const Tr = adapt('dpdhl-tr');
+    const Td = adapt('dpdhl-td');
+    const Th = adapt('dpdhl-th');
+    const Thead = adapt('dpdhl-thead');
+    const Tbody = adapt('dpdhl-tbody');
+    const Tabs = adapt('dpdhl-tabs')
+    const Tab = adapt('dpdhl-tab')
 
     const [log, setLog] = useState('')
 
@@ -39,34 +43,39 @@ function App() {
         <div className="App">
             <h1>React App</h1>
             
-            <ThemeDPDHL>
+            <Theme>
+                <UIShell>
+                    
+                </UIShell>
+
+
                 <div className="container">
                     <div>
-                        <DPDHLButton 
+                        <Button 
                             onClick={ () => setLog('Button Clicked') }
                             type="Primary"
                         >
                             Button
-                        </DPDHLButton>
+                        </Button>
                         </div>
 
-                        <div><DPDHLButton>Button</DPDHLButton></div>
-                        <div><DPDHLButton type="Text">Button</DPDHLButton></div>
-                        <div><DPDHLButton type="Postyellow">Button</DPDHLButton></div>
+                        <div><Button>Button</Button></div>
+                        <div><Button type="Text">Button</Button></div>
+                        <div><Button type="Postyellow">Button</Button></div>
 
-                        <div><DPDHLButton size="Small" type="Primary">Button</DPDHLButton></div>
-                        <div><DPDHLButton size="Small" type="Secondary">Button</DPDHLButton></div>
-                        <div><DPDHLButton size="Small" type="Text">Button</DPDHLButton></div>
-                        <div><DPDHLButton size="Small" type="Postyellow">Button</DPDHLButton></div>
+                        <div><Button size="Small" type="Primary">Button</Button></div>
+                        <div><Button size="Small" type="Secondary">Button</Button></div>
+                        <div><Button size="Small" type="Text">Button</Button></div>
+                        <div><Button size="Small" type="Postyellow">Button</Button></div>
 
-                        <div><DPDHLButton size="Tiny" type="Primary">Button</DPDHLButton></div>
-                        <div><DPDHLButton size="Tiny" type="Secondary">Button</DPDHLButton></div>
-                        <div><DPDHLButton size="Tiny" type="Text">Button</DPDHLButton></div>
-                        <div><DPDHLButton size="Tiny" type="Postyellow">Button</DPDHLButton></div>
+                        <div><Button size="Tiny" type="Primary">Button</Button></div>
+                        <div><Button size="Tiny" type="Secondary">Button</Button></div>
+                        <div><Button size="Tiny" type="Text">Button</Button></div>
+                        <div><Button size="Tiny" type="Postyellow">Button</Button></div>
 
 
                         <div>
-                            <DPDHLCardSimple
+                            <CardSimple
                                 title="Card Title"
                                 content="Card Content"
                                 button_label="main action"
@@ -78,51 +87,51 @@ function App() {
 
 
                         <div>
-                            <DPDHLTable title={tableTitle} footer={tableFooter}>
+                            <Table title={tableTitle} footer={tableFooter}>
                                 
-                                <DPDHLThead slot="head">
-                                    <DPDHLTr>
-                                    { tableHeaders.map( (header,hi) => <DPDHLTd key={hi}>{header}</DPDHLTd> )}
-                                    </DPDHLTr>
-                                </DPDHLThead>
+                                <Thead slot="head">
+                                    <Tr>
+                                    { tableHeaders.map( (header,hi) => <Td key={hi}>{header}</Td> )}
+                                    </Tr>
+                                </Thead>
 
-                                <DPDHLTbody slot="body">
+                                <Tbody slot="body">
                                     {tableRows.map( row => {
                                         return (
-                                            <DPDHLTr>
-                                                {Object.values(row).map( (cell, ci) => <DPDHLTd key={ci}>{cell}</DPDHLTd> )}
-                                            </DPDHLTr>
+                                            <Tr>
+                                                {Object.values(row).map( (cell, ci) => <Td key={ci}>{cell}</Td> )}
+                                            </Tr>
                                         )
                                     })}
 
-                                </DPDHLTbody>
+                                </Tbody>
 
-                            </DPDHLTable>
+                            </Table>
                         </div>
 
                         <div>
-                            <DPDHLTabs>
-                                <DPDHLTab label="Tab 1 Title">
+                            <Tabs>
+                                <Tab label="Tab 1 Title">
                                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
                                     sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
                                     aliquyam erat, sed diam voluptua. 
-                                </DPDHLTab>
-                                <DPDHLTab label="Tab 2 Title" active>
+                                </Tab>
+                                <Tab label="Tab 2 Title" active>
                                     At vero eos et accusam et justo duo dolores et ea rebum. 
                                     Stet clita kasd gubergren, no sea takimata sanctus est 
                                     Lorem ipsum dolor sit amet. 
-                                </DPDHLTab>
-                                <DPDHLTab label="Tab 3 Title">
+                                </Tab>
+                                <Tab label="Tab 3 Title">
                                     Proin consectetur at dui ut mollis. Praesent sit amet tempor sem, 
                                     et egestas lorem. Vestibulum ante ipsum primis in faucibus orci
                                     luctus et ultrices posuere cubilia curae
-                                </DPDHLTab>
-                            </DPDHLTabs>
+                                </Tab>
+                            </Tabs>
                         </div>
 
                 </div>
 
-            </ThemeDPDHL>
+            </Theme>
 
             <div>
                 {log}
