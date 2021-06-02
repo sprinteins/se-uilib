@@ -5,15 +5,9 @@
         Tag     = "Tag",
     }
 </script>
-<script lang="ts">
-    /**
-     * A Chip Component
-     * @component
-    */
-   
+<script lang="ts">   
     import { isNil } from "../../x/util";
 
-    export let label = ""
     export let type: ChipType = ChipType.Normal;
 
     export let disabled
@@ -31,12 +25,9 @@
     class:active   = { _active }
     class:disabled = { _disabled }
 >
-
-
-<span>
-    {label}
-</span>
-
+    <span class="content">
+        <slot />
+    </span>
 </span>
 <svelte:options tag="dpdhl-chip" />
 
@@ -46,8 +37,17 @@
     .chip {
         border:        1px var(--color-gray45) solid;
         border-radius: var(--border-radius);
+        display:       inline-block;
 
         padding: 0.5em;
+    
+    }
+
+    .content{
+        display:        flex;
+        flex-direction: row;
+        gap:            0.5em;
+        align-items:    center;
     }
 
     .normal.disabled {

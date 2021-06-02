@@ -1,5 +1,6 @@
 <script>
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
+    import { action } from '@storybook/addon-actions'
 
     import 'dpdhl-uilib'
 </script>
@@ -19,6 +20,16 @@
         flex-direction: column;
         gap:            2em;
     }
+
+    main p{
+        display:        flex;
+        flex-direction: row;
+        gap:            0.5em;
+    }
+
+    .close-icon {
+        cursor: pointer;
+    }
 </style>
 
 
@@ -27,15 +38,31 @@
 
     <main>
         <p>
-            <dpdhl-chip label="Chip" />
-            <dpdhl-chip label="Disabled" disabled />
-            <dpdhl-chip label="Active" active />
-            <dpdhl-chip label="Active & Disabled" active disabled/>
+            <dpdhl-chip>Chip</dpdhl-chip>
+            <dpdhl-chip disabled >Disabled</dpdhl-chip>
+            <dpdhl-chip active >Active</dpdhl-chip>
+            <dpdhl-chip active disabled>Active & Disabled</dpdhl-chip>
         </p>
         <p>
-            <dpdhl-chip label="Primary" type="Primary" />
-            <dpdhl-chip label="Disabled" type="Primary" disabled />
+            <dpdhl-chip type="Primary">Primary</dpdhl-chip>
+            <dpdhl-chip type="Primary" disabled >Disabled</dpdhl-chip>
 
+        </p>
+        <p>
+            <dpdhl-chip>
+                <dpdhl-icon icon="checkmark" height=16 width=16 /> 
+                with icon
+            </dpdhl-chip>
+            <dpdhl-chip>
+                Removable tag 
+                <dpdhl-icon 
+                    class="close-icon" 
+                    icon="cancel" 
+                    height=16 
+                    width=16 
+                    on:click={action('remove tag')} 
+                />
+            </dpdhl-chip>
         </p>
     </main>
 </Story>
@@ -44,14 +71,14 @@
 <Story name="Customized" args={{}}>
     <main>
         <p style="--chip__active-bg-color: var(--color-postyellow);">
-            <dpdhl-chip label="Chip" />
-            <dpdhl-chip label="Disabled" disabled />
-            <dpdhl-chip label="Active" active />
-            <dpdhl-chip label="Active & Disabled" active disabled/>
+            <dpdhl-chip>Chip</dpdhl-chip>
+            <dpdhl-chip disabled >Disabled</dpdhl-chip>
+            <dpdhl-chip active >Active</dpdhl-chip>
+            <dpdhl-chip active disabled>Active & Disabled</dpdhl-chip>
         </p>
         <p style="--chip__primary-bg-color: var(--color-green-dark);">
-            <dpdhl-chip label="Primary" type="Primary" />
-            <dpdhl-chip label="Disabled" type="Primary" disabled />
+            <dpdhl-chip type="Primary" >Primary</dpdhl-chip>
+            <dpdhl-chip type="Primary" disabled >Disabled</dpdhl-chip>
         </p>
     </main>
 </Story>
