@@ -15,8 +15,12 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 12
-      - run: npm ci
-      - run: npm test
+      - name: "install"
+        run: yarn install
+        working-directory: "./uilib/uilib"
+      - name: "build"
+        run: yarn build
+        working-directory: "./uilib/uilib"
 #  publish-npm:
 #    needs: build
 #    runs-on: ubuntu-latest
