@@ -4,6 +4,9 @@
   "private": false,
   "module": "dist/index.mjs",
   "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "yarn clean && rollup -c",
     "build:watch": "rollup -c -w",
