@@ -1,2 +1,6 @@
 run:
-	yarn dev
+	@yarn dev
+
+install:
+	@yarn install
+	@yarn --cwd ./uilib install

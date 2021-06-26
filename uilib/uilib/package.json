@@ -1,5 +1,5 @@
 {
-  "name": "dpdhl-uilib",
+  "name": "@sprinteins/dpdhl-uilib",
   "version": "0.1.0",
   "private": false,
   "module": "dist/index.mjs",
@@ -19,7 +19,7 @@
     "@storybook/addon-essentials": "^6.2.9",
     "@tsconfig/svelte": "^1.0.0",
     "babel-loader": "^8.2.2",
-    "node-sass": "^5.0.0",
+    "np": "^7.5.0",
     "postcss-font-base64": "^1.0.5",
     "rollup": "^2.3.4",
     "rollup-plugin-copy-assets": "^2.0.3",
