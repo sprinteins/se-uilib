@@ -4,6 +4,7 @@
   "private": false,
   "module": "dist/index.mjs",
   "main": "dist/index.js",
+  "license": "MIT",
   "files": [
     "dist"
   ],
