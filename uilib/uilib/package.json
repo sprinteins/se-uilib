@@ -1,7 +1,9 @@
 {
   "name": "@sprinteins/dpdhl-uilib",
   "version": "0.1.0",
-  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "module": "dist/index.mjs",
   "main": "dist/index.js",
   "license": "MIT",
@@ -12,7 +14,9 @@
     "build": "yarn clean && rollup -c",
     "build:watch": "rollup -c -w",
     "clean": "rm -rf ./dist",
-    "validate": "svelte-check"
+    "validate": "svelte-check",
+    "release": "np",
+    "test-who": "npm whoami"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",
