@@ -30,8 +30,6 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: yarn install
-        working-directory: "./uilib/uilib"
       - run: npm publish
         working-directory: "./uilib/uilib"
         env:
