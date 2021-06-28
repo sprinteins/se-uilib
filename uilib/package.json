@@ -7,7 +7,7 @@
     "dev": "concurrently \"yarn sb\" \"yarn lib:build:watch\" ",
     "start": "sirv public --no-clear",
     "sb": "start-storybook -p 6006 --quiet --ci -s ./uilib/src/assets",
-    "build:sb": " yarn lib:build && yarn lib:link && build-storybook --static-dir ./uilib/src/assets --output-dir public-sb ",
+    "build:sb": " yarn lib:build && yarn lib:link && build-storybook --quite --static-dir ./uilib/src/assets --output-dir public-sb ",
     "link": "yarn lib:link",
     "lib:build": "yarn --cwd ./uilib install && yarn --cwd ./uilib build",
     "lib:link": "cd ./uilib && yarn link && cd .. && yarn link @sprinteins/dpdhl-uilib",
