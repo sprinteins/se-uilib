@@ -21,6 +21,9 @@ jobs:
       - name: "install"
         run: yarn install --frozen-lockfile
         working-directory: "./uilib/uilib"
-      - name: "test"
+      - name: "Unit Tests"
         run: yarn test
         working-directory: "./uilib/uilib"
+      - name: "Test Build"
+        run: yarn build:sb
+        working-directory: "./uilib"
