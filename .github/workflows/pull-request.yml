@@ -20,5 +20,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: "install"
         run: yarn install --frozen-lockfile
+        working-directory: "./uilib/uilib"
       - name: "test"
         run: yarn test
+        working-directory: "./uilib/uilib"
