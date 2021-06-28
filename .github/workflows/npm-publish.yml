@@ -4,25 +4,11 @@
 name: Release
 
 on:
-  workflow_dispatch:
-#    types: [created]
+  push:
+    branches: [main]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 12
-      - name: "install"
-        run: yarn install
-        working-directory: "./uilib/uilib"
-      - name: "build"
-        run: yarn build
-        working-directory: "./uilib/uilib"
-  publish-to-npm:
-    needs: build
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -30,6 +16,14 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
+      - name: "install"
+        run: yarn install
+      - name: "test"
+        run: yarn test
+        working-directory: "./uilib/uilib"
+      - name: "build"
+        run: yarn build
+        working-directory: "./uilib/uilib"
       - run: npm publish
         working-directory: "./uilib/uilib"
         env:
