@@ -18,29 +18,29 @@
     "release": "npx np",
     "test": "echo test"
   },
-  "devDependencies": {
+  "dependencies": {
     "@babel/core": "^7.13.16",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
     "@rollup/plugin-typescript": "^8.0.0",
     "@rollup/plugin-url": "^6.0.0",
-    "@storybook/addon-essentials": "^6.2.9",
+    "rollup": "^2.3.4",
     "@tsconfig/svelte": "^1.0.0",
     "babel-loader": "^8.2.2",
-    "np": "^7.5.0",
     "postcss-font-base64": "^1.0.5",
-    "rollup": "^2.3.4",
     "rollup-plugin-copy-assets": "^2.0.3",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-svelte": "^7.0.0",
     "rollup-plugin-terser": "^7.0.0",
-    "sirv-cli": "^1.0.0",
     "svelte": "^3.37.0",
     "svelte-check": "^1.0.0",
     "svelte-loader": "^3.1.1",
     "svelte-preprocess": "^4.7.2",
     "tslib": "^2.0.0",
     "typescript": "^4.0.0"
+  },
+  "devDependencies": {
+    "sirv-cli": "^1.0.0"
   }
 }
