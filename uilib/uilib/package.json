@@ -15,8 +15,8 @@
     "build:watch": "rollup -c -w",
     "clean": "rm -rf ./dist",
     "validate": "svelte-check",
-    "release": "np",
-    "test-who": "npm whoami"
+    "release": "npx np",
+    "test": "echo test"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",
