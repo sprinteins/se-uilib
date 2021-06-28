@@ -1,5 +1,5 @@
 <script lang="ts">
-    import 'dpdhl-uilib'
+    import '@sprinteins/dpdhl-uilib'
 </script>
 
 <dpdhl-theme>
