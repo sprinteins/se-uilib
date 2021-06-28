@@ -4,51 +4,37 @@
 name: Release
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
-#    types: [created]
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: 12
+          node-version: "16.x"
+          registry-url: https://registry.npmjs.org/
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
       - name: "install"
-        run: yarn install
+        run: yarn install --frozen-lockfile
+      - name: "test"
+        run: yarn test
         working-directory: "./uilib/uilib"
       - name: "build"
         run: yarn build
         working-directory: "./uilib/uilib"
-#  publish-npm:
-#    needs: build
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v2
-#      - uses: actions/setup-node@v2
-#        with:
-#          node-version: 12
-#          registry-url: https://registry.npmjs.org/
-#      - run: npm ci
-#      - run: npm publish
-#        env:
-#          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-#
-#  publish-gpr:
-#    needs: build
-#    runs-on: ubuntu-latest
-#    permissions:
-#      contents: read
-#      packages: write
-#    steps:
-#      - uses: actions/checkout@v2
-#      - uses: actions/setup-node@v2
-#        with:
-#          node-version: 12
-#          registry-url: https://npm.pkg.github.com/
-#      - run: npm ci
-#      - run: npm publish
-#        env:
-#          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-#
+      - run: npm publish
+        working-directory: "./uilib/uilib"
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}

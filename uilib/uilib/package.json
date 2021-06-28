@@ -1,6 +1,6 @@
 {
   "name": "@sprinteins/dpdhl-uilib",
-  "version": "0.1.1",
+  "version": "0.0.1",
   "publishConfig": {
     "access": "public"
   },
@@ -15,8 +15,8 @@
     "build:watch": "rollup -c -w",
     "clean": "rm -rf ./dist",
     "validate": "svelte-check",
-    "release": "np",
-    "test-who": "npm whoami"
+    "release": "npx np",
+    "test": "echo test"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",
