@@ -33,7 +33,7 @@
                             "src/styles.css"
                         ],
                         "scripts": [
-                            "node_modules/dpdhl-uilib/dist/index.js"
+                            "node_modules/@sprinteins/dpdhl-uilib/dist/index.js"
                         ]
                     },
                     "configurations": {
