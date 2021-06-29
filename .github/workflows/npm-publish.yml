@@ -11,6 +11,8 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./uilib/uilib
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -30,11 +32,8 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: "test"
         run: yarn test
-        working-directory: "./uilib/uilib"
       - name: "build"
         run: yarn build
-        working-directory: "./uilib/uilib"
       - run: npm publish
-        working-directory: "./uilib/uilib"
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
