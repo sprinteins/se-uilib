@@ -12,18 +12,18 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./uilib
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           node-version: "16.x"
           registry-url: https://registry.npmjs.org/
-      - name: "install"
+      - name: Install
         run: yarn install --frozen-lockfile
-        working-directory: "./uilib"
-      - name: "Unit Tests"
+      - name: Unit Tests
         run: yarn lib:test
-        working-directory: "./uilib"
-      - name: "Test Build"
+      - name: Test Build
         run: yarn build:sb
-        working-directory: "./uilib"
