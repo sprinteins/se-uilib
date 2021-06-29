@@ -31,16 +31,13 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-node-
             ${{ runner.OS }}-
-      - name: "install"
+      - name: Install
         run: yarn install --frozen-lockfile
-        # working-directory: ${{ env.working-directory }}
-      - name: "test"
+      - name: Test
         run: yarn test
-        # working-directory: ${{ env.working-directory }}
-      - name: "build"
+      - name: Build
         run: yarn build
-        # working-directory: ${{ env.working-directory }}
-      - run: npm publish
-        # working-directory: ${{ env.working-directory }}
+      - name: Publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
