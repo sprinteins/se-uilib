@@ -3,7 +3,9 @@ name: Pull Request
 on:
   push:
     branches:
-      - main
+      - "feature/*"
+      - "bugfix/*"
+      - "op/*"
   pull_request:
     branches:
       - main
