@@ -12,6 +12,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./uilib/uilib
     env:
       working-directory: ./uilib/uilib
     steps:
@@ -22,10 +25,10 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: "install"
         run: yarn install --frozen-lockfile
-        # working-directory: "./uilib"
+        # working-directory: ${{ env.working-directory }}
       - name: "Unit Tests"
         run: yarn lib:test
-        # working-directory: "./uilib"
+        # working-directory: ${{ env.working-directory }}
       - name: "Test Build"
         run: yarn build:sb
-        # working-directory: "./uilib"
+        # working-directory: ${{ env.working-directory }}

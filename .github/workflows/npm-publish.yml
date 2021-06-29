@@ -11,6 +11,9 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./uilib/uilib
     env:
       working-directory: ./uilib/uilib
     steps:
@@ -30,10 +33,14 @@ jobs:
             ${{ runner.OS }}-
       - name: "install"
         run: yarn install --frozen-lockfile
+        # working-directory: ${{ env.working-directory }}
       - name: "test"
         run: yarn test
+        # working-directory: ${{ env.working-directory }}
       - name: "build"
         run: yarn build
+        # working-directory: ${{ env.working-directory }}
       - run: npm publish
+        # working-directory: ${{ env.working-directory }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
