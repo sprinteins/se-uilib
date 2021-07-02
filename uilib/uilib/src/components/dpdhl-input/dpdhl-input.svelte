@@ -82,11 +82,11 @@
     }
     .label{
         position: absolute;
-        top:      -1em;
-        left:      1.25em;
+        top:      var(--input__label-top, -1em);
+        left:     var(--input__label-left, 1.25em);
         
-        color:     var(--color-gray45);
-        font-size: 0.5em;
+        color:     var(--input__label-color, var(--color-gray45));
+        font-size: var(--input__label-font-size, 0.5em);
     }
 
     .validation{
