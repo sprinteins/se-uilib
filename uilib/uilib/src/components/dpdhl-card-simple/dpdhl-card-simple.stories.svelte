@@ -2,7 +2,7 @@
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
     import { action } from '@storybook/addon-actions'
     
-    import 'dpdhl-uilib'
+    import '@sprinteins/dpdhl-uilib'
 
 
 </script>

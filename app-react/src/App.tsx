@@ -3,7 +3,7 @@ import logo from './logo.svg'
 import './App.css'
 import {adapt} from "./adapter";
 
-import 'dpdhl-uilib';
+import '@sprinteins/dpdhl-uilib';
 
 function App() {
     const Theme = adapt('dpdhl-theme');

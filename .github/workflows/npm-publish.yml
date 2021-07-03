@@ -11,6 +11,9 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./uilib/uilib
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -26,15 +29,13 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-node-
             ${{ runner.OS }}-
-      - name: "install"
+      - name: Install
         run: yarn install --frozen-lockfile
-      - name: "test"
+      - name: Test
         run: yarn test
-        working-directory: "./uilib/uilib"
-      - name: "build"
+      - name: Build
         run: yarn build
-        working-directory: "./uilib/uilib"
-      - run: npm publish
-        working-directory: "./uilib/uilib"
+      - name: Publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
