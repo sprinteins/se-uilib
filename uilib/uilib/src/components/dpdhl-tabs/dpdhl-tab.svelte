@@ -30,7 +30,6 @@
 
     function tabAdded(){
         if(!contentRef) { return }
-        console.debug('🐞 tab::tab added');
         contentRef.dispatchEvent(new CustomEvent(KeyTabAdded,{
             bubbles: true,
             composed: true,

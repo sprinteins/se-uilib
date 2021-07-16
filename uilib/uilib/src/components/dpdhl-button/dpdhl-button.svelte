@@ -36,7 +36,8 @@
 
     button {
         font-size:     var(--button__font-size, var(--font-size));
-        font-weight:   var(--button__font-weight, bold);
+        font-family:   var(--button__font-family, var(--font-bold));
+        font-weight:   var(--button__font-weight, normal);
         color:         var(--button__color, var(--color-black));
         text-align:    var(--button__text-align, center);
 
@@ -51,6 +52,13 @@
 
     button:hover {
         filter: brightness(115%);
+    }
+
+    button.primary:active,
+    button.secondary:active,
+    button.text:active,
+    button.postyellow:active{
+        filter: brightness(85%);
     }
 
     button.primary {
@@ -69,6 +77,14 @@
         border:     none;
         color:      var(--color-dhlred);
         background: none;
+    }
+    button.text:hover {
+        filter:     unset;
+        background: var(--color-gray08);
+    }
+    button.text:active{
+        background: var(--color-gray08);
+        filter:     brightness(85%);
     }
 
     button.postyellow {

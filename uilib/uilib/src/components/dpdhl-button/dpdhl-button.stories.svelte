@@ -8,37 +8,54 @@
 <Meta title="Components/Button" component={null}/>
 
 <Template let:args>
-  <dpdhl-button {...args}>{args.label}</dpdhl-button>
 </Template>
 
-<Story name="Primary" args={{
-      type:  Type.Primary,
-      label: 'Primary',
-}}/>
-  
-<Story name="Secondary" args={{
-      type:  Type.Secondary,
-      label: 'Secondary',
-}}/>
+<style>
+      main {
+            display:        flex;
+            flex-direction: column;
+            gap:            1rem;
+            margin:         1rem;
+      }
+</style>
 
-<Story name="Text" args={{
-      type:  Type.Text,
-      label: 'Text',
-}}/>
+<Story name="Desktop" args={{}}>
+      <main>
 
-<Story name="Postyellow" args={{
-      type:  Type.Postyellow,
-      label: 'Text',
-}}/>
+            <dpdhl-button type="primary">    Primary</dpdhl-button>
+            <dpdhl-button type="secondary">  Secondary</dpdhl-button>
+            <dpdhl-button type="text">       Text</dpdhl-button>
+            <dpdhl-button type="postyellow"> PostYellow</dpdhl-button>
+            
+            <dpdhl-button type="primary"   size="small">Primary Small</dpdhl-button>
+            <dpdhl-button type="secondary" size="small">Secondary Small</dpdhl-button>
+            <dpdhl-button type="text"      size="small">Text Small</dpdhl-button>
+            <dpdhl-button type="postyellow"size="small">PostYellow Small</dpdhl-button>
+            
+            <dpdhl-button type="primary"   size="tiny">Primary Tiny</dpdhl-button>
+            <dpdhl-button type="secondary" size="tiny">Secondary Tiny</dpdhl-button>
+            <dpdhl-button type="text"      size="tiny">Text Tiny</dpdhl-button>
+            <dpdhl-button type="postyellow"size="tiny">PostYellow Tiny</dpdhl-button>
+      </main>
+</Story>
 
-<Story name="Small" args={{
-      type: Type.Primary,
-      label:'Small',
-      size: Size.Small,
-}}/>
-
-<Story name="Tiny" args={{
-      type: Type.Primary,
-      label:'Tiny',
-      size: Size.Tiny,
-}}/>
+<Story name="Mobile" args={{}}>
+      <dpdhl-theme-mobile>
+            <main>
+                  <dpdhl-button type="primary">    Primary</dpdhl-button>
+                  <dpdhl-button type="secondary">  Secondary</dpdhl-button>
+                  <dpdhl-button type="text">       Text</dpdhl-button>
+                  <dpdhl-button type="postyellow"> PostYellow</dpdhl-button>
+                  
+                  <dpdhl-button type="primary"   size="small">Primary Small</dpdhl-button>
+                  <dpdhl-button type="secondary" size="small">Secondary Small</dpdhl-button>
+                  <dpdhl-button type="text"      size="small">Text Small</dpdhl-button>
+                  <dpdhl-button type="postyellow"size="small">PostYellow Small</dpdhl-button>
+                  
+                  <dpdhl-button type="primary"   size="tiny">Primary Tiny</dpdhl-button>
+                  <dpdhl-button type="secondary" size="tiny">Secondary Tiny</dpdhl-button>
+                  <dpdhl-button type="text"      size="tiny">Text Tiny</dpdhl-button>
+                  <dpdhl-button type="postyellow"size="tiny">PostYellow Tiny</dpdhl-button>
+            </main>
+      </dpdhl-theme-mobile>
+</Story>

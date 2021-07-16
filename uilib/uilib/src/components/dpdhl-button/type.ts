@@ -1,6 +1,6 @@
 export enum Type {
-    Primary    = 'Primary',
-    Text       = 'Text',
-    Secondary  = 'Secondary',
-    Postyellow = 'Postyellow',
+    Primary    = 'primary',
+    Text       = 'text',
+    Secondary  = 'secondary',
+    Postyellow = 'postyellow',
 }

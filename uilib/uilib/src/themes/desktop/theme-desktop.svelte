@@ -2,7 +2,7 @@
 
 </script>
 
-<svelte:options tag={'dpdhl-theme'} />
+<svelte:options tag={'dpdhl-theme-desktop'} />
 
 <slot />
 
@@ -13,7 +13,7 @@
         --border-radius:    4px;
         
         --font-size:            16px;
-        --font:                 "DeliveryRegular";
+        --font-regular:         "DeliveryRegular";
         --font-italic:          "DeliveryItalic"; 
         --font-bold:            "DeliveryBold";
         --font-bold-italic:     "DeliveryBoldItalic";

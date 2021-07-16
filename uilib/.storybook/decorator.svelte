@@ -2,9 +2,9 @@
     import '@sprinteins/dpdhl-uilib'
 </script>
 
-<dpdhl-theme>
+<dpdhl-theme-desktop>
     <slot />
-</dpdhl-theme>
+</dpdhl-theme-desktop>
 
 <style>
 
@@ -17,7 +17,7 @@
 }
 :global(body.sb-show-main.sb-main-padded){
     margin:  0;
-    padding: 0;
+    padding: 1rem;
 }
 
 </style>

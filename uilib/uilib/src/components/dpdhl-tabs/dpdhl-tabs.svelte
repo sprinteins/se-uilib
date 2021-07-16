@@ -8,7 +8,7 @@
     let labels: string[] = []
     let assignedElements: HTMLElement[] = []
     onMount(()=>{
-        // pure html already has the slots, angular just later
+        // pure html already has the slots, angular add them later
         registerTabs();
         container.addEventListener(KeyTabAdded, registerTabs)
     })
