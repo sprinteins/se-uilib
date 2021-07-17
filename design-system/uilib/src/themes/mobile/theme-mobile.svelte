@@ -1,5 +1,5 @@
 <script>
-    import '../mobile/theme-mobile.svelte'
+
 </script>
 
 <svelte:options tag={'dpdhl-theme-mobile'} />

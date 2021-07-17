@@ -7,8 +7,9 @@
     "build": "yarn lib:install && yarn build:react",
     "build:react": "tsc && vite build",
     "lib:install": "yarn lib:build && yarn lib:link",
-    "lib:build": "cd ../uilib && yarn lib:build && cd ../app-react",
-    "lib:link": "cd ../uilib  && yarn lib:link  && cd ../app-react && yarn link @sprinteins/dpdhl-uilib",
+    "_lib:link": "cd ../uilib  && yarn lib:link  && cd ../app-react && yarn link @sprinteins/dpdhl-uilib",
+    "lib:link": "yarn link @sprinteins/dpdhl-uilib",
+    "lib:build": "../../scripts/build-lib.sh",
     "postinstall": "yarn lib:link"
   },
   "dependencies": {

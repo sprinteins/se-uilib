@@ -6,7 +6,7 @@ import {adapt} from "./adapter";
 import '@sprinteins/dpdhl-uilib';
 
 function App() {
-    const Theme = adapt('dpdhl-theme');
+    const Theme = adapt('dpdhl-theme-desktop');
     const UIShell = adapt('dpdhl-ui-shell')
     const AppBar = adapt('dpdhl-app-bar')
     const Sidebar = adapt('dpdhl-sidebar')
@@ -53,25 +53,25 @@ function App() {
                     <div>
                         <Button 
                             onClick={ () => setLog('Button Clicked') }
-                            type="Primary"
+                            type="primary"
                         >
                             Button
                         </Button>
                         </div>
 
                         <div><Button>Button</Button></div>
-                        <div><Button type="Text">Button</Button></div>
-                        <div><Button type="Postyellow">Button</Button></div>
+                        <div><Button type="text">Button</Button></div>
+                        <div><Button type="postyellow">Button</Button></div>
 
-                        <div><Button size="Small" type="Primary">Button</Button></div>
-                        <div><Button size="Small" type="Secondary">Button</Button></div>
-                        <div><Button size="Small" type="Text">Button</Button></div>
-                        <div><Button size="Small" type="Postyellow">Button</Button></div>
+                        <div><Button size="small" type="primary">Button</Button></div>
+                        <div><Button size="small" type="secondary">Button</Button></div>
+                        <div><Button size="small" type="text">Button</Button></div>
+                        <div><Button size="small" type="postyellow">Button</Button></div>
 
-                        <div><Button size="Tiny" type="Primary">Button</Button></div>
-                        <div><Button size="Tiny" type="Secondary">Button</Button></div>
-                        <div><Button size="Tiny" type="Text">Button</Button></div>
-                        <div><Button size="Tiny" type="Postyellow">Button</Button></div>
+                        <div><Button size="tiny" type="primary">Button</Button></div>
+                        <div><Button size="tiny" type="secondary">Button</Button></div>
+                        <div><Button size="tiny" type="text">Button</Button></div>
+                        <div><Button size="tiny" type="postyellow">Button</Button></div>
 
 
                         <div>
