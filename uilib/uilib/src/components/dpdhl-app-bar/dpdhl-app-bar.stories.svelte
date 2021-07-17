@@ -40,9 +40,8 @@
 <Story name="Example" >
     <dpdhl-app-bar class="story-example">
         <div slot="left" class="left">
-            <dpdhl-icon icon="menu_burger" width=32 height=32 />
-            <img src="https://logoipsum.com/logo/logo-10.svg" />
-            <h3>Page Title</h3>
+            <dpdhl-icon icon="menu_burger" width=32  />
+            <dpdhl-paragraph-header>Title</dpdhl-paragraph-header>
         </div>
 
         <div slot="middle" class="middle">

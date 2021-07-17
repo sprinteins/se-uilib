@@ -44,8 +44,8 @@
         cursor:        var(--button__cursor, pointer);
 
         border-radius: var(--button__border-radius, var(--border-radius));
-        padding:       var(--button__padding, 1em);
-        min-width:     var(--button__min-width, 11em);
+        padding:       var(--button__padding, 1rem);
+        min-width:     var(--button__min-width, 11rem);
         line-height:   var(--button__line-height, 20px);
         
     }

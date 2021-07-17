@@ -4,15 +4,15 @@
     // SVG Masks
     // https://stackoverflow.com/questions/22252472/how-to-change-the-color-of-an-svg-element
 
-    export let width = 16
-    export let height = 16
+    export let width: number 
+    export let height: number
     export let name = ''
     export let icon = ''
     export let color = 'black'
 
     $: style = `
-        width:  ${width}px;
-        height: ${height}px;
+        width:  ${width??height}px;
+        height: ${height??width}px;
 
         --icon:        url(${icons[icon]});
         --icon__color: ${color};

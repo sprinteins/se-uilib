@@ -7,7 +7,7 @@
 <style>
     h1 {
         font-family:    var(--font-black-condensed);
-        font-size:      2rem;
+        font-size:      3.1875rem;
         text-transform: uppercase;
         font-weight:    normal;
     }
