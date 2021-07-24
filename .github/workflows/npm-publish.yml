@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./uilib/uilib
+        working-directory: ./design-system/uilib
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
