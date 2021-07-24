@@ -1,0 +1,183 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet"
+          type="text/css"
+          href="styles.css"
+          media="screen" />
+</head>
+
+<body>
+
+    <dpdhl-theme-desktop>
+        <dpdhl-sidebar>
+            <dpdhl-sidebar-item label="Buttons"
+                                link="#buttons"></dpdhl-sidebar-item>
+
+            <dpdhl-sidebar-item label="Tabs"
+                                link="#tabs"></dpdhl-sidebar-item>
+
+        </dpdhl-sidebar>
+
+        <div class="container">
+
+            <div>
+                <dpdhl-button id="clickable-button"
+                              type="primary"
+                              size="normal">
+                    Button
+                </dpdhl-button>
+            </div>
+            <div>
+                <dpdhl-button type="secondary"
+                              size="normal">
+                    Button
+                </dpdhl-button>
+            </div>
+            <div>
+                <dpdhl-button type="text"
+                              size="normal">
+                    Button
+                </dpdhl-button>
+            </div>
+            <div>
+                <dpdhl-button type="postyellow"
+                              size="normal">
+                    Button
+                </dpdhl-button>
+            </div>
+
+            <!-- small -->
+            <div>
+                <dpdhl-button id="se-button-themed"
+                              type="primary"
+                              size="small">
+                    Button
+                </dpdhl-button>
+            </div>
+            <div>
+                <dpdhl-button type="secondary"
+                              size="small">
+                    Button
+                </dpdhl-button>
+            </div>
+            <div>
+                <dpdhl-button type="text"
+                              size="small">
+                    Button
+                </dpdhl-button>
+            </div>
+            <div>
+                <dpdhl-button type="postyellow"
+                              size="small">
+                    Button
+                </dpdhl-button>
+            </div>
+
+
+            <!-- tiny -->
+            <div>
+                <dpdhl-button id="se-button-themed"
+                              type="primary"
+                              size="tiny">
+                    Button
+                </dpdhl-button>
+            </div>
+            <div>
+                <dpdhl-button type="secondary"
+                              size="tiny">
+                    Button
+                </dpdhl-button>
+            </div>
+            <div>
+                <dpdhl-button type="text"
+                              size="tiny">
+                    Button
+                </dpdhl-button>
+            </div>
+            <div>
+                <dpdhl-button type="postyellow"
+                              size="tiny">
+                    Button
+                </dpdhl-button>
+            </div>
+
+
+            <div>
+                <dpdhl-card>
+                    <h2 slot="header">
+                        Card Header
+                    </h2>
+                    <div slot="content">
+                        Amet nulla facilisi morbi tempus iaculis
+                        urna id volutpat lacus. Sed faucibus turpis in
+                        eu mi bibendum. Amet consectetur adipiscing elit
+                        pellentesque habitant morbi tristique.
+                    </div>
+                    <div slot="footer"
+                         class="footer">
+                        <dpdhl-button type="text"> Main Action </dpdhl-button>
+                    </div>
+                </dpdhl-card>
+            </div>
+
+
+            <div>
+                <dpdhl-table title="Table header"
+                             footer="*footer">
+
+                    <dpdhl-thead slot="head"
+                                 class="table-head">
+                        <dpdhl-tr>
+                            <dpdhl-th></dpdhl-th>
+                            <dpdhl-th>Column title 1</dpdhl-th>
+                            <dpdhl-th>Column title 2</dpdhl-th>
+                        </dpdhl-tr>
+                    </dpdhl-thead>
+
+                    <dpdhl-tbody slot="body"
+                                 class="table-body">
+                        <dpdhl-tr>
+                            <dpdhl-th>Row title</dpdhl-th>
+                            <dpdhl-td>Table Cell 1</dpdhl-td>
+                            <dpdhl-td>Table Cell 2</dpdhl-td>
+                        </dpdhl-tr>
+                        <dpdhl-tr>
+                            <dpdhl-th>Row title</dpdhl-th>
+                            <dpdhl-td>Table Cell 1</dpdhl-td>
+                            <dpdhl-td>Table Cell 2</dpdhl-td>
+                        </dpdhl-tr>
+                    </dpdhl-tbody>
+                </dpdhl-table>
+            </div>
+
+            <div style="width: 500px;">
+                <dpdhl-tabs>
+                    <dpdhl-tab label="Tab 1 Title">
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                        sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                        aliquyam erat, sed diam voluptua.
+                    </dpdhl-tab>
+                    <dpdhl-tab label="Tab 2 Title"
+                               active>
+                        At vero eos et accusam et justo duo dolores et ea rebum.
+                        Stet clita kasd gubergren, no sea takimata sanctus est
+                        Lorem ipsum dolor sit amet.
+                    </dpdhl-tab>
+                    <dpdhl-tab label="Tab 3 Title">
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                        sed diam nonumy eirmod tempor invidunt ut labore et dolore
+                        magna aliquyam erat, sed diam voluptua.
+                    </dpdhl-tab>
+                </dpdhl-tabs>
+            </div>
+
+        </div>
+
+    </dpdhl-theme-desktop>
+
+    <script type="module"
+            src="./lib/index.mjs"></script>
+
+</html>

@@ -1,0 +1,1 @@
+export { default as DPDHLThemeMobile } from './theme-mobile.svelte'

@@ -1,0 +1,1 @@
+export { default as DPDHLThemeDesktop } from './theme-desktop.svelte'
