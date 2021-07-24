@@ -20,7 +20,7 @@
                               pellentesque habitant morbi tristique.
                         </div>
                         <div slot="footer" class="footer" >
-                              <dpdhl-button type="Text"> Main Action </dpdhl-button>
+                              <dpdhl-button type="text"> Main Action </dpdhl-button>
                         </div>
                   </dpdhl-card>
             </div>
