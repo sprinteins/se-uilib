@@ -14,17 +14,72 @@ import { Story, Preview } from '@storybook/addon-docs/blocks';
 </dpdhl-theme-desktop>
 </Preview>
 
-## CSS API
+## General CSS APIs
 
-| Variable                  | Default Value          | Description              |
-|---------------------------|------------------------|--------------------------|
-| `--button__font-size`     | `var(--font-size)`     | The font size            |
-| `--button__font-family`   | `var(--font-bold)`     | The font family          |
-| `--button__font-weight`   | `normal`               | The weight of the font   |
-| `--button__color`         | `var(--color-black)`   | The text color           |
-| `--button__text-align`    | `center`               | The aligment of the text |
-| `--button__cursor`        | `pointer`              |                          |
-| `--button__border-radius` | `var(--border-radius)` |                          |
-| `--button__padding`       | `1rem`                 |                          |
-| `--button__min-width`     | `11rem`                |                          |
-| `--button__line-height`   | `20px`                 |                          |
+| Variable                  | Default Value          | Description                              |
+|---------------------------|------------------------|------------------------------------------|
+| `--button__font-size`     | `var(--font-size)`     | The font size                            |
+| `--button__font-family`   | `var(--font-bold)`     | The font family                          |
+| `--button__font-weight`   | `normal`               | The weight of the font                   |
+| `--button__color`         | `var(--color-black)`   | The text color                           |
+| `--button__text-align`    | `center`               | The aligment of the text                 |
+| `--button__cursor`        | `pointer`              |                                          |
+| `--button__border-radius` | `var(--border-radius)` |                                          |
+| `--button__padding`       | `1rem`                 |                                          |
+| `--button__min-width`     | `11rem`                |                                          |
+| `--button__line-height`   | `20px`                 |                                          |
+| `--button__hover-filter`  | `brightness(115%)`     | The filter set on hover                  |
+| `--button__active`        | `brightness(85%)`      | The filter set in active state (pushing) |
+
+## Variants' CSS APIs
+
+### Primary 
+
+| Variable                        | Default Value         | Description |
+|---------------------------------|-----------------------|-------------|
+| `--button--primary__border`     | `none`                |             |
+| `--button--primary__color`      | `var(--color-white)`  |             |
+| `--button--primary__background` | `var(--color-dhlred)` |             |
+
+### Secondary
+
+| Variable                          | Default Value                     | Description |
+|-----------------------------------|-----------------------------------|-------------|
+| `--button--secondary__border`     | `var(--color-dhlred) 0.2em solid` |             |
+| `--button--secondary__color`      | `var(--color-dhlred)`             |             |
+| `--button--secondary__background` | `var(--color-white)`              |             |
+
+### Text Button
+
+
+| Variable                             | Default Value         | Description                                            |
+|--------------------------------------|-----------------------|--------------------------------------------------------|
+| `--button--text__border`             | `none`                |                                                        |
+| `--button--text__color`              | `var(--color-dhlred)` |                                                        |
+| `--button--text__background`         | `none`                |                                                        |
+| `--button--text--hover__filter`      | `unset`               |                                                        |
+| `--button--text--hover__background`  | `var(--color-gray08)` |                                                        |
+| `--button--text--active__background` | `var(--color-gray08)` | The text button's background in active state (pushing) |
+| `--button--text--active__filter`     | `brightness(85%)`     | The text button's filter set in active state (pushing) |
+
+### Post Yellow
+
+| Variable                           | Default Value             | Description |
+|------------------------------------|---------------------------|-------------|
+| `--button--postyellow__border`     | `none`                    |             |
+| `--button--postyellow__background` | `var(--color-postyellow)` |             |
+
+### Small
+
+| Variable                          | Default Value | Description |
+|-----------------------------------|---------------|-------------|
+| `--button--small__padding-top`    | `0.5em`       |             |
+| `--button--small__padding-bottom` | `0.5em`       |             |
+
+### Tiny
+
+| Variable                         | Default Value | Description |
+|----------------------------------|---------------|-------------|
+| `--button--tiny__padding-top`    | `0.2em`       |             |
+| `--button--tiny__padding-bottom` | `0.2em`       |             |
+
