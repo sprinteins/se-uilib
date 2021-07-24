@@ -6,7 +6,7 @@
 </script>
 
 
-<Meta title="Components/App Bar" component={DPDHLAppBar}/>
+<Meta title="11_Components/App Bar" component={DPDHLAppBar}/>
 
 <Template let:args>
     <dpdhl-app-bar>

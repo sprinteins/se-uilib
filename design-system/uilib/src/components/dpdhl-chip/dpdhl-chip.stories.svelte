@@ -6,7 +6,7 @@
 </script>
 
 
-<Meta title="Components/Chip" component={null} argTypes={{}}/>
+<Meta title="11_Components/Chip" component={null} argTypes={{}}/>
 
 <!-- https://www.dpdhl-brands.com/dpdhl-group/en/guides/touchpoints/user-interface/components/chips-tags.html -->
 <Template let:args>

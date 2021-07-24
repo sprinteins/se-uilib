@@ -5,7 +5,7 @@
     import { Size } from './size'
 </script>
   
-<Meta title="Components/Button" component={null}/>
+<Meta title="11_Components/Button" component={null}/>
 
 <Template let:args>
 </Template>

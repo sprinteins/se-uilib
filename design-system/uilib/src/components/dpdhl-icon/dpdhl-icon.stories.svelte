@@ -5,7 +5,7 @@
 </script>
 
 
-<Meta title="Components/Icon" component={null} argTypes={{
+<Meta title="11_Components/Icon" component={null} argTypes={{
     color: {
             name: 'Color',
             control: { 

@@ -7,7 +7,7 @@
 </script>
 
 
-<Meta title="Components/Table" component={null}/>
+<Meta title="11_Components/Table" component={null}/>
 
 <Template let:args>
 

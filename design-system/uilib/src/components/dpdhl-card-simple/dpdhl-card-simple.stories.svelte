@@ -8,7 +8,7 @@
 </script>
 
 
-<Meta title="Components/Card/002 Simple" component={null}/>
+<Meta title="11_Components/Card/002 Simple" component={null}/>
 
 <Template let:args>
     <div class="story-container">

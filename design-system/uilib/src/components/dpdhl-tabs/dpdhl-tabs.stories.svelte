@@ -7,7 +7,7 @@
 
 
 <Meta 
-    title="Components/Tabs" 
+    title="11_Components/Tabs" 
     component={null} 
     argTypes={{
         width: {

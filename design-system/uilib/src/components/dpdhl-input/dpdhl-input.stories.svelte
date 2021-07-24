@@ -5,7 +5,7 @@
 </script>
 
 
-<Meta title="Components/Input/Text" component={null}/>
+<Meta title="11_Components/Input/Text" component={null}/>
 
 <Template let:args>
     <p><dpdhl-input/></p>

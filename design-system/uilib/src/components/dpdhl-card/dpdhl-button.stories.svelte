@@ -4,7 +4,7 @@
 </script>
 
   
-<Meta title="Components/Card/001 Base" component={null}/>
+<Meta title="11_Components/Card/001 Base" component={null}/>
 
 <Template let:args>
       <div class="story-container">

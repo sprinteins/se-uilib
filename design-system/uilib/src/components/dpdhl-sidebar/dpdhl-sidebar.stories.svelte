@@ -12,7 +12,7 @@
 </script>
 
 
-<Meta title="Components/Sidebar" component={null} />
+<Meta title="11_Components/Sidebar" component={null} />
 
 <Template let:args>
     <div class="container">

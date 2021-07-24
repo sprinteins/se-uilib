@@ -19,7 +19,7 @@
 </script>
 
 
-<Meta title="Components/Modal" component={null} />
+<Meta title="11_Components/Modal" component={null} />
 
 <!-- https://www.dpdhl-brands.com/dpdhl-group/en/tools/icon-library.html -->
 <Template let:args>

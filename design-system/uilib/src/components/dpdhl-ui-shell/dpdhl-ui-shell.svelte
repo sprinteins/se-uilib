@@ -3,9 +3,6 @@
     import '../dpdhl-input'
     import '../dpdhl-sidebar'
 
-    export let logosrc = ""
-    export let title = ""
-
 </script>
 <svelte:options tag="dpdhl-ui-shell" />
 

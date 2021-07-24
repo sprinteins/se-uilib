@@ -7,7 +7,7 @@
 </script>
 
 
-<Meta title="Components/Select" component={null} />
+<Meta title="11_Components/Select" component={null} />
 
 <!-- https://www.dpdhl-brands.com/dpdhl-group/en/guides/touchpoints/user-interface/components/select.html -->
 <Template let:args>

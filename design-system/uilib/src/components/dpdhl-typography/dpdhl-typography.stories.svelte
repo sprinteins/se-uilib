@@ -7,7 +7,7 @@
 
 
 <Meta 
-    title="Components/Typography" 
+    title="11_Components/Typography" 
     component={null} 
     argTypes={{}}
 />

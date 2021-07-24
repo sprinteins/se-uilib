@@ -9,7 +9,7 @@
 </script>
 
 
-<Meta title="Components/Menu" component={null}/>
+<Meta title="11_Components/Menu" component={null}/>
 
 <Template let:args>
     <dpdhl-menu {...args} />
