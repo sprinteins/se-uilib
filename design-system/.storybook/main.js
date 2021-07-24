@@ -1,5 +1,6 @@
 module.exports = {
   "stories": [
+    "../**/*.stories.mdx",
     "../uilib/**/*.stories.mdx",
     "../uilib/**/*.stories.@(js|jsx|ts|tsx)",
     "../uilib/**/*.stories.svelte",
