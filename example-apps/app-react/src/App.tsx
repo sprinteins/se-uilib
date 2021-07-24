@@ -44,10 +44,6 @@ function App() {
             <h1>React App</h1>
             
             <Theme>
-                <UIShell>
-                    
-                </UIShell>
-
 
                 <div className="container">
                     <div>

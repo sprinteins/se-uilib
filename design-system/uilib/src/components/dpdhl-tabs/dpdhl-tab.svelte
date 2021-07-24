@@ -17,7 +17,7 @@
     
     function onLabelChange(newLabel: string) {
         if(!contentRef) { return }
-        // console.debug('🐞 tab::dispatching event', {newLabel,contentRef} );
+
         contentRef.dispatchEvent(new CustomEvent(KeyLabelChange,{
             bubbles: true,
             composed: true,

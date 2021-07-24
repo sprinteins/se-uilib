@@ -5,6 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "test-apps": "./scripts/npm-test-apps.sh",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cy:update": "cypress run --env updateSnapshots=true"

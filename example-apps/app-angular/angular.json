@@ -22,12 +22,7 @@
                         "assets": [
                             "src/favicon.ico",
                             "src/assets",
-                            "src/fonts",
-                            {
-                                "glob": "**/*",
-                                "input": "./node_modules/dpdhl-uilib/dist/assets/fonts",
-                                "output": "./fonts"
-                            }
+                            "src/fonts"
                         ],
                         "styles": [
                             "src/styles.css"

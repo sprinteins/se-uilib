@@ -12,7 +12,7 @@
 
 </script>
 <svelte:options tag={'dpdhl-card-simple'} />
-{@debug Type}
+
 <dpdhl-card>
         <section slot="header" class="header">
             <h2 >

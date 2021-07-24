@@ -1,51 +1,5 @@
 <dpdhl-theme-desktop>
-    <dpdhl-ui-shell>
 
-        <dpdhl-app-bar slot="top">
-            <div slot="left"
-                 class="left">
+    <app-kitchen-sink></app-kitchen-sink>
 
-                <dpdhl-icon class="sidebar-toggler"
-                            width="32"
-                            height="32"
-                            icon="menu_burger"
-                            (click)="onMenuClick()">
-                </dpdhl-icon>
-
-                <img src="https://logoipsum.com/logo/logo-10.svg"
-                     alt="logo" />
-
-                <h3>DPDHL UI Lib</h3>
-            </div>
-
-            <div slot="middle"
-                 class="middle">
-                <!-- <dpdhl-input placeholder="Suche" /> -->
-            </div>
-
-            <div slot="right"
-                 class="right">
-            </div>
-        </dpdhl-app-bar>
-
-        <nav slot="nav">
-            <dpdhl-sidebar [open]="_open">
-                <dpdhl-sidebar-item label="Buttons"
-                                    link="#buttons"></dpdhl-sidebar-item>
-
-                <dpdhl-sidebar-item label="Tabs"
-                                    link="#tabs"></dpdhl-sidebar-item>
-
-            </dpdhl-sidebar>
-        </nav>
-
-
-        <main slot="content">
-            <app-kitchen-sink>
-            </app-kitchen-sink>
-
-
-        </main>
-
-    </dpdhl-ui-shell>
 </dpdhl-theme-desktop>
