@@ -1,6 +1,6 @@
 {
   "name": "@sprinteins/dpdhl-uilib",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publishConfig": {
     "access": "public"
   },
@@ -18,7 +18,8 @@
     "release": "npx np",
     "test": "echo test"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@babel/core": "^7.13.16",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
@@ -38,9 +39,7 @@
     "svelte-loader": "^3.1.1",
     "svelte-preprocess": "^4.7.2",
     "tslib": "^2.0.0",
-    "typescript": "^4.0.0"
-  },
-  "devDependencies": {
+    "typescript": "^4.0.0",
     "sirv-cli": "^1.0.0"
   }
 }
