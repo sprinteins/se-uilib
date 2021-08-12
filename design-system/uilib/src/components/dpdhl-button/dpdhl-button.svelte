@@ -29,7 +29,7 @@
     class:tiny       = { size === Size.Tiny}
     class:small      = { size === Size.Small}
 >
-    <slot >No content provided</slot>
+    <slot>No content provided</slot>
 </button>
 
 <style>
@@ -51,55 +51,56 @@
     }
 
     button:hover {
-        filter: brightness(115%);
+        filter: var(--button__hover-filter, brightness(115%)) ;
     }
 
     button.primary:active,
     button.secondary:active,
     button.text:active,
     button.postyellow:active{
-        filter: brightness(85%);
+
+        filter: var(--button__active, brightness(85%));
     }
 
     button.primary {
-        border:           none;
-        color:            var(--color-white);
-        background-color: var(--color-dhlred);
+        border:     var(--button--primary__border, none);
+        color:      var(--button--primary__color, var(--color-white));
+        background: var(--button--primary__background, var(--color-dhlred));
     }
 
     button.secondary {
-        border:           var(--color-dhlred) 0.2em solid;
-        color:            var(--color-dhlred);
-        background-color: var(--color-white);
+        border:     var(--button--secondary__border, var(--color-dhlred) 0.2em solid);
+        color:      var(--button--secondary__color, var(--color-dhlred));
+        background: var(--button--secondary__background, var(--color-white));
     }
 
     button.text {
-        border:     none;
-        color:      var(--color-dhlred);
-        background: none;
+        border:     var(--button--text__border, none);
+        color:      var(--button--text__color, var(--color-dhlred));
+        background: var(--button--text__background, none);
     }
     button.text:hover {
-        filter:     unset;
-        background: var(--color-gray08);
+        filter:     var(--button--text--hover__filter, unset);
+        background: var(--button--text--hover__background, var(--color-gray08));
     }
     button.text:active{
-        background: var(--color-gray08);
-        filter:     brightness(85%);
+        background: var(--button--text--active__background, var(--color-gray08)) ;
+        filter:     var(--button--text--active__filter,     brightness(85%));
     }
 
     button.postyellow {
-        border:           none;
-        background-color: var(--color-postyellow);
+        border:     var(--button--postyellow__border, none);
+        background: var(--button--postyellow__background, var(--color-postyellow));
     }
     
     button.small{
-        padding-top:    0.5em;
-        padding-bottom: 0.5em;
+        padding-top:    var(--button--small__padding-top, 0.5em);
+        padding-bottom: var(--button--small__padding-bottom, 0.5em);
     }
 
     button.tiny {
-        padding-top:    0.2em;
-        padding-bottom: 0.2em;
+        padding-top:    var(--button--tiny__padding-top, 0.2em);
+        padding-bottom: var(--button--tiny__padding-bottom, 0.2em);
     }
 
 </style>
