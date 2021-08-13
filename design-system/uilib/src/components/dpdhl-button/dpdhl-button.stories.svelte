@@ -19,22 +19,23 @@
       }
 </style>
 
-<Story name="Desktop" args={{}}>
+<Story name="Desktop" args={{disabled: false}} let:args>
       <main>
-            <dpdhl-button type="primary">    Primary</dpdhl-button>
-            <dpdhl-button type="secondary">  Secondary</dpdhl-button>
-            <dpdhl-button type="text">       Text</dpdhl-button>
-            <dpdhl-button type="postyellow"> PostYellow</dpdhl-button>
+
+            <dpdhl-button disabled={args.disabled} type="primary">    Primary</dpdhl-button>
+            <dpdhl-button disabled={args.disabled} type="secondary">  Secondary</dpdhl-button>
+            <dpdhl-button disabled={args.disabled} type="text">       Text</dpdhl-button>
+            <dpdhl-button disabled={args.disabled} type="postyellow"> PostYellow</dpdhl-button>
             
-            <dpdhl-button type="primary"   size="small">Primary Small</dpdhl-button>
-            <dpdhl-button type="secondary" size="small">Secondary Small</dpdhl-button>
-            <dpdhl-button type="text"      size="small">Text Small</dpdhl-button>
-            <dpdhl-button type="postyellow"size="small">PostYellow Small</dpdhl-button>
+            <dpdhl-button disabled={args.disabled} type="primary"   size="small">Primary Small</dpdhl-button>
+            <dpdhl-button disabled={args.disabled} type="secondary" size="small">Secondary Small</dpdhl-button>
+            <dpdhl-button disabled={args.disabled} type="text"      size="small">Text Small</dpdhl-button>
+            <dpdhl-button disabled={args.disabled} type="postyellow"size="small">PostYellow Small</dpdhl-button>
             
-            <dpdhl-button type="primary"   size="tiny">Primary Tiny</dpdhl-button>
-            <dpdhl-button type="secondary" size="tiny">Secondary Tiny</dpdhl-button>
-            <dpdhl-button type="text"      size="tiny">Text Tiny</dpdhl-button>
-            <dpdhl-button type="postyellow"size="tiny">PostYellow Tiny</dpdhl-button>
+            <dpdhl-button disabled={args.disabled} type="primary"   size="tiny">Primary Tiny</dpdhl-button>
+            <dpdhl-button disabled={args.disabled} type="secondary" size="tiny">Secondary Tiny</dpdhl-button>
+            <dpdhl-button disabled={args.disabled} type="text"      size="tiny">Text Tiny</dpdhl-button>
+            <dpdhl-button disabled={args.disabled} type="postyellow"size="tiny">PostYellow Tiny</dpdhl-button>
       </main>
 </Story>
 

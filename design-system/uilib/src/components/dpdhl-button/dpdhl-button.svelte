@@ -1,4 +1,5 @@
 <script lang="ts">
+
     import { Size } from './size'
     import { Type } from './type'
 
@@ -7,7 +8,9 @@
       * @component
       */
 
-    export const disabled = false
+    export let disabled = false
+    $: _disabled = disabled
+
     export let size: Size = Size.Normal
     /**
      * Type of the button: Primary, Secondary, Text, Postyellow
@@ -20,6 +23,8 @@
 
 <button
     on:click 
+    disabled={_disabled}
+    class:disabled={_disabled}
 
     class:primary    = { type === Type.Primary }
     class:secondary  = { type === Type.Secondary }
@@ -50,6 +55,18 @@
         
     }
 
+    /*
+     * we use [disabled].disable to create a stronger css rule
+     * to overwrite the stylings
+     */
+    button[disabled].disabled,
+    button[disabled].disabled:hover {
+        /* filter: var(--button__disabled-filter, brightness(70%)); */
+        /* background: var(--color-gray05); */
+        color:      var(--color-gray20);
+        /* border:     none; */
+    }
+
     button:hover {
         filter: var(--button__hover-filter, brightness(115%)) ;
     }
@@ -68,10 +85,19 @@
         background: var(--button--primary__background, var(--color-dhlred));
     }
 
+    button.primary.disabled {
+        background: var(--color-gray05);
+        color:      var(--color-gray20);
+    }
+
     button.secondary {
         border:     var(--button--secondary__border, var(--color-dhlred) 0.2em solid);
         color:      var(--button--secondary__color, var(--color-dhlred));
         background: var(--button--secondary__background, var(--color-white));
+    }
+
+    button.secondary.disabled {
+        border-color: var(--color-gray05);
     }
 
     button.text {
@@ -91,6 +117,10 @@
     button.postyellow {
         border:     var(--button--postyellow__border, none);
         background: var(--button--postyellow__background, var(--color-postyellow));
+    }
+
+    button.postyellow.disabled {
+        background: var(--color-gray05);
     }
     
     button.small{
