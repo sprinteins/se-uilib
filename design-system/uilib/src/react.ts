@@ -2,5 +2,6 @@ import { adapt } from './x/adapter'
 import './components'
 import './themes'
 
-export const DPDHLThemeDesktop = adapt('dpdhl-theme-desktop')
-export const DPDHLButton = adapt('dpdhl-button')
+export const ThemeDesktop = adapt('dpdhl-theme-desktop')
+export const ThemeMobile = adapt('dpdhl-theme-mobile')
+export const Button = adapt('dpdhl-button')

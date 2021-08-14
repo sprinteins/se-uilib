@@ -30,6 +30,7 @@
     class:secondary  = { type === Type.Secondary }
     class:text       = { type === Type.Text }
     class:postyellow = { type === Type.Postyellow }
+    class:ghost      = { type === Type.Ghost }
 
     class:tiny       = { size === Size.Tiny}
     class:small      = { size === Size.Small}
@@ -49,55 +50,64 @@
         cursor:        var(--button__cursor, pointer);
 
         border-radius: var(--button__border-radius, var(--border-radius));
-        padding:       var(--button__padding, 1rem);
-        min-width:     var(--button__min-width, 11rem);
+        padding:       var(--button__padding, 0.75rem);
+        min-width:     var(--button__min-width, 6rem);
         line-height:   var(--button__line-height, 20px);
+        box-sizing:    var(--button__box-sizing, border-box);
         
-    }
-
-    /*
-     * we use [disabled].disable to create a stronger css rule
-     * to overwrite the stylings
-     */
-    button[disabled].disabled,
-    button[disabled].disabled:hover {
-        /* filter: var(--button__disabled-filter, brightness(70%)); */
-        /* background: var(--color-gray05); */
-        color:      var(--color-gray20);
-        /* border:     none; */
-    }
-
-    button:hover {
-        filter: var(--button__hover-filter, brightness(115%)) ;
-    }
-
-    button.primary:active,
-    button.secondary:active,
-    button.text:active,
-    button.postyellow:active{
-
-        filter: var(--button__active, brightness(85%));
     }
 
     button.primary {
         border:     var(--button--primary__border, none);
-        color:      var(--button--primary__color, var(--color-white));
-        background: var(--button--primary__background, var(--color-dhlred));
+        color:      var(--button--primary__color, var(--color-gray90));
+        background: var(--button--primary__background, var(--color-postyellow));
     }
-
+    button.primary:hover {
+        background: var(--button--primary--hover__background, var(--color-gray60));
+        color:      var(--button--primary--hover__color, var(--color-white));
+    }
+    button.primary:active {
+        filter: var(--button--primary--active, brightness(85%));
+    }
     button.primary.disabled {
-        background: var(--color-gray05);
-        color:      var(--color-gray20);
+        background: var(--color-gray20);
+        color:      var(--color-gray50);
     }
 
     button.secondary {
-        border:     var(--button--secondary__border, var(--color-dhlred) 0.2em solid);
-        color:      var(--button--secondary__color, var(--color-dhlred));
-        background: var(--button--secondary__background, var(--color-white));
+        border:     var(--button--secondary__border, none);
+        color:      var(--button--secondary__color, var(--color-gray90));
+        background: var(--button--secondary__background, var(--color-gray20));
+    }
+    button.secondary:hover{
+        background: var(--button--primary--hover__background, var(--color-gray60));
+        color:      var(--button--primary--hover__color, var(--color-white));
+    }
+    button.secondary:active{
+        filter: var(--button--secondary--active, brightness(85%));
+    }
+    button.secondary.disabled {
+        background: var(--button--secondary--disabled__background, var(--color-gray20));
+        color:      var(--button--secondary--disabled__color, var(--color-gray50));
     }
 
-    button.secondary.disabled {
-        border-color: var(--color-gray05);
+    button.ghost {
+        border:     var(--button--ghost__border, var(--color-dhlred) 0.1rem solid);
+        color:      var(--button--ghost__color, var(--color-dhlred));
+        background: var(--button--ghost__background, var(--color-white));
+    }
+    button.ghost:hover{
+        background: var(--button--ghost--hover__background, var(--color-dhlred));
+        color:      var(--button--ghost--hover__color, var(--color-white));
+    }
+    button.ghost:active{
+        filter: var(--button--ghost--active, brightness(85%));
+    }
+
+    button.ghost.disabled {
+        border:     var(--button--ghost--disabled__border, var(--color-gray20) 0.1rem solid);
+        background: var(--button--ghost--disabled__background, var(--color-white));
+        color:      var(--button--ghost--disabled__color, var(--color-gray50));
     }
 
     button.text {
@@ -106,22 +116,19 @@
         background: var(--button--text__background, none);
     }
     button.text:hover {
-        filter:     var(--button--text--hover__filter, unset);
-        background: var(--button--text--hover__background, var(--color-gray08));
+        border:     var(--button--text--hover__border, var(--color-dhlred) 0.1rem solid);
+        color:      var(--button--text--hover__color, var(--color-dhlred));
+        background: var(--button--text--hover__background, var(--color-white));
     }
     button.text:active{
-        background: var(--button--text--active__background, var(--color-gray08)) ;
-        filter:     var(--button--text--active__filter,     brightness(85%));
+        filter: var(--button--text--active, brightness(85%));
     }
-
-    button.postyellow {
-        border:     var(--button--postyellow__border, none);
-        background: var(--button--postyellow__background, var(--color-postyellow));
+    button.text.disabled {
+        border:     var(--button--text--disabled__border, none);
+        color:      var(--button--text--disabled__color, var(--color-gray50));
+        background: var(--button--text--disabled__background, transparent);
     }
-
-    button.postyellow.disabled {
-        background: var(--color-gray05);
-    }
+    
     
     button.small{
         padding-top:    var(--button--small__padding-top, 0.5em);

@@ -29,17 +29,19 @@
         --color-dhlred:     #D40511;
         --color-gray80:     #333333;
         --color-gray60:     #666666;
+        --color-gray50:     #808080;
         --color-gray45:     #8c8c8c;
         --color-gray30:     #b2b2b2;
         --color-gray20:     #cccccc;
         --color-gray10:     #e5e5e5;
         --color-gray08:     #ebebeb;
         --color-gray05:     #f2f2f2;
+        
 
         --color-green-bright: #76BD22;
         --color-green-dark:   #007c39;
         
-        --color-primary:   var(--color-dhlred);
+        --color-primary:   var(--color-postyellow);
         --color-secondary: var(--color-white);
 
         --shadow: 0px 3px 8px -1px rgba(0, 0, 0, 0.1), 0px 10px 24px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.1);
