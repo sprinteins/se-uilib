@@ -1,5 +1,6 @@
 // source: https://github.com/Jibbedi/webcomponents-in-react
 /* eslint-disable */
+
 import React, { useEffect, useRef } from "react";
 import {
     filterOutRichData,
@@ -16,6 +17,7 @@ export const adapt = (
     overrideProps?: OverrideProps
 ) => {
     return (props: any) => {
+        // @ts-ignore
         const webComponentRef = useRef<HTMLElement | null>(null);
 
         useEffect(() => {

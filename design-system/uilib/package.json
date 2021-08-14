@@ -6,9 +6,12 @@
   },
   "module": "dist/index.mjs",
   "main": "dist/index.js",
+  "types": "types",
   "license": "MIT",
   "files": [
-    "dist"
+    "dist",
+    "react",
+    "types"
   ],
   "scripts": {
     "build": "yarn clean && rollup -c",

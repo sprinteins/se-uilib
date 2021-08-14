@@ -82,7 +82,7 @@ const plugins = [
     }),
 
     // copying assets like fonts to the build
-    copy({
+    !production && copy({
         assets: [
             // You can include directories
             'assets',
@@ -111,20 +111,14 @@ export default [
         ],
         // external: ['react'],
         plugins,
-        watch: {
-            clearScreen: false
-        }
     },
     {
         input: ['src/react.ts'],
         output: [
             // { file: 'dist/react/index.mjs', 'format': 'es' },
-            { file: 'dist/react.js', 'format': 'umd', name }
+            { file: 'react/index.js', 'format': 'umd', name }
         ],
         external: ['react'],
         plugins,
-        watch: {
-            clearScreen: false
-        }
     }
 ]
