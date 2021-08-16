@@ -75,7 +75,7 @@
         color:         var(--button--primary--hover__color, var(--color-white));
         --icon__color: var(--button--primary--hover__icon-color, var(--color-white));
     }
-    button.primary:active {
+    button.primary:active:not(.disabled) {
         filter: var(--button--primary--active, brightness(85%));
     }
     button.primary.disabled {
@@ -94,7 +94,7 @@
         color:         var(--button--secondary--hover__color, var(--color-white));
         --icon__color: var(--button--secondary--hover__icon-color, var(--color-white));
     }
-    button.secondary:active{
+    button.secondary:active:not(.disabled) {
         filter: var(--button--secondary--active, brightness(85%));
     }
     button.secondary.disabled {
@@ -114,7 +114,7 @@
         color:         var(--button--ghost--hover__color, var(--color-white));
         --icon__color: var(--button--ghost--hover__icon-color, var(--color-white));
     }
-    button.ghost:active{
+    button.ghost:active:not(.disabled){
         filter: var(--button--ghost--active, brightness(85%));
     }
 
@@ -137,7 +137,7 @@
         color:         var(--button--text--hover__color, var(--color-dhlred));
         --icon__color: var(--button--text--hover__icon-color, var(--color-dhlred));
     }
-    button.text:active{
+    button.text:active:not(.disabled){
         filter: var(--button--text--active, brightness(85%));
     }
     button.text.disabled {
