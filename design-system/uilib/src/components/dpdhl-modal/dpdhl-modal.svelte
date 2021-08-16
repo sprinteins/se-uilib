@@ -7,8 +7,8 @@ export let cancelable = undefined
 $: _cancelable = cancelable !== undefined
 
 export let open = undefined
-$: _open = open !== undefined
-
+// $: _open = open !== undefined
+$: _open = open
     
 	let modal: HTMLElement
 

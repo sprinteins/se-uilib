@@ -34,6 +34,9 @@
     .container{
         position: relative
     }
+    label{
+        display: block;
+    }
     .label{
         position: absolute;
         top:      1em;
