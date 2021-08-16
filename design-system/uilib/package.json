@@ -1,14 +1,17 @@
 {
   "name": "@sprinteins/dpdhl-uilib",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publishConfig": {
     "access": "public"
   },
   "module": "dist/index.mjs",
   "main": "dist/index.js",
+  "types": "types",
   "license": "MIT",
   "files": [
-    "dist"
+    "dist",
+    "react",
+    "types"
   ],
   "scripts": {
     "build": "yarn clean && rollup -c",

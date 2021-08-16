@@ -8,7 +8,8 @@
     export let height: number
     export let name = ''
     export let icon = ''
-    export let color = 'black'
+    // export let color = 'black'
+    export let color = 'inherit'
 
     $: style = `
         width:  ${width??height}px;
@@ -31,7 +32,7 @@
 
 <style>
     :host{
-        display:     grid;
+        display:     inline-grid;
         place-items: center;
     }
 

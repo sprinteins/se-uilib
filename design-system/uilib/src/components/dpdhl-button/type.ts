@@ -3,4 +3,6 @@ export enum Type {
     Text       = 'text',
     Secondary  = 'secondary',
     Postyellow = 'postyellow',
+    Ghost      = 'ghost',
+    Icon       = 'icon',
 }

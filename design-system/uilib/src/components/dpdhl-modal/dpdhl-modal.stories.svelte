@@ -6,7 +6,7 @@
     let open = ''
 
     function openDialog(){
-        open = ''
+        open = true
     }
 
     function closeDialog(){
@@ -23,7 +23,7 @@
 
 <!-- https://www.dpdhl-brands.com/dpdhl-group/en/tools/icon-library.html -->
 <Template let:args>
-    <dpdhl-button on:click={openDialog} size="Small" type="Primary"> Open Modal </dpdhl-button>
+    <dpdhl-button on:click={openDialog} size="small" type="primary"> Open Modal </dpdhl-button>
     <dpdhl-modal {open} on:close={closeDialog} >
         <h2 slot="header">Dialog Modal</h2>
         

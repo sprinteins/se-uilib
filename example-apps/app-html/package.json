@@ -8,10 +8,12 @@
         "start": "http-server -p 8080 -c-1 ./public",
         "lib:build": "../../scripts/build-lib.sh",
         "lib:copy": "mkdir -p ./public/lib && cp -R ../../design-system/uilib/dist/* ./public/lib/",
-        "lib:font": "mkdir -p ./public/fonts && cp -R ../../design-system/uilib/dist/assets/fonts/* ./public/fonts",
-        "build": "yarn lib:build && yarn lib:font && yarn lib:copy"
+        "build": "yarn lib:build && yarn lib:copy"
     },
     "devDependencies": {
-        "http-server": "^0.12.3"
+        "http-server": "^13.0.0"
+    },
+    "dependencies": {
+        "global": "^4.4.0"
     }
 }

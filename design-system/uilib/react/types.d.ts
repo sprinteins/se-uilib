@@ -1,0 +1,1 @@
+declare module "@sprinteins/dpdhl-uilib/react"

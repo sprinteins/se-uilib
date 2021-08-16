@@ -1,4 +1,5 @@
 /node_modules/
 /public/build/
-
+/react/assets
+/react/index.js
 .DS_Store

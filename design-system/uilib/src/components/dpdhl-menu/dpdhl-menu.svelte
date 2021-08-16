@@ -18,7 +18,7 @@
 <button on:click|stopPropagation={( ) => {
     isOpen = !isOpen
 }}>
-    <span> <dpdhl-icon icon="MoreVertical" /> </span>
+    <span> <dpdhl-icon icon="more_vertical" color="black" width=24 height=24 /> </span>
     {#if isOpen}
         <ul>
             {#each items as item}
