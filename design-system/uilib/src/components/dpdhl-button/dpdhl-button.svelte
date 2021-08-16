@@ -31,6 +31,7 @@
     class:text       = { type === Type.Text }
     class:postyellow = { type === Type.Postyellow }
     class:ghost      = { type === Type.Ghost }
+    class:icon       = { type === Type.Icon}
 
     class:tiny       = { size === Size.Tiny}
     class:small      = { size === Size.Small}
@@ -147,15 +148,26 @@
         --icon__color: var(--button--text--disabled__icon-color, var(--color-gray50));
     }
     
+    button.icon {
+        border:        var(--button--icon__border, none);
+        background:    var(--button--icon__background, none);
+        color:         var(--button--icon__color, var(--color-black));
+        --icon__color: var(--button--icon__icon-color, var(--color-black));
+    }
+    button.icon:active:not(.disabled){
+        filter: var(--button--icon--active, brightness(85%));
+    }
+    button.icon.disabled {
+        --icon__color: var(--button--icon--disabled__icon-color, var(--color-gray50));
+    }
+    
     
     button.small{
-        padding-top:    var(--button--small__padding-top, 0.5em);
-        padding-bottom: var(--button--small__padding-bottom, 0.5em);
+        height: 2rem;
     }
 
     button.tiny {
-        padding-top:    var(--button--tiny__padding-top, 0.2em);
-        padding-bottom: var(--button--tiny__padding-bottom, 0.2em);
+        height: 1.5rem;
     }
 
 </style>

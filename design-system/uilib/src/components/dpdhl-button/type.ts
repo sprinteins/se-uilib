@@ -4,4 +4,5 @@ export enum Type {
     Secondary  = 'secondary',
     Postyellow = 'postyellow',
     Ghost      = 'ghost',
+    Icon       = 'icon',
 }

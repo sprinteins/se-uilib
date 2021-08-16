@@ -17,9 +17,6 @@
 
 <style>
     main{
-        --padding-left-right: 2em;
-
-        width:  calc( 100% - 2 * var(--padding-left-right));
         height: 4em;
 
         background-color: var(--color-postyellow);

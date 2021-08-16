@@ -11,7 +11,7 @@
 <style>
       main {
             display:               grid; 
-            grid-template-columns: 1fr 1fr 1fr 1fr; 
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
             grid-template-rows:    1fr 1fr 1fr 1fr 1fr; 
             gap: 1rem; 
       }
@@ -24,16 +24,19 @@
             <dpdhl-button disabled={args.disabled} type="secondary">  Secondary</dpdhl-button>
             <dpdhl-button disabled={args.disabled} type="ghost">      Ghost</dpdhl-button>
             <dpdhl-button disabled={args.disabled} type="text">       Text</dpdhl-button>
+            <span>&nbsp;</span>
 
             <dpdhl-button disabled={args.disabled} type="primary"    size="small">Primary Small</dpdhl-button>
             <dpdhl-button disabled={args.disabled} type="secondary"  size="small">Secondary Small</dpdhl-button>
             <dpdhl-button disabled={args.disabled} type="ghost"      size="small">Ghost</dpdhl-button>
             <dpdhl-button disabled={args.disabled} type="text"       size="small">Text Small</dpdhl-button>
+            <span>&nbsp;</span>
 
             <dpdhl-button disabled={args.disabled} type="primary"   size="tiny">Primary Tiny</dpdhl-button>
             <dpdhl-button disabled={args.disabled} type="secondary" size="tiny">Secondary Tiny</dpdhl-button>
             <dpdhl-button disabled={args.disabled} type="ghost"     size="tiny">Ghost</dpdhl-button>
             <dpdhl-button disabled={args.disabled} type="text"      size="tiny">Text Tiny</dpdhl-button>
+            <span>&nbsp;</span>
 
             <dpdhl-button disabled={args.disabled} type="primary">
                   <dpdhl-icon width=24 height=24  icon="search" />
@@ -51,6 +54,7 @@
                   <dpdhl-icon width=24 height=24  icon="search" />
                   <span>Search</span>
             </dpdhl-button>
+            <span>&nbsp;</span>
 
 
             <dpdhl-button disabled={args.disabled} type="primary">
@@ -69,6 +73,7 @@
                   <span>Search</span>
                   <dpdhl-icon width=24 height=24  icon="search" />
             </dpdhl-button>
+            <span>&nbsp;</span>
 
             <dpdhl-button disabled={args.disabled} type="primary">
                   <dpdhl-icon width=24 height=24  icon="search" />
@@ -82,6 +87,7 @@
             <dpdhl-button disabled={args.disabled} type="text">
                   <dpdhl-icon width=24 height=24  icon="search" />
             </dpdhl-button>
+            <span>&nbsp;</span>
 
       </main>
 </Story>
@@ -93,17 +99,20 @@
                   <dpdhl-button disabled={args.disabled} type="secondary">  Secondary</dpdhl-button>
                   <dpdhl-button disabled={args.disabled} type="ghost">      Ghost</dpdhl-button>
                   <dpdhl-button disabled={args.disabled} type="text">       Text</dpdhl-button>
+                  <span>&nbsp;</span>
                   
 
                   <dpdhl-button disabled={args.disabled} type="primary"    size="small">Primary Small</dpdhl-button>
                   <dpdhl-button disabled={args.disabled} type="secondary"  size="small">Secondary Small</dpdhl-button>
                   <dpdhl-button disabled={args.disabled} type="ghost"      size="small">Ghost</dpdhl-button>
                   <dpdhl-button disabled={args.disabled} type="text"       size="small">Text Small</dpdhl-button>
+                  <span>&nbsp;</span>
 
                   <dpdhl-button disabled={args.disabled} type="primary"   size="tiny">Primary Tiny</dpdhl-button>
                   <dpdhl-button disabled={args.disabled} type="secondary" size="tiny">Secondary Tiny</dpdhl-button>
                   <dpdhl-button disabled={args.disabled} type="ghost"     size="tiny">Ghost</dpdhl-button>
                   <dpdhl-button disabled={args.disabled} type="text"      size="tiny">Text Tiny</dpdhl-button>
+                  <span>&nbsp;</span>
 
                   <dpdhl-button disabled={args.disabled} type="primary">
                         <dpdhl-icon width=24 height=24  icon="search" />
@@ -121,6 +130,7 @@
                         <dpdhl-icon width=24 height=24  icon="search" />
                         <span>Search</span>
                   </dpdhl-button>
+                  <span>&nbsp;</span>
       
       
                   <dpdhl-button disabled={args.disabled} type="primary">
@@ -139,6 +149,7 @@
                         <span>Search</span>
                         <dpdhl-icon width=24 height=24  icon="search" />
                   </dpdhl-button>
+                  <span>&nbsp;</span>
       
                   <dpdhl-button disabled={args.disabled} type="primary">
                         <dpdhl-icon width=24 height=24  icon="search" />
@@ -152,6 +163,16 @@
                   <dpdhl-button disabled={args.disabled} type="text">
                         <dpdhl-icon width=24 height=24  icon="search" />
                   </dpdhl-button>
+                  <dpdhl-button disabled={args.disabled} type="icon">
+                        <dpdhl-icon width=24 height=24  icon="search" />
+                  </dpdhl-button>
+                  
+                  
+                  <span>&nbsp;</span>
+                  <span>&nbsp;</span>
+                  <span>&nbsp;</span>
+                  <span>&nbsp;</span>
+
 
             </main>
       </dpdhl-theme-mobile>
