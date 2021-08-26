@@ -23,39 +23,16 @@
         box-shadow:    0px 0px 1px rgba(0, 0, 0, 0.1), 0px 2px 12px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.1);
         border-radius: var(--border-radius);
 
-        --padding:     2em;
+        --padding:     1.5rem;
         padding:       var(--padding);
         height:        calc( 100% - 2 * var(--padding) );
         width:         calc( 100% - 2 * var(--padding) );
-        
-        display:         flex;
-        flex-direction:  column;
-        flex-wrap:       nowrap;
-        justify-content: flex-start;
-        align-content:   stretch;
-        align-items:     flex-start;
-        gap:             1em;
+
+        display:               grid;
+        grid-template-columns: 1fr;
+        grid-template-rows:    1fr auto 1fr;
+        gap:                   1rem;
     }
 
-    header,
-    main,
-    footer {
-        display: inline-block;
-        width:   100%;
-    }
 
-    header {
-        flex:       0 1 auto;
-        align-self: start;
-    }
-
-    main {
-        flex:       1 1 auto;
-        align-self: start;
-        }
-
-    footer {
-        flex:       0 1 auto;
-        align-self: start;
-    }
 </style>

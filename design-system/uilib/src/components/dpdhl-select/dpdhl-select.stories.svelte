@@ -3,7 +3,7 @@
     
     import '@sprinteins/dpdhl-uilib'
 
- 
+    let selected = "";
 </script>
 
 
@@ -15,11 +15,12 @@
 
 
 <Story name="Primary" args={{}}>
-    <dpdhl-select placeholder="Select field">
-        <dpdhl-select-item label="Option A"/>
-        <dpdhl-select-item label="Option B"/>
-        <dpdhl-select-item label="Option C"/>
+    <dpdhl-select placeholder="Select field" on:select={(event) =>  selected = event.detail}>
+        <dpdhl-select-item label="Option A" value={"option-a"}/>
+        <dpdhl-select-item label="Option B" value={"option-b"}/>
+        <dpdhl-select-item label="Option C" value={"option-c"}/>
     </dpdhl-select>
+    <div>Selected : {selected}</div>
 </Story>
 
 

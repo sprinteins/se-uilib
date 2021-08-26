@@ -16,10 +16,15 @@
     <p><dpdhl-input value="CDx93B" disabled {...args}  /></p>
     
     <p><dpdhl-input value="CDx93B" error {...args}  /></p>
-    <p><dpdhl-input value="CDx93B" error errormsg="Incorrect value!" {...args}  /></p>
+    <p><dpdhl-input value="CDx93B" error message="Incorrect value!" {...args}  /></p>
     
     <p><dpdhl-input value="CDx93B" success {...args}  /></p>
-    <p><dpdhl-input value="CDx93B" success successmsg="Correct value." {...args}  /></p>
+    <p><dpdhl-input value="CDx93B" success message="Correct value." {...args}  /></p>
+    <p>
+        <dpdhl-input message="Custom Icon">
+            <dpdhl-icon slot="start-icon" icon="checkmark_circle" color="black" width=24 />
+        </dpdhl-input>
+    </p>
 </Template>
 
 <style>

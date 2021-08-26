@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { onMount } from "svelte"
+import { randomID } from "../../x/util";
     import '../dpdhl-icon'
 
 
@@ -10,20 +12,13 @@
     export let disabled
     $: _disabled = disabled !== undefined
 
-    export let errormsg = ''
     export let error
     $: _error = error !== undefined
 
-    export let successmsg = ''
     export let success
     $: _success = success !== undefined
 
-    let _msg = ''
-    $: if( errormsg ){
-        _msg = errormsg
-    } else if(successmsg) {
-        _msg = successmsg
-    }
+    export let message: string = ""
 
     const requiredSign = '*'
     let _isRequiredText = ''
@@ -33,70 +28,109 @@
     }else{
         _isRequiredText = ''
     }
+    
+    let id = ""
+    onMount(() => { 
+        id = randomID()
+    })
 
+    $: hasCustomIcon = Boolean($$slots["start-icon"]) 
+    $: hasStartIcon = hasCustomIcon || _error || _success
 
+    $: console.debug('[DEBUG] ', {message} )
+    $: console.debug('[DEBUG] ', {msgprop:$$props.message} )
 
 </script>
 
 <svelte:options tag="dpdhl-input" />
 
+
+
 <div 
     class="container"
     class:error={_error}
     class:success={_success}
-    class:extra-margin={_msg}
+    class:extra-margin={message}
     class:no-label={!label}
 >
-    <label>
-        <span class="label">{label}{_isRequiredText}</span>
+    <label for={id}>
+        {label}{_isRequiredText}
+    </label>
+
+    <!-- <span>debug: {hasStartIcon}</span> -->
+
+    <div class="input-container">
+
         <input 
+            id={id}
             disabled={_disabled} 
             {value} 
             {placeholder}
+            class:with-start-icon={hasStartIcon}
         />
 
-        {#if _success || _error}
-            <span class="validation" class:with-msg={_msg}>
-                {#if _success}
-                    <dpdhl-icon width=16 height=16 color="var(--color-green-bright)" icon="checkmark_circle" />
-                    <span class="validation-messsage">{_msg}</span>
-                {/if}
-                {#if _error}
-                    <dpdhl-icon width=16 height=16 color="var(--color-dhlred)" icon="cancel_circle" />
-                    <span class="validation-messsage">{_msg}</span>
-                {/if}
-            </span>
+        {#if hasCustomIcon}
+            <div 
+                class="start-icon-container"
+            >
+                <slot class="hello" name="start-icon"></slot>
+            </div>
         {/if}
-</label>
+
+        {#if _error}
+            <div class="start-icon-container" >
+                <dpdhl-icon icon="checkmark_circle" color="var(--color-dhlred)" width=24 />
+            </div>
+        {/if}
+
+        {#if _success}
+            <div class="start-icon-container">
+                <dpdhl-icon icon="checkmark_circle" color="var(--color-green-dark)" width=24 />
+            </div>
+        {/if}
+
+    </div>
+
+    {#if message}
+        <span class="validation" class:with-msg={message}>
+            <span class="validation-messsage">
+                {message}
+            </span>
+        </span>
+    {/if}
+
 </div>
 
 <style>
-    label{
-        position: relative
+    
+    .container{
+        position: relative;
     }
-    .container.error .label{
+
+    label{
+        display:       block;
+        font-size:     0.875rem;
+        font-family:   var(--font-bold);
+        margin-bottom: 0.5rem;
+    } 
+
+    .container.error .validation-messsage{
         color: var(--color-dhlred);
+    }
+    .container.success .validation-messsage{
+        color: var(--color-green-dark);
     }
     .container.extra-margin{
         margin-bottom: 2em;
     }
-    .label{
-        position: absolute;
-        top:      var(--input__label-top, -1em);
-        left:     var(--input__label-left, 1.25em);
-        
-        color:     var(--input__label-color, var(--color-gray45));
-        font-size: var(--input__label-font-size, 0.5em);
-    }
 
     .validation{
-        position: absolute;
-        top:      0;
-        right:    0.75em;
-        
         display:        flex;
         flex-direction: row;
         gap:            0.25em;
+        margin-top:     0.5rem;
+        font-size:      0.875rem;
+        color:          var(--color-gray67);
     }
     .validation.with-msg{
         left: 0;
@@ -109,21 +143,29 @@
         display: unset;
     }
 
+    .input-container{
+        position: relative;
+    }
+
     input{
-        padding-top:    1.25em;
-        padding-left:   0.75em;
-        padding-bottom: 0.75em;
-        padding-right:  2.25em;
+        display:        block;
+        box-sizing:     border-box;
+        font-size:      1rem;
+        padding-left:   1rem;
+        padding-right:  1rem;
+        height:         3rem;
         border-radius:  var(--border-radius);
         border:         1px solid var(--color-gray45);
     }
     .container.error input{
         border-color: var(--color-dhlred);
+        background: var(--color-dhlred-light);
     }
-    .container.no-label input{
-        padding-top: 1em;
-        padding-bottom: 1em;
+    .container.success input{
+        border-color: var(--color-green-dark);
+        background: var(--color-green-light);
     }
+
     input:hover{
         border: 1px solid var(--color-black);
     }
@@ -138,5 +180,18 @@
     input:disabled {
         border-color:     var(--color-gray30);
         background-color: unset;
+    }
+
+    input.with-start-icon{
+        padding-left: 3.5rem;
+    }
+
+    .start-icon-container {
+        position:    absolute;
+        top:         0;
+        left:        1rem;
+        height:      100%;
+        display:     flex;
+        align-items: center;
     }
 </style>
