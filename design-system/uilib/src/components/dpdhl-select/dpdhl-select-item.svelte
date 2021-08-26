@@ -5,14 +5,14 @@
     import { onMount } from 'svelte'
 
     let contentRef: HTMLElement
-    function tabAdded(){
+    function itemAdded(){
         if(!contentRef) { return }
         contentRef.dispatchEvent(new CustomEvent(KeyItemAdded,{
             bubbles: true,
             composed: true,
         }))
     }
-    onMount(tabAdded);
+    onMount(itemAdded);
 </script>
 <svelte:options tag="dpdhl-select-item" />
 

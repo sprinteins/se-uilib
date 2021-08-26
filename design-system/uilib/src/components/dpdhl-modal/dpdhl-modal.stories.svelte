@@ -27,7 +27,7 @@
     <dpdhl-modal {open} on:close={closeDialog} >
         <h2 slot="header">Dialog Modal</h2>
         
-        <span>
+        <span slot="content">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
             Quisque eu egestas eros. Sed blandit efficitur justo, ac laoreet 
             velit. Cras et elit dui. Morbi magna dolor, malesuada sit amet
@@ -46,6 +46,10 @@
 <style>
    .actions{
        text-align: right;
+   }
+   h2{
+       padding: 0;
+       margin:  0;
    }
 </style>
 

@@ -10,9 +10,9 @@
       <div class="story-container">
             <div class="card-container" style="--story__height: {args.height}px; --story__width: {args.width}px;}">
                   <dpdhl-card>  
-                        <h2 slot="header">
+                        <h3 slot="header">
                               Card Header
-                        </h2>
+                        </h3>
                         <div slot="content">
                               Amet nulla facilisi morbi tempus iaculis 
                               urna id volutpat lacus. Sed faucibus turpis in 
