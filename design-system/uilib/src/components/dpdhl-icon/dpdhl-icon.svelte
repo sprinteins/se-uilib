@@ -37,8 +37,13 @@
     }
 
     i{
-        background-color: var(--icon__color, var(--color-black));
-        mask-size: cover;
-        mask-image: var(--icon);
+        background-color:    var(--icon__color, var(--color-black));
+        mask-size:           cover;
+        -webkit-mask-size:   cover;
+        mask-image:          var(--icon);
+        -webkit-mask-image:  var(--icon);
+        mask-repeat:         no-repeat;
+        -webkit-mask-repeat: no-repeat;
+        
     }
 </style>
