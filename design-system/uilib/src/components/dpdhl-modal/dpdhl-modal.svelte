@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onDestroy } from 'svelte'
-import '../dpdhl-card'
+	import '../dpdhl-card'
 
 
 export let cancelable = undefined
