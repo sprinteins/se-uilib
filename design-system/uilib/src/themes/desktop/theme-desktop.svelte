@@ -12,6 +12,9 @@
     :host {
         --unit:             16px;
         --border-radius:    4px;
+
+        --padding-left-right: 16px;
+        --padding-top-bottom: 18px;
         
         --font-size:            16px;
         --font-regular:         "DeliveryRegular";
