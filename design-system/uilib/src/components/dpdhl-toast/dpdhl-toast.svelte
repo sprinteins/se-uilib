@@ -18,11 +18,13 @@
     export let title;
     $: _title = title || "No title provided";
 
-	function handleClose() {
-		if(!isOpen){
-        	return
-    	}
-    	_isOpen = false
+    let toast: HTMLElement
+
+	function closeToast() {
+        toast.dispatchEvent(new Event('closeToast', {
+            bubbles: true,
+            composed: true,
+        }))
 	}
 
     export let type: string = Type.Error;
@@ -34,6 +36,7 @@
     <main
         class:notification = { type === Type.Notification }
         class:error = { type === Type.Error }
+        bind:this={toast}
         >
         <div class="flex-container">
             <div class="title">
@@ -45,7 +48,7 @@
                 </div>
             {/if}
         </div> 
-        <dpdhl-icon on:click={handleClose} width={16} height={16} color='#FFF' icon="cancel" />
+        <dpdhl-icon on:click={closeToast} width={16} height={16} color='#FFF' icon="cancel" />
     </main>
 {/if}
 
@@ -68,7 +71,7 @@
         background-color: var(--color-dhlred);
     }
 
-    .title{
+    .title {
         font-size: 16px;
         line-height: 20px;
         font-weight: 700;

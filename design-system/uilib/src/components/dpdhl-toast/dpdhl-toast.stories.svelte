@@ -1,6 +1,14 @@
 <script>
 	import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
 	import '@sprinteins/dpdhl-uilib'
+	import { Type } from './type'
+
+    $: isOpen = true;
+
+	function handleClose() {
+        alert("Closed!")
+		isOpen = false
+    }
 
 </script>
 
@@ -9,7 +17,7 @@
 
 <!-- https://www.dpdhl-brands.com/dpdhl-group/en/tools/icon-library.html -->
 <Template let:args>
-   <dpdhl-toast isOpen={true} type="error" title="Toast Title" message="And here we go with a more detailed message.">
+   <dpdhl-toast {isOpen} on:closeToast={handleClose} type="error" title="Toast Title" message="And here we go with a more detailed message.">
 	  <span slot="icon">Icon</span>
    </dpdhl-toast>
 </Template>
@@ -18,8 +26,21 @@
 
 </style>
 
-<Story name="Primary" args={{
-	width:  64,
-	height: 64,
-	color: '#000000',
-}}/>
+<Meta 
+    title="11_Components/Toast" 
+    component={null} 
+    argTypes={{
+        type: {
+            options: [Type.Error, Type.Notification],
+    }}}
+/>
+
+<Story 
+	name="Primary" 
+	args={{
+		type: Type.Error,
+		title: "Toast Title",
+		message: 'And here we go with a more detailed message.',
+	}}
+
+/>
