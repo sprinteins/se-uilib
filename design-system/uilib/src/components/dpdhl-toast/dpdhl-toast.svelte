@@ -15,6 +15,9 @@
     export let message;
     $: _message = message;
 
+    export let type: string = Type.Error;
+    export let fullWidth: boolean = true;
+
     export let title;
     $: _title = title || "No title provided";
 
@@ -27,7 +30,6 @@
         }))
 	}
 
-    export let type: string = Type.Error;
 
 </script>
 <svelte:options tag="dpdhl-toast" />
@@ -36,6 +38,7 @@
     <main
         class:notification = { type === Type.Notification }
         class:error = { type === Type.Error }
+        class:full-width = {fullWidth}
         bind:this={toast}
         >
         <div class="flex-container">
@@ -60,12 +63,24 @@
         align-items:    center;
         padding:        var(--padding-top-bottom) var(--padding-left-right);
         justify-content: space-between;
+        
+        /* width: 100vw; */
+        /* padding: 0; */
+    }
+
+    main.full-width{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        flex-grow: 1;
     }
 
     main.notification {
         color:         white;
         background-color: var(--color-green-dark);
     }
+
     main.error {
         color:         white;
         background-color: var(--color-dhlred);

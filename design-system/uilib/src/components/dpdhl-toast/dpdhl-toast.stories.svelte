@@ -3,7 +3,11 @@
 	import '@sprinteins/dpdhl-uilib'
 	import { Type } from './type'
 
-    let open = true;
+    let open = false;
+
+	function handleOpen() {
+		open = true
+    }
 
 	function handleClose() {
 		open = false
@@ -13,9 +17,10 @@
 
 <!-- https://www.dpdhl-brands.com/dpdhl-group/en/tools/icon-library.html -->
 <Template let:args>
-   <dpdhl-toast {open} on:closeToast={handleClose} type="error" title="Toast Title" message="And here we go with a more detailed message.">
-	  <span slot="icon">Icon</span>
-   </dpdhl-toast>
+	<dpdhl-button on:click={handleOpen} size="small" type="primary"> Open Toast </dpdhl-button>
+    <dpdhl-toast {open} on:closeToast={handleClose} type="error" title="Toast Title" message="And here we go with a more detailed message.">
+	   <span slot="icon">Icon</span>
+    </dpdhl-toast>
 </Template>
 
 <style>
