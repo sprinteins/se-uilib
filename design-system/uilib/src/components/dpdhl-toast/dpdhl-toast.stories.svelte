@@ -3,17 +3,13 @@
 	import '@sprinteins/dpdhl-uilib'
 	import { Type } from './type'
 
-    $: isOpen = true;
+    let isOpen = true;
 
 	function handleClose() {
-        alert("Closed!")
 		isOpen = false
     }
 
 </script>
-
-
-<Meta title="11_Components/Toast" component={null} />
 
 <!-- https://www.dpdhl-brands.com/dpdhl-group/en/tools/icon-library.html -->
 <Template let:args>

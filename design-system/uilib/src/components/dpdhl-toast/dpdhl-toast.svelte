@@ -9,7 +9,7 @@
      */
     import { Type } from './type'
 
-	export let isOpen = true;
+	export let isOpen;
     $: _isOpen = isOpen;
 
     export let message;
@@ -48,7 +48,7 @@
                 </div>
             {/if}
         </div> 
-        <dpdhl-icon on:click={closeToast} width={16} height={16} color='#FFF' icon="cancel" />
+        <dpdhl-icon on:click={closeToast} width={16} height={16} color='#FFF' icon="cancel" class="icon" />
     </main>
 {/if}
 
@@ -87,10 +87,12 @@
         margin: 0;
     }
 
-    /* .icon { } */
-
     div.flex-container{
         display: flex;
         flex-direction: column;
+    }
+
+    .icon {
+        cursor: pointer;
     }
 </style>
