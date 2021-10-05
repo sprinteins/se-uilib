@@ -21,8 +21,9 @@
     export let title;
     $: _title = title || "No title provided";
 
-    let toast: HTMLElement
+    $: hasCustomIcon = Boolean($$slots["custom-icon"]) 
 
+    let toast: HTMLElement
 	function closeToast() {
         toast.dispatchEvent(new Event('closeToast', {
             bubbles: true,
@@ -41,16 +42,25 @@
         class:full-width = {fullWidth}
         bind:this={toast}
         >
-        <div class="flex-container">
-            <div class="title">
-                {_title}
-            </div>
-            {#if _message}
-                <div class="message">
-                    {_message}
+        <div class="content-container">
+            <!-- TODO: hasCustomIcon is always false, why? -->
+            {#if hasCustomIcon} 
+                <div class="custom-icon">
+                    <slot class="hello" name="custom-icon"></slot>
                 </div>
             {/if}
-        </div> 
+            <div class="text-container">
+                <div class="title">
+                    {_title}
+                </div>
+                {#if _message}
+                    <div class="message">
+                        {_message}
+                    </div>
+                {/if}
+            </div> 
+        </div>
+
         <dpdhl-icon on:click={closeToast} width={16} height={16} color='#FFF' icon="cancel" class="icon" />
     </main>
 {/if}
@@ -102,9 +112,18 @@
         margin: 0;
     }
 
-    div.flex-container{
+    div.text-container{
         display: flex;
         flex-direction: column;
+    }
+
+    div.content-container {
+        display: flex;
+        vertical-align: middle;
+    }
+
+    .custom-icon {
+        padding-right: 12px;
     }
 
     .icon {
