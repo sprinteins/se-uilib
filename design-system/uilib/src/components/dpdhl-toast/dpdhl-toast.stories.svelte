@@ -3,17 +3,17 @@
 	import '@sprinteins/dpdhl-uilib'
 	import { Type } from './type'
 
-    let isOpen = true;
+    let open = true;
 
 	function handleClose() {
-		isOpen = false
+		open = false
     }
 
 </script>
 
 <!-- https://www.dpdhl-brands.com/dpdhl-group/en/tools/icon-library.html -->
 <Template let:args>
-   <dpdhl-toast {isOpen} on:closeToast={handleClose} type="error" title="Toast Title" message="And here we go with a more detailed message.">
+   <dpdhl-toast {open} on:closeToast={handleClose} type="error" title="Toast Title" message="And here we go with a more detailed message.">
 	  <span slot="icon">Icon</span>
    </dpdhl-toast>
 </Template>

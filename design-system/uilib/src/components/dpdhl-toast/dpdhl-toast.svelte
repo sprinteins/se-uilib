@@ -9,8 +9,8 @@
      */
     import { Type } from './type'
 
-	export let isOpen = true;
-    $: _isOpen = isOpen;
+	export let open = true;
+    $: _open = open;
 
     export let message;
     $: _message = message;
@@ -32,7 +32,7 @@
 </script>
 <svelte:options tag="dpdhl-toast" />
 
-{#if _isOpen}
+{#if _open}
     <main
         class:notification = { type === Type.Notification }
         class:error = { type === Type.Error }
