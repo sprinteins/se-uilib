@@ -9,7 +9,7 @@
      */
     import { Type } from './type'
 
-	export let isOpen;
+	export let isOpen = true;
     $: _isOpen = isOpen;
 
     export let message;

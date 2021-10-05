@@ -28,12 +28,14 @@
     argTypes={{
         type: {
             options: [Type.Error, Type.Notification],
+			control: { type: 'select' }
     }}}
 />
 
 <Story 
 	name="Primary" 
 	args={{
+		isOpen: false,
 		type: Type.Error,
 		title: "Toast Title",
 		message: 'And here we go with a more detailed message.',
