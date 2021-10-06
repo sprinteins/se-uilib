@@ -99,6 +99,7 @@
             open = false
             root.dispatchEvent(makeEvent('selectOne', item.value))
         }
+        filterText = "";
     }
 
     $: console.debug('[DEBUG] ', {selectedItem} )
