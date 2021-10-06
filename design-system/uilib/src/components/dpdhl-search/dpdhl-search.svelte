@@ -23,46 +23,16 @@
     let assignedElements: HTMLElement[] = []
 
     $: filterText = ''
-    $: filteredList = items.filter(item => item.label.indexOf(filterText.toString()) !== -1);
+    $: filteredItems = items.filter(item => {
+        // replace multiple empty spaces in filterText with a single empty space
+        const inputText = filterText.toString().toLowerCase().replace(/  +/g, ' ');
+        return item.label.toLowerCase().replace(/  +/g, ' ').indexOf(inputText) !== -1
+    });
 
     onMount(() => {
         registerItems();
         container.addEventListener(KeyItemAdded, registerItems)
     })    
-
-    function filterItems(e) {
-        console.log(filteredList);
-        const inputValue = e.data.toLowerCase()
-        if (!inputValue.length) {
-            registerItems();
-            console.log("input is empty")
-            return;
-        }
-        console.log("input is NOT empty")
-        const slot = container.childNodes[0] as HTMLSlotElement
-        assignedElements = slot.assignedElements() as HTMLElement[]
-        assignedElements.forEach( (el, ei)  => {
-            const alreadyRegistered = el.hasAttribute('registered')
-            if( alreadyRegistered ){
-                return;
-            }
-            el.setAttribute('registered','');
-            
-            // Label
-            const label = el.getAttribute('label')
-            const value = el.getAttribute('value')
-            if(items){ 
-                // if (items[ei].label.toLowerCase().includes(inputValue)) {
-                    items[ei] = {
-                        label,
-                        value
-                    }
-                // }
-
-            }
-        })
-
-    }
 
     function registerItems(){
         const slot = container.childNodes[0] as HTMLSlotElement
@@ -102,7 +72,9 @@
     }
 
     let selectedItem: Item = placholderItem;
-    let selectedItems: Item[] = []
+    $: selectedItems = [];
+    // let selectedItems: Item[] = []
+
     onMount(() => {
         if (!multiplechoice) {
             selectedItem = placholderItem;
@@ -116,15 +88,11 @@
 
     function onItemClick(item: Item){
         console.debug('[DEBUG] ', {fn:"onItemClick", item} )
-        console.log("here!");
         if (multiplechoice) {
-            console.log("MULTIPLE CHOICE!");
-            if (selectedItems.includes(item)) {
-                selectedItems.splice(selectedItems.indexOf(item), 1);
-            } else {
+            if (selectedItems.includes(item)) 
+                selectedItems = selectedItems.filter(m => m.value !== item.value);
+            else 
                 selectedItems = [...selectedItems, item]
-            }
-            console.log('selectedItems', selectedItems)
             root.dispatchEvent(makeEvent('selectMany', item.value))
         } else {
             selectedItem = item;
@@ -165,9 +133,7 @@
                     </dpdhl-copy>
                 {/if} 
             </span>
-            <input id={id} 
-            
-             {placeholder} on:input={filterItems} bind:value={filterText}/>
+            <input id={id} {placeholder} bind:value={filterText}/>
             <span class="chevron" on:click={toggleOpen}>
                 <dpdhl-icon width=16 height=16 color="var(--color-dhlred)" icon="chevron_down" />
             </span>
@@ -176,12 +142,15 @@
     </div>
 
     <ul>
-        {#each filteredList as item}
+        {#each filteredItems as item}
             <li on:click={() => onItemClick(item)}>
                 <dpdhl-copy class="item-label">
                     {item.label}
                 </dpdhl-copy>
-                {#if item === selectedItem}
+                {#if multiplechoice && selectedItems.includes(item)}
+                    <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
+                {/if}
+                {#if !multiplechoice && item === selectedItem}
                     <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
                 {/if}
             </li>
