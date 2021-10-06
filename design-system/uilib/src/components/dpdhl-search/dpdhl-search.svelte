@@ -5,7 +5,7 @@
     import { KeyItemAdded } from './dpdhl-search-item.svelte'
     
     export let multiplechoice = true
-
+    export let inputplaceholder = "Search for an option"
 
     export let placeholder = ""
     $: placholderItem = {
@@ -120,21 +120,22 @@
                     {/if}
                 {:else}
                     <dpdhl-copy>
-                        {#each selectedItems as chip}
-                            <dpdhl-chip>
-                                {chip.label} 
+                        {#each selectedItems as item}
+                            <dpdhl-chip class="chip" active>
+                                {item.label} 
                                 <dpdhl-icon 
                                     class="close-icon" 
                                     icon="cancel" 
                                     height=16 
                                     width=16 
+                                    on:click={() => onItemClick(item)}
                                 />
                             </dpdhl-chip>
                         {/each}
                     </dpdhl-copy>
                 {/if} 
             </span>
-            <input id={id} {placeholder} bind:value={filterText}/>
+            <input {id} placeholder={inputplaceholder} bind:value={filterText}/>
             <span class="chevron" on:click={toggleOpen}>
                 <dpdhl-icon width=16 height=16 color="var(--color-dhlred)" icon="chevron_down" />
             </span>
@@ -184,7 +185,7 @@
         padding:       0;
         min-width:     10rem;
         position:      relative;
-
+        min-height:    49px;
     }
 
     .dropdown {
@@ -250,7 +251,7 @@
     }
 
     .open .dropdown{
-        margin-bottom: 0.5rem;
+        /* margin-bottom: 0.5rem; */
     }
 
     li{
@@ -272,4 +273,15 @@
         border-bottom: thin solid var(--color-gray20);
     }
 
+    input, input:focus {
+        border: none;
+        outline: none;
+        font-size: 16px;
+        line-height: 16px;
+        padding-top: 6px;
+    }
+
+    .chip{
+        margin-right: 6px;
+    }
 </style>

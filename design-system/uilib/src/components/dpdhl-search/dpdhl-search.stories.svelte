@@ -3,7 +3,8 @@
     
     import '@sprinteins/dpdhl-uilib'
 
-    let selected = "";
+    let selectedItem = "";
+    let selectedItems = "";
 </script>
 
 
@@ -18,26 +19,24 @@
     <dpdhl-search 
         placeholder="Select field" 
         multiplechoice={false} 
-        on:selectOne={(event) =>  selected = event.detail} 
-        on:selectMany={(event) =>  console.log("SELECT many: ", event.detail)}>
+        on:selectOne={(event) =>  selectedItem = event.detail}>
         <dpdhl-select-item label="Option A" value={"option-a"}/>
         <dpdhl-select-item label="Option B" value={"option-b"}/>
         <dpdhl-select-item label="Option C" value={"option-c"}/>
     </dpdhl-search>
-    <div>Selected : {selected}</div>
+    <div>Selected : {selectedItem}</div>
 </Story>
 
 <Story name="Multiple choice" args={{}}>
     <dpdhl-search 
         placeholder="Select field" 
         multiplechoice={true} 
-        on:selectOne={(event) =>  selected = event.detail} 
         on:selectMany={(event) =>  console.log("SELECT many: ", event.detail)}>
         <dpdhl-select-item label="Option A" value={"option-a"}/>
         <dpdhl-select-item label="Option B" value={"option-b"}/>
         <dpdhl-select-item label="Option C" value={"option-c"}/>
     </dpdhl-search>
-    <div>Selected : {selected}</div>
+    <div>Selected : {selectedItems}</div>
 </Story>
 
 
