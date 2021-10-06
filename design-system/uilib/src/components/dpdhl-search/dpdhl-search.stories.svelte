@@ -7,39 +7,40 @@
 </script>
 
 
-<Meta title="11_Components/Select" component={null} />
+<Meta title="11_Components/Search" component={null} />
 
 <!-- https://www.dpdhl-brands.com/dpdhl-group/en/guides/touchpoints/user-interface/components/select.html -->
 <Template let:args>
 </Template>
 
 
-<Story name="Primary" args={{}}>
-    <div class="container">
-        <div>
-            <dpdhl-select 
-                placeholder="Select field" 
-                multipleChoice={true} 
-                on:selectOne={(event) =>  selected = event.detail} 
-                on:selectMany={(event) =>  console.log("SELECT many: ", event.detail)}>
-                <dpdhl-select-item label="Option A" value={"option-a"}/>
-                <dpdhl-select-item label="Option B" value={"option-b"}/>
-                <dpdhl-select-item label="Option C" value={"option-c"}/>
-            </dpdhl-select>
-            <div>Selected : {selected}</div>
-        </div>
-    </div>
+<Story name="Select one" args={{}}>
+    <dpdhl-search 
+        placeholder="Select field" 
+        multiplechoice={false} 
+        on:selectOne={(event) =>  selected = event.detail} 
+        on:selectMany={(event) =>  console.log("SELECT many: ", event.detail)}>
+        <dpdhl-select-item label="Option A" value={"option-a"}/>
+        <dpdhl-select-item label="Option B" value={"option-b"}/>
+        <dpdhl-select-item label="Option C" value={"option-c"}/>
+    </dpdhl-search>
+    <div>Selected : {selected}</div>
+</Story>
 
+<Story name="Multiple choice" args={{}}>
+    <dpdhl-search 
+        placeholder="Select field" 
+        multiplechoice={true} 
+        on:selectOne={(event) =>  selected = event.detail} 
+        on:selectMany={(event) =>  console.log("SELECT many: ", event.detail)}>
+        <dpdhl-select-item label="Option A" value={"option-a"}/>
+        <dpdhl-select-item label="Option B" value={"option-b"}/>
+        <dpdhl-select-item label="Option C" value={"option-c"}/>
+    </dpdhl-search>
+    <div>Selected : {selected}</div>
 </Story>
 
 
 <style>
 
-    .container {
-        display: flex;
-        flex-direction: row;
-    }
-    .actions{
-       text-align: right;
-    }
 </style>

@@ -14,7 +14,7 @@
     }
     onMount(itemAdded);
 </script>
-<svelte:options tag="dpdhl-select-item" />
+<svelte:options tag="dpdhl-search-item" />
 
 <span>
     <slot />

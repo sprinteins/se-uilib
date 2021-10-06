@@ -2,9 +2,9 @@
     import { onMount } from 'svelte'
 import { makeEvent } from '../../x/util/dispatch';
     import "../dpdhl-icon"
-    import { KeyItemAdded } from './dpdhl-select-item.svelte'
+    import { KeyItemAdded } from './dpdhl-search-item.svelte'
     
-    export let multipleChoice = true
+    export let multiplechoice = true
 
     export let placeholder = ""
     $: placholderItem = {
@@ -67,7 +67,7 @@ import { makeEvent } from '../../x/util/dispatch';
     let selectedItem: Item = placholderItem;
     let selectedItems: Item[] = []
     onMount(() => {
-        if (!multipleChoice) {
+        if (!multiplechoice) {
             selectedItem = placholderItem;
         } else {
             selectedItems = []
@@ -76,9 +76,12 @@ import { makeEvent } from '../../x/util/dispatch';
     })
 
     let root: HTMLDivElement;
+
     function onItemClick(item: Item){
         console.debug('[DEBUG] ', {fn:"onItemClick", item} )
-        if (multipleChoice) {
+        console.log("here!");
+        if (multiplechoice) {
+            console.log("MULTIPLE CHOICE!");
             if (selectedItems.includes(item)) {
                 selectedItems.splice(selectedItems.indexOf(item), 1);
             } else {
@@ -91,7 +94,6 @@ import { makeEvent } from '../../x/util/dispatch';
             open = false
             root.dispatchEvent(makeEvent('selectOne', item.value))
         }
-
     }
 
     $: console.debug('[DEBUG] ', {selectedItem} )
@@ -105,7 +107,7 @@ import { makeEvent } from '../../x/util/dispatch';
     <div class="select" >
         <div class="dropdown" on:click={toggleOpen}>
             <span class="placeholder">
-                {#if !multipleChoice}
+                {#if !multiplechoice}
                     {#if selectedItem}
                         <dpdhl-copy>{selectedItem.label}</dpdhl-copy>
                     {/if}
