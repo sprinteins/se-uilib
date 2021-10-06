@@ -25,7 +25,4 @@
 
 
 <style>
-   .actions{
-       text-align: right;
-   }
 </style>

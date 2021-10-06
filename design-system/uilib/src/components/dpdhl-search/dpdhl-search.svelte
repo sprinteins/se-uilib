@@ -1,10 +1,11 @@
 <script lang="ts">
     import { onMount } from 'svelte'
-import { makeEvent } from '../../x/util/dispatch';
+    import { makeEvent } from '../../x/util/dispatch';
     import "../dpdhl-icon"
     import { KeyItemAdded } from './dpdhl-search-item.svelte'
     
     export let multiplechoice = true
+
 
     export let placeholder = ""
     $: placholderItem = {
@@ -21,10 +22,47 @@ import { makeEvent } from '../../x/util/dispatch';
     let items: Item[] = []
     let assignedElements: HTMLElement[] = []
 
+    $: filterText = ''
+    $: filteredList = items.filter(item => item.label.indexOf(filterText.toString()) !== -1);
+
     onMount(() => {
         registerItems();
         container.addEventListener(KeyItemAdded, registerItems)
     })    
+
+    function filterItems(e) {
+        console.log(filteredList);
+        const inputValue = e.data.toLowerCase()
+        if (!inputValue.length) {
+            registerItems();
+            console.log("input is empty")
+            return;
+        }
+        console.log("input is NOT empty")
+        const slot = container.childNodes[0] as HTMLSlotElement
+        assignedElements = slot.assignedElements() as HTMLElement[]
+        assignedElements.forEach( (el, ei)  => {
+            const alreadyRegistered = el.hasAttribute('registered')
+            if( alreadyRegistered ){
+                return;
+            }
+            el.setAttribute('registered','');
+            
+            // Label
+            const label = el.getAttribute('label')
+            const value = el.getAttribute('value')
+            if(items){ 
+                // if (items[ei].label.toLowerCase().includes(inputValue)) {
+                    items[ei] = {
+                        label,
+                        value
+                    }
+                // }
+
+            }
+        })
+
+    }
 
     function registerItems(){
         const slot = container.childNodes[0] as HTMLSlotElement
@@ -38,7 +76,6 @@ import { makeEvent } from '../../x/util/dispatch';
             }
             el.setAttribute('registered','');
             
-
             // Label
             const label = el.getAttribute('label')
             const value = el.getAttribute('value')
@@ -98,6 +135,7 @@ import { makeEvent } from '../../x/util/dispatch';
 
     $: console.debug('[DEBUG] ', {selectedItem} )
     $: console.debug('[DEBUG] ', {placholderItem} )
+    let id = ""
 
 </script>
 <svelte:options tag="dpdhl-search" />
@@ -105,7 +143,7 @@ import { makeEvent } from '../../x/util/dispatch';
 <div class="root" class:open bind:this={root}>
 
     <div class="select" >
-        <div class="dropdown" on:click={toggleOpen}>
+        <div class="dropdown">
             <span class="placeholder">
                 {#if !multiplechoice}
                     {#if selectedItem}
@@ -127,16 +165,18 @@ import { makeEvent } from '../../x/util/dispatch';
                     </dpdhl-copy>
                 {/if} 
             </span>
-            <span class="chevron">
+            <input id={id} 
+            
+             {placeholder} on:input={filterItems} bind:value={filterText}/>
+            <span class="chevron" on:click={toggleOpen}>
                 <dpdhl-icon width=16 height=16 color="var(--color-dhlred)" icon="chevron_down" />
             </span>
-
         </div>
 
     </div>
 
     <ul>
-        {#each items as item}
+        {#each filteredList as item}
             <li on:click={() => onItemClick(item)}>
                 <dpdhl-copy class="item-label">
                     {item.label}
