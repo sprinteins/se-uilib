@@ -84,9 +84,7 @@ import { makeEvent } from '../../x/util/dispatch';
 <svelte:options tag="dpdhl-select" />
 
 <div class="root" class:open bind:this={root}>
-
     <div class="select" >
-
         <div class="dropdown" on:click={toggleOpen}>
             <span class="placeholder">
                 {#if selectedItem}

@@ -3,9 +3,11 @@
     import { makeEvent } from '../../x/util/dispatch';
     import "../dpdhl-icon"
     import { KeyItemAdded } from './dpdhl-search-item.svelte'
+    import type { Item } from './item';
     
-    export let multiplechoice = true
-    export let inputplaceholder = "Search..."
+    export let multiplechoice = false
+    export let inputplaceholder = "Select an option"
+    export let search = false
 
     export let placeholder = ""
     $: placholderItem = {
@@ -13,17 +15,12 @@
         value: undefined,
     }
 
-    interface Item {
-        label: string
-        value: unknown
-    }
-
     let container: HTMLElement
     let items: Item[] = []
     let assignedElements: HTMLElement[] = []
 
     $: filterText = ''
-    $: filteredItems = items.filter(item => {
+    $: filteredItems = !search ? items : items.filter(item => {
         // replace multiple empty spaces in filterText with a single empty space
         const inputText = filterText.toString().toLowerCase().replace(/  +/g, ' ');
         return item.label.toLowerCase().replace(/  +/g, ' ').indexOf(inputText) !== -1
@@ -73,7 +70,6 @@
 
     let selectedItem: Item = placholderItem;
     $: selectedItems = [];
-    // let selectedItems: Item[] = []
 
     onMount(() => {
         if (!multiplechoice) {
@@ -95,7 +91,11 @@
                 selectedItems = [...selectedItems, item]
             root.dispatchEvent(makeEvent('selectMany', item.value))
         } else {
-            selectedItem = item;
+            if (selectedItem === item) {
+                selectedItem = placholderItem;
+            } else {
+                selectedItem = item;
+            }
             open = false
             root.dispatchEvent(makeEvent('selectOne', item.value))
         }
@@ -119,23 +119,22 @@
                         <dpdhl-copy>{selectedItem.label}</dpdhl-copy>
                     {/if}
                 {:else}
+                    {#if !selectedItems.length && !search}
+                        <dpdhl-copy class="input-placeholder">{inputplaceholder}</dpdhl-copy>
+                    {/if}
                     <dpdhl-copy>
                         {#each selectedItems as item}
                             <dpdhl-chip class="chip" active>
                                 {item.label} 
-                                <dpdhl-icon 
-                                    class="close-icon" 
-                                    icon="cancel" 
-                                    height=16 
-                                    width=16 
-                                    on:click={() => onItemClick(item)}
-                                />
+                                <dpdhl-icon class="close-icon" icon="cancel" height=16 width=16 on:click={() => onItemClick(item)}/>
                             </dpdhl-chip>
                         {/each}
                     </dpdhl-copy>
                 {/if} 
             </span>
-            <input {id} placeholder={inputplaceholder} bind:value={filterText}/>
+            {#if search}
+                <input {id} placeholder={inputplaceholder} bind:value={filterText}/>
+            {/if}
             <span class="chevron" on:click={toggleOpen}>
                 <dpdhl-icon width=16 height=16 color="var(--color-dhlred)" icon="chevron_down" />
             </span>
@@ -144,19 +143,22 @@
     </div>
 
     <ul>
-        {#each filteredItems as item}
-            <li on:click={() => onItemClick(item)}>
-                <dpdhl-copy class="item-label">
-                    {item.label}
-                </dpdhl-copy>
-                {#if multiplechoice && selectedItems.includes(item)}
-                    <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
-                {/if}
-                {#if !multiplechoice && item === selectedItem}
-                    <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
-                {/if}
-            </li>
-        {/each}
+        <!-- {#if !search} -->
+            {#each filteredItems as item}
+                <li on:click={() => onItemClick(item)}>
+                    <dpdhl-copy class="item-label">
+                        {item.label}
+                    </dpdhl-copy>
+                    {#if multiplechoice && selectedItems.includes(item)}
+                        <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
+                    {/if}
+                    {#if !multiplechoice && item === selectedItem}
+                        <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
+                    {/if}
+                </li>
+                <!-- <dpdhl-dropdown-item {onItemClick} {item} {selectedItem} {multiplechoice} {selectedItems}/> -->
+            {/each}
+        <!-- {/if} -->
     </ul>
 </div>
 
@@ -193,7 +195,7 @@
         flex-direction: row;
         padding:        0.5rem;
         cursor:         pointer;
-        padding-top:    14px;
+        padding-top:    16px;
     }
 
     .placeholder{
@@ -284,5 +286,10 @@
 
     .chip{
         margin-right: 6px;
+    }
+
+    .input-placeholder{
+   
+        color: var(--color-gray20);
     }
 </style>
