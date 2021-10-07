@@ -1,23 +1,24 @@
 <script lang="ts">
     import { onMount } from 'svelte'
-import { makeEvent } from '../../x/util/dispatch';
+    import { makeEvent } from '../../x/util/dispatch';
     import "../dpdhl-icon"
     import { KeyItemAdded } from './dpdhl-select-item.svelte'
+    import type { Item } from './item';
     
+    export let multiplechoice = false
+    export let inputplaceholder = "Select an option"
+
     export let placeholder = ""
     $: placholderItem = {
         label: placeholder,
         value: undefined,
     }
 
-    interface Item {
-        label: string
-        value: unknown
-    }
-
     let container: HTMLElement
-    let items: Item[] = []
+    $: items = []
     let assignedElements: HTMLElement[] = []
+    let selectedItem: Item = placholderItem;
+    $: selectedItems = [];
 
     onMount(() => {
         registerItems();
@@ -36,7 +37,6 @@ import { makeEvent } from '../../x/util/dispatch';
             }
             el.setAttribute('registered','');
             
-
             // Label
             const label = el.getAttribute('label')
             const value = el.getAttribute('value')
@@ -46,7 +46,6 @@ import { makeEvent } from '../../x/util/dispatch';
                     value
                 }
             }
-            
             // event
             // el.addEventListener(KeyLabelChange, onLabelChange.bind(undefined, ei))
         
@@ -62,20 +61,34 @@ import { makeEvent } from '../../x/util/dispatch';
         open = !open;
     }
 
-    let selectedItem: Item = placholderItem;
     onMount(() => {
-        selectedItem = placholderItem;
+        if (!multiplechoice) {
+            selectedItem = placholderItem;
+        } else {
+            selectedItems = []
+        }
     })
 
     let root: HTMLDivElement;
+
     function onItemClick(item: Item){
         console.debug('[DEBUG] ', {fn:"onItemClick", item} )
-        selectedItem = item;
-        open = false
-        root.dispatchEvent(makeEvent('select', item.value))
-
+        if (multiplechoice) {
+            if (selectedItems.includes(item)) 
+                selectedItems = selectedItems.filter(m => m.value !== item.value);
+            else 
+                selectedItems = [...selectedItems, item]
+            root.dispatchEvent(makeEvent('selectMany', item.value))
+        } else {
+            if (selectedItem === item) {
+                selectedItem = placholderItem;
+            } else {
+                selectedItem = item;
+            }
+            open = false
+            root.dispatchEvent(makeEvent('selectOne', item.value))
+        }
     }
-
 
     $: console.debug('[DEBUG] ', {selectedItem} )
     $: console.debug('[DEBUG] ', {placholderItem} )
@@ -85,16 +98,31 @@ import { makeEvent } from '../../x/util/dispatch';
 
 <div class="root" class:open bind:this={root}>
     <div class="select" >
-        <div class="dropdown" on:click={toggleOpen}>
+        <div class="dropdown">
             <span class="placeholder">
-                {#if selectedItem}
-                    <dpdhl-copy>{selectedItem.label}</dpdhl-copy>
-                {/if}
+                {#if !multiplechoice}
+                    {#if selectedItem && selectedItem.value}
+                        <dpdhl-copy>{selectedItem.label}</dpdhl-copy>
+                    {:else}
+                        <dpdhl-copy class="input-placeholder">{inputplaceholder}</dpdhl-copy>
+                    {/if}
+                {:else}
+                    {#if !selectedItems.length}
+                        <dpdhl-copy class="input-placeholder">{inputplaceholder}</dpdhl-copy>
+                    {/if}
+                    <dpdhl-copy>
+                        {#each selectedItems as item}
+                            <dpdhl-chip class="chip" active>
+                                {item.label} 
+                                <dpdhl-icon class="close-icon" icon="cancel" height=16 width=16 on:click={() => onItemClick(item)}/>
+                            </dpdhl-chip>
+                        {/each}
+                    </dpdhl-copy>
+                {/if} 
             </span>
-            <span class="chevron">
+            <span class="chevron" on:click={toggleOpen}>
                 <dpdhl-icon width=16 height=16 color="var(--color-dhlred)" icon="chevron_down" />
             </span>
-
         </div>
 
     </div>
@@ -105,7 +133,10 @@ import { makeEvent } from '../../x/util/dispatch';
                 <dpdhl-copy class="item-label">
                     {item.label}
                 </dpdhl-copy>
-                {#if item === selectedItem}
+                {#if multiplechoice && selectedItems.includes(item)}
+                    <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
+                {/if}
+                {#if !multiplechoice && item === selectedItem}
                     <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
                 {/if}
             </li>
@@ -138,7 +169,7 @@ import { makeEvent } from '../../x/util/dispatch';
         padding:       0;
         min-width:     10rem;
         position:      relative;
-
+        min-height:    3.0625rem;
     }
 
     .dropdown {
@@ -146,10 +177,11 @@ import { makeEvent } from '../../x/util/dispatch';
         flex-direction: row;
         padding:        0.5rem;
         cursor:         pointer;
+        padding-top:    1rem;
     }
 
     .placeholder{
-        flex-grow: 1;
+        flex-grow:  1;
     }
 
     .chevron{
@@ -203,10 +235,6 @@ import { makeEvent } from '../../x/util/dispatch';
         border-bottom-right-radius: 0;
     }
 
-    .open .dropdown{
-        margin-bottom: 0.5rem;
-    }
-
     li{
         padding:        0.5rem;
         cursor:         pointer;
@@ -226,4 +254,20 @@ import { makeEvent } from '../../x/util/dispatch';
         border-bottom: thin solid var(--color-gray20);
     }
 
+    input, input:focus {
+        border:         none;
+        outline:        none;
+        font-size:      var(--font-size);
+        line-height:    var(--font-size);
+        padding-top:    0.375em;
+    }
+
+    .chip {
+        margin-right:   0.375em;
+    }
+
+    .input-placeholder{
+   
+        color: var(--color-gray20);
+    }
 </style>

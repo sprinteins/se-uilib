@@ -3,7 +3,8 @@
     
     import '@sprinteins/dpdhl-uilib'
 
-    let selected = "";
+    let selectedItem = "";
+    let selectedItems = "";
 </script>
 
 
@@ -14,15 +15,29 @@
 </Template>
 
 
-<Story name="Primary" args={{}}>
-    <dpdhl-select placeholder="Select field" on:select={(event) =>  selected = event.detail}>
+<Story name="Select one" args={{}}>
+    <dpdhl-select 
+        placeholder="Select field" 
+        on:selectOne={(event) =>  selectedItem = event.detail}>
         <dpdhl-select-item label="Option A" value={"option-a"}/>
         <dpdhl-select-item label="Option B" value={"option-b"}/>
         <dpdhl-select-item label="Option C" value={"option-c"}/>
     </dpdhl-select>
-    <div>Selected : {selected}</div>
+    <div>Selected : {selectedItem}</div>
 </Story>
 
+<Story name="Select multiple mit Chips" args={{}}>
+    <dpdhl-select 
+        placeholder="Select field" 
+        multiplechoice={true}
+        on:selectMany={(event) =>  console.log("SELECT many: ", event.detail)}>
+        <dpdhl-select-item label="Option A" value={"option-a"}/>
+        <dpdhl-select-item label="Option B" value={"option-b"}/>
+        <dpdhl-select-item label="Option C" value={"option-c"}/>
+    </dpdhl-select>
+    <div>Selected : {selectedItems}</div>
+</Story>
 
 <style>
+
 </style>
