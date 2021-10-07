@@ -73,9 +73,6 @@
         align-items:    center;
         padding:        var(--padding-top-bottom) var(--padding-left-right);
         justify-content: space-between;
-        
-        /* width: 100vw; */
-        /* padding: 0; */
     }
 
     main.full-width{
@@ -97,16 +94,16 @@
     }
 
     .title {
-        font-size: 16px;
-        line-height: 20px;
+        font-size: var(--font-size);
+        line-height: var(--line-height);
         font-weight: 700;
         padding: 0;
         margin: 0;
     }
 
     .message {
-        font-size: 14px;
-        line-height: 20px;
+        font-size: var(--toast-message--font-size);
+        line-height: var(--line-height);
         font-weight: 400;
         padding: 0;
         margin: 0;
@@ -123,7 +120,7 @@
     }
 
     .custom-icon {
-        padding-right: 12px;
+        padding-right: 0.75em;
     }
 
     .icon {

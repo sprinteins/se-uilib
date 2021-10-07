@@ -17,6 +17,7 @@
         --padding-top-bottom: 18px;
         
         --font-size:            16px;
+        --line-height:          20px;
         --font-regular:         "DeliveryRegular";
         --font-italic:          "DeliveryItalic"; 
         --font-bold:            "DeliveryBold";
@@ -57,6 +58,8 @@
 
         font-family: var(--font-regular);
         font-size:   var(--fonr-size);
+
+        --toast-message--font-size: 14px;
     }
 
   
