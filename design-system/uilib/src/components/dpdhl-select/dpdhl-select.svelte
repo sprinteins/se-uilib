@@ -78,7 +78,7 @@
                 selectedItems = selectedItems.filter(m => m.value !== item.value);
             else 
                 selectedItems = [...selectedItems, item]
-            root.dispatchEvent(makeEvent('selectMany', item.value))
+            root.dispatchEvent(makeEvent('selectMany', selectedItems))
         } else {
             if (selectedItem === item) {
                 selectedItem = placholderItem;
@@ -188,7 +188,7 @@
         flex-grow:  0;
         display:    inline-block;
         text-align: center;
-        max-width:  1rem;
+        width: 1rem;
         overflow:   hidden;
         align-self: center;
 
@@ -254,16 +254,11 @@
         border-bottom: thin solid var(--color-gray20);
     }
 
-    input, input:focus {
-        border:         none;
-        outline:        none;
-        font-size:      var(--font-size);
-        line-height:    var(--font-size);
-        padding-top:    0.375em;
-    }
-
     .chip {
+        /* TODO: maring-bottom not working */
         margin-right:   0.375em;
+        margin-bottom:  0.375em;
+        bottom: 10px;
     }
 
     .input-placeholder{

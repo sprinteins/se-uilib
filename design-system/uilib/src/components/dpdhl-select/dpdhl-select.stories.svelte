@@ -4,7 +4,7 @@
     import '@sprinteins/dpdhl-uilib'
 
     let selectedItem = "";
-    let selectedItems = "";
+    let selectedItems = [];
 </script>
 
 
@@ -30,12 +30,18 @@
     <dpdhl-select 
         placeholder="Select field" 
         multiplechoice={true}
-        on:selectMany={(event) =>  console.log("SELECT many: ", event.detail)}>
+        on:selectMany={(event) => selectedItems = event.detail}>
         <dpdhl-select-item label="Option A" value={"option-a"}/>
         <dpdhl-select-item label="Option B" value={"option-b"}/>
         <dpdhl-select-item label="Option C" value={"option-c"}/>
+        <dpdhl-select-item label="Option D" value={"option-d"}/>
+        <dpdhl-select-item label="Option E" value={"option-e"}/>
+        <dpdhl-select-item label="Option F" value={"option-f"}/>
+        <dpdhl-select-item label="Option G" value={"option-g"}/>
+        <dpdhl-select-item label="Option H" value={"option-h"}/>
+        <dpdhl-select-item label="Option I" value={"option-i"}/>
     </dpdhl-select>
-    <div>Selected : {selectedItems}</div>
+    <div>Selected : {selectedItems.length && (selectedItems.map(item => item.label)).join(', ')}</div>
 </Story>
 
 <style>
