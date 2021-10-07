@@ -20,11 +20,12 @@
     let assignedElements: HTMLElement[] = []
 
     $: filterText = ''
-    $: filteredItems = !search ? items : items.filter(item => {
+    $: filteredItems = items.filter(item => {
         // replace multiple empty spaces in filterText with a single empty space
         const inputText = filterText.toString().toLowerCase().replace(/  +/g, ' ');
         return item.label.toLowerCase().replace(/  +/g, ' ').indexOf(inputText) !== -1
     });
+    $: itemList = search ? filteredItems : items;
 
     onMount(() => {
         registerItems();
@@ -110,13 +111,14 @@
 <svelte:options tag="dpdhl-search" />
 
 <div class="root" class:open bind:this={root}>
-
     <div class="select" >
         <div class="dropdown">
             <span class="placeholder">
                 {#if !multiplechoice}
-                    {#if selectedItem}
+                    {#if selectedItem && selectedItem.value}
                         <dpdhl-copy>{selectedItem.label}</dpdhl-copy>
+                    {:else}
+                        <dpdhl-copy class="input-placeholder">{inputplaceholder}</dpdhl-copy>
                     {/if}
                 {:else}
                     {#if !selectedItems.length && !search}
@@ -143,22 +145,19 @@
     </div>
 
     <ul>
-        <!-- {#if !search} -->
-            {#each filteredItems as item}
-                <li on:click={() => onItemClick(item)}>
-                    <dpdhl-copy class="item-label">
-                        {item.label}
-                    </dpdhl-copy>
-                    {#if multiplechoice && selectedItems.includes(item)}
-                        <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
-                    {/if}
-                    {#if !multiplechoice && item === selectedItem}
-                        <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
-                    {/if}
-                </li>
-                <!-- <dpdhl-dropdown-item {onItemClick} {item} {selectedItem} {multiplechoice} {selectedItems}/> -->
-            {/each}
-        <!-- {/if} -->
+        {#each itemList as item}
+            <li on:click={() => onItemClick(item)}>
+                <dpdhl-copy class="item-label">
+                    {item.label}
+                </dpdhl-copy>
+                {#if multiplechoice && selectedItems.includes(item)}
+                    <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
+                {/if}
+                {#if !multiplechoice && item === selectedItem}
+                    <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
+                {/if}
+            </li>
+        {/each}
     </ul>
 </div>
 
@@ -253,10 +252,6 @@
         border-bottom-right-radius: 0;
     }
 
-    .open .dropdown{
-        /* margin-bottom: 0.5rem; */
-    }
-
     li{
         padding:        0.5rem;
         cursor:         pointer;
@@ -277,15 +272,15 @@
     }
 
     input, input:focus {
-        border: none;
-        outline: none;
-        font-size: 16px;
-        line-height: 16px;
-        padding-top: 6px;
+        border:         none;
+        outline:        none;
+        font-size:      var(--font-size);
+        line-height:    var(--font-size);
+        padding-top:    0.375em;
     }
 
-    .chip{
-        margin-right: 6px;
+    .chip {
+        margin-right:   0.375em;
     }
 
     .input-placeholder{
