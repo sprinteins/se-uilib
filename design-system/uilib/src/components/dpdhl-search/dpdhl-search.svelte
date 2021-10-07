@@ -5,7 +5,7 @@
     import { KeyItemAdded } from './dpdhl-search-item.svelte'
     
     export let multiplechoice = true
-    export let inputplaceholder = "Search for an option"
+    export let inputplaceholder = "Search..."
 
     export let placeholder = ""
     $: placholderItem = {
@@ -193,6 +193,7 @@
         flex-direction: row;
         padding:        0.5rem;
         cursor:         pointer;
+        padding-top:    14px;
     }
 
     .placeholder{
