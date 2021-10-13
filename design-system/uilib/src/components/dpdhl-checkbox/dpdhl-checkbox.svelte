@@ -45,7 +45,7 @@
 		class:disabled={_disabled}
 		class:indeterminate={_indeterminate}/>
 	</span>
-	<span class="label">{_label}</span>
+	<slot name="label" />
 </label>
 
 
@@ -154,11 +154,6 @@
     color: var(--color-postyellow);
 		border: 1px solid var(--color-postyellow);
   }
-
-	.label {
-		margin-left: 0.85em;
-		margin-top: 0.36em;
-	}
 
   /* Animations */
   @keyframes checkbox-on {
