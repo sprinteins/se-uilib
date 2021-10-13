@@ -40,9 +40,9 @@
       indeterminate={_indeterminate}
       class:disabled={_disabled}
       class:indeterminate={_indeterminate}
-      class:error={_error} />
-    <span class="box">
-      <span class="check" />
+      />
+    <span class="box" >
+      <span class="check" class:error={_error}/>
     </span>
     {_label}
   </label>
@@ -96,12 +96,16 @@
     overflow: hidden;
     z-index: 1;
   }
+	.error {
+		border: 1px solid var(--color-dhlred);
+		background: var(--color-dhlred-light);
+  }
   .check:before {
     position: absolute;
     content: "";
     transform: rotate(45deg);
     display: block;
-	margin-top: -0.125em;
+		margin-top: -0.125em;
     margin-left: 0.5em;
     width: 0;
     height: 0;
@@ -141,6 +145,7 @@
   .coloured .box .check {
     color: var(--color-postyellow);
   }
+
   .coloured .box:before {
     background-color: var(--color-postyellow);
   }
