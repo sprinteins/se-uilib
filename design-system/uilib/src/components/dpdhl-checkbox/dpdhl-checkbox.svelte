@@ -23,30 +23,31 @@
   export let disabled = false;
   $: _disabled = disabled;
 
-  export let error = true;
+  export let error = false;
   $: _error = error;
 </script>
 
-<span>
-  <label class="checkbox coloured">
-    <input 
-	  	{value}
-      id={_name}
-      name={_name}
-      type="checkbox"
-      bind:checked={_checked}
-      on:click
-      disabled={_disabled}
-      indeterminate={_indeterminate}
-      class:disabled={_disabled}
-      class:indeterminate={_indeterminate}
-      />
-    <span class="box" >
-      <span class="check" class:error={_error}/>
-    </span>
-    {_label}
-  </label>
-</span>
+
+<label class="checkbox coloured">
+	<input 
+		{value}
+		id={_name}
+		name={_name}
+		type="checkbox"
+		bind:checked={_checked}
+		on:click
+		disabled={_disabled}
+		indeterminate={_indeterminate}/>
+	<span class="box" >
+		<span 
+		class="check" 
+		class:error={_error} 		
+		class:disabled={_disabled}
+		class:indeterminate={_indeterminate}/>
+	</span>
+	<span class="label">{_label}</span>
+</label>
+
 
 <style>
 
@@ -64,7 +65,7 @@
   }
 
   .checkbox {
-    display: inline-block;
+    display: flex;
     transform: translateZ(0);
   }
 
@@ -153,6 +154,11 @@
     color: var(--color-postyellow);
 		border: 1px solid var(--color-postyellow);
   }
+
+	.label {
+		margin-left: 0.85em;
+		margin-top: 0.36em;
+	}
 
   /* Animations */
   @keyframes checkbox-on {

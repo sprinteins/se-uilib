@@ -18,16 +18,24 @@
 
 </style>
 
-<Story name="Primary" args={{disabled: false, indeterminate: false, error: true, checked: false}} let:args>
+<Story 
+	name="Primary" 
+	args={{
+      disabled: false, 
+      indeterminate: false, 
+      error: false, 
+      checked: false,
+	  label: "Label"
+	}} 
+	let:args>
       <main>
             <dpdhl-checkbox 
-            label="Label"
+            label={args.label}
             name="my-checkbox" 
             disabled={args.disabled}
             checked={args.checked}
             indeterminate={args.indeterminate}
-            error={args.error}
-            />    
+            error={args.error}/>    
             <span>&nbsp;</span>
       </main>
 </Story>
