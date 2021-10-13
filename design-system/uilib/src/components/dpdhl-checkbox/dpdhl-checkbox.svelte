@@ -1,97 +1,222 @@
+<svelte:options tag={"dpdhl-checkbox"} />
+
 <script lang="ts">
+  /**
+   * A Checkbox Component
+   * @component
+   */
 
-    /**
-      * A Checkbox Component
-      * @component
-    */
+  export let value;
 
-    export let value 
+  export let label = "";
+  $: _label = label;
 
-    export let label = ""
-    $: _label = label
+  export let name = "";
+  $: _name = name;
 
-    export let name = ""
-    $: _name = name
+  export let checked = false;
+  $: _checked = checked;
 
-    export let checked = false
-    $: _checked = checked
+  export let indeterminate = false;
+  $: _indeterminate = indeterminate;
 
-    export let indeterminate = false
-    $: _indeterminate = indeterminate
+  export let disabled = false;
+  $: _disabled = disabled;
 
-    export let disabled = false
-    $: _disabled = disabled
-
-    export let error = false
-    $: _error = error
-    
+  export let error = false;
+  $: _error = error;
 </script>
-<svelte:options tag={'dpdhl-checkbox'}/>
-
 
 <span>
-    <label>
-        <input
-        value={value}
-        id={_name} 
-        name={_name}
-        type="checkbox"
-        bind:checked={_checked}
-        on:click 
-        disabled={_disabled}
-        indeterminate={_indeterminate}
+  <label>
+    <input
+      {value}
+      id={_name}
+      name={_name}
+      type="checkbox"
+      bind:checked={_checked}
+      on:click
+      disabled={_disabled}
+      indeterminate={_indeterminate}
+      class:disabled={_disabled}
+      class:indeterminate={_indeterminate}
+      class:error={_error}
+    />
+    {_label}
+  </label>
 
-        class:disabled      = {_disabled}
-        class:indeterminate = {_indeterminate}
-        class:error         = { _error }>
-        {_label}
-    </label>
+  <label class="checkbox coloured">
+    <input type="checkbox" />
+    <span class="box">
+      <span class="check" />
+    </span>
+    Checkbox 1
+  </label>
+  <label class="checkbox coloured">
+    <input type="checkbox" checked />
+    <span class="box">
+      <span class="check" />
+    </span>
+    Checkbox 2
+  </label>
 </span>
 
-
 <style>
-
-input[type=checkbox] {
+  .checkbox {
+    display: inline-block;
+    padding: 0.625em 1.25em;
+    transform: translateZ(0);
+  }
+  input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+    margin: 0;
+    z-index: -1;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    left: 0;
+    pointer-events: none;
+  }
+  .box {
+    vertical-align: middle;
     position: relative;
-    cursor: pointer;
-}
-input[type=checkbox]:before {
-    content: "";
-    display: block;
+    top: 0.1875em;
+  }
+  .box:before {
     position: absolute;
-    width: 16px;
-    height: 16px;
-    top: 0;
-    left: 0;
-    border: 1px solid var(--color-gray45);
-    border-radius: 3px;
-    background-color: white;
-}
-input[type=checkbox]:checked:before {
+    left: 0.5em;
+    top: 0.125em;
     content: "";
-    display: block;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 0.25em;
+    width: 0.25em;
+    border-radius: 100%;
+    z-index: 1;
+    opacity: 0;
+    margin: 0;
+  }
+  .check {
+    position: relative;
+    display: inline-block;
+    width: 1.25em;
+    height: 1.25em;
+    border: 2px solid;
+    border-radius: 3px;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .check:before {
     position: absolute;
-    width: 16px;
-    height: 16px;
-    top: 0;
-    left: 0;
-    border: 1px solid var(--color-postyellow);
-    border-radius: 3px;
-    background-color: var(--color-postyellow);
-}
-input[type=checkbox]:checked:after {
     content: "";
-    display: block;
-    width: 5px;
-    height: 10px;
-    border: solid black;
-    border-width: 0 1px 1px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-    position: absolute;
-    top: 2px;
-    left: 6px;
-}
+    display: block;
+	margin-top: -0.125em;
+    margin-left: 0.5em;
+    width: 0;
+    height: 0;
+    animation: checkbox-off var(--checkbox-ripple-length)  forwards ease-out;
+  }
+  input[type="checkbox"]:focus + .box .check:after {
+    opacity: 0.2;
+  }
+  input[type="checkbox"]:checked + .box .check:before {
+    box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px,
+      -5px 5px 0 10px, 20px -12px 0 11px;
+    animation: checkbox-on var(--checkbox-ripple-length) forwards ease-out;
+  }
+  input[type="checkbox"]:not(:checked) + .box:before,
+  input[type="checkbox"]:not(:checked) + .box .check:after {
+    animation: rippleOff var(--checkbox-animation-length) forwards ease-out;
+  }
+  input[type="checkbox"]:checked + .box:before,
+  input[type="checkbox"]:checked + .box .check:after {
+    animation: rippleOn var(--checkbox-animation-length) forwards ease-out;
+  }
 
+  input[type="checkbox"][disabled]:not(:checked) ~ .box .check:before {
+    opacity: 0.5;
+  }
+  input[type="checkbox"][disabled] + .box .check:after {
+    background-color: rgba(0, 0, 0, 0.84);
+    transform: rotate(-45deg);
+  }
+  .coloured .box .check {
+    color: var(--color-postyellow);
+  }
+  .coloured .box:before {
+    background-color: var(--color-postyellow);
+  }
+  .coloured input[type="checkbox"]:checked + .box .check {
+    color: var(--color-postyellow);
+  }
+  @keyframes checkbox-on {
+    0% {
+      box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px,
+        0px 32px 0 20px, -5px 5px 0 10px, 15px 2px 0 11px;
+    }
+    50% {
+      box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px,
+        0px 32px 0 20px, -5px 5px 0 10px, 20px 2px 0 11px;
+    }
+    100% {
+      box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px,
+        0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px;
+    }
+  }
+  @keyframes checkbox-off {
+    0% {
+      box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px,
+        0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px, 0 0 0 0 inset;
+    }
+    25% {
+      box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px,
+        0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px, 0 0 0 0 inset;
+    }
+    50% {
+      transform: rotate(45deg);
+      margin-top: -0.25em;
+      margin-left: 0.375em;
+      width: 0;
+      height: 0;
+      box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px,
+        0px 32px 0 20px, -5px 5px 0 10px, 15px 2px 0 11px, 0 0 0 0 inset;
+    }
+    51% {
+      transform: rotate(0deg);
+      margin-top: -0.125em;
+      margin-left: -0.125em;
+      width: 1.5em;
+      height: 1.5em;
+      box-shadow: 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0,
+        0px 0px 0 10px inset;
+    }
+    100% {
+      transform: rotate(0deg);
+      margin-top: -0.125em;
+      margin-left: -0.125em;
+      width: 1.5em;
+      height: 1.5em;
+      box-shadow: 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0,
+        0px 0px 0 0px inset;
+    }
+  }
+  @keyframes rippleOn {
+    0% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(13, 13);
+    }
+  }
+  @keyframes rippleOff {
+    0% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(13, 13);
+    }
+  }
 </style>

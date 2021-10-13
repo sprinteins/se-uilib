@@ -12,7 +12,6 @@
     :host {
         --unit:             16px;
         --border-radius:    4px;
-        
         --font-size:            16px;
         --font-regular:         "DeliveryRegular";
         --font-italic:          "DeliveryItalic"; 
@@ -54,6 +53,9 @@
 
         font-family: var(--font-regular);
         font-size:   var(--fonr-size);
+
+        --checkbox-animation-length:    700ms;
+        --checkbox-ripple-length:       0.3s;
     }
 
   
