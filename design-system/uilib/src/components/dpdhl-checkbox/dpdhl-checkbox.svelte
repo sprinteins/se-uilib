@@ -28,9 +28,9 @@
 </script>
 
 <span>
-  <label>
-    <input
-      {value}
+  <label class="checkbox coloured">
+    <input 
+	  	{value}
       id={_name}
       name={_name}
       type="checkbox"
@@ -40,33 +40,24 @@
       indeterminate={_indeterminate}
       class:disabled={_disabled}
       class:indeterminate={_indeterminate}
-      class:error={_error}
-    />
-    {_label}
-  </label>
-
-  <label class="checkbox coloured">
-    <input type="checkbox" />
+      class:error={_error} />
     <span class="box">
       <span class="check" />
     </span>
-    Checkbox 1
+    {_label}
   </label>
   <label class="checkbox coloured">
     <input type="checkbox" checked />
     <span class="box">
       <span class="check" />
     </span>
-    Checkbox 2
+    {_label}
   </label>
 </span>
 
 <style>
-  .checkbox {
-    display: inline-block;
-    padding: 0.625em 1.25em;
-    transform: translateZ(0);
-  }
+
+  /* Hide native checkbox */
   input[type="checkbox"] {
     opacity: 0;
     position: absolute;
@@ -78,6 +69,13 @@
     left: 0;
     pointer-events: none;
   }
+
+  .checkbox {
+    display: inline-block;
+    padding: 0.625em 1.25em;
+    transform: translateZ(0);
+  }
+
   .box {
     vertical-align: middle;
     position: relative;
@@ -101,7 +99,7 @@
     display: inline-block;
     width: 1.25em;
     height: 1.25em;
-    border: 2px solid;
+    border: 1px solid var(--color-gray50);
     border-radius: 3px;
     overflow: hidden;
     z-index: 1;
@@ -125,6 +123,8 @@
       -5px 5px 0 10px, 20px -12px 0 11px;
     animation: checkbox-on var(--checkbox-ripple-length) forwards ease-out;
   }
+
+  /* Ripple effect on click */
   input[type="checkbox"]:not(:checked) + .box:before,
   input[type="checkbox"]:not(:checked) + .box .check:after {
     animation: rippleOff var(--checkbox-animation-length) forwards ease-out;
@@ -134,6 +134,7 @@
     animation: rippleOn var(--checkbox-animation-length) forwards ease-out;
   }
 
+  /* Style for disabled inputs */
   input[type="checkbox"][disabled]:not(:checked) ~ .box .check:before {
     opacity: 0.5;
   }
@@ -141,6 +142,7 @@
     background-color: rgba(0, 0, 0, 0.84);
     transform: rotate(-45deg);
   }
+  /* Default style for input (not disabled/error) */
   .coloured .box .check {
     color: var(--color-postyellow);
   }
@@ -149,7 +151,10 @@
   }
   .coloured input[type="checkbox"]:checked + .box .check {
     color: var(--color-postyellow);
+	border: 1px solid var(--color-postyellow);
   }
+
+  /* Animations */
   @keyframes checkbox-on {
     0% {
       box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px,
