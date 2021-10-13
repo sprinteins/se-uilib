@@ -67,6 +67,8 @@
   .checkbox {
     display: flex;
     transform: translateZ(0);
+		z-index: 1500;
+		position: absolute;
   }
 
   .box {
@@ -77,7 +79,7 @@
   .box:before {
     position: absolute;
     left: 0.5em;
-    top: 0.125em;
+    top: 0.5em;
     content: "";
     background-color: rgba(0, 0, 0, 0.5);
     height: 0.25em;
@@ -110,7 +112,7 @@
     margin-left: 0.5em;
     width: 0;
     height: 0;
-    animation: checkbox-off var(--checkbox-ripple-length)  forwards ease-out;
+    animation: checkbox-off var(--checkbox-ripple-length) forwards ease-out;
   }
   input[type="checkbox"]:focus + .box .check:after {
     opacity: 0.2;
