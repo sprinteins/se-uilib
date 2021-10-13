@@ -10,18 +10,24 @@
 
 <style>
       main {
-   
+            display:               grid; 
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+            grid-template-rows:    1fr 1fr 1fr 1fr 1fr; 
+            gap: 1rem; 
       }
 
 </style>
 
-<Story name="Primary" args={{disabled: false, indeterminate: false, error: false}} let:args>
+<Story name="Primary" args={{disabled: false, indeterminate: false, error: true, checked: false}} let:args>
       <main>
-            <dpdhl-checkbox label="Label">    
+            <dpdhl-checkbox 
+            label="Label"
+            name="my-checkbox" 
+            disabled={args.disabled}
+            checked={args.checked}
+            indeterminate={args.indeterminate}
+            error={args.error}
+            />    
             <span>&nbsp;</span>
       </main>
 </Story>
-
-    <!-- disabled={args.disabled} 
-                  indeterminate={args.indeterminate} 
-                  error={args.error}  -->

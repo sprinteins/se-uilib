@@ -23,7 +23,7 @@
   export let disabled = false;
   $: _disabled = disabled;
 
-  export let error = false;
+  export let error = true;
   $: _error = error;
 </script>
 
@@ -41,13 +41,6 @@
       class:disabled={_disabled}
       class:indeterminate={_indeterminate}
       class:error={_error} />
-    <span class="box">
-      <span class="check" />
-    </span>
-    {_label}
-  </label>
-  <label class="checkbox coloured">
-    <input type="checkbox" checked />
     <span class="box">
       <span class="check" />
     </span>
@@ -72,7 +65,6 @@
 
   .checkbox {
     display: inline-block;
-    padding: 0.625em 1.25em;
     transform: translateZ(0);
   }
 
@@ -136,12 +128,15 @@
 
   /* Style for disabled inputs */
   input[type="checkbox"][disabled]:not(:checked) ~ .box .check:before {
-    opacity: 0.5;
+		background-color: var(--color-gray20);
+		cursor: not-allowed;
+		opacity: 0.7;
   }
   input[type="checkbox"][disabled] + .box .check:after {
     background-color: rgba(0, 0, 0, 0.84);
     transform: rotate(-45deg);
   }
+
   /* Default style for input (not disabled/error) */
   .coloured .box .check {
     color: var(--color-postyellow);
@@ -151,7 +146,7 @@
   }
   .coloured input[type="checkbox"]:checked + .box .check {
     color: var(--color-postyellow);
-	border: 1px solid var(--color-postyellow);
+		border: 1px solid var(--color-postyellow);
   }
 
   /* Animations */
