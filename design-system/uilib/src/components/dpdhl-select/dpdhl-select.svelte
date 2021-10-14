@@ -96,53 +96,55 @@
 </script>
 <svelte:options tag="dpdhl-select" />
 
-<div class="root" class:open bind:this={root}>
-    <div class="select" >
-        <div class="dropdown">
-            <span class="placeholder">
-                {#if !multiplechoice}
-                    {#if selectedItem && selectedItem.value}
-                        <dpdhl-copy>{selectedItem.label}</dpdhl-copy>
+<div class=container>
+    <div class="root" class:open bind:this={root}>
+        <div class="select" >
+            <div class="dropdown">
+                <span class="placeholder">
+                    {#if !multiplechoice}
+                        {#if selectedItem && selectedItem.value}
+                            <dpdhl-copy>{selectedItem.label}</dpdhl-copy>
+                        {:else}
+                            <dpdhl-copy class="input-placeholder">{inputplaceholder}</dpdhl-copy>
+                        {/if}
                     {:else}
-                        <dpdhl-copy class="input-placeholder">{inputplaceholder}</dpdhl-copy>
-                    {/if}
-                {:else}
-                    {#if !selectedItems.length}
-                        <dpdhl-copy class="input-placeholder">{inputplaceholder}</dpdhl-copy>
-                    {/if}
-                    <dpdhl-copy>
-                        {#each selectedItems as item}
-                            <span class="item">{item.label}</span>
-                        {/each}
-                    </dpdhl-copy>
-                {/if} 
-            </span>
-            <span class="chevron" on:click={toggleOpen}>
-                <dpdhl-icon width=16 height=16 color="var(--color-dhlred)" icon="chevron_down" />
-            </span>
+                        {#if !selectedItems.length}
+                            <dpdhl-copy class="input-placeholder">{inputplaceholder}</dpdhl-copy>
+                        {/if}
+                        <dpdhl-copy>
+                            {#each selectedItems as item}
+                                <span class="item">{item.label}</span>
+                            {/each}
+                        </dpdhl-copy>
+                    {/if} 
+                </span>
+                <span class="chevron" on:click={toggleOpen}>
+                    <dpdhl-icon width=16 height=16 color="var(--color-dhlred)" icon="chevron_down" />
+                </span>
+            </div>
+
         </div>
 
+        <ul>
+            {#each items as item}
+                <li on:click={() => onItemClick(item)}>
+                    <dpdhl-copy class="item-label">
+                        {item.label}
+                    </dpdhl-copy>
+                    {#if multiplechoice && selectedItems.includes(item)}
+                        <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
+                    {/if}
+                    {#if !multiplechoice && item === selectedItem}
+                        <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
+                    {/if}
+                </li>
+            {/each}
+        </ul>
     </div>
-
-    <ul>
-        {#each items as item}
-            <li on:click={() => onItemClick(item)}>
-                <dpdhl-copy class="item-label">
-                    {item.label}
-                </dpdhl-copy>
-                {#if multiplechoice && selectedItems.includes(item)}
-                    <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
-                {/if}
-                {#if !multiplechoice && item === selectedItem}
-                    <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
-                {/if}
-            </li>
-        {/each}
-    </ul>
 </div>
 
 
-<div bind:this={container} class="container">
+<div bind:this={container} class="main-container">
     <slot />
 </div>
 
@@ -196,7 +198,7 @@
         
     }
 
-    .container {
+    .main-container {
         display: none;
     }
     .item-label{
@@ -254,7 +256,13 @@
         content: ", ";
     }
 
-    .input-placeholder{
+    .input-placeholder {
         color: var(--color-gray20);
     }
+
+    .container {
+        width: var(--container__width, auto);
+        border: 1px solid green;
+    }
+
 </style>
