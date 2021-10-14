@@ -110,12 +110,11 @@
                     {:else}
                         {#if !selectedItems.length}
                             <dpdhl-copy class="input-placeholder">{inputplaceholder}</dpdhl-copy>
-                        {/if}
-                        <dpdhl-copy>
-                            {#each selectedItems as item}
-                                <span class="item">{item.label}</span>
-                            {/each}
-                        </dpdhl-copy>
+                        {:else}  
+                            <dpdhl-copy class="selected-items">
+                                {selectedItems.map(item => item.label).join(', ')}
+                            </dpdhl-copy>
+                        {/if}  
                     {/if} 
                 </span>
                 <span class="chevron" on:click={toggleOpen}>
@@ -156,6 +155,7 @@
     .root{
         position: relative;
         display:  inline-block;
+        flex-grow: 1;
     }
 
     .select{
@@ -163,7 +163,7 @@
         border-color:  var(--border-color);
         border-width:  1px;
         border-style:  solid;
-        display:       inline-block;
+        flex-grow:     1;
         box-sizing:    border-box;
         padding:       0;
         min-width:     10rem;
@@ -184,10 +184,10 @@
     }
 
     .chevron{
-        flex-grow:  0;
+        /* flex-grow:  0; */
         display:    inline-block;
         text-align: center;
-        width: 1rem;
+        width:      1rem;
         overflow:   hidden;
         align-self: center;
         transition: transform 0.1s;
@@ -252,17 +252,21 @@
         border-bottom: thin solid var(--color-gray20);
     }
 
-    .item + .item::before {
-        content: ", ";
-    }
-
     .input-placeholder {
         color: var(--color-gray20);
     }
 
     .container {
-        width: var(--container__width, auto);
-        border: 1px solid green;
+        width:      var(--container__width, auto);
+        display:    flex;
+    }
+
+    .selected-items {
+        display:        inline-block;
+        width:          calc(var(--container__width) - 32px);
+        white-space:    nowrap;
+        overflow:       hidden;
+        text-overflow:  ellipsis;
     }
 
 </style>

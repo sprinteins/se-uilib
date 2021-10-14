@@ -13,7 +13,7 @@
     component={null} 
     argTypes={{
         containerWidth: {
-            name: 'Width [px]',
+            name: 'Container Width [px]',
             control: { 
                 type: 'range', 
                 min: 100,
