@@ -130,11 +130,9 @@
                     <dpdhl-copy class="item-label">
                         {item.label}
                     </dpdhl-copy>
-                    {#if multiplechoice && selectedItems.includes(item)}
-                        <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
-                    {/if}
-                    {#if !multiplechoice && item === selectedItem}
-                        <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
+                    {#if (multiplechoice && selectedItems.includes(item)) || 
+                        (!multiplechoice && item === selectedItem)}
+                        <!-- <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" /> -->
                     {/if}
                 </li>
             {/each}
@@ -175,6 +173,7 @@
         display:        flex;
         flex-direction: row;
         padding:        0.5rem;
+        line-height:    1rem;
         cursor:         pointer;
         padding-top:    1rem;
     }
@@ -259,14 +258,16 @@
     .container {
         width:      var(--container__width, auto);
         display:    flex;
+        border: 2px solid hotpink;
     }
 
     .selected-items {
         display:        inline-block;
-        width:          calc(var(--container__width) - 32px);
+        width:          calc(var(--container__width) - 34px);
         white-space:    nowrap;
         overflow:       hidden;
         text-overflow:  ellipsis;
+        line-height:    1rem;
     }
 
 </style>
