@@ -58,8 +58,6 @@
 
         font-family: var(--font-regular);
         font-size:   var(--fonr-size);
-
-        --toast-message--font-size: 14px;
     }
 
   
