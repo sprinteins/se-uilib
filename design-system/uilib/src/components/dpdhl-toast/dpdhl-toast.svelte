@@ -1,129 +1,141 @@
-<script lang="ts">
-    /**
-     * A Toast Component
-     * @component
-     */
-
-    /**
-     * Type of the toast: Error, Notification
-     */
-    import { Type } from './type'
-
-	export let open = true;
-    $: _open = open;
-
-    export let message;
-    $: _message = message;
-
-    export let type: string = Type.Error;
-    export let fullWidth: boolean = true;
-
-    export let title;
-    $: _title = title || "No title provided";
-
-    $: hasCustomIcon = Boolean($$slots["custom-icon"]) 
-
-    let toast: HTMLElement
-	function closeToast() {
-        toast.dispatchEvent(new Event('closeToast', {
-            bubbles: true,
-            composed: true,
-        }))
-	}
-
-
-</script>
 <svelte:options tag="dpdhl-toast" />
 
-{#if _open}
-    <main
-        class:notification = { type === Type.Notification }
-        class:error = { type === Type.Error }
-        class:full-width = {fullWidth}
-        bind:this={toast}
-        >
-        <div class="content-container">
-            <!-- TODO: hasCustomIcon is always false, why? -->
-            {#if hasCustomIcon} 
-                <div class="custom-icon">
-                    <slot class="hello" name="custom-icon"></slot>
-                </div>
-            {/if}
-            <div class="text-container">
-                <div class="title">
-                    {_title}
-                </div>
-                {#if _message}
-                    <div class="message">
-                        {_message}
-                    </div>
-                {/if}
-            </div> 
-        </div>
+<script lang="ts">
+  /**
+   * A Toast Component
+   * @component
+   */
 
-        <dpdhl-icon on:click={closeToast} width={16} height={16} color='#FFF' icon="cancel" class="icon" />
-    </main>
+  /**
+   * Type of the toast: Error, Notification
+   */
+  import { Type } from "./type";
+
+  export let open = true;
+  $: _open = open;
+
+  export let message;
+  $: _message = message;
+
+  export let type: string = Type.error;
+  export let fullWidth: boolean = true;
+
+  export let title;
+  $: _title = title || "No title provided";
+
+  let toast: HTMLElement;
+  function closeToast() {
+    toast.dispatchEvent(
+      new Event("closeToast", {
+        bubbles: true,
+        composed: true,
+      })
+    );
+  }
+</script>
+
+{#if _open}
+  <main
+    class:notification={type === Type.notification}
+    class:error={type === Type.error}
+    class:full-width={fullWidth}
+    bind:this={toast}
+  >
+    <div class="content-container">
+      <slot class="custom-icon" name="icon" />
+      <div class="text-container">
+        <div class="title">
+          {_title}
+        </div>
+        {#if _message}
+          <div class="message">
+            {_message}
+          </div>
+        {/if}
+      </div>
+    </div>
+    <dpdhl-icon
+      on:click={closeToast}
+      width={16}
+      height={16}
+      color="#FFF"
+      icon="cancel"
+      class="close-icon"
+    />
+  </main>
 {/if}
 
-
 <style>
-    main{
-        display:        flex;
-        flex-direction: row;
-        align-items:    center;
-        padding:        var(--padding-top-bottom) var(--padding-left-right);
-        justify-content: space-between;
-    }
+  main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding-top-bottom) var(--padding-left-right);
+    padding-top: var(--toast__padding-top, 1.125rem);
+    padding-bottom: var(--toast__padding-bottom, 1.125rem);
+    padding-left: var(--toast__padding-left, 1.125rem);
+    padding-right: var(--toast__padding-right, 1.125rem);
+  }
 
-    main.full-width{
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        flex-grow: 1;
-    }
+  main.full-width {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    flex-grow: 1;
+  }
 
-    main.notification {
-        color:         white;
-        background-color: var(--color-green-dark);
-    }
+  main.notification {
+    color: var(--toast__color, var(--color-white));
+    background-color: var(--color-green-dark);
+  }
 
-    main.error {
-        color:         white;
-        background-color: var(--color-dhlred);
-    }
+  main.error {
+    color: var(--toast__color, var(--color-white));
+    background-color: var(--color-dhlred);
+  }
 
-    .title {
-        font-size: var(--font-size);
-        line-height: var(--line-height);
-        font-weight: 700;
-        padding: 0;
-        margin: 0;
-    }
+  .title {
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    font-weight: 700;
+    padding: 0;
+    margin: 0;
+  }
 
-    .message {
-        font-size: var(--toast-message--font-size);
-        line-height: var(--line-height);
-        font-weight: 400;
-        padding: 0;
-        margin: 0;
-    }
+  .message {
+    font-size: calc(var(--font-size) * 0.875);
+    line-height: var(--line-height);
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+  }
 
-    div.text-container{
-        display: flex;
-        flex-direction: column;
-    }
+  div.text-container {
+    display: flex;
+    flex-direction: column;
+  }
 
-    div.content-container {
-        display: flex;
-        vertical-align: middle;
-    }
+  div.content-container {
+    display: flex;
+    vertical-align: middle;
+  }
 
-    .custom-icon {
-        padding-right: 0.75em;
-    }
+  .custom-icon:not(:empty) {
+    padding-top: var(--icon__padding-top, 0);
+    padding-bottom: var(--icon__padding-bottom, 0);
+    padding-left: var(--icon__padding-left, 0);
+    padding-right: var(--icon__padding-right, 0);
+    border: 2px solid green;
+  }
 
-    .icon {
-        cursor: pointer;
-    }
+  .close-icon {
+    cursor: pointer;
+  }
+
+  .custom-icon + .text-container {
+    padding-left: 0.75rem;
+    /* border: 2px solid green; */
+  }
 </style>
