@@ -112,10 +112,7 @@
                     {/if}
                     <dpdhl-copy>
                         {#each selectedItems as item}
-                            <dpdhl-chip class="chip" active>
-                                {item.label} 
-                                <dpdhl-icon class="close-icon" icon="cancel" height=16 width=16 on:click={() => onItemClick(item)}/>
-                            </dpdhl-chip>
+                            <span class="item">{item.label}</span>
                         {/each}
                     </dpdhl-copy>
                 {/if} 
@@ -191,7 +188,6 @@
         width: 1rem;
         overflow:   hidden;
         align-self: center;
-
         transition: transform 0.1s;
     }
 
@@ -254,15 +250,11 @@
         border-bottom: thin solid var(--color-gray20);
     }
 
-    .chip {
-        /* TODO: maring-bottom not working */
-        margin-right:   0.375em;
-        margin-bottom:  0.375em;
-        bottom: 10px;
+    .item + .item::before {
+        content: ", ";
     }
 
     .input-placeholder{
-   
         color: var(--color-gray20);
     }
 </style>
