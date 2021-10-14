@@ -1,4 +1,4 @@
 export enum Type {
-    Notification = 'notification',
-    Error       = 'error',
+    notification = 'notification',
+    error       = 'error',
 }
