@@ -10,9 +10,6 @@
 
   export let value;
 
-  export let label = "";
-  $: _label = label;
-
   export let name = "";
   $: _name = name;
 
@@ -93,18 +90,17 @@
   input[type="checkbox"]:checked:after {
     content: "";
     display: block;
-    width: 7px;
-    height: 10px;
+    width: 0.4375rem;
+    height: 0.625rem;
     border: solid black;
     border-width: 0 1px 1px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
     position: absolute;
-    top: 5px;
-    left: 9px;
+    top: 0.3125rem;
+    left: 0.5625rem;
   }
-
 	input[type="checkbox"].disabled:not(:checked)::before {
 		background-color: var(--color-gray10);
 		cursor: not-allowed;
@@ -116,7 +112,6 @@
 		color: grey;
 		border: 1px solid var(--color-gray10);
   }
-
 	input[type="checkbox"].disabled:checked:after {
 		cursor: not-allowed;
   }
