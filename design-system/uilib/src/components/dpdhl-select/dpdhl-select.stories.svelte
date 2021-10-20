@@ -28,14 +28,16 @@
 <Template let:args>
 </Template>
 
-<Story name="Select one" args={{}}>
-    <dpdhl-select 
-        placeholder="Select field" 
-        on:selectOne={(event) =>  selectedItem = event.detail}>
-        <dpdhl-select-item label="Option A" value={"option-a"}/>
-        <dpdhl-select-item label="Option B" value={"option-b"}/>
-        <dpdhl-select-item label="Option C" value={"option-c"}/>
-    </dpdhl-select>
+<Story let:args name="Select one" args={{containerWidth: 200}}>
+    <div style="--container__width: {args.containerWidth}px;}">
+        <dpdhl-select 
+            placeholder="Select field" 
+            on:selectOne={(event) =>  selectedItem = event.detail}>
+            <dpdhl-select-item label="Option A" value={"option-a"}/>
+            <dpdhl-select-item label="Option B" value={"option-b"}/>
+            <dpdhl-select-item label="Option C" value={"option-c"}/>
+        </dpdhl-select>
+    </div>
     <div>Selected : {selectedItem}</div>
 </Story>
 

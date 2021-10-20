@@ -132,7 +132,7 @@
                     </dpdhl-copy>
                     {#if (multiplechoice && selectedItems.includes(item)) || 
                         (!multiplechoice && item === selectedItem)}
-                        <!-- <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" /> -->
+                        <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
                     {/if}
                 </li>
             {/each}
@@ -172,10 +172,9 @@
     .dropdown {
         display:        flex;
         flex-direction: row;
-        padding:        0.5rem;
-        line-height:    1rem;
+        padding:        1rem 0.5rem 0.5rem;
+        line-height:    1.3rem;
         cursor:         pointer;
-        padding-top:    1rem;
     }
 
     .placeholder{
@@ -258,7 +257,6 @@
     .container {
         width:      var(--container__width, auto);
         display:    flex;
-        border: 2px solid hotpink;
     }
 
     .selected-items {
@@ -267,7 +265,7 @@
         white-space:    nowrap;
         overflow:       hidden;
         text-overflow:  ellipsis;
-        line-height:    1rem;
+        line-height:    1.3rem;
     }
 
 </style>
