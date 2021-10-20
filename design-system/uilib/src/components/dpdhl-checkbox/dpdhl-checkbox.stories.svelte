@@ -3,6 +3,7 @@
   import "@sprinteins/dpdhl-uilib";
 
 	$: checked = false;
+	$: indeterminate = false;
 
 	function handleCheck() {
 		checked = !checked
@@ -18,8 +19,9 @@
   name="Primary"
   args={{
     disabled: false,
-    indeterminate: true,
+    indeterminate: indeterminate,
     error: false,
+		checked: checked,
   }}
   let:args
 >
@@ -28,7 +30,7 @@
 		 	on:check={handleCheck}
       name="checkbox-example"
       disabled={args.disabled}
-      checked={checked}
+      checked={args.checked}
       indeterminate={args.indeterminate}
       error={args.error}
     >

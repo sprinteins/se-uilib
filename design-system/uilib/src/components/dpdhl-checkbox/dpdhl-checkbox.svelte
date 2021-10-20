@@ -133,4 +133,24 @@
     top: 0.8rem;
     left: 0.5625rem;
   }
+
+  /* error */
+  input.error:before {
+    border: 1px solid var(--color-dhlred);
+    background-color: var(--color-dhlred-light);
+  }
+  input[type="checkbox"].error:checked:after {
+    content: "";
+    display: block;
+    width: 0.4375rem;
+    height: 0.6rem;
+    border: solid var(--color-dhlred);
+    border-width: 0 1px 1px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 0.3125rem;
+    left: 0.5625rem;
+  }
 </style>
