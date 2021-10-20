@@ -18,7 +18,7 @@
   name="Primary"
   args={{
     disabled: false,
-    indeterminate: false,
+    indeterminate: true,
     error: false
   }}
   let:args

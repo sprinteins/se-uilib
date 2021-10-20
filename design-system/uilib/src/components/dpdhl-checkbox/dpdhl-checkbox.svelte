@@ -51,19 +51,21 @@
     type="checkbox"
     bind:checked={_checked}
     on:click={handleClick}
-    indeterminate={_indeterminate}
+    bind:indeterminate={_indeterminate}
     class:disabled={_disabled}
     class:indeterminate={_indeterminate}
     class:error={_error}
   />
+  <p>Indeterminate: {_indeterminate}</p>
 </span>
 
 <style>
-  input[type="checkbox"] {
+  input {
     position: relative;
     cursor: pointer;
   }
-  input[type="checkbox"]:before {
+  /* box */
+  input:before {
     content: "";
     display: block;
     position: absolute;
@@ -75,7 +77,8 @@
     border-radius: 3px;
     background-color: white;
   }
-  input[type="checkbox"]:checked:before {
+  /* box checked */
+  input:checked:before {
     content: "";
     display: block;
     position: absolute;
@@ -87,7 +90,8 @@
     border-radius: 3px;
     background-color: var(--color-postyellow);
   }
-  input[type="checkbox"]:checked:after {
+  /* check */
+  input:checked:after {
     content: "";
     display: block;
     width: 0.4375rem;
@@ -101,19 +105,50 @@
     top: 0.3125rem;
     left: 0.5625rem;
   }
-	input[type="checkbox"].disabled:not(:checked)::before {
+
+  /* box disabled */
+	input.disabled:not(:checked)::before {
 		background-color: var(--color-gray10);
 		cursor: not-allowed;
+    border: 1px solid var(--color-gray10);
 		color: grey;
   }
-	input[type="checkbox"].disabled:checked::before {
+  /* box checked disabled */
+	input.disabled:checked::before {
 		background-color: var(--color-gray10);
 		cursor: not-allowed;
 		color: grey;
 		border: 1px solid var(--color-gray10);
   }
-	input[type="checkbox"].disabled:checked:after {
+  /* check disabled */
+	input.disabled:checked:after {
 		cursor: not-allowed;
+  }
+
+  input.indeterminate:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    top: 0;
+    left: 0;
+    border: 1px solid var(--color-postyellow);
+    border-radius: 3px;
+    background-color: var(--color-postyellow);
+  }
+
+  /* indeterminate  */
+  input[type="checkbox"].indeterminate:after {
+    content: "";
+    display: block;
+    width: 0.5rem;
+    height: 0.2rem;
+    border: solid var(--color-white);
+    border-width: 1px 0 0 0;
+    position: absolute;
+    top: 0.8rem;
+    left: 0.5625rem;
   }
 
 </style>
