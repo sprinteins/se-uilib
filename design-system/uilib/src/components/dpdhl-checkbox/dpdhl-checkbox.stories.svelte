@@ -19,9 +19,7 @@
   args={{
     disabled: false,
     indeterminate: false,
-    error: false,
-    withLabel: true,
-    label: "Label",
+    error: false
   }}
   let:args
 >
@@ -34,21 +32,13 @@
       indeterminate={args.indeterminate}
       error={args.error}
     >
-      {#if args.withLabel}
-        <span slot="label" class="label">{args.label}</span>
-      {/if}
     </dpdhl-checkbox>
-		<div class="checked">Checked: {checked}</div>
+		<div class="caption">Checked: {checked}</div>
   </main>
 </Story>
 
 <style>
-  .label {
-    margin-left: 1rem;
-    padding-top: 1rem;
-		line-height: 1rem;
-  }
-	.checked {
+	.caption {
 		margin-top: 1rem;
 	}
 </style>

@@ -47,21 +47,18 @@
 </script>
 
 <span>
-  <label>
-    <input
-      {value}
-      id={_name}
-      name={_name}
-      type="checkbox"
-      bind:checked={_checked}
-      on:click={handleClick}
-      indeterminate={_indeterminate}
-      class:disabled={_disabled}
-      class:indeterminate={_indeterminate}
-      class:error={_error}
-    />
-    <slot name="label"/>
-  </label>
+  <input
+    {value}
+    id={_name}
+    name={_name}
+    type="checkbox"
+    bind:checked={_checked}
+    on:click={handleClick}
+    indeterminate={_indeterminate}
+    class:disabled={_disabled}
+    class:indeterminate={_indeterminate}
+    class:error={_error}
+  />
 </span>
 
 <style>
