@@ -2,7 +2,12 @@
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import "@sprinteins/dpdhl-uilib";
 
-	$: checked = false;
+	let checked = false;
+
+	function handleCheck() {
+		checked = !checked
+	}
+
 </script>
 
 <Meta title="11_Components/Checkbox" component={null} />
@@ -14,6 +19,7 @@
   args={{
     disabled: false,
     indeterminate: false,
+		checked: false,
     error: false,
     withLabel: true,
     label: "Label",
@@ -22,6 +28,7 @@
 >
   <main>
     <dpdhl-checkbox
+		 	on:click={handleCheck}
       name="my-checkbox"
       disabled={args.disabled}
       checked={checked}
