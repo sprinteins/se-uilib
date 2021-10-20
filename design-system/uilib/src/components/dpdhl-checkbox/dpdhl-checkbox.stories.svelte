@@ -19,7 +19,7 @@
   args={{
     disabled: false,
     indeterminate: true,
-    error: false
+    error: false,
   }}
   let:args
 >
@@ -34,6 +34,7 @@
     >
     </dpdhl-checkbox>
 		<div class="caption">Checked: {checked}</div>
+		<div class="caption">Indeterminate: {args.indeterminate}</div>
   </main>
 </Story>
 

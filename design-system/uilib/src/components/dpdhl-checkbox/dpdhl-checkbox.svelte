@@ -56,7 +56,6 @@
     class:indeterminate={_indeterminate}
     class:error={_error}
   />
-  <p>Indeterminate: {_indeterminate}</p>
 </span>
 
 <style>
@@ -79,15 +78,7 @@
   }
   /* box checked */
   input:checked:before {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 1.5rem;
-    height: 1.5rem;
-    top: 0;
-    left: 0;
     border: 1px solid var(--color-postyellow);
-    border-radius: 3px;
     background-color: var(--color-postyellow);
   }
   /* check */
@@ -126,15 +117,7 @@
   }
 
   input.indeterminate:before {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 1.5rem;
-    height: 1.5rem;
-    top: 0;
-    left: 0;
     border: 1px solid var(--color-postyellow);
-    border-radius: 3px;
     background-color: var(--color-postyellow);
   }
 
@@ -150,5 +133,4 @@
     top: 0.8rem;
     left: 0.5625rem;
   }
-
 </style>
