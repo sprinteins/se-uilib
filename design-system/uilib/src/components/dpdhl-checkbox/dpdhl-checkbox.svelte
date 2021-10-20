@@ -36,7 +36,6 @@
       type="checkbox"
       bind:checked={_checked}
       on:click
-      disabled={_disabled}
       indeterminate={_indeterminate}
       class:disabled={_disabled}
       class:indeterminate={_indeterminate}
@@ -55,8 +54,8 @@
     content: "";
     display: block;
     position: absolute;
-    width: 1rem;
-    height: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
     top: 0;
     left: 0;
     border: 1px solid var(--color-gray45);
@@ -67,8 +66,8 @@
     content: "";
     display: block;
     position: absolute;
-    width: 1rem;
-    height: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
     top: 0;
     left: 0;
     border: 1px solid var(--color-postyellow);
@@ -78,7 +77,7 @@
   input[type="checkbox"]:checked:after {
     content: "";
     display: block;
-    width: 5px;
+    width: 7px;
     height: 10px;
     border: solid black;
     border-width: 0 1px 1px 0;
@@ -86,7 +85,24 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
     position: absolute;
-    top: 2px;
-    left: 6px;
+    top: 5px;
+    left: 9px;
   }
+
+	input[type="checkbox"].disabled:not(:checked)::before {
+		background-color: var(--color-gray10);
+		cursor: not-allowed;
+		color: grey;
+  }
+	input[type="checkbox"].disabled:checked::before {
+		background-color: var(--color-gray10);
+		cursor: not-allowed;
+		color: grey;
+		border: 1px solid var(--color-gray10);
+  }
+
+	input[type="checkbox"].disabled:checked:after {
+		cursor: not-allowed;
+  }
+
 </style>
