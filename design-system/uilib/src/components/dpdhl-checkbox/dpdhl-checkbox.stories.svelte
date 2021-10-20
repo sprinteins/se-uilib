@@ -19,7 +19,8 @@
   args={{
     disabled: false,
     indeterminate: false,
-    error: false
+    error: false,
+		checked: checked
   }}
   let:args
 >
@@ -28,12 +29,12 @@
 		 	on:check={handleCheck}
       name="checkbox-example"
       disabled={args.disabled}
-      checked={checked}
+      checked={args.checked}
       indeterminate={args.indeterminate}
       error={args.error}
     >
     </dpdhl-checkbox>
-		<div class="caption">Checked: {checked}</div>
+		<div class="caption">Checked: {args.checked}</div>
   </main>
 </Story>
 
