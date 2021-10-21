@@ -25,6 +25,7 @@
     message="And here we go with a more detailed message."
     {...args}
   >
+  {#if args.showIcon}
     <dpdhl-icon
       slot="icon"
       width={20}
@@ -32,6 +33,7 @@
       color="#FFF"
       icon="exception"
     />
+    {/if}
   </dpdhl-toast>
 	<button on:click={() => handleOpen()}>Show toast</button>
 </Template>
@@ -53,6 +55,7 @@
     type: Type.error,
     title: "Toast Title",
     message: "And here we go with a more detailed message.",
+    showIcon: false,
   }}
 />
 

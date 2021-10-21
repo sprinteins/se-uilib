@@ -35,33 +35,39 @@
 </script>
 
 {#if _open}
-  <main
-    class:notification={type === Type.notification}
-    class:error={type === Type.error}
-    class:full-width={fullWidth}
-    bind:this={toast}
-  >
-    <div class="content-container">
-      <slot class="custom-icon" name="icon" />
-      <div class="text-container">
-        <div class="title">
-          {_title}
+    <main
+        class:notification={type === Type.notification}
+        class:error={type === Type.error}
+        class:full-width={fullWidth}
+        bind:this={toast}
+    >
+        <div class="content-container">
+
+            <!-- <span class="custom-icon" >
+            </span> -->
+            <slot name="icon" />
+
+            <div class="text-container">
+                <div class="title">
+                    {_title}
+                </div>
+                {#if _message}
+                    <div class="message">
+                        {_message}
+                    </div>
+                {/if}
+            </div>
+
         </div>
-        {#if _message}
-          <div class="message">
-            {_message}
-          </div>
-        {/if}
-      </div>
-    </div>
-    <dpdhl-icon
-      on:click={closeToast}
-      width={16}
-      height={16}
-      color="#FFF"
-      icon="cancel"
-      class="close-icon"
-    />
+        
+        <dpdhl-icon
+            on:click={closeToast}
+            width={16}
+            height={16}
+            color="#FFF"
+            icon="cancel"
+            class="close-icon"
+        />
   </main>
 {/if}
 
@@ -118,24 +124,14 @@
   }
 
   div.content-container {
-    display: flex;
-    vertical-align: middle;
-  }
-
-  .custom-icon:not(:empty) {
-    padding-top: var(--icon__padding-top, 0);
-    padding-bottom: var(--icon__padding-bottom, 0);
-    padding-left: var(--icon__padding-left, 0);
-    padding-right: var(--icon__padding-right, 0);
-    border: 2px solid green;
+    display:               grid;
+    grid-template-columns: auto-fit 1fr;
+    vertical-align:        middle;
+    gap:                   0.75rem;
   }
 
   .close-icon {
     cursor: pointer;
   }
 
-  .custom-icon + .text-container {
-    padding-left: 0.75rem;
-    /* border: 2px solid green; */
-  }
 </style>
