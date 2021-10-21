@@ -109,7 +109,7 @@
                     {#if selectedItem && selectedItem.value}
                         <dpdhl-copy>{selectedItem.label}</dpdhl-copy>
                     {:else}
-                        <dpdhl-copy class="input-placeholder">{inputplaceholder}</dpdhl-copy>
+                        <input {id} placeholder={inputplaceholder} bind:value={filterText}/>
                     {/if}
                 {:else}
                     <dpdhl-copy>
@@ -122,7 +122,10 @@
                     </dpdhl-copy>
                 {/if} 
             </span>
-            <input {id} placeholder={inputplaceholder} bind:value={filterText}/>
+            {#if multiplechoice && !selectedItems.length}
+                <input {id} placeholder={inputplaceholder} bind:value={filterText}/>
+            {/if}
+            
             <span class="chevron" on:click={toggleOpen}>
                 <dpdhl-icon width=16 height=16 color="var(--color-dhlred)" icon="chevron_down" />
             </span>
