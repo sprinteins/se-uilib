@@ -87,7 +87,7 @@
     display: block;
     width: 0.4375rem;
     height: 0.625rem;
-    border: solid black;
+    border: solid var(--color-gray60);
     border-width: 0 1px 1px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -98,14 +98,14 @@
   }
 
   /* box disabled */
-	input.disabled:not(:checked)::before {
+	input.disabled:not(:checked):before {
 		background-color: var(--color-gray10);
 		cursor: not-allowed;
     border: 1px solid var(--color-gray10);
 		color: grey;
   }
   /* box checked disabled */
-	input.disabled:checked::before {
+	input.disabled:checked:before {
 		background-color: var(--color-gray10);
 		cursor: not-allowed;
 		color: grey;
@@ -114,6 +114,18 @@
   /* check disabled */
 	input.disabled:checked:after {
 		cursor: not-allowed;
+    content: "";
+    display: block;
+    width: 0.4375rem;
+    height: 0.625rem;
+    border: solid var(--color-gray60);
+    border-width: 0 1px 1px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 0.3125rem;
+    left: 0.5625rem;
   }
 
   input.indeterminate:before {
@@ -122,7 +134,7 @@
   }
 
   /* indeterminate  */
-  input[type="checkbox"].indeterminate:after {
+  input.indeterminate:after {
     content: "";
     display: block;
     width: 0.5rem;
@@ -134,12 +146,25 @@
     left: 0.5625rem;
   }
 
+  /* indeterminate  */
+  input.indeterminate.error:after {
+    content: "";
+    display: block;
+    width: 0.5rem;
+    height: 0.2rem;
+    border: solid var(--color-dhlred);
+    border-width: 1px 0 0 0;
+    position: absolute;
+    top: 0.8rem;
+    left: 0.5625rem;
+  }
+
   /* error */
   input.error:before {
     border: 1px solid var(--color-dhlred);
     background-color: var(--color-dhlred-light);
   }
-  input[type="checkbox"].error:checked:after {
+  input.error:checked:after {
     content: "";
     display: block;
     width: 0.4375rem;
