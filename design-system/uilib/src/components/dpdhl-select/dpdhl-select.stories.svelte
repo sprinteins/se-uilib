@@ -17,7 +17,7 @@
 <Story name="Primary" args={{}}>
     <dpdhl-select placeholder="Select field" on:select={(event) =>  selected = event.detail}>
         <dpdhl-select-item label="Option A" value={"option-a"}/>
-        <dpdhl-select-item label="Option B" value={"option-b"}/>
+        <dpdhl-select-item label="Option B is a very long option indeed" value={"option-b"}/>
         <dpdhl-select-item label="Option C" value={"option-c"}/>
     </dpdhl-select>
     <div>Selected : {selected}</div>

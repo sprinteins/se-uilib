@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte'
-import { makeEvent } from '../../x/util/dispatch';
+    import { makeEvent } from '../../x/util/dispatch';
     import "../dpdhl-icon"
     import { KeyItemAdded } from './dpdhl-select-item.svelte'
     
@@ -15,16 +15,17 @@ import { makeEvent } from '../../x/util/dispatch';
         value: unknown
     }
 
-    let container: HTMLElement
+    // let container: HTMLElement
     let items: Item[] = []
     let assignedElements: HTMLElement[] = []
 
-    onMount(() => {
-        registerItems();
-        container.addEventListener(KeyItemAdded, registerItems)
-    })    
+    function initItemRegistration(node: HTMLDivElement){
+        registerItems(node);
+        node.addEventListener(KeyItemAdded, () => registerItems(node))
+    }
 
-    function registerItems(){
+    function registerItems(container: HTMLDivElement){
+        
         const slot = container.childNodes[0] as HTMLSlotElement
 
         assignedElements = slot.assignedElements() as HTMLElement[]
@@ -36,7 +37,6 @@ import { makeEvent } from '../../x/util/dispatch';
             }
             el.setAttribute('registered','');
             
-
             // Label
             const label = el.getAttribute('label')
             const value = el.getAttribute('value')
@@ -46,14 +46,7 @@ import { makeEvent } from '../../x/util/dispatch';
                     value
                 }
             }
-            
-            // event
-            // el.addEventListener(KeyLabelChange, onLabelChange.bind(undefined, ei))
-        
-            // activate tab
-            // if(el.hasAttribute(keyActivate)){ 
-            //     activateTab(ei)
-            // }
+
         });
     }
 
@@ -69,16 +62,12 @@ import { makeEvent } from '../../x/util/dispatch';
 
     let root: HTMLDivElement;
     function onItemClick(item: Item){
-        console.debug('[DEBUG] ', {fn:"onItemClick", item} )
         selectedItem = item;
         open = false
         root.dispatchEvent(makeEvent('select', item.value))
 
     }
 
-
-    $: console.debug('[DEBUG] ', {selectedItem} )
-    $: console.debug('[DEBUG] ', {placholderItem} )
 
 </script>
 <svelte:options tag="dpdhl-select" />
@@ -108,7 +97,7 @@ import { makeEvent } from '../../x/util/dispatch';
                     {item.label}
                 </dpdhl-copy>
                 {#if item === selectedItem}
-                    <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
+                    <dpdhl-icon icon="checkmark" width=16 color="var(--color-dhlred)" />
                 {/if}
             </li>
         {/each}
@@ -116,7 +105,7 @@ import { makeEvent } from '../../x/util/dispatch';
 </div>
 
 
-<div bind:this={container} class="container">
+<div use:initItemRegistration class="container">
     <slot />
 </div>
 
@@ -128,6 +117,7 @@ import { makeEvent } from '../../x/util/dispatch';
     .root{
         position: relative;
         display:  inline-block;
+        height:   3rem;
     }
 
     .select{
@@ -136,18 +126,21 @@ import { makeEvent } from '../../x/util/dispatch';
         border-width:  1px;
         border-style:  solid;
         display:       inline-block;
-        box-sizing:    border-box;
         padding:       0;
         min-width:     10rem;
+        height:        calc( 100% - 2px);
         position:      relative;
 
     }
 
     .dropdown {
         display:        flex;
+        align-items:    center;
+        padding-left:   0.5rem;
+        width:          calc( 100% - 1rem);
         flex-direction: row;
-        padding:        0.5rem;
         cursor:         pointer;
+        height:         100%;
     }
 
     .placeholder{
@@ -158,15 +151,21 @@ import { makeEvent } from '../../x/util/dispatch';
         flex-grow:  0;
         display:    inline-block;
         text-align: center;
+        height:     1rem;
         max-width:  1rem;
         overflow:   hidden;
         align-self: center;
 
-        transition: transform 0.1s;
+        transition:                 transform 0.1s;
+        transition-timing-function: ease;
     }
 
+    .open {
+        --border-color: var(--color-black);
+    }
+    
     .open .chevron{
-        transform: rotate(-180deg);
+        transform: scale(1, -1);
         
     }
 
@@ -221,7 +220,7 @@ import { makeEvent } from '../../x/util/dispatch';
         border-bottom-right-radius: calc( var(--border-radius) - 1px );
     }
     li:hover{
-        background-color: var(--color-steel-gray-medium);
+        background-color: var(--color-gray05);
     }
     li:focus{
         border-top:    thin solid var(--color-gray20);
