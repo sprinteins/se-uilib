@@ -35,39 +35,37 @@
 </script>
 
 {#if _open}
-    <main
-        class:notification={type === Type.notification}
-        class:error={type === Type.error}
-        class:full-width={fullWidth}
-        bind:this={toast}
-    >
-        <div class="content-container">
-
-            <!-- <span class="custom-icon" >
+  <main
+    class:notification={type === Type.notification}
+    class:error={type === Type.error}
+    class:full-width={fullWidth}
+    bind:this={toast}
+  >
+    <div class="content-container">
+      <!-- <span class="custom-icon" >
             </span> -->
-            <slot name="icon" />
+      <slot name="icon" />
 
-            <div class="text-container">
-                <div class="title">
-                    {_title}
-                </div>
-                {#if _message}
-                    <div class="message">
-                        {_message}
-                    </div>
-                {/if}
-            </div>
-
+      <div class="text-container">
+        <div class="title">
+          {_title}
         </div>
-        
-        <dpdhl-icon
-            on:click={closeToast}
-            width={16}
-            height={16}
-            color="#FFF"
-            icon="cancel"
-            class="close-icon"
-        />
+        {#if _message}
+          <div class="message">
+            {_message}
+          </div>
+        {/if}
+      </div>
+    </div>
+
+    <dpdhl-icon
+      on:click={closeToast}
+      width={16}
+      height={16}
+      color="#FFF"
+      icon="cancel"
+      class="close-icon"
+    />
   </main>
 {/if}
 
@@ -124,14 +122,12 @@
   }
 
   div.content-container {
-    display:               grid;
-    grid-template-columns: auto-fit 1fr;
-    vertical-align:        middle;
-    gap:                   0.75rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
   }
 
   .close-icon {
     cursor: pointer;
   }
-
 </style>
