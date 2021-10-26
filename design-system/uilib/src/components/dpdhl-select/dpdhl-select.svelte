@@ -7,7 +7,7 @@
   import { KeyItemAdded } from "./dpdhl-select-item.svelte";
   import type { Item } from "./item";
 
-  export let multiplechoice = false;
+  export let multiple = false;
   export let inputplaceholder = "Select an option";
 
   export let placeholder = "";
@@ -64,7 +64,7 @@
   }
 
   onMount(() => {
-    if (!multiplechoice) {
+    if (!multiple) {
       selectedItem = placholderItem;
     } else {
       selectedItems = [];
@@ -75,7 +75,7 @@
 
   function onItemClick(item: Item) {
     console.debug("[DEBUG] ", { fn: "onItemClick", item });
-    if (multiplechoice) {
+    if (multiple) {
       if (selectedItems.includes(item))
         selectedItems = selectedItems.filter((m) => m.value !== item.value);
       else selectedItems = [...selectedItems, item];
@@ -95,56 +95,51 @@
   $: console.debug("[DEBUG] ", { placholderItem });
 </script>
 
-<div class="container">
-  <div class="root" class:open bind:this={root}>
-    <div class="select">
-      <div class="dropdown">
-        <span class="placeholder">
-          {#if !multiplechoice}
-            {#if selectedItem && selectedItem.value}
-              <dpdhl-copy>{selectedItem.label}</dpdhl-copy>
-            {:else}
-              <dpdhl-copy class="input-placeholder"
-                >{inputplaceholder}</dpdhl-copy
-              >
-            {/if}
-          {:else if !selectedItems.length}
-            <dpdhl-copy class="input-placeholder">{inputplaceholder}</dpdhl-copy
-            >
-          {:else}
-            <dpdhl-copy class="selected-items">
-              {selectedItems.map((item) => item.label).join(", ")}
-            </dpdhl-copy>
-          {/if}
-        </span>
-        <span class="chevron" on:click={toggleOpen}>
-          <dpdhl-icon
-            width="16"
-            height="16"
-            color="var(--color-dhlred)"
-            icon="chevron_down"
-          />
-        </span>
-      </div>
-    </div>
+<div class="root" class:open bind:this={root}>
+	<div class="select">
+		<div class="dropdown" on:click={toggleOpen}>
+			<span class="placeholder">
+				{#if !multiple}
+					{#if selectedItem && selectedItem.value}
+						<dpdhl-copy>{selectedItem.label}</dpdhl-copy>
+					{:else}
+						<dpdhl-copy class="input-placeholder">{inputplaceholder}</dpdhl-copy>
+					{/if}
+				{:else if !selectedItems.length}
+					<dpdhl-copy class="input-placeholder">{inputplaceholder}</dpdhl-copy>
+				{:else}
+					<dpdhl-copy class="selected-items">
+						{selectedItems.map((item) => item.label).join(", ")}
+					</dpdhl-copy>
+				{/if}
+			</span>
+			<span class="chevron">
+				<dpdhl-icon
+					width="16"
+					height="16"
+					color="var(--color-dhlred)"
+					icon="chevron_down"
+				/>
+			</span>
+		</div>
+	</div>
 
-    <ul>
-      {#each items as item}
-        <li on:click={() => onItemClick(item)}>
-          <dpdhl-copy class="item-label">
-            {item.label}
-          </dpdhl-copy>
-          {#if (multiplechoice && selectedItems.includes(item)) || (!multiplechoice && item === selectedItem)}
-            <dpdhl-icon
-              icon="checkmark"
-              width="16"
-              color="var(--color-black)"
-            />
-          {/if}
-        </li>
-      {/each}
-    </ul>
-  </div>
+	<ul>
+		{#each items as item}
+			<li on:click={() => onItemClick(item)}>
+				<dpdhl-copy class="item-label">
+					{item.label}
+				</dpdhl-copy>
+				{#if (multiple && selectedItems.includes(item)) || (!multiple && item === selectedItem)}
+					<dpdhl-icon
+						icon="checkmark"
+						width="16"
+						color="var(--color-black)"
+					/>
+				{/if}
+			</li>
+		{/each}
+	</ul>
 </div>
 
 <div bind:this={container} class="main-container">
@@ -159,7 +154,7 @@
   .root {
     position: relative;
     display: inline-block;
-    flex-grow: 1;
+		width: 100%;
   }
 
   .select {
@@ -176,8 +171,6 @@
   }
 
   .dropdown {
-    display: flex;
-    flex-direction: row;
     padding: 1rem 0.5rem 0.5rem;
     line-height: 1.3rem;
     cursor: pointer;
@@ -188,7 +181,6 @@
   }
 
   .chevron {
-    /* flex-grow:  0; */
     display: inline-block;
     text-align: center;
     width: 1rem;
@@ -257,16 +249,17 @@
 
   .input-placeholder {
     color: var(--color-gray20);
-  }
-
-  .container {
-    width: var(--container__width, auto);
-    display: flex;
+		display: inline-block;
+    width: calc(100% - 34px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3rem;
   }
 
   .selected-items {
     display: inline-block;
-    width: calc(var(--container__width) - 34px);
+    width: calc(100% - 34px);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
