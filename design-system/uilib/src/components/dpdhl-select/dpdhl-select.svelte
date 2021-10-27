@@ -6,9 +6,10 @@
   import "../dpdhl-icon";
   import { KeyItemAdded } from "./dpdhl-select-item.svelte";
   import type { Item } from "./item";
+  import {clickOutside} from './clickOutside.js';
+
 
   export let multiple = false;
-  export let inputplaceholder = "Select an option";
 
   export let placeholder = "";
   $: placholderItem = {
@@ -63,6 +64,12 @@
     open = !open;
   }
 
+	function handleClickOutside(event) {
+		if (open) {
+			open = false;
+		}
+	}
+
   onMount(() => {
     if (!multiple) {
       selectedItem = placholderItem;
@@ -96,17 +103,17 @@
 </script>
 
 <div class="root" class:open bind:this={root}>
-	<div class="select">
+	<div class="select" class:open >
 		<div class="dropdown" on:click={toggleOpen}>
 			<span class="placeholder">
 				{#if !multiple}
 					{#if selectedItem && selectedItem.value}
 						<dpdhl-copy>{selectedItem.label}</dpdhl-copy>
 					{:else}
-						<dpdhl-copy class="input-placeholder">{inputplaceholder}</dpdhl-copy>
+						<dpdhl-copy class="input-placeholder">{placeholder}</dpdhl-copy>
 					{/if}
 				{:else if !selectedItems.length}
-					<dpdhl-copy class="input-placeholder">{inputplaceholder}</dpdhl-copy>
+					<dpdhl-copy class="input-placeholder">{placeholder}</dpdhl-copy>
 				{:else}
 					<dpdhl-copy class="selected-items">
 						{selectedItems.map((item) => item.label).join(", ")}
@@ -142,7 +149,7 @@
 	</ul>
 </div>
 
-<div bind:this={container} class="main-container">
+<div bind:this={container} class="main-container" use:clickOutside on:click_outside={handleClickOutside}>
   <slot />
 </div>
 
@@ -165,14 +172,17 @@
     flex-grow: 1;
     box-sizing: border-box;
     padding: 0;
-    min-width: 10rem;
     position: relative;
-    min-height: 3.0625rem;
+    height: 3rem;
+  }
+
+  .select.open {
+	border-color: var(--color-black);
   }
 
   .dropdown {
-    padding: 1rem 0.5rem 0.5rem;
-    line-height: 1.3rem;
+    padding: 0.8rem 0.5rem;
+    line-height: 1rem;
     cursor: pointer;
   }
 
@@ -220,6 +230,8 @@
 
   .open ul {
     display: block;
+	border: 1px solid var(--color-black);
+	border-top: none;
   }
 
   .open .select {
@@ -249,20 +261,20 @@
 
   .input-placeholder {
     color: var(--color-gray20);
-		display: inline-block;
-    width: calc(100% - 34px);
+	display: inline-block;
+    width: calc(100% - 28px);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 1.3rem;
+    line-height: 1rem;
   }
 
   .selected-items {
     display: inline-block;
-    width: calc(100% - 34px);
+    width: calc(100% - 28px);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 1.3rem;
+    line-height: 1rem;
   }
 </style>

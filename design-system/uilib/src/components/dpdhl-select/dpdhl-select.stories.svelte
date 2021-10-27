@@ -27,7 +27,7 @@
 <Template let:args />
 
 <Story let:args name="Select one" args={{ containerWidth: 200 }}>
-  <div style="width: {args.containerWidth}px; border: 1px solid red;}">
+  <div style="width: {args.containerWidth}px;}">
     <dpdhl-select
       placeholder="Select field"
       on:selectOne={(event) => (selectedItem = event.detail)}
