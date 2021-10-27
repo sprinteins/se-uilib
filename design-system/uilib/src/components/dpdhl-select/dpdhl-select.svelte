@@ -108,7 +108,7 @@
 			<span class="placeholder">
 				{#if !multiple}
 					{#if selectedItem && selectedItem.value}
-						<dpdhl-copy>{selectedItem.label}</dpdhl-copy>
+						<dpdhl-copy class="selected-item">{selectedItem.label}</dpdhl-copy>
 					{:else}
 						<dpdhl-copy class="input-placeholder">{placeholder}</dpdhl-copy>
 					{/if}
@@ -266,6 +266,13 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 1rem;
+  }
+
+  .selected-item {
+    display: inline-block;
+    width: calc(100% - 28px);
+    white-space: wrap;
     line-height: 1rem;
   }
 
