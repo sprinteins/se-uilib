@@ -26,12 +26,12 @@
 <!-- https://www.dpdhl-brands.com/dpdhl-group/en/guides/touchpoints/user-interface/components/select.html -->
 <Template let:args />
 
-<Story let:args name="Select one" args={{ containerWidth: 200 }}>
+<Story let:args name="Select one" args={{ containerWidth: 200, withHelperText: true, helperText: "Helper text" }}>
   <div style="width: {args.containerWidth}px;}">
     <dpdhl-select
+      helpertext={"Helper text"}
       placeholder="Select field"
-      on:selectOne={(event) => (selectedItem = event.detail)}
-    >
+      on:selectOne={(event) => selectedItem = event.detail}>
       <dpdhl-select-item label="Option A" value={"option-a"} />
       <dpdhl-select-item label="Option B" value={"option-b"} />
       <dpdhl-select-item label="Option C" value={"option-c"} />
@@ -40,15 +40,15 @@
   <div>Selected : {selectedItem}</div>
 </Story>
 
-<Story let:args name="Select multiple" args={{ containerWidth: 200 }}>
+<Story let:args name="Select multiple" args={{ containerWidth: 200, withHelperText: true, helperText: "Helper text" }}>
     <div style="width: {args.containerWidth}px;}">
         <dpdhl-select
+        helpertext="Helper text"
         placeholder="Select field"
         multiple={true}
-        on:selectMany={(event) => (selectedItems = event.detail)}
-        >
+        on:selectMany={(event) => selectedItems = event.detail}>
         <dpdhl-select-item label="Option A" value={"option-a"} />
-        <dpdhl-select-item label="Option B" value={"option-b"} />
+        <dpdhl-select-item label="Option B is a very long option indeed" value={"option-b"} />
         <dpdhl-select-item label="Option C" value={"option-c"} />
         <dpdhl-select-item label="Option D" value={"option-d"} />
         <dpdhl-select-item label="Option E" value={"option-e"} />
@@ -60,7 +60,7 @@
     </div>
     <div>
     Selected : {selectedItems.length &&
-      selectedItems.map((item) => item.label).join(", ")}
+      selectedItems.map((item) => item.value).join(", ")}
   </div>
 </Story>
 

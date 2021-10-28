@@ -10,6 +10,7 @@
 
 
   export let multiple = false;
+  export let helpertext = "";
 
   export let placeholder = "";
   $: placholderItem = {
@@ -49,13 +50,6 @@
           value,
         };
       }
-      // event
-      // el.addEventListener(KeyLabelChange, onLabelChange.bind(undefined, ei))
-
-      // activate tab
-      // if(el.hasAttribute(keyActivate)){
-      //     activateTab(ei)
-      // }
     });
   }
 
@@ -152,6 +146,9 @@
 <div bind:this={container} class="main-container" use:clickOutside on:click_outside={handleClickOutside}>
   <slot />
 </div>
+{#if (helpertext)}
+  <span class="helper-text">{helpertext}</span>
+{/if}
 
 <style>
   :host {
@@ -283,5 +280,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 1rem;
+  }
+
+  .helper-text {
+    line-height: 16px;
+    font-size: 14px;
+    color: var(--color-gray67)
   }
 </style>
