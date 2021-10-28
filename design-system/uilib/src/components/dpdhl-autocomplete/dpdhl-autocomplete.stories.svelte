@@ -16,23 +16,23 @@
 
 <Story name="One" args={{}}>
     <dpdhl-autocomplete 
-        placeholder="Select field" 
+        placeholder="Search for item" 
         on:selectOne={(event) =>  selectedItem = event.detail}>
-        <dpdhl-select-item label="Option A" value={"option-a"}/>
-        <dpdhl-select-item label="Option B" value={"option-b"}/>
-        <dpdhl-select-item label="Option C" value={"option-c"}/>
+        <dpdhl-autocomplete-item label="Option A" value={"option-a"}/>
+        <dpdhl-autocomplete-item label="Option B" value={"option-b"}/>
+        <dpdhl-autocomplete-item label="Option C" value={"option-c"}/>
     </dpdhl-autocomplete>
     <div>Selected : {selectedItem}</div>
 </Story>
 
 <Story name="Multiple" args={{}}>
     <dpdhl-autocomplete 
-        placeholder="Select field" 
+        placeholder="Search for item" 
         multiplechoice={true}
         on:selectMany={(event) =>  console.log("SELECT many: ", event.detail)}>
-        <dpdhl-select-item label="Option A" value={"option-a"}/>
-        <dpdhl-select-item label="Option B" value={"option-b"}/>
-        <dpdhl-select-item label="Option C" value={"option-c"}/>
+        <dpdhl-autocomplete-item label="Option A" value={"option-a"}/>
+        <dpdhl-autocomplete-item label="Option B" value={"option-b"}/>
+        <dpdhl-autocomplete-item label="Option C" value={"option-c"}/>
     </dpdhl-autocomplete>
     <div>Selected : {selectedItems}</div>
 </Story>
