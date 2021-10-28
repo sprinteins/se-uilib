@@ -20,7 +20,7 @@
 >
   <main>
     <dpdhl-checkbox
-		 	on:check={() => alert("Checked")}
+		 	on:check={() => console.log("Checked")}
       name="checkbox-example"
       disabled={args.disabled}
       checked={args.checked}
