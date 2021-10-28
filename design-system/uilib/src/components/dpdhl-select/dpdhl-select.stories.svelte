@@ -40,7 +40,7 @@
   <div>Selected : {selectedItem}</div>
 </Story>
 
-<Story let:args name="Select multiple mit Chips" args={{ containerWidth: 200 }}>
+<Story let:args name="Select multiple" args={{ containerWidth: 200 }}>
     <div style="width: {args.containerWidth}px;}">
         <dpdhl-select
         placeholder="Select field"
