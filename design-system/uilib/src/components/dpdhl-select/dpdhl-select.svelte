@@ -8,8 +8,9 @@
   import type { Item } from "./item";
   import {clickOutside} from './clickOutside.js';
 
-
   export let multiple = false;
+  export let error = true;
+
   export let helpertext = "";
 
   export let placeholder = "";
@@ -58,7 +59,7 @@
     open = !open;
   }
 
-	function handleClickOutside(event) {
+	function handleClickOutside(_) {
 		if (open) {
 			open = false;
 		}
@@ -97,7 +98,7 @@
 </script>
 
 <div class="root" class:open bind:this={root}>
-	<div class="select" class:open >
+	<div class="select" class:open class:error>
 		<div class="dropdown" on:click={toggleOpen}>
 			<span class="placeholder">
 				{#if !multiple}
@@ -125,7 +126,7 @@
 		</div>
 	</div>
 
-	<ul>
+	<ul class:error>
 		{#each items as item}
 			<li on:click={() => onItemClick(item)}>
 				<dpdhl-copy class="item-label">
@@ -173,8 +174,16 @@
     height: 3rem;
   }
 
+  .select.error {
+    border-color: var(--color-dhlred);
+  }
+
   .select.open {
-	border-color: var(--color-black);
+	  border-color: var(--color-black);
+  }
+
+  .select.open.error {
+    border-color: var(--color-dhlred);
   }
 
   .dropdown {
@@ -227,8 +236,13 @@
 
   .open ul {
     display: block;
-	border: 1px solid var(--color-black);
-	border-top: none;
+    border: 1px solid var(--color-black);
+    border-top: none;
+  }
+
+  ul.error  {
+    border: 1px solid var(--color-dhlred);
+    border-top: none;
   }
 
   .open .select {

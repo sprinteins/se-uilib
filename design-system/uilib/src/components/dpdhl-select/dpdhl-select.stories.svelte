@@ -40,7 +40,12 @@
   <div>Selected : {selectedItem}</div>
 </Story>
 
-<Story let:args name="Select multiple" args={{ containerWidth: 200, withHelperText: true, helperText: "Helper text" }}>
+<Story let:args name="Select multiple" args={{ 
+  containerWidth: 200, 
+  withHelperText: true, 
+  helperText: "Helper text", 
+  error: true 
+  }}>
     <div style="width: {args.containerWidth}px;}">
         <dpdhl-select
         helpertext="Helper text"
