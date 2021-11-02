@@ -33,14 +33,15 @@
 		containerWidth: 200,
 		withHelperText: true,
 		helperText: "Helper text",
-		error: true,
+		error: false,
 	}}
 >
   <div style="width: {args.containerWidth}px;}">
     <dpdhl-select
-		helpertext={"Helper text"}
+		helpertext="Helper text"
 		placeholder="Select field"
 		on:selectOne={(event) => (selectedItem = event.detail)}
+		error={true}
     >
 		<dpdhl-select-item label="Option A" value={"option-a"} />
 		<dpdhl-select-item label="Option B" value={"option-b"} />
@@ -65,7 +66,7 @@
 			helpertext="Helper text"
 			placeholder="Select field"
 			multiple={true}
-			error={false}
+			error={true}
 			on:selectMany={(event) => (selectedItems = event.detail)}
 		>
 			<dpdhl-select-item label="Option A" value={"option-a"} />

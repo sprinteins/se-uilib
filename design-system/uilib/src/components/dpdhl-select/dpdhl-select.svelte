@@ -9,7 +9,7 @@
 	import { clickOutside } from "./clickOutside.js";
 
 	export let multiple = false;
-	export let error = true;
+	export let error = false;
 
 	$: _error = error;
 	export let helpertext = "";
@@ -130,7 +130,7 @@
 		</div>
 	</div>
 
-	<ul class:error={_error}>
+	<ul class:error={_error} class:open={open}>
 		{#each items as item}
 			<li on:click={() => onItemClick(item)}>
 				<dpdhl-copy class="item-label">{item.label}</dpdhl-copy>
@@ -249,6 +249,17 @@
 		border: 2px solid var(--color-dhlred);
 		border-top: none;
 	}
+
+	/* ul.open  {
+		display: block;
+		border: 2px solid var(--color-black);
+		border-top: none;
+	}
+
+	ul.open.error {
+		border: 2px solid var(--color-dhlred);
+		border-top: none;
+	} */
 
 	.open .select {
 		border-bottom: none;
