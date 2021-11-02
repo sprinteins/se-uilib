@@ -181,6 +181,7 @@
 	.select.error {
 		border-color: var(--color-dhlred);
 		color: var(--color-dhlred);
+		background: var(--color-dhlred-light);
 	}
 
 	.select.open {
