@@ -62,6 +62,9 @@
   input {
     position: relative;
     cursor: pointer;
+    width: 1.5rem;
+    height: 1.5rem;
+    -moz-appearance:none;
   }
   /* box */
   input:before {
