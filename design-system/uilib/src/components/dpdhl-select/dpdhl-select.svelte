@@ -109,15 +109,15 @@
 					{#if !selectedItems.length}
 						<dpdhl-copy class="input-placeholder">{placeholder}</dpdhl-copy>
 					{:else}
-						<dpdhl-copy class="selected-items">
+						<dpdhl-copy class="selected">
 							{selectedItems.map((item) => item.label).join(", ")}
 						</dpdhl-copy>
 					{/if}
 				{:else}
-					{#if selectedItem && selectedItem.value}
-						<dpdhl-copy class="selected-item">{selectedItem.label}</dpdhl-copy>
-					{:else}
+					{#if !selectedItem || !selectedItem.value}
 						<dpdhl-copy class="input-placeholder">{placeholder}</dpdhl-copy>
+					{:else}
+						<dpdhl-copy class="selected">{selectedItem.label}</dpdhl-copy>
 					{/if}
 				{/if}
 			</span>
@@ -286,14 +286,7 @@
 		line-height: 1rem;
 	}
 
-	.selected-item {
-		display: inline-block;
-		width: calc(100% - 28px);
-		white-space: wrap;
-		line-height: 1rem;
-	}
-
-	.selected-items {
+	.selected {
 		display: inline-block;
 		width: calc(100% - 28px);
 		white-space: nowrap;
