@@ -9,11 +9,9 @@
 	import { clickOutside } from "./clickOutside.js";
 
 	export let multiple = false;
-	export let error = false;
+	export let error = true;
 
 	$: _error = error;
-	console.log("error", _error);
-
 	export let helpertext = "";
 
 	export let placeholder = "";
@@ -185,6 +183,7 @@
 	}
 
 	.select.open {
+		border-width: 2px;
 		border-color: var(--color-black);
 	}
 
@@ -242,12 +241,12 @@
 
 	.open ul {
 		display: block;
-		border: 1px solid var(--color-black);
+		border: 2px solid var(--color-black);
 		border-top: none;
 	}
 
 	ul.error {
-		border: 1px solid var(--color-dhlred);
+		border: 2px solid var(--color-dhlred);
 		border-top: none;
 	}
 
@@ -255,6 +254,7 @@
 		border-bottom: none;
 		border-bottom-left-radius: 0;
 		border-bottom-right-radius: 0;
+		border-width: 2px;
 	}
 
 	li {
