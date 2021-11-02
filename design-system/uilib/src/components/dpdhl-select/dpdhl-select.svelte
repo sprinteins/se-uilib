@@ -26,12 +26,13 @@
 	let selectedItem: Item = placholderItem;
 	$: selectedItems = [];
 
-	onMount(() => {
-		registerItems();
-		container.addEventListener(KeyItemAdded, registerItems);
-	});
+    function initItemRegistration(node: HTMLDivElement){
+        registerItems(node);
+        node.addEventListener(KeyItemAdded, () => registerItems(node))
+    }
 
-	function registerItems() {
+
+    function registerItems(container: HTMLDivElement){
 		const slot = container.childNodes[0] as HTMLSlotElement;
 
 		assignedElements = slot.assignedElements() as HTMLElement[];
@@ -77,7 +78,6 @@
   	let root: HTMLDivElement;
 
 	function onItemClick(item: Item) {
-		console.debug("[DEBUG] ", { fn: "onItemClick", item });
 		if (multiple) {
 			if (selectedItems.includes(item))
 				selectedItems = selectedItems.filter((m) => m.value !== item.value);
@@ -95,8 +95,6 @@
 		}
 	}
 
-	$: console.debug("[DEBUG] ", { selectedItem });
-	$: console.debug("[DEBUG] ", { placholderItem });
 </script>
 
 <div class="root" class:open bind:this={root}>
@@ -136,7 +134,7 @@
 				<dpdhl-copy class="item-label">{item.label}</dpdhl-copy>
 				{#if (multiple && selectedItems.includes(item)) 
 					|| (!multiple && item === selectedItem)}
-					<dpdhl-icon icon="checkmark" width="16" color="var(--color-black)" />
+					<dpdhl-icon icon="checkmark" width="16" color="var(--color-dhlred)" />
 				{/if}
 			</li>
 		{/each}
@@ -144,8 +142,8 @@
 </div>
 
 <div
-	bind:this={container}
-	class="main-container"
+	use:initItemRegistration
+	class="container"
 	use:clickOutside
 	on:click_outside={handleClickOutside}
 >
@@ -209,14 +207,15 @@
 		width: 1rem;
 		overflow: hidden;
 		align-self: center;
-		transition: transform 0.1s;
+        transition:                 transform 0.1s;
+        transition-timing-function: ease;
 	}
 
 	.open .chevron {
-		transform: rotate(-180deg);
+        transform: scale(1, -1);
 	}
 
-	.main-container {
+	.container {
 		display: none;
 	}
 	.item-label {
@@ -271,7 +270,7 @@
 		border-bottom-right-radius: calc(var(--border-radius) - 1px);
 	}
 	li:hover {
-		background-color: var(--color-steel-gray-medium);
+        background-color: var(--color-gray05);
 	}
 	li:focus {
 		border-top: thin solid var(--color-gray20);
