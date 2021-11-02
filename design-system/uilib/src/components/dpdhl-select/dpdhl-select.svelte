@@ -105,7 +105,7 @@
 			<span class="content">
 				{#if multiple}
 					{#if !selectedItems.length}
-						<dpdhl-copy class="input-placeholder">{placeholder}</dpdhl-copy>
+						<dpdhl-copy class="input-placeholder" class:error={_error}>{placeholder}</dpdhl-copy>
 					{:else}
 						<dpdhl-copy class="selected">
 							{selectedItems.map((item) => item.label).join(", ")}
@@ -113,7 +113,7 @@
 					{/if}
 				{:else}
 					{#if !selectedItem || !selectedItem.value}
-						<dpdhl-copy class="input-placeholder">{placeholder}</dpdhl-copy>
+						<dpdhl-copy class="input-placeholder" class:error={_error}>{placeholder}</dpdhl-copy>
 					{:else}
 						<dpdhl-copy class="selected">{selectedItem.label}</dpdhl-copy>
 					{/if}
@@ -180,6 +180,7 @@
 
 	.select.error {
 		border-color: var(--color-dhlred);
+		color: var(--color-dhlred);
 	}
 
 	.select.open {
@@ -250,17 +251,6 @@
 		border-top: none;
 	}
 
-	/* ul.open  {
-		display: block;
-		border: 2px solid var(--color-black);
-		border-top: none;
-	}
-
-	ul.open.error {
-		border: 2px solid var(--color-dhlred);
-		border-top: none;
-	} */
-
 	.open .select {
 		border-bottom: none;
 		border-bottom-left-radius: 0;
@@ -290,16 +280,20 @@
 	.input-placeholder {
 		color: var(--color-gray20);
 		display: inline-block;
-		width: calc(100% - 28px);
+		width: calc(100% - 1.75rem);
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		line-height: 1rem;
 	}
 
+	.input-placeholder.error {
+		color: var(--color-dhlred);
+	}
+
 	.selected {
 		display: inline-block;
-		width: calc(100% - 28px);
+		width: calc(100% - 1.75rem);
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
