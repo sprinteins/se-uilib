@@ -104,19 +104,21 @@
 <div class="root" class:open bind:this={root}>
 	<div class="select" class:open class:error={_error}>
 		<div class="dropdown" on:click={toggleOpen}>
-			<span class="placeholder">
-				{#if !multiple}
+			<span class="content">
+				{#if multiple}
+					{#if !selectedItems.length}
+						<dpdhl-copy class="input-placeholder">{placeholder}</dpdhl-copy>
+					{:else}
+						<dpdhl-copy class="selected-items">
+							{selectedItems.map((item) => item.label).join(", ")}
+						</dpdhl-copy>
+					{/if}
+				{:else}
 					{#if selectedItem && selectedItem.value}
 						<dpdhl-copy class="selected-item">{selectedItem.label}</dpdhl-copy>
 					{:else}
 						<dpdhl-copy class="input-placeholder">{placeholder}</dpdhl-copy>
 					{/if}
-				{:else if !selectedItems.length}
-					<dpdhl-copy class="input-placeholder">{placeholder}</dpdhl-copy>
-				{:else}
-					<dpdhl-copy class="selected-items">
-						{selectedItems.map((item) => item.label).join(", ")}
-					</dpdhl-copy>
 				{/if}
 			</span>
 			<span class="chevron">
@@ -196,7 +198,7 @@
 		cursor: pointer;
 	}
 
-	.placeholder {
+	.content {
 		flex-grow: 1;
 	}
 
