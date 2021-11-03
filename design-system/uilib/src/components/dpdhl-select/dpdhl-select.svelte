@@ -104,15 +104,15 @@
 		filterText = "";
 	}
     let id = ""
-	let search = true
+	let autocomplete = true
 
 </script>
 
 <div class="root" class:open bind:this={root}>
-	<div class="select" class:open class:error={_error}>
+	<div class="select" class:open class:error={_error} class:autocomplete={autocomplete}>
 		<div class="dropdown" on:click={toggleOpen}>
 			<span class="content">
-				{#if !search}
+				{#if !autocomplete}
 					{#if multiple}
 						{#if !selectedItems.length}
 							<dpdhl-copy class="input-placeholder" class:error={_error}>{placeholder}</dpdhl-copy>
@@ -207,7 +207,9 @@
 		box-sizing: border-box;
 		padding: 0;
 		position: relative;
-		height: 3rem;
+		display: flex;
+		flex-direction: row;
+		/* height: 3rem; */
 	}
 
 	.select.error {

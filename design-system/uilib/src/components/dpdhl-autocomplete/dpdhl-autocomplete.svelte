@@ -5,7 +5,10 @@
     import { KeyItemAdded } from './dpdhl-autocomplete-item.svelte'
     import type { Item } from './item';
     
-    export let multiplechoice = false
+    export let multiple = true;
+    export let error = true;
+	$: _error = error;
+    
     export let inputplaceholder = "Select an option"
 
     export let placeholder = ""
@@ -64,7 +67,7 @@
     $: selectedItems = [];
 
     onMount(() => {
-        if (!multiplechoice) {
+        if (!multiple) {
             selectedItem = placholderItem;
         } else {
             selectedItems = []
@@ -76,7 +79,7 @@
 
     function onItemClick(item: Item){
         console.debug('[DEBUG] ', {fn:"onItemClick", item} )
-        if (multiplechoice) {
+        if (multiple) {
             if (selectedItems.includes(item)) 
                 selectedItems = selectedItems.filter(m => m.value !== item.value);
             else 
@@ -102,14 +105,14 @@
 <svelte:options tag="dpdhl-autocomplete" />
 
 <div class="root" class:open bind:this={root}>
-    <div class="select" >
+    <div class="select" class:open class:error={_error}>
         <div class="dropdown">
             <span class="placeholder">
-                {#if !multiplechoice}
+                {#if !multiple}
                     {#if selectedItem && selectedItem.value}
                         <dpdhl-copy>{selectedItem.label}</dpdhl-copy>
                     {:else}
-                        <input {id} placeholder={inputplaceholder} bind:value={filterText}/>
+                        <input {id} placeholder={inputplaceholder} class:error={_error} bind:value={filterText}/>
                     {/if}
                 {:else}
                     <dpdhl-copy>
@@ -122,7 +125,7 @@
                     </dpdhl-copy>
                 {/if} 
             </span>
-            {#if multiplechoice && !selectedItems.length}
+            {#if multiple}
                 <input {id} placeholder={inputplaceholder} bind:value={filterText}/>
             {/if}
             
@@ -133,16 +136,16 @@
 
     </div>
 
-    <ul>
+    <ul class:error={_error} class:open={open}>
         {#each filteredItems as item}
             <li on:click={() => onItemClick(item)}>
                 <dpdhl-copy class="item-label">
                     {item.label}
                 </dpdhl-copy>
-                {#if multiplechoice && selectedItems.includes(item)}
+                {#if multiple && selectedItems.includes(item)}
                     <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
                 {/if}
-                {#if !multiplechoice && item === selectedItem}
+                {#if !multiple && item === selectedItem}
                     <dpdhl-icon icon="checkmark" width=16 color="var(--color-black)" />
                 {/if}
             </li>
@@ -177,6 +180,16 @@
         position:      relative;
         min-height:    49px;
     }
+
+    .select.error {
+		border-color: 	var(--color-dhlred);
+		background: 	var(--color-dhlred-light);
+	}
+
+
+	.select.open.error {
+		border-color: 	var(--color-dhlred);
+	}
 
     .dropdown {
         display:        flex;
@@ -213,33 +226,42 @@
         flex-grow: 1;
     }
 
-    ul {
-        display:    none;
-        margin:     0;
-        padding:    0;
-        width:      100%;
-        background: var(--color-white);
-        position:   absolute;
-        box-sizing: border-box;
+	ul {
+		display: 	none;
+		margin: 	0;
+		padding: 	0;
+		width: 		100%;
+		background: var(--color-white);
+		position: 	absolute;
+		box-sizing: border-box;
+		border-width: 	1px;
+		border-style: 	solid;
+		border-radius: 	var(--border-radius);
+		border-color: 	var(--border-color);
+		border-top: 	none;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+	}
 
-        border-width:            1px;
-        border-style:            solid;
-        border-radius:           var(--border-radius);
-        border-color:            var(--border-color);
-        border-top:              none;
-        border-top-left-radius:  0;
-        border-top-right-radius: 0;
-    }
+	.open ul {
+		display: 	block;
+		border: 	2px solid var(--color-black);
+		border-top: none;
+	}
 
-    .open ul {
-        display: block;
-    }
+	ul.error {
+		border: 	2px solid var(--color-dhlred);
+		border-top: none;
+	}
 
     .open .select {
-        border-bottom:              none;
-        border-bottom-left-radius:  0;
-        border-bottom-right-radius: 0;
-    }
+        border-width: 	2px;
+		border-color: 	var(--color-black);
+		border-bottom: 				none;
+		border-bottom-left-radius: 	0;
+		border-bottom-right-radius: 0;
+		border-width: 				2px;
+	}
 
     li{
         padding:        0.5rem;
@@ -266,14 +288,15 @@
         font-size:      var(--font-size);
         line-height:    var(--font-size);
         padding-top:    0.375em;
+        background: transparent;
+    }
+
+    input.error {
+        color: var(--color-dhlred);
     }
 
     .chip {
         margin-right:   0.375em;
     }
 
-    .input-placeholder{
-   
-        color: var(--color-gray20);
-    }
 </style>
