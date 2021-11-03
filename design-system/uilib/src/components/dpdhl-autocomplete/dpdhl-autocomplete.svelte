@@ -5,8 +5,8 @@
     import { KeyItemAdded } from './dpdhl-autocomplete-item.svelte'
     import type { Item } from './item';
     
-    export let multiple = true;
-    export let error = true;
+    export let multiple = false;
+    export let error = false;
 	$: _error = error;
     
     export let inputplaceholder = "Select an option"
@@ -123,12 +123,10 @@
                             </dpdhl-chip>
                         {/each}
                     </dpdhl-copy>
+                    <input {id} placeholder={inputplaceholder} bind:value={filterText}/>
                 {/if} 
             </span>
-            {#if multiple}
-                <input {id} placeholder={inputplaceholder} bind:value={filterText}/>
-            {/if}
-            
+  
             <span class="chevron" on:click={toggleOpen}>
                 <dpdhl-icon width=16 height=16 color="var(--color-dhlred)" icon="chevron_down" />
             </span>
