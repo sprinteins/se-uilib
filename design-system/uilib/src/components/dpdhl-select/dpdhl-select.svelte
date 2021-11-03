@@ -193,8 +193,8 @@
 
 	.dropdown {
 		padding: 		0.8rem 0.5rem;
-		line-height: 	1rem;
 		cursor: 		pointer;
+		line-height: 	0.8rem;
 	}
 
 	.content {
@@ -207,6 +207,7 @@
 		width: 		1rem;
 		overflow: 	hidden;
 		align-self: center;
+		margin-top: 0.16rem;
         transition:                 transform 0.1s;
         transition-timing-function: ease;
 	}
