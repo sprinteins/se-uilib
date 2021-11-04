@@ -1,8 +1,9 @@
-<svelte:options tag={"dpdhl-checkbox"} />
+e<svelte:options tag={"dpdhl-checkbox"} />
 
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import { get_current_component } from "svelte/internal"
+
 	/**
 	 * A Checkbox Component
 	 * @component
@@ -92,7 +93,7 @@
 		display: 			block;
 		width: 				0.4375rem;
 		height: 			0.625rem;
-		border: 			solid var(--color-gray60);
+		border: 			solid var(--color-white);
 		border-width: 		0 1px 1px 0;
 		-webkit-transform: 	rotate(45deg);
 		-ms-transform: 		rotate(45deg);
