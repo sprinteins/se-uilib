@@ -6,9 +6,9 @@
 
     $: selectedItemId = 0
 
-    function handleSelectItem(itemId) {
-        console.log(itemId)
-        // selectedItemId = itemId
+    function handleSelectItem(event) {
+        // console.log(itemId)
+        selectedItemId = event.detail.id
     }
 </script>
 
@@ -17,8 +17,9 @@
 
 <Template let:args>
     <div class="container">
-        <dpdhl-segmented-control items={args.items} />
+        <dpdhl-segmented-control items={args.items} on:select={handleSelectItem} />
     </div>
+    <p>Selected Item Id: {selectedItemId} </p>
 </Template>
 
 <style>
