@@ -46,6 +46,7 @@
         display:        inline-grid;
         grid-auto-flow: column;
         border:         1px solid var(--color-postyellow);
+        border-radius:  2px;
     }
 
     .item {
