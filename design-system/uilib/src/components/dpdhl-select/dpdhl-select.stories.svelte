@@ -31,17 +31,19 @@
 	name="Select one"
 	args={{
 		containerWidth: 200,
-		withHelperText: true,
 		helperText: "Helper text",
 		error: false,
+		label: "Label",
+		placeholder: "Select field"
 	}}
 >
   <div style="width: {args.containerWidth}px;}">
     <dpdhl-select
 		helpertext="Helper text"
 		placeholder="Select field"
+		label="Label"
 		on:selectOne={(event) => (selectedItem = event.detail)}
-		error={true}
+		error={false}
     >
 		<dpdhl-select-item label="Option A" value={"option-a"} />
 		<dpdhl-select-item label="Option B" value={"option-b"} />
@@ -56,9 +58,8 @@
 	name="Select multiple"
 	args={{
 		containerWidth: 200,
-		withHelperText: true,
 		helperText: "Helper text",
-		error: true,
+		error: false,
 		label: "Label",
 		placeholder: "Select field"
 	}}
@@ -69,7 +70,7 @@
 			placeholder="Select field"
 			label="Label"
 			multiple={true}
-			error={true}
+			error={false}
 			on:selectMany={(event) => (selectedItems = event.detail)}
 		>
 			<dpdhl-select-item label="Option A" value={"option-a"} />
