@@ -5,14 +5,15 @@
 	import { makeEvent } from "../../x/util/dispatch";
 	import "../dpdhl-icon";
 	import { KeyItemAdded } from "./dpdhl-select-item.svelte";
-	import type { Item } from "./item";
 	import { clickOutside } from "./clickOutside.js";
+	import type { Item } from "./item";
 
 	export let multiple = false;
 	export let error = false;
-
 	$: _error = error;
+
 	export let helpertext = "";
+	export let label = "";
 
 	export let placeholder = "";
 	$: placholderItem = {
@@ -20,7 +21,6 @@
 		value: undefined,
 	};
 
-	let container: HTMLElement;
 	$: items = [];
 	let assignedElements: HTMLElement[] = [];
 	let selectedItem: Item = placholderItem;
@@ -97,6 +97,9 @@
 
 </script>
 
+{#if label}
+  	<span class="label">{label}</span>
+{/if}
 <div class="root" class:open bind:this={root}>
 	<div class="select" class:open class:error={_error}>
 		<div class="dropdown" on:click={toggleOpen}>
@@ -304,5 +307,12 @@
 		line-height: 	1rem;
 		font-size: 		0.875rem;
 		color: 			var(--color-gray67);
+	}
+
+	.label {
+		font-weight: 700;
+		font-size: 14px;
+		line-height: 1rem;
+
 	}
 </style>

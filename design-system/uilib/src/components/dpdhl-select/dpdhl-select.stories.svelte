@@ -59,12 +59,15 @@
 		withHelperText: true,
 		helperText: "Helper text",
 		error: true,
+		label: "Label",
+		placeholder: "Select field"
 	}}
 >
-	<div style="width: {args.containerWidth}px;}">
+	<div style="width: {args.containerWidth}px;">
 		<dpdhl-select
 			helpertext="Helper text"
 			placeholder="Select field"
+			label="Label"
 			multiple={true}
 			error={true}
 			on:selectMany={(event) => (selectedItems = event.detail)}
@@ -83,7 +86,7 @@
 			<dpdhl-select-item label="Option I" value={"option-i"} />
 		</dpdhl-select>
 	</div>
-	<div>
+	<div style="padding-top: 2rem;">
 		Selected: {selectedItems.length &&
 		selectedItems.map((item) => item.value).join(", ")}
 		<!-- Error:{args.error} -->
