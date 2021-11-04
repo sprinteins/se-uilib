@@ -9,39 +9,35 @@
 	 * @component
 	 */
 
-	export let value;
-
 	export let name = "";
 	$: _name = name;
 
 	export let checked = false;
 	$: _checked = checked;
 
-	export let disabled = false;
-	$: _disabled = disabled;
-
-	export let error = false;
-	$: _error = error;
 
 	const component = get_current_component()
 	const svelteDispatch = createEventDispatcher()
+	
 	const dispatch = (name, detail = null) => {
 		svelteDispatch(name, detail)
 		component.dispatchEvent && component.dispatchEvent(new CustomEvent(name, { detail }))
 	}
 
 	function handleClick(event) {
-		if (_disabled) {
-			event.preventDefault();
-		} else {
-			dispatch('check')
-		};
+		dispatch('check')
 	}
   
 </script>
 
 <label class="switch">
-	<input type="checkbox">
+	<input 
+		id={_name}
+		name={_name}
+		type="checkbox"
+		bind:checked={_checked}
+		on:click={handleClick}
+	>
 	<span class="slider"></span>
 </label>
 

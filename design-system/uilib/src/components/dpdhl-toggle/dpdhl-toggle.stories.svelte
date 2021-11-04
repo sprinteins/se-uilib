@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
 	import "@sprinteins/dpdhl-uilib";
+
+	$: checked = true;
+	
 </script>
 
 <Meta title="11_Components/Toggle" component={null} />
@@ -9,22 +12,16 @@
 
 <Story
 	name="Primary"
-	args={{
-		disabled: false,
-		indeterminate: false,
-		error: false,
-		checked: true,
-	}}
+	args={{}}
 	let:args
 >
   	<main>
 		<dpdhl-toggle
-			on:check={() => console.log("Checked")}
+			on:check={() => checked = !checked}
 			name="checkbox-example"
-			disabled={args.disabled}
-			checked={args.checked}
-			error={args.error}>
+			checked={checked}>
 		</dpdhl-toggle>
+		<p>Checked: {checked}</p>
   	</main>
 </Story>
 
