@@ -1,8 +1,8 @@
-e<svelte:options tag={"dpdhl-checkbox"} />
+<svelte:options tag={"dpdhl-checkbox"} />
 
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	import { get_current_component } from "svelte/internal"
+	import { get_current_component } from "svelte/internal";
 
 	/**
 	 * A Checkbox Component
