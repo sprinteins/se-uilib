@@ -42,18 +42,18 @@
 <style>
 
     .container {
-        cursor: pointer;
-        display: inline-grid;
+        cursor:         pointer;
+        display:        inline-grid;
         grid-auto-flow: column;
-        border: 1px solid var(--color-postyellow);
+        border:         1px solid var(--color-postyellow);
     }
 
     .item {
-        padding: 0.75rem;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 8px;
-        border-right: 1px solid var(--color-postyellow);
+        padding:        0.75rem;
+        font-weight:    700;
+        font-size:      14px;
+        line-height:    8px;
+        border-right:   1px solid var(--color-postyellow);
     }
 
     .item:last-child {
