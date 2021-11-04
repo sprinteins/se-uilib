@@ -1,0 +1,1 @@
+export { default as DPDHLSegmentedControl } from './dpdhl-segmented-control.svelte'
