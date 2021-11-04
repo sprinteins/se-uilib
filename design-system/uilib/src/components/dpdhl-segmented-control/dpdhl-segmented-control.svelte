@@ -23,7 +23,8 @@
 
     .container {
         cursor: pointer;
-        display: flex;
+        display: inline-grid;
+        grid-auto-flow: column;
         border: 1px solid var(--color-postyellow);
     }
 
