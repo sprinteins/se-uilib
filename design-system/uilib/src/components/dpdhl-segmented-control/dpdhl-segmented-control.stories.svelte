@@ -4,6 +4,12 @@
     import { action } from '@storybook/addon-actions'
     import '@sprinteins/dpdhl-uilib'
 
+    $: selectedItemId = 0
+
+    function handleSelectItem(itemId) {
+        console.log(itemId)
+        // selectedItemId = itemId
+    }
 </script>
 
 
@@ -23,9 +29,9 @@
 
 <Story name="Primary" args={{
     items:[
-        { label:'Menu 1 - a very long one', click: action('Menu 1') },
-        { label:'Menu 2', click: action('Menu 2') },
-        { label:'Menu 3', click: action('Menu 3') },
+        { label:'Menu 1 - a long one', click: (e) => handleSelectItem(e) },
+        { label:'Menu 2', click: (e) => handleSelectItem(e) },
+        { label:'Menu 3', click: (e) => handleSelectItem(e) },
     ]
 }}/>
 
