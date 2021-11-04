@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import "@sprinteins/dpdhl-uilib";
-
+	import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
+	import "@sprinteins/dpdhl-uilib";
 </script>
 
 <Meta title="11_Components/Checkbox" component={null} />
@@ -9,30 +8,25 @@
 <Template let:args />
 
 <Story
-  name="Primary"
-  args={{
-    disabled: false,
-    indeterminate: false,
-    error: false,
+	name="Primary"
+	args={{
+		disabled: false,
+		indeterminate: false,
+		error: false,
 		checked: true,
-  }}
-  let:args
+	}}
+	let:args
 >
-  <main>
-    <dpdhl-checkbox
-		 	on:check={() => console.log("Checked")}
-      name="checkbox-example"
-      disabled={args.disabled}
-      checked={args.checked}
-      indeterminate={args.indeterminate}
-      error={args.error}
-    >
-    </dpdhl-checkbox>
-  </main>
+  	<main>
+		<dpdhl-checkbox
+			on:check={() => console.log("Checked")}
+			name="checkbox-example"
+			disabled={args.disabled}
+			checked={args.checked}
+			indeterminate={args.indeterminate}
+			error={args.error}>
+		</dpdhl-checkbox>
+  	</main>
 </Story>
 
-<style>
-	.caption {
-		margin-top: 1rem;
-	}
-</style>
+<style></style>
