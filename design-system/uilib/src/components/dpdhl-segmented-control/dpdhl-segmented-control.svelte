@@ -5,6 +5,8 @@
     import { createEventDispatcher } from 'svelte';
 	import { get_current_component } from "svelte/internal";
 
+    $: selectedItemId = 0;
+
 	const component = get_current_component()
 	const svelteDispatch = createEventDispatcher()
 	
@@ -14,6 +16,7 @@
 	}
 
 	function handleClick(idx) {
+        selectedItemId = idx;
 		dispatch('select', {
 			id: idx
 		})
@@ -27,7 +30,7 @@
 
 <span class="container">
     {#each items as item, idx}
-        <span class="item" on:click={() => handleClick(idx)}>
+        <span class="item" on:click={() => handleClick(idx)} class:selected={idx === selectedItemId}>
             <dpdhl-typography variant="body1">
                 {item.label}
             </dpdhl-typography>
@@ -55,6 +58,10 @@
 
     .item:last-child {
         border-right: none;
+    }
+
+    .item.selected {
+        background-color: var(--color-postyellow);
     }
 
     .item:hover {
