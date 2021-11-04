@@ -43,13 +43,4 @@
         background-color: var(--color-postyellow);
     }
 
-    li {
-        width:   calc( 100% - 0.5rem);
-        padding: 0.5rem 0 0.5rem 0.5rem;
-        
-    }
-
-    li:hover {
-        background-color: var(--color-gray05);
-    }
 </style>
