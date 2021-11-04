@@ -51,6 +51,7 @@
 		display: inline-block;
 		width: 34px;
 		height: 14px;
+		margin: 0.375rem;
 	}
 
 	/* Hide default HTML checkbox */
@@ -78,13 +79,14 @@
 		content: "";
 		height: 20px;
 		width: 20px;
-		/* left: 4px; */
-		/* bottom: 4px; */
+		left: -2px;
+		bottom: -2px;
 		background-color: white;
 		-webkit-transition: .4s;
 		transition: .4s;
 		border-radius: 50%;
-		box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+		box-shadow: 0 3px 5px rgba(0,0,0,0.12), 0 3px 5px rgba(0,0,0,0.24);
+		z-index: 100;
 	}
 
 	input:checked + .slider {
@@ -96,9 +98,9 @@
 	}
 
 	input:checked + .slider:before {
-		-webkit-transform: translateX(26px);
-		-ms-transform: translateX(26px);
-		transform: translateX(26px);
+		-webkit-transform: translateX(20px);
+		-ms-transform: translateX(20px);
+		transform: translateX(20px);
 	}
 
 
