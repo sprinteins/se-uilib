@@ -2,22 +2,14 @@
     import type { SegmentedControlItem } from './segmented-control-item'
     import "../dpdhl-icon";
     import "../dpdhl-typography"
-    import { createEventDispatcher } from 'svelte';
-	import { get_current_component } from "svelte/internal";
+    import { makeEvent } from '../../x/util/makeEvent'
+
 
     $: selectedItemId = 0;
 
-	const component = get_current_component()
-	const svelteDispatch = createEventDispatcher()
-	
-	const dispatch = (name, detail = null) => {
-		svelteDispatch(name, detail)
-		component.dispatchEvent && component.dispatchEvent(new CustomEvent(name, { detail }))
-	}
-
 	function handleClick(idx) {
         selectedItemId = idx;
-		dispatch('select', {
+		makeEvent('select', {
 			id: idx
 		})
 	}
