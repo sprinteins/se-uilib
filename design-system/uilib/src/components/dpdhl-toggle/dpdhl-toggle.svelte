@@ -6,7 +6,7 @@
 	/**
 	 * A Toggle Component
 	 * @component
-	 */
+	*/
 
 	export let name = "";
 	$: _name = name;
@@ -87,6 +87,5 @@
 		-ms-transform: 		translateX(1.3125rem);
 		transform: 			translateX(1.3125rem);
 	}
-
 
 </style>
