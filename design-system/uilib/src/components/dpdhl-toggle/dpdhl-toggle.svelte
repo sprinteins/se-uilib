@@ -1,8 +1,8 @@
 <svelte:options tag={"dpdhl-toggle"} />
 
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-	import { get_current_component } from "svelte/internal";
+	import { createEventDispatcher } from 'svelte'
+	import { get_current_component } from "svelte/internal"
 
 	/**
 	 * A Toggle Component
@@ -19,7 +19,7 @@
 	const component = get_current_component()
 	const svelteDispatch = createEventDispatcher()
 	
-	const dispatch = (name, detail = null) => {
+	const dispatch = (name: string, detail: unknown = null) => {
 		svelteDispatch(name, detail)
 		component.dispatchEvent && component.dispatchEvent(new CustomEvent(name, { detail }))
 	}
