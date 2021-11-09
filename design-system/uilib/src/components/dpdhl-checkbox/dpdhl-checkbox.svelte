@@ -1,9 +1,8 @@
 <svelte:options tag={"dpdhl-checkbox"} />
 
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-	import { get_current_component } from "svelte/internal";
 
+	import { makeEvent } from '../../x/util/dispatch'
 	/**
 	 * A Checkbox Component
 	 * @component
@@ -26,18 +25,11 @@
 	export let error = false;
 	$: _error = error;
 
-	const component = get_current_component()
-	const svelteDispatch = createEventDispatcher()
-	const dispatch = (name, detail = null) => {
-		svelteDispatch(name, detail)
-		component.dispatchEvent && component.dispatchEvent(new CustomEvent(name, { detail }))
-	}
-
 	function handleClick(event) {
 		if (_disabled) {
 			event.preventDefault();
 		} else {
-			dispatch('check')
+			makeEvent('check')
 		};
 	}
   
