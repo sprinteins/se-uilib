@@ -85,7 +85,7 @@
 	input:checked + .slider:before {
 		-webkit-transform: 	translateX(1.3125rem);
 		-ms-transform: 		translateX(1.3125rem);
-		transform: 			translateX(1.3125rem);
+		transform:			translateX(1.3125rem);
 	}
 
 </style>
