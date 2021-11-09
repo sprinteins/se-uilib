@@ -1,13 +1,12 @@
 
 <script>
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
-    import { action } from '@storybook/addon-actions'
     import '@sprinteins/dpdhl-uilib'
 
     $: selectedItemId = 0
 
     function handleSelectItem(event) {
-        // console.log(itemId)
+        console.log(event.detail.id)
         selectedItemId = event.detail.id
     }
 </script>
@@ -22,12 +21,6 @@
     <p>Selected Item Id: {selectedItemId} </p>
 </Template>
 
-<style>
-    .container {
-        padding-left: 1rem;
-    }
-</style>
-
 <Story name="Primary" args={{
     items:[
         { label:'Menu 1 - a long one', click: (e) => handleSelectItem(e) },
@@ -36,3 +29,8 @@
     ]
 }}/>
 
+<style>
+    .container {
+        padding-left: 1rem;
+    }
+</style>
