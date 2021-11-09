@@ -1,7 +1,7 @@
 <svelte:options tag={"dpdhl-toggle"} />
 
 <script lang="ts">
-	import { makeEvent } from '../../x/util/makeEvent'
+	import { makeEvent } from '../../x/util/dispatch'
 
 	/**
 	 * A Toggle Component
