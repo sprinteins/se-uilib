@@ -2,8 +2,7 @@
     import type { SegmentedControlItem } from './segmented-control-item'
     import "../dpdhl-icon";
     import "../dpdhl-typography"
-    import { makeEvent } from '../../x/util/makeEvent'
-
+    import { makeEvent } from '../../x/util/dispatch'
 
     $: selectedItemId = 0;
 
@@ -50,7 +49,7 @@
     }
 
     .item:last-child {
-        border-right: none;
+        border-right:   none;
     }
 
     .item.selected {
