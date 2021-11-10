@@ -37,8 +37,10 @@
 </script>
 
 
-<label class="container" on:click={handleClick}>
-	{_label}
+<container class="container" on:click={handleClick}>
+	{#if _label}
+        <span class="label">{_label}</span>
+	{/if}
 	<input 
 		type="checkbox" 
 		bind:checked={_checked} 
@@ -49,7 +51,7 @@
 		class:indeterminate={_indeterminate}
 		class:error={_error}>
 	<span class="checkmark"></span>
-</label>
+</container>
 
 
 <style>
@@ -66,14 +68,18 @@
 	.container {
 		display: block;	
 		position: relative;
-		padding-left: 32px;
-		margin-bottom: 10px;
 		cursor: pointer;
-		font-size: 16px;
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
+	}
+
+	.label {
+		position: absolute;
+		padding-top: 2px;
+		padding-left: 32px;
+		font-size: 16px;
 	}
 
 	/* Create a custom radio button */
