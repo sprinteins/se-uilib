@@ -1,4 +1,4 @@
 export interface SegmentedControlItem {
-    label?: string;
+    label: string;
     click: () => void;
 }

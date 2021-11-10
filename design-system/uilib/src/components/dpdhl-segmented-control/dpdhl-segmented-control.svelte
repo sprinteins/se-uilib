@@ -1,16 +1,13 @@
 <script lang="ts">
     import type { SegmentedControlItem } from './segmented-control-item'
     import "../dpdhl-icon";
-    import "../dpdhl-typography"
-    import { makeEvent } from '../../x/util/dispatch'
+    import "../dpdhl-typography";
 
     $: selectedItemId = 0;
 
-	function handleClick(idx) {
+	function handleClick(item, idx) {
         selectedItemId = idx;
-		makeEvent('select', {
-			id: idx
-		})
+        item.click(idx)
 	}
 
     export let items: SegmentedControlItem[] = []
@@ -21,7 +18,7 @@
 
 <span class="container">
     {#each items as item, idx}
-        <span class="item" on:click={() => handleClick(idx)} class:selected={idx === selectedItemId}>
+        <span class="item" on:click={() => handleClick(item, idx)} class:selected={idx === selectedItemId}>
             <dpdhl-typography variant="body1">
                 {item.label}
             </dpdhl-typography>
@@ -49,7 +46,7 @@
     }
 
     .item:last-child {
-        border-right:   none;
+        border-right: none;
     }
 
     .item.selected {

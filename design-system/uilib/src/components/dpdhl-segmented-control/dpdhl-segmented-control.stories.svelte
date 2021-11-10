@@ -1,13 +1,14 @@
 
 <script>
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
+    import { action } from '@storybook/addon-actions'
     import '@sprinteins/dpdhl-uilib'
 
     $: selectedItemId = 0
 
-    function handleSelectItem(event) {
-        console.log(event.detail.id)
-        selectedItemId = event.detail.id
+    function handleSelectItem(idx) {
+        console.log(idx)
+        selectedItemId = idx
     }
 </script>
 
@@ -16,10 +17,17 @@
 
 <Template let:args>
     <div class="container">
-        <dpdhl-segmented-control items={args.items} on:select={handleSelectItem} />
+        <dpdhl-segmented-control items={args.items}/>
     </div>
+    <!-- Todo: selectedItemId doesn't get updated in the story. -->
     <p>Selected Item Id: {selectedItemId} </p>
 </Template>
+
+<style>
+    .container {
+        padding-left: 1rem;
+    }
+</style>
 
 <Story name="Primary" args={{
     items:[
@@ -29,8 +37,3 @@
     ]
 }}/>
 
-<style>
-    .container {
-        padding-left: 1rem;
-    }
-</style>
