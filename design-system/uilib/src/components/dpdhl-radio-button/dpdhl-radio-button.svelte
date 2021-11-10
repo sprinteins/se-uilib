@@ -40,11 +40,13 @@
 	{/if}
 	<input 
 		type="checkbox" 
-		bind:checked={_checked} 
+		bind:checked={_checked}
 		id={_name}
-		name={_name}
-		class:error={_error}>
-	<span class="checkmark" class:disabled={_disabled}></span>
+		name={_name}>
+	<span 
+		class="checkmark" 
+		class:disabled={_disabled}
+		class:error={_error}></span>
 </container>
 
 
@@ -88,8 +90,12 @@
 		border: 1px solid var(--color-gray45);
 	}
 
-	.checkmark.disabled {
+	.checkmark.error {
 		border-color: var(--color-dhlred);
+	}
+
+	.checkmark.disabled {
+		background-color: var(--color-gray10);
 	}
 
 	/* On mouse-over, add a grey background color */
@@ -123,6 +129,11 @@
 		height: 10px;
 		border-radius: 50%;
 		background: var(--color-postyellow);
+	}
+
+		/* Style the circle */
+	.container .checkmark.disabled:after {
+		background: var(--color-gray20);
 	}
 
 
