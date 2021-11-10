@@ -8,6 +8,9 @@
 	 * @component
 	 */
 
+	export let label = "";
+	$: _label = label;
+
 	export let name = "";
 	$: _name = name;
 
@@ -34,19 +37,19 @@
 </script>
 
 
-<span class="container">
-  <input 
-  	type="checkbox" 
-	bind:checked={_checked} 
-	on:click={handleClick}
-	id={_name}
-	name={_name}
-	bind:indeterminate={_indeterminate}
-	class:disabled={_disabled}
-	class:indeterminate={_indeterminate}
-	class:error={_error}>
-  <span class="checkmark"></span>
-</span>
+<label class="container" on:click={handleClick}>
+	{_label}
+	<input 
+		type="checkbox" 
+		bind:checked={_checked} 
+		id={_name}
+		name={_name}
+		bind:indeterminate={_indeterminate}
+		class:disabled={_disabled}
+		class:indeterminate={_indeterminate}
+		class:error={_error}>
+	<span class="checkmark"></span>
+</label>
 
 
 <style>
@@ -59,14 +62,14 @@
 		width: 0;
 	}
 
-	/* Customize the container*/
+	/* Customize the container */
 	.container {
-		display: block;
+		display: block;	
 		position: relative;
-		padding-left: 35px;
-		margin-bottom: 12px;
+		padding-left: 32px;
+		margin-bottom: 10px;
 		cursor: pointer;
-		font-size: 22px;
+		font-size: 16px;
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
@@ -78,8 +81,8 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		height: 24px;
-		width: 24px;
+		height: 22px;
+		width: 22px;
 		color: var(--color-postyellow);
 		border-radius: 50%;
 		border: 1px solid var(--color-gray45);
@@ -110,8 +113,8 @@
 
 	/* Style the circle */
 	.container .checkmark:after {
-		top: 7px;
-		left: 7px;
+		top: 6px;
+		left: 6px;
 		width: 10px;
 		height: 10px;
 		border-radius: 50%;

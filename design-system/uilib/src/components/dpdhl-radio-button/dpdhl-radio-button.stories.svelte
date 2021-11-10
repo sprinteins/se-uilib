@@ -20,6 +20,7 @@
   	<main>
 		<dpdhl-radio-button
 			on:check={() => console.log("Checked")}
+			label="Label"
 			name="checkbox-example"
 			disabled={args.disabled}
 			checked={args.checked}
