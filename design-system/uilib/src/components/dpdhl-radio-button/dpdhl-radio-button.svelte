@@ -36,23 +36,17 @@
 
 </script>
 
-<!-- <span>
-	<input
-		{value}
-		id={_name}
-		name={_name}
-		type="checkbox"
-		bind:checked={_checked}
-		on:click={handleClick}
-		bind:indeterminate={_indeterminate}
-		class:disabled={_disabled}
-		class:indeterminate={_indeterminate}
-		class:error={_error}
-	/>
-</span> -->
-
 <span class="container">
-  <input type="checkbox" checked={true}>
+  <input 
+  	type="checkbox" 
+	bind:checked={_checked} 
+	on:click={handleClick}
+	id={_name}
+	name={_name}
+	bind:indeterminate={_indeterminate}
+	class:disabled={_disabled}
+	class:indeterminate={_indeterminate}
+	class:error={_error}>
   <span class="checkmark"></span>
 </span>
 
@@ -90,6 +84,7 @@
 	width: 24px;
 	color: var(--color-postyellow);
 	border-radius: 50%;
+	border: 1px solid var(--color-gray45);
 }
 
 /* On mouse-over, add a grey background color */
@@ -99,7 +94,6 @@
 
 /* When the radio button is checked, display a checkmark */
 .container input:checked ~ .checkmark {
-	border: 1px solid var(--color-gray45);
 	color: var(--color-postyellow);
 }
 
