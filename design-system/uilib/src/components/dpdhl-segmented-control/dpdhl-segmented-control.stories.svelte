@@ -18,7 +18,6 @@
     <div class="container">
         <dpdhl-segmented-control items={args.items} on:select={handleSelectItem} />
     </div>
-    <p>Selected Item Id: {selectedItemId} </p>
 </Template>
 
 <Story name="Primary" args={{
