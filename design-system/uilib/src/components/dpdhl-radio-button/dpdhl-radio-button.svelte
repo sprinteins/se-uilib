@@ -56,12 +56,16 @@
   <span class="checkmark"></span>
 </span>
 
-<!-- <span class="container">
-  <input type="checkbox" checked={false}>
-  <span class="checkmark"></span>
-</span> -->
-
 <style>
+
+/* Hide the browser's default radio button */
+.container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
 
 /* Customize the container*/
 .container {
@@ -75,15 +79,6 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-}
-
-/* Hide the browser's default radio button */
-.container input {
-	position: absolute;
-	opacity: 0;
-	cursor: pointer;
-	height: 0;
-	width: 0;
 }
 
 /* Create a custom radio button */
@@ -102,27 +97,26 @@
 	background-color: #ccc;
 }
 
-/* When the radio button is checked, add a blue background */
+/* When the radio button is checked, display a checkmark */
 .container input:checked ~ .checkmark {
-	/* background-color: #2196F3; */
-	border: 1px solid #999999;
+	border: 1px solid var(--color-gray40);
 	color: var(--color-postyellow);
 }
 
-/* Create the indicator (the dot/circle - hidden when not checked) */
+/* Checkmark when not checked */
 .checkmark:after {
 	content: "";
 	position: absolute;
 	display: none;
 }
 
-/* Show the indicator (dot/circle) when checked */
+/* Show the circle when checked */
 .container input:checked ~ .checkmark:after {
 	display: block;
 	color: var(--color-postyellow);
 }
 
-/* Style the indicator (dot/circle) */
+/* Style the circle */
 .container .checkmark:after {
 	top: 7px;
 	left: 7px;
