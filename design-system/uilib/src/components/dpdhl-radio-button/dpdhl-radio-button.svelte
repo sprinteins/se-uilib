@@ -99,7 +99,7 @@
 
 /* When the radio button is checked, display a checkmark */
 .container input:checked ~ .checkmark {
-	border: 1px solid var(--color-gray40);
+	border: 1px solid var(--color-gray45);
 	color: var(--color-postyellow);
 }
 
