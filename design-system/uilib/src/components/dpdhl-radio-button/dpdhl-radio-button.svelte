@@ -36,7 +36,7 @@
 
 </script>
 
-<span>
+<!-- <span>
 	<input
 		{value}
 		id={_name}
@@ -49,131 +49,86 @@
 		class:indeterminate={_indeterminate}
 		class:error={_error}
 	/>
+</span> -->
+
+<span class="container">
+  <input type="checkbox" checked={true}>
+  <span class="checkmark"></span>
 </span>
 
+<!-- <span class="container">
+  <input type="checkbox" checked={false}>
+  <span class="checkmark"></span>
+</span> -->
+
 <style>
-	input {
-		position: 		relative;
-		cursor: 		pointer;
-		width: 			1.5rem;
-		height: 		1.5rem;
-		-moz-appearance:none;
-	}
 
-	/* box */
-	input:before {
-		content: 			"";
-		display: 			block;
-		position: 			absolute;
-		width: 				1.5rem;
-		height: 			1.5rem;
-		top: 				0;
-		left: 				0;
-		border: 			1px solid var(--color-gray45);
-		border-radius: 		3px;
-		background-color: 	white;
-	}
+/* Customize the container*/
+.container {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 22px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
 
-	/* box checked */
-	input:checked:before {
-		border: 			1px solid var(--color-postyellow);
-		background-color: 	var(--color-postyellow);
-	}
-	/* check */
-	input:checked:after {
-		content: 			"";
-		display: 			block;
-		width: 				0.4375rem;
-		height: 			0.625rem;
-		border: 			solid var(--color-white);
-		border-width: 		0 1px 1px 0;
-		-webkit-transform: 	rotate(45deg);
-		-ms-transform: 		rotate(45deg);
-		transform: 			rotate(45deg);
-		position: 			absolute;
-		top: 				0.3125rem;
-		left: 				0.5625rem;
-	}
+/* Hide the browser's default radio button */
+.container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
 
-	/* box disabled */
-	input.disabled:not(:checked):before {
-		background-color: 	var(--color-gray10);
-		cursor: 			not-allowed;
-		border: 			1px solid var(--color-gray10);
-		color: 				grey;
-	}
-	/* box checked disabled */
-	input.disabled:checked:before {
-		background-color: 	var(--color-gray10);
-		cursor: 			not-allowed;
-		color: 				grey;
-		border: 			1px solid var(--color-gray10);
-	}
-	/* check disabled */
-		input.disabled:checked:after {
-		cursor: 			not-allowed;
-		content: 			"";
-		display: 			block;
-		width: 				0.4375rem;
-		height: 			0.625rem;
-		border: 			solid var(--color-gray60);
-		border-width: 		0 1px 1px 0;
-		-webkit-transform: 	rotate(45deg);
-		-ms-transform: 		rotate(45deg);
-		transform: 			rotate(45deg);
-		position: 			absolute;
-		top: 				0.3125rem;
-		left: 				0.5625rem;
-	}
+/* Create a custom radio button */
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 24px;
+	width: 24px;
+	color: var(--color-postyellow);
+	border-radius: 50%;
+}
 
-	input.indeterminate:before {
-		border: 			1px solid var(--color-postyellow);
-		background-color: 	var(--color-postyellow);
-	}
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+	background-color: #ccc;
+}
 
-	/* indeterminate  */
-	input.indeterminate:after {
-		content: 		"";
-		display: 		block;
-		width: 			0.5rem;
-		height: 		0.2rem;
-		border: 		solid var(--color-white);
-		border-width: 	1px 0 0 0;
-		position: 		absolute;
-		top: 			0.8rem;
-		left: 			0.5625rem;
-	}
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+	/* background-color: #2196F3; */
+	border: 1px solid #999999;
+	color: var(--color-postyellow);
+}
 
-	/* indeterminate  */
-	input.indeterminate.error:after {
-		content: 		"";
-		display: 		block;
-		width: 			0.5rem;
-		height: 		0.2rem;
-		border: 		solid var(--color-dhlred);
-		border-width: 	1px 0 0 0;
-		position: 		absolute;
-		top: 			0.8rem;
-		left: 			0.5625rem;
-	}
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
 
-	/* error */
-	input.error:before {
-		border: 			1px solid var(--color-dhlred);
-		background-color: 	var(--color-dhlred-light);
-	}
-	input.error:checked:after {
-		content: 		"";
-		display: 		block;
-		width: 			0.4375rem;
-		height: 		0.6rem;
-		border: 		solid var(--color-dhlred);
-		border-width: 	0 1px 1px 0;
-		-webkit-transform: 	rotate(45deg);
-		-ms-transform: 		rotate(45deg);
-		transform: 			rotate(45deg);
-		position: 			absolute;
-		top: 				0.3125rem;
-		left: 				0.5625rem;
-	}
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+	display: block;
+	color: var(--color-postyellow);
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+	top: 7px;
+	left: 7px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: var(--color-postyellow);
+}
 </style>
