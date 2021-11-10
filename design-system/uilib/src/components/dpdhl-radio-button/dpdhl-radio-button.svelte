@@ -17,9 +17,6 @@
 	export let checked = false;
 	$: _checked = checked;
 
-	export let indeterminate = false;
-	$: _indeterminate = indeterminate;
-
 	export let disabled = false;
 	$: _disabled = disabled;
 
@@ -46,11 +43,8 @@
 		bind:checked={_checked} 
 		id={_name}
 		name={_name}
-		bind:indeterminate={_indeterminate}
-		class:disabled={_disabled}
-		class:indeterminate={_indeterminate}
 		class:error={_error}>
-	<span class="checkmark"></span>
+	<span class="checkmark" class:disabled={_disabled}></span>
 </container>
 
 
@@ -78,7 +72,7 @@
 	.label {
 		position: absolute;
 		padding-top: 2px;
-		padding-left: 32px;
+		padding-left: 40px;
 		font-size: 16px;
 	}
 
@@ -92,6 +86,10 @@
 		color: var(--color-postyellow);
 		border-radius: 50%;
 		border: 1px solid var(--color-gray45);
+	}
+
+	.checkmark.disabled {
+		border-color: var(--color-dhlred);
 	}
 
 	/* On mouse-over, add a grey background color */
@@ -126,4 +124,6 @@
 		border-radius: 50%;
 		background: var(--color-postyellow);
 	}
+
+
 </style>

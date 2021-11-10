@@ -11,7 +11,6 @@
 	name="Primary"
 	args={{
 		disabled: false,
-		indeterminate: false,
 		error: false,
 		checked: true,
 	}}
@@ -24,7 +23,6 @@
 			name="checkbox-example"
 			disabled={args.disabled}
 			checked={args.checked}
-			indeterminate={args.indeterminate}
 			error={args.error}>
 		</dpdhl-radio-button>
   	</main>
