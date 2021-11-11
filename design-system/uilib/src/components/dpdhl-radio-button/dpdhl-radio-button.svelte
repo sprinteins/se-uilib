@@ -8,11 +8,11 @@
 	 * @component
 	 */
 
-	export let label = "";
-	$: _label = label;
-
 	export let name = "";
 	$: _name = name;
+
+	export let value = "";
+	$: _value = value;
 
 	export let checked = false;
 	$: _checked = checked;
@@ -27,7 +27,9 @@
 		if (_disabled) {
 			event.preventDefault();
 		} else {
-			makeEvent('check', null)
+			makeEvent('check', {
+				value: _value
+			})
 		};
 	}
 
@@ -35,9 +37,6 @@
 
 
 <container class="container" on:click={handleClick}>
-	{#if _label}
-        <span class="label">{_label}</span>
-	{/if}
 	<input 
 		type="checkbox" 
 		bind:checked={_checked}
@@ -47,6 +46,9 @@
 		class="checkmark" 
 		class:disabled={_disabled}
 		class:error={_error}></span>
+	<span class="label">
+		<slot name="label"/>
+	</span>
 </container>
 
 
@@ -69,6 +71,7 @@
 		-moz-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
+		height: 24px;
 	}
 
 	.label {
