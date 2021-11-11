@@ -7,18 +7,11 @@
     let selected = '20';
 	
 	function onChange(value) {
-        console.log(value)
 		selected = value;
+        makeEvent('select', {
+			value
+		})
 	}
-
-    $: selectedItemValue = "";
-
-	// function handleClick(value) {
-    //     selectedItemValue = value;
-	// 	makeEvent('select', {
-	// 		value
-	// 	})
-	// }
 
     const _disabled = false
     const _error = false
@@ -29,8 +22,9 @@
 
 <svelte:options tag="dpdhl-radio-group" />
 
+<span class="container">
     {#each items as item}
-        <span class="container" on:click={() => onChange(item.value)}>
+        <span class="item" on:click={() => onChange(item.value)}>
             <input 
                 checked={selected===item.value} 
                 type="checkbox" 
@@ -41,40 +35,22 @@
                 class:disabled={_disabled}
                 class:error={_error}>
             </span>
-            <span class="label">{item.label}</span>
+            <dpdhl-typography variant="body1" class="label">{item.label}</dpdhl-typography>
         </span>
     {/each}
-    <!-- {#each items as item}
-        <span class="item" on:click={() => handleClick(item.value)}>
-            <dpdhl-typography variant="body1">
-                {item.label}
-            </dpdhl-typography>
-        </span>
-    {/each} -->
     <p>Selected: {selected}</p>
-
-
-
-<!-- <container class="container">
-	<input 
-		type="checkbox" 
-		bind:checked={_checked}
-		on:change={handleClick}
-		id={_name}
-		name={_name}>
-	<span 
-		class="checkmark" 
-		class:disabled={_disabled}
-		class:error={_error}></span>
-	<span class="label">
-		<slot name="label"/>
-	</span>
-</container> -->
+</span>
 
 
 <style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
 	/* Hide the browser's default radio button */
-	.container input {
+	.item input {
 		position: absolute;
 		opacity: 0;
 		cursor: pointer;
@@ -83,7 +59,7 @@
 	}
 
 	/* Customize the container */
-	.container {
+	.item {
 		display: block;	
 		position: relative;
 		cursor: pointer;
@@ -122,12 +98,12 @@
 	}
 
 	/* On mouse-over, add a grey background color */
-	.container:hover input ~ .checkmark {
+	.item:hover input ~ .checkmark {
 		background-color: #ccc;
 	}
 
 	/* When the radio button is checked, display a checkmark */
-	.container input:checked ~ .checkmark {
+	.item input:checked ~ .checkmark {
 		color: var(--color-postyellow);
 	}
 
@@ -139,13 +115,13 @@
 	}
 
 	/* Show the circle when checked */
-	.container input:checked ~ .checkmark:after {
+	.item input:checked ~ .checkmark:after {
 		display: block;
 		color: var(--color-postyellow);
 	}
 
 	/* Style the circle */
-	.container .checkmark:after {
+	.item .checkmark:after {
 		top: 6px;
 		left: 6px;
 		width: 10px;
@@ -155,39 +131,9 @@
 	}
 
 		/* Style the circle */
-	.container .checkmark.disabled:after {
+	.item .checkmark.disabled:after {
 		background: var(--color-gray20);
 	}
 
 
 </style>
-
-<!-- 
-<style>
-
-    .container {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .item {
-        padding:        0.75rem;
-        font-weight:    700;
-        font-size:      14px;
-        line-height:    8px;
-        cursor:         pointer;
-    }
-
-    .item:last-child {
-        border-right:   none;
-    }
-
-    .item.selected {
-        background-color: var(--color-postyellow);
-    }
-
-    .item:hover {
-    
-    }
-
-</style> -->

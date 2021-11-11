@@ -3,18 +3,12 @@
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
     import '@sprinteins/dpdhl-uilib'
 
-    $: selectedItemName = ""
+    let selectedItemName = ""
 
     function handleSelectItem(event) {
         console.log(event.detail.name)
         selectedItemName = event.detail.name
     }
-
-    const items = [
-        { label:'Menu 1', value: 'menu-1' },
-        { label:'Menu 2', value: 'menu-2' },
-        { label:'Menu 3', value: 'menu-3' },
-    ]
 </script>
 
 
@@ -22,16 +16,16 @@
 
 <Template let:args>
     <div class="container">
-        <dpdhl-radio-group items={items} on:select={handleSelectItem} />
+        <dpdhl-radio-group items={args.items} on:select={(event) => selectedItemName = event.detail.name} />
     </div>
     <p>Selected Item: {selectedItemName} </p>
 </Template>
 
 <Story name="Primary" args={{
     items:[
-        { label:'Menu 1', value: 'menu-1' },
-        { label:'Menu 2', value: 'menu-2' },
-        { label:'Menu 3', value: 'menu-3' },
+        { label:'Option 1', value: 'option-1' },
+        { label:'Option 2', value: 'option-2' },
+        { label:'Option 3', value: 'option-3' },
     ]
 }}/>
 
