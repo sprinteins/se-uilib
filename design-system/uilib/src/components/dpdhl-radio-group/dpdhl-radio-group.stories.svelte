@@ -11,9 +11,9 @@
     }
 
     const items = [
-        { label:'Menu 1', name: 'menu-1' },
-        { label:'Menu 2', name: 'menu-2' },
-        { label:'Menu 3', name: 'menu-3' },
+        { label:'Menu 1', value: 'menu-1' },
+        { label:'Menu 2', value: 'menu-2' },
+        { label:'Menu 3', value: 'menu-3' },
     ]
 </script>
 
@@ -29,9 +29,9 @@
 
 <Story name="Primary" args={{
     items:[
-        { label:'Menu 1', name: 'menu-1' },
-        { label:'Menu 2', name: 'menu-2' },
-        { label:'Menu 3', name: 'menu-3' },
+        { label:'Menu 1', value: 'menu-1' },
+        { label:'Menu 2', value: 'menu-2' },
+        { label:'Menu 3', value: 'menu-3' },
     ]
 }}/>
 

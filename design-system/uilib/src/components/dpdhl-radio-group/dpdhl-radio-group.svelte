@@ -4,12 +4,12 @@
     import "../dpdhl-typography"
     import { makeEvent } from '../../x/util/dispatch'
 
-    $: selectedItemName = "";
+    $: selectedItemValue = "";
 
-	function handleClick(name) {
-        selectedItemName = name;
+	function handleClick(value) {
+        selectedItemValue = value;
 		makeEvent('select', {
-			name: name
+			value
 		})
 	}
 
@@ -21,8 +21,7 @@
 
 <span class="container">
     {#each items as item}
-        <span class="item" on:click={() => handleClick(item.name)}>
-            
+        <span class="item" on:click={() => handleClick(item.value)}>
             <dpdhl-typography variant="body1">
                 {item.label}
             </dpdhl-typography>
