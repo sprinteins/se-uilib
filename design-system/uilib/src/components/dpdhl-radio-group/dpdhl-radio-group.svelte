@@ -3,12 +3,22 @@
     import "../dpdhl-icon";
     import "../dpdhl-typography"
     import { makeEvent } from '../../x/util/dispatch'
+    import { createEventDispatcher } from 'svelte';
+    import { get_current_component } from "svelte/internal";
+
+    const component = get_current_component()
+    const svelteDispatch = createEventDispatcher()
+
+    export function dispatch(name, detail) {
+        svelteDispatch(name, detail)
+        component.dispatchEvent && component.dispatchEvent(new CustomEvent(name, { detail }))
+    }
 
     let selected = '20';
 	
 	function onChange(value) {
 		selected = value;
-        makeEvent('select', {
+        dispatch('select', {
 			value
 		})
 	}
