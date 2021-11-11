@@ -3,19 +3,30 @@
 <script lang="ts">
 
 	import { makeEvent } from '../../x/util/dispatch'
+	import { createEventDispatcher } from 'svelte';
+    import { get_current_component } from "svelte/internal";
+
+    const component = get_current_component()
+    const svelteDispatch = createEventDispatcher()
+
+    export function dispatch(name, detail) {
+        svelteDispatch(name, detail)
+        component.dispatchEvent && component.dispatchEvent(new CustomEvent(name, { detail }))
+    }
+	
 	/**
 	 * A Radio Button Component
 	 * @component
 	 */
 
-	export let name = "";
-	$: _name = name;
-
 	export let value = "";
 	$: _value = value;
 
-	export let checked = false;
-	$: _checked = checked;
+	export let label = "";
+	$: _label = label;
+
+	export let selected = false;
+	$: _selected = selected;
 
 	export let disabled = false;
 	$: _disabled = disabled;
@@ -24,39 +35,48 @@
 	$: _error = error;
 
 	function handleClick(event) {
-		console.log("click", event)
 		if (_disabled) {
 			event.preventDefault();
 		} else {
-			makeEvent('change', {
+			dispatch('select', {
 				value: _value
 			})
 		};
 	}
 
+	// function onChange(event) {
+    //     dispatch('select', {
+	// 		value
+	// 	})
+	// }
+
 </script>
 
 
-<container class="container" >
+<span class="item" on:click={handleClick}>
 	<input 
+		checked={_selected} 
 		type="checkbox" 
-		bind:checked={_checked}
-		on:change={handleClick}
-		id={_name}
-		name={_name}>
+		name="amount" 
+		value={_value} />
 	<span 
 		class="checkmark" 
 		class:disabled={_disabled}
-		class:error={_error}></span>
-	<span class="label">
-		<slot name="label"/>
+		class:error={_error}>
 	</span>
-</container>
+	<dpdhl-typography variant="body1" class="label">{_label}</dpdhl-typography>
+</span>
 
 
 <style>
+	.container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
 	/* Hide the browser's default radio button */
-	.container input {
+	.item input {
 		position: absolute;
 		opacity: 0;
 		cursor: pointer;
@@ -65,7 +85,7 @@
 	}
 
 	/* Customize the container */
-	.container {
+	.item {
 		display: block;	
 		position: relative;
 		cursor: pointer;
@@ -104,12 +124,12 @@
 	}
 
 	/* On mouse-over, add a grey background color */
-	.container:hover input ~ .checkmark {
+	.item:hover input ~ .checkmark {
 		background-color: #ccc;
 	}
 
 	/* When the radio button is checked, display a checkmark */
-	.container input:checked ~ .checkmark {
+	.item input:checked ~ .checkmark {
 		color: var(--color-postyellow);
 	}
 
@@ -121,13 +141,13 @@
 	}
 
 	/* Show the circle when checked */
-	.container input:checked ~ .checkmark:after {
+	.item input:checked ~ .checkmark:after {
 		display: block;
 		color: var(--color-postyellow);
 	}
 
 	/* Style the circle */
-	.container .checkmark:after {
+	.item .checkmark:after {
 		top: 6px;
 		left: 6px;
 		width: 10px;
@@ -137,9 +157,10 @@
 	}
 
 		/* Style the circle */
-	.container .checkmark.disabled:after {
+	.item .checkmark.disabled:after {
 		background: var(--color-gray20);
 	}
+
 
 
 </style>
