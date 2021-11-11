@@ -31,9 +31,9 @@
 
 <Story name="Primary" args={{
     items:[
-        { label:'Menu 1 - a long one', click: (e) => handleSelectItem(e) },
-        { label:'Menu 2', click: (e) => handleSelectItem(e) },
-        { label:'Menu 3', click: (e) => handleSelectItem(e) },
+        { label:'Menu 1 - a long one', click: (idx) => handleSelectItem(idx) },
+        { label:'Menu 2', click: (idx) => handleSelectItem(idx) },
+        { label:'Menu 3', click: (idx) => handleSelectItem(idx) },
     ]
 }}/>
 
