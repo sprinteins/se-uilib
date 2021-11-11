@@ -40,8 +40,8 @@
     .item {
         padding:        0.75rem;
         font-weight:    700;
-        font-size:      14px;
-        line-height:    8px;
+        font-size:      0.875rem;
+        line-height:    0.5rem;
         border-right:   1px solid var(--color-postyellow);
     }
 
