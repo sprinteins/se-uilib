@@ -1,4 +1,4 @@
 export interface RadioButtonItem {
     label: string;
-    name: string;
+    value: string;
 }

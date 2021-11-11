@@ -4,14 +4,22 @@
     import "../dpdhl-typography"
     import { makeEvent } from '../../x/util/dispatch'
 
+
+    let selected = '20';
+	
+	function onChange(event) {
+        console.log(event)
+		selected = event.currentTarget.value;
+	}
+
     $: selectedItemValue = "";
 
-	function handleClick(value) {
-        selectedItemValue = value;
-		makeEvent('select', {
-			value
-		})
-	}
+	// function handleClick(value) {
+    //     selectedItemValue = value;
+	// 	makeEvent('select', {
+	// 		value
+	// 	})
+	// }
 
     export let items: RadioButtonItem[] = []
 
@@ -21,12 +29,18 @@
 
 <span class="container">
     {#each items as item}
+        <label>
+            <input checked={selected==="10"} on:change={onChange} type="radio" name="amount" value={item.value} />{item.label}
+        </label>
+    {/each}
+    <!-- {#each items as item}
         <span class="item" on:click={() => handleClick(item.value)}>
             <dpdhl-typography variant="body1">
                 {item.label}
             </dpdhl-typography>
         </span>
-    {/each}
+    {/each} -->
+    <p>Selected: {selected}</p>
 </span>
 
 

@@ -24,10 +24,11 @@
 	$: _error = error;
 
 	function handleClick(event) {
+		console.log("click", event)
 		if (_disabled) {
 			event.preventDefault();
 		} else {
-			makeEvent('check', {
+			makeEvent('change', {
 				value: _value
 			})
 		};
@@ -36,10 +37,11 @@
 </script>
 
 
-<container class="container" on:click={handleClick}>
+<container class="container" >
 	<input 
 		type="checkbox" 
 		bind:checked={_checked}
+		on:change={handleClick}
 		id={_name}
 		name={_name}>
 	<span 
