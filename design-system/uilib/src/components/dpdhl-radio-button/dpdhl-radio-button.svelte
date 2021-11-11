@@ -2,7 +2,11 @@
 
 <script lang="ts">
 
-	import { makeEvent } from '../../x/util/dispatch'
+	/**
+	 * A Radio Button Component
+	 * @component
+	 */
+
 	import { createEventDispatcher } from 'svelte';
     import { get_current_component } from "svelte/internal";
 
@@ -14,11 +18,6 @@
         component.dispatchEvent && component.dispatchEvent(new CustomEvent(name, { detail }))
     }
 	
-	/**
-	 * A Radio Button Component
-	 * @component
-	 */
-
 	export let value = "";
 	$: _value = value;
 
@@ -44,12 +43,6 @@
 		};
 	}
 
-	// function onChange(event) {
-    //     dispatch('select', {
-	// 		value
-	// 	})
-	// }
-
 </script>
 
 
@@ -69,50 +62,43 @@
 
 
 <style>
-	.container {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
 
-	/* Hide the browser's default radio button */
+	/* Hide the default radio button */
 	.item input {
-		position: absolute;
-		opacity: 0;
-		cursor: pointer;
-		height: 0;
-		width: 0;
+		position:		absolute;
+		opacity:		0;
+		height:			0;
+		width:			0;
+		cursor:			pointer;
 	}
 
-	/* Customize the container */
 	.item {
-		display: block;	
-		position: relative;
-		cursor: pointer;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-		height: 24px;
+		display: 				block;	
+		position: 				relative;
+		cursor: 				pointer;
+		-webkit-user-select:	none;
+		-moz-user-select:		none;
+		-ms-user-select:		none;
+		user-select:			none;
+		height:					2rem;
 	}
 
 	.label {
 		position: absolute;
-		padding-top: 2px;
-		padding-left: 40px;
-		font-size: 16px;
+		padding-top: 	0.125rem;
+		padding-left: 	2.5rem;
+		font-size: 		1rem;
 	}
 
-	/* Create a custom radio button */
 	.checkmark {
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 22px;
-		width: 22px;
-		color: var(--color-postyellow);
-		border-radius: 50%;
-		border: 1px solid var(--color-gray45);
+		position: 		absolute;
+		top:			0;
+		left:			0;
+		height:			1.375rem;
+		width:			1.375rem;
+		color:			var(--color-postyellow);
+		border-radius:	50%;
+		border:			1px solid var(--color-gray45);
 	}
 
 	.checkmark.error {
@@ -123,44 +109,40 @@
 		background-color: var(--color-gray10);
 	}
 
-	/* On mouse-over, add a grey background color */
 	.item:hover input ~ .checkmark {
 		background-color: #ccc;
 	}
 
-	/* When the radio button is checked, display a checkmark */
+	/* Checkmark when checked */
 	.item input:checked ~ .checkmark {
 		color: var(--color-postyellow);
 	}
 
 	/* Checkmark when not checked */
 	.checkmark:after {
-		content: "";
-		position: absolute;
-		display: none;
+		content:	"";
+		position:	absolute;
+		display:	none;
 	}
 
-	/* Show the circle when checked */
+	/* Show the mark when checked */
 	.item input:checked ~ .checkmark:after {
-		display: block;
-		color: var(--color-postyellow);
+		display:	block;
+		color:		var(--color-postyellow);
 	}
 
 	/* Style the circle */
 	.item .checkmark:after {
-		top: 6px;
-		left: 6px;
-		width: 10px;
-		height: 10px;
-		border-radius: 50%;
-		background: var(--color-postyellow);
+		top:			0.375rem;
+		left:			0.375rem;
+		width:			0.625rem;
+		height:			0.625rem;
+		border-radius:	50%;
+		background:		var(--color-postyellow);
 	}
 
-		/* Style the circle */
 	.item .checkmark.disabled:after {
-		background: var(--color-gray20);
+		background:		var(--color-gray20);
 	}
-
-
 
 </style>
