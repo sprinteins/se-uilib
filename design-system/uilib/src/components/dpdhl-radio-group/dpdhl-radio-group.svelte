@@ -48,7 +48,6 @@
             <dpdhl-typography variant="body1" class="label">{item.label}</dpdhl-typography>
         </span>
     {/each}
-    <p>Selected: {selected}</p>
 </span>
 
 

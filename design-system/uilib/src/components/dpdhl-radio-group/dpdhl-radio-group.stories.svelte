@@ -3,7 +3,7 @@
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
     import '@sprinteins/dpdhl-uilib'
 
-    let selected = ""
+    let selected = ''
 
     function handleSelectItem(event) {
         selected = event.detail.value
@@ -29,7 +29,5 @@
 }}/>
 
 <style>
-    .container {
-        padding-left: 1rem;
-    }
+
 </style>
