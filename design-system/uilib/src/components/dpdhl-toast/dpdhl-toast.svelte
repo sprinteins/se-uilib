@@ -14,7 +14,7 @@
 	export let open = true;
 	$: _open = open;
 
-	export let message;
+	export let message = "";
 	$: _message = message;
 
 	export let type: string = Type.error;
