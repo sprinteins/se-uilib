@@ -5,7 +5,23 @@
 import { CheckboxState } from "./checkbox-state";
 </script>
 
-<Meta title="11_Components/Checkbox" component={null} />
+<Meta 
+	title="11_Components/Checkbox" 
+	component={null} 
+	argTypes={{
+        state: {
+            options: [
+				CheckboxState.none, 
+				CheckboxState.checked, 
+				CheckboxState.indeterminate
+			],
+      		control: { 
+				type: 'radio' 
+			}
+        },
+    }}
+/>
+
 
 <Template let:args />
 
@@ -14,7 +30,7 @@ import { CheckboxState } from "./checkbox-state";
 	args={{
 		disabled: false,
 		error: false,
-
+		state: CheckboxState.checked
 	}}
 	let:args
 >
@@ -23,7 +39,7 @@ import { CheckboxState } from "./checkbox-state";
 			on:check={action("Main Action")}
 			name="checkbox-example"
 			disabled={args.disabled}
-			state={CheckboxState.indeterminate}
+			state={args.state}
 			error={args.error}>
 		</dpdhl-checkbox>
   	</main>
