@@ -76,5 +76,9 @@
         <dpdhl-typography variant="label">
             Label/Delivery/Bold/14px
         </dpdhl-typography>
+        
+        <dpdhl-typography variant="tag">
+            Tag/Delivery/Bold/12px
+        </dpdhl-typography>
     </div>
 </Story>

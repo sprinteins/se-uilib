@@ -1,0 +1,1 @@
+export { default as DPDHLTag } from './dpdhl-tag.svelte'
