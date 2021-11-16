@@ -54,8 +54,6 @@
         font-family: var(--font-regular);
         font-size:   var(--fonr-size);
 
-        --checkbox-animation-length:    700ms;
-        --checkbox-ripple-length:       0.3s;
     }
 
   
