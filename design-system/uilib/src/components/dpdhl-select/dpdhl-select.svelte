@@ -137,7 +137,7 @@
 				<dpdhl-copy class="item-label">{item.label}</dpdhl-copy>
 				{#if (multiple && selectedItems.includes(item)) 
 					|| (!multiple && item === selectedItem)}
-					<dpdhl-icon icon="checkmark" width="16" color="var(--color-dhlred)" />
+					<dpdhl-icon icon="checkmark" width="16" height="16" color="var(--color-dhlred)" />
 				{/if}
 			</li>
 		{/each}

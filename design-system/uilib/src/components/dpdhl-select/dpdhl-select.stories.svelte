@@ -45,9 +45,9 @@
 		on:selectOne={(event) => (selectedItem = event.detail)}
 		error={false}
     >
-		<dpdhl-select-item label="Option A" value={"option-a"} />
-		<dpdhl-select-item label="Option B" value={"option-b"} />
-		<dpdhl-select-item label="Option C" value={"option-c"} />
+		<dpdhl-select-item label="Option A" value="option-a" />
+		<dpdhl-select-item label="Option B" value="option-b" />
+		<dpdhl-select-item label="Option C" value="option-c" />
     </dpdhl-select>
   </div>
   <div>Selected : {selectedItem}</div>
@@ -78,13 +78,13 @@
 				label="Option B is a very long option indeed"
 				value={"option-b"}
 			/>
-			<dpdhl-select-item label="Option C" value={"option-c"} />
-			<dpdhl-select-item label="Option D" value={"option-d"} />
-			<dpdhl-select-item label="Option E" value={"option-e"} />
-			<dpdhl-select-item label="Option F" value={"option-f"} />
-			<dpdhl-select-item label="Option G" value={"option-g"} />
-			<dpdhl-select-item label="Option H" value={"option-h"} />
-			<dpdhl-select-item label="Option I" value={"option-i"} />
+			<dpdhl-select-item label="Option C" value="option-c" />
+			<dpdhl-select-item label="Option D" value="option-d" />
+			<dpdhl-select-item label="Option E" value="option-e" />
+			<dpdhl-select-item label="Option F" value="option-f" />
+			<dpdhl-select-item label="Option G" value="option-g" />
+			<dpdhl-select-item label="Option H" value="option-h" />
+			<dpdhl-select-item label="Option I" value="option-i" />
 		</dpdhl-select>
 	</div>
 	<div style="padding-top: 2rem;">
