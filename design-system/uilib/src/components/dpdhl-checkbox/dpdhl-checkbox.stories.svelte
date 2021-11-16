@@ -2,6 +2,7 @@
 	import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
 	import "@sprinteins/dpdhl-uilib";
 	import { action } from '@storybook/addon-actions'
+import { CheckboxState } from "./checkbox-state";
 </script>
 
 <Meta title="11_Components/Checkbox" component={null} />
@@ -12,9 +13,8 @@
 	name="Primary"
 	args={{
 		disabled: false,
-		indeterminate: false,
 		error: false,
-		checked: true,
+
 	}}
 	let:args
 >
@@ -23,8 +23,7 @@
 			on:check={action("Main Action")}
 			name="checkbox-example"
 			disabled={args.disabled}
-			checked={args.checked}
-			indeterminate={args.indeterminate}
+			state={CheckboxState.indeterminate}
 			error={args.error}>
 		</dpdhl-checkbox>
   	</main>

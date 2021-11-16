@@ -3,6 +3,8 @@
 <script lang="ts">
 
 	import { makeEvent } from '../../x/util/dispatch'
+	import { CheckboxState } from './checkbox-state'
+
 	/**
 	 * A Checkbox Component
 	 * @component
@@ -13,11 +15,11 @@
 	export let name = "";
 	$: _name = name;
 
-	export let checked = false;
-	$: _checked = checked;
+	export let state = CheckboxState.none;
+	$: _state = state;
 
-	export let indeterminate = false;
-	$: _indeterminate = indeterminate;
+	$: _checked = _state === CheckboxState.checked;
+	$: _indeterminate = _state === CheckboxState.indeterminate;
 
 	export let disabled = false;
 	$: _disabled = disabled;
@@ -51,6 +53,7 @@
 		class:error={_error}
 	/>
 </span>
+
 
 <style>
 	input {
