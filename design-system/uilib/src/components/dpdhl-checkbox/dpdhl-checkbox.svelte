@@ -30,9 +30,9 @@
 	function handleClick(event) {
 		if (_disabled) {
 			event.preventDefault();
-		} else {
-			root.dispatchEvent(makeEvent('check'))
-		};
+			return;
+		}
+		root.dispatchEvent(makeEvent('check'))
 	}
  
 </script>
