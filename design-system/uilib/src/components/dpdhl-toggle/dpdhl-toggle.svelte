@@ -34,11 +34,11 @@
 
 <style>
 	.switch {
-		position: 	relative;
-		display: 	inline-block;
-		width: 		2.125rem;
-		height: 	0.875rem;
-		margin: 	0.375rem;
+		position:	relative;
+		display:	inline-block;
+		width:		2.125rem;
+		height:		0.875rem;
+		margin:		0.375rem;
 	}
 
 	/* Hide default HTML checkbox */
