@@ -21,16 +21,18 @@
   
 </script>
 
-<label class="switch">
-	<input 
-		id={_name}
-		name={_name}
-		type="checkbox"
-		bind:checked={_checked}
-		on:click={handleClick}
-	>
-	<span class="slider"></span>
-</label>
+<main bind:this={root}>
+	<label class="switch">
+		<input 
+			id={_name}
+			name={_name}
+			type="checkbox"
+			bind:checked={_checked}
+			on:click={handleClick}
+		>
+		<span class="slider"></span>
+	</label>
+</main>
 
 <style>
 	.switch {
