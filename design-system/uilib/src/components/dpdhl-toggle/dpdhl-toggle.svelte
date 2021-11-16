@@ -9,7 +9,6 @@
 	 */
 
 	export let name = "";
-	$: _name = name;
 
 	export let checked = false;
 	$: _checked = checked;
@@ -24,8 +23,7 @@
 <main bind:this={root}>
 	<label class="switch">
 		<input 
-			id={_name}
-			name={_name}
+			name={name}
 			type="checkbox"
 			bind:checked={_checked}
 			on:click={handleClick}
