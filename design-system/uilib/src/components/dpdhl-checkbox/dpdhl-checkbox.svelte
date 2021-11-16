@@ -54,11 +54,11 @@
 
 <style>
 	input {
-		position: 		relative;
-		cursor: 		pointer;
-		width: 			1.5rem;
-		height: 		1.5rem;
-		-moz-appearance:none;
+		position: 			relative;
+		cursor: 			pointer;
+		width: 				1.5rem;
+		height: 			1.5rem;
+		-moz-appearance:	none;
 	}
 
 	/* box */
