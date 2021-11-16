@@ -68,8 +68,8 @@
 		width: 					1.25rem;
 		left: 					-0.125rem;
 		bottom: 				-0.125rem;
-		transition:				.4s;
 		border-radius:			50%;
+		transition:				.4s;
 		box-shadow:				0 3px 5px rgba(0,0,0,0.12), 0 3px 5px rgba(0,0,0,0.24);
 		background-color:		white;
 		-webkit-transition:		.4s;
@@ -84,9 +84,9 @@
 	}
 
 	input:checked + .slider:before {
+		transform:				translateX(1.3125rem);
 		-webkit-transform:		translateX(1.3125rem);
 		-ms-transform:			translateX(1.3125rem);
-		transform:				translateX(1.3125rem);
 	}
 
 
