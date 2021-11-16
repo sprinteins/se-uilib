@@ -25,18 +25,19 @@
 	export let error = false;
 	$: _error = error;
 
+	let root: HTMLDivElement;
+
 	function handleClick(event) {
 		if (_disabled) {
 			event.preventDefault();
 		} else {
-			makeEvent('check')
+			root.dispatchEvent(makeEvent('check'))
 		};
 	}
-  
-
+ 
 </script>
 
-<span>
+<span bind:this={root}>
 	<input
 		{value}
 		id={_name}
