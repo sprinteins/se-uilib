@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
 	import "@sprinteins/dpdhl-uilib";
+	import { action } from '@storybook/addon-actions'
 </script>
 
 <Meta title="11_Components/Checkbox" component={null} />
@@ -19,7 +20,7 @@
 >
   	<main>
 		<dpdhl-checkbox
-			on:check={() => console.log("Checked")}
+			on:check={action("Main Action")}
 			name="checkbox-example"
 			disabled={args.disabled}
 			checked={args.checked}
