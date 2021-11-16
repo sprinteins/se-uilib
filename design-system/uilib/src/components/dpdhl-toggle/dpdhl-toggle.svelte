@@ -1,8 +1,7 @@
 <svelte:options tag={"dpdhl-toggle"} />
 
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte'
-	import { get_current_component } from "svelte/internal"
+	import { makeEvent } from '../../x/util/dispatch';
 
 	/**
 	 * A Toggle Component
@@ -15,17 +14,9 @@
 	export let checked = false;
 	$: _checked = checked;
 
-
-	const component = get_current_component()
-	const svelteDispatch = createEventDispatcher()
-	
-	const dispatch = (name: string, detail: unknown = null) => {
-		svelteDispatch(name, detail)
-		component.dispatchEvent && component.dispatchEvent(new CustomEvent(name, { detail }))
-	}
-
+	let root: HTMLDivElement;
 	function handleClick() {
-		dispatch('check')
+		root.dispatchEvent(makeEvent('check'))
 	}
   
 </script>
