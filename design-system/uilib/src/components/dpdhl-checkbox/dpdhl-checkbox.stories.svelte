@@ -2,7 +2,7 @@
 	import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
 	import "@sprinteins/dpdhl-uilib";
 	import { action } from '@storybook/addon-actions'
-import { CheckboxState } from "./checkbox-state";
+	import { CheckboxState } from "./checkbox-state";
 </script>
 
 <Meta 
