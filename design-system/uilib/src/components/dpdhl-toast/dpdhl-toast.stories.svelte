@@ -16,27 +16,7 @@
 </script>
 
 <!-- https://www.dpdhl-brands.com/dpdhl-group/en/guides/touchpoints/user-interface/components/notifications.html -->
-<Template let:args>
-	<dpdhl-toast
-		{open}
-		on:closeToast={handleClose}
-		type="error"
-		title="Toast Title"
-		message="And here we go with a more detailed message."
-		{...args}
-	>
-		{#if args.showIcon}
-			<dpdhl-icon
-			slot="icon"
-			width={20}
-			height={20}
-			color="#FFF"
-			icon="exception"
-			/>
-		{/if}
-	</dpdhl-toast>
-	<button on:click={() => handleOpen()}>Show toast</button>
-</Template>
+<Template let:args></Template>
 
 <Meta
 	title="11_Components/Toast"
@@ -50,13 +30,76 @@
 />
 
 <Story
+	let:args
 	name="Primary"
 	args={{
 		type: Type.error,
 		title: "Toast Title",
 		message: "And here we go with a more detailed message.",
 		showIcon: false,
+		customContent: true
 	}}
-/>
+>
+	<dpdhl-toast
+		{open}
+		on:closeToast={handleClose}
+		type="error"
+		title={args.title}
+		message={args.message}
+	>
+		{#if args.showIcon}
+			<dpdhl-icon
+			slot="icon"
+			width={20}
+			height={20}
+			color="#FFF"
+			icon="exception"
+			/>
+		{/if}
+	</dpdhl-toast>
+	<button on:click={handleOpen}>Show toast</button>
+</Story>
 
-<style></style>
+
+<Story 
+	let:args
+	name="Customized" 
+	args={{
+		type: Type.error,
+		showIcon: false
+	}}>
+    <dpdhl-toast
+		{open}
+		on:closeToast={handleClose}
+		type="error"
+		{...args}
+	>	
+		{#if args.showIcon}
+			<dpdhl-icon
+				slot="icon"
+				width={20}
+				height={20}
+				color="#FFF"
+				icon="exception"
+			/>
+		{/if}
+		<div slot="content" class="content">
+			<dpdhl-typography variant="h5">Custom title</dpdhl-typography>
+			<dpdhl-typography>And here we go with a more detailed message.</dpdhl-typography>
+			<dpdhl-button type="primary" size="tiny" class="button">Button</dpdhl-button>
+		</div>
+	</dpdhl-toast>
+	<button on:click={handleOpen}>Show toast</button>
+</Story>
+
+<style>
+	.content {
+		display: flex;
+		flex-direction: column;
+		gap: 0.3rem;
+	}
+	
+	.button {
+		margin-top: 0.3rem;
+	}
+</style>

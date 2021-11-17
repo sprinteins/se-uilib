@@ -1,6 +1,8 @@
 <svelte:options tag="dpdhl-toast" />
 
 <script lang="ts">
+import { makeEvent } from "../../x/util/dispatch";
+
 	/**
 	 * A Toast Component
 	 * @component
@@ -14,23 +16,19 @@
 	export let open = true;
 	$: _open = open;
 
-	export let message = "";
+	export let message: string;
 	$: _message = message;
 
-	export let type: string = Type.error;
-	export let fullWidth: boolean = true;
+	export let title: string;
+	$: _title = title;
 
-	export let title;
-	$: _title = title || "No title provided";
+	export let type: string = Type.error;
+
+	export let fullWidth: boolean = true;
 
 	let toast: HTMLElement;
 	function closeToast() {
-		toast.dispatchEvent(
-			new Event("closeToast", {
-				bubbles: true,
-				composed: true,
-			})
-		);
+		toast.dispatchEvent(makeEvent("closeToast", null));
 	}
 </script>
 
@@ -44,12 +42,13 @@
 		<div class="content-container">
 			<slot name="icon" />
 			<div class="text-container">
-				<div class="title">
-					{_title}
-				</div>
+				{#if _title}
+					<div class="title">{_title}</div>
+				{/if}
 				{#if _message}
 					<div class="message">{_message}</div>
 				{/if}
+				<slot name="content" />
 			</div>
 		</div>
 		<dpdhl-icon
@@ -70,10 +69,10 @@
 		align-items: 		center;
 		justify-content: 	space-between;
 		padding: 			var(--padding-top-bottom) var(--padding-left-right);
-		padding-top: 		var(--toast__padding-top, 1.125rem);
-		padding-bottom: 	var(--toast__padding-bottom, 1.125rem);
-		padding-left: 		var(--toast__padding-left, 1.125rem);
-		padding-right: 		var(--toast__padding-right, 1.125rem);
+		padding-top: 		var(--toast__padding-top, 1rem);
+		padding-bottom: 	var(--toast__padding-bottom, 1rem);
+		padding-left: 		var(--toast__padding-left, 1rem);
+		padding-right: 		var(--toast__padding-right, 1rem);
 	}
 
 	main.full-width {
