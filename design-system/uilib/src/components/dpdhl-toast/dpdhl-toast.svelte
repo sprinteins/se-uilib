@@ -64,8 +64,8 @@ import { makeEvent } from "../../x/util/dispatch";
 
 <style>
 	main {
-		padding:	var(--padding-top-bottom) var(--padding-left-right);
-		display: 			flex;
+		padding:		var(--padding-top-bottom) var(--padding-left-right);
+		display: 		flex;
 		flex-direction: 	row;
 		align-items: 		center;
 		justify-content: 	space-between;
@@ -85,12 +85,12 @@ import { makeEvent } from "../../x/util/dispatch";
 	}
 
 	main.notification {
-		color: 		var(--toast__color, var(--color-white));
+		color: 			var(--toast__color, var(--color-white));
 		background-color: 	var(--color-green-dark);
 	}
 
 	main.error {
-		color: 				var(--toast__color, var(--color-white));
+		color: 			var(--toast__color, var(--color-white));
 		background-color: 	var(--color-dhlred);
 	}
 
@@ -103,11 +103,11 @@ import { makeEvent } from "../../x/util/dispatch";
 	}
 
 	.message {
-		font-size: 		calc(var(--font-size) * 0.875);
+		font-size: 	calc(var(--font-size) * 0.875);
 		line-height: 	var(--line-height);
 		font-weight: 	400;
-		padding: 		0;
-		margin: 		0;
+		padding: 	0;
+		margin: 	0;
 	}
 
 	div.text-container {
