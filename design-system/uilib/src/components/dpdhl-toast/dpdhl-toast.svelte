@@ -64,27 +64,28 @@ import { makeEvent } from "../../x/util/dispatch";
 
 <style>
 	main {
+		padding:	var(--padding-top-bottom) var(--padding-left-right);
 		display: 			flex;
 		flex-direction: 	row;
 		align-items: 		center;
 		justify-content: 	space-between;
-		padding: 			var(--padding-top-bottom) var(--padding-left-right);
-		padding-top: 		var(--toast__padding-top, 1rem);
+		padding-top:		var(--toast__padding-top, 1rem);
 		padding-bottom: 	var(--toast__padding-bottom, 1rem);
 		padding-left: 		var(--toast__padding-left, 1rem);
 		padding-right: 		var(--toast__padding-right, 1rem);
 	}
 
 	main.full-width {
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		flex-grow: 1;
+		position: 		fixed;
+		flex-grow: 		1;
+		bottom:			0;
+		left:			0;
+		right:			0;
+
 	}
 
 	main.notification {
-		color: 				var(--toast__color, var(--color-white));
+		color: 		var(--toast__color, var(--color-white));
 		background-color: 	var(--color-green-dark);
 	}
 
@@ -94,9 +95,9 @@ import { makeEvent } from "../../x/util/dispatch";
 	}
 
 	.title {
+		line-height: 		var(--line-height);
+		font-weight: 		700;
 		font-size: 		var(--font-size);
-		line-height: 	var(--line-height);
-		font-weight: 	700;
 		padding: 		0;
 		margin: 		0;
 	}
@@ -111,13 +112,13 @@ import { makeEvent } from "../../x/util/dispatch";
 
 	div.text-container {
 		display: 		flex;
-		flex-direction: column;
+		flex-direction: 	column;
 	}
 
 	div.content-container {
 		display: 		flex;
-		flex-direction: row;
 		gap: 			0.75rem;
+		flex-direction: 	row;
 	}
 
 	.close-icon {
