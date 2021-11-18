@@ -17,13 +17,13 @@
 <svelte:options tag="dpdhl-segmented-control" />
 
 <span class="container">
-    {#each items as item, idx}
+    <!-- {#each items as item, idx}
         <span class="item" on:click={() => handleClick(item, idx)} class:selected={idx === selectedItemId}>
             <dpdhl-typography variant="body1">
                 {item.label}
             </dpdhl-typography>
         </span>
-    {/each}
+    {/each} -->
 </span>
 
 
