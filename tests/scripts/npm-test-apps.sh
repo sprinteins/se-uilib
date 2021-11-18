@@ -28,7 +28,7 @@ makepids=()
 for app in "${apps[@]}"
 do
     cd $ROOT/example-apps/app-${app}
-    make run | sed -e "s/^/${app}: : /;" &
+    make lib && make run | sed -e "s/^/${app}: : /;" &
     makepids+=($!)
 done
 

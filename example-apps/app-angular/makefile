@@ -10,3 +10,6 @@ build: ## Build the App
 
 install:
 	@yarn install
+
+lib: ## Links the lib locally
+	@yarn lib:link
