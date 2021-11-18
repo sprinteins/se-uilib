@@ -10,7 +10,8 @@
         "build": "yarn lib:build && yarn lib:link && yarn build:ng",
         "build:ng": "ng build --output-path ./public",
         "lib:link": "yarn link @sprinteins/dpdhl-uilib",
-        "lib:build": "../../scripts/build-lib.sh"
+        "lib:build": "../../scripts/build-lib.sh",
+        "preinstall": "yarn lib:link"
     },
     "private": true,
     "dependencies": {
