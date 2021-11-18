@@ -4,7 +4,7 @@
     import { action } from '@storybook/addon-actions'
     import '@sprinteins/dpdhl-uilib'
 
-	import { Tabs, TabList, TabPanel, Tab } from './tabs.ts';
+	import { Tabs, Tab } from './tabs.ts';
 
     $: selected = 0;
 
