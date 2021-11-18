@@ -1,60 +1,48 @@
-<script lang="ts">
-    import type { SegmentedControlItem } from './segmented-control-item'
-    import "../dpdhl-icon";
-    import "../dpdhl-typography";
+<script context="module">
+	export const ITEMS = {};
+</script>
 
-    $: selectedItemId = 0;
+<script>
+	import { setContext, onDestroy } from 'svelte';
+	import { writable } from 'svelte/store';
 
-	function handleClick(item, idx) {
-        selectedItemId = idx;
-        item.click(idx)
-	}
+	const items = [];
+	const selectedItem = writable(null);
 
-    export let items: SegmentedControlItem[] = []
+	setContext(ITEMS, {
+		registerItem: item => {
+			items.push(item);
+			selectedItem.update(current => current || item);
+			
+			onDestroy(() => {
+				const i = items.indexOf(item);
+				items.splice(i, 1);
+				selectedItem.update(current => current === item ? (items[i] || items[items.length - 1]) : current);
+			});
+		},
 
+		selectItem: item => {
+			const i = items.indexOf(item);
+			selectedItem.set(item);
+		},
+		selectedItem: selectedItem,
+	});
 </script>
 
 <svelte:options tag="dpdhl-segmented-control" />
 
-<span class="container">
-    <!-- {#each items as item, idx}
-        <span class="item" on:click={() => handleClick(item, idx)} class:selected={idx === selectedItemId}>
-            <dpdhl-typography variant="body1">
-                {item.label}
-            </dpdhl-typography>
-        </span>
-    {/each} -->
-</span>
-
+<div class="tabs">
+    <div class="tab-list">
+	    <slot></slot>
+    </div>
+</div>
 
 <style>
-
-    .container {
+    .tab-list {
         cursor:         pointer;
         display:        inline-grid;
         grid-auto-flow: column;
         border:         1px solid var(--color-postyellow);
         border-radius:  2px;
-    }
-
-    .item {
-        padding:        0.75rem;
-        font-weight:    700;
-        font-size:      0.875rem;
-        line-height:    0.5rem;
-        border-right:   1px solid var(--color-postyellow);
-    }
-
-    .item:last-child {
-        border-right: none;
-    }
-
-    .item.selected {
-        background-color: var(--color-postyellow);
-    }
-
-    .item:hover {
-        background-color: var(--color-postyellow);
-    }
-
+	}
 </style>

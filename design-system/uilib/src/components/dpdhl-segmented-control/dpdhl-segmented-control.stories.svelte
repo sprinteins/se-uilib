@@ -1,10 +1,8 @@
 
 <script>
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
-    import { action } from '@storybook/addon-actions'
+    import { DPDHLSegmentedControl, DPDHLSegmentedControlItem } from './index'
     import '@sprinteins/dpdhl-uilib'
-
-	import { Tabs, Tab } from './tabs.ts';
 
     $: selected = 0;
 
@@ -18,22 +16,22 @@
 
 <Template let:args>
     <!-- <div class="container">
-        <dpdhl-segmented-control on:select={handleSelect} selected={0}>
-            <dpdhl-segmented-control-item label="Menu 1 - a long one">
-            <dpdhl-segmented-control-item label="Menu 2">
-            <dpdhl-segmented-control-item label="Menu 3">
+        <dpdhl-segmented-control>
+            <dpdhl-segmented-control-item>Menu 1 - a long one</dpdhl-segmented-control-item> 
+            <dpdhl-segmented-control-item>Menu 2</dpdhl-segmented-control-item>
+            <dpdhl-segmented-control-item>Menu 3</dpdhl-segmented-control-item>
         </dpdhl-segmented-control>
+    </div> -->
+
+    <div class="container">
+        <DPDHLSegmentedControl>
+            <DPDHLSegmentedControlItem>Item 1</DPDHLSegmentedControlItem>
+            <DPDHLSegmentedControlItem>Item 2</DPDHLSegmentedControlItem>
+            <DPDHLSegmentedControlItem>Item 3</DPDHLSegmentedControlItem>
+        </DPDHLSegmentedControl>
     </div>
+
     <p>Selected:{selected}</p>
-
- -->
-
-
-    <Tabs>
-        <Tab>one</Tab>
-        <Tab>two</Tab>
-        <Tab>three</Tab>
-    </Tabs>
 
 </Template>
 
