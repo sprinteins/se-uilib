@@ -1,13 +1,14 @@
 
-<script>
+<script lang="ts">
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
     import { DPDHLSegmentedControl, DPDHLSegmentedControlItem } from './index'
     import '@sprinteins/dpdhl-uilib'
 
-    $: selected = 0;
+    let selectedItem = 0;
 
-    function handleSelect(id) {
-        selected = id;
+    function handleSelect(event) {
+        console.log('event', event.detail)
+        selectedItem = event.detail
     }
 </script>
 
@@ -15,23 +16,15 @@
 <Meta title="11_Components/Segmented Control" component={null}/>
 
 <Template let:args>
-    <!-- <div class="container">
-        <dpdhl-segmented-control>
-            <dpdhl-segmented-control-item>Menu 1 - a long one</dpdhl-segmented-control-item> 
-            <dpdhl-segmented-control-item>Menu 2</dpdhl-segmented-control-item>
-            <dpdhl-segmented-control-item>Menu 3</dpdhl-segmented-control-item>
-        </dpdhl-segmented-control>
-    </div> -->
-
     <div class="container">
-        <DPDHLSegmentedControl>
+        <DPDHLSegmentedControl on:select={handleSelect}>
             <DPDHLSegmentedControlItem>Item 1</DPDHLSegmentedControlItem>
             <DPDHLSegmentedControlItem>Item 2</DPDHLSegmentedControlItem>
             <DPDHLSegmentedControlItem>Item 3</DPDHLSegmentedControlItem>
         </DPDHLSegmentedControl>
     </div>
 
-    <p>Selected:{selected}</p>
+    <p>Selected:{selectedItem}</p>
 
 </Template>
 
