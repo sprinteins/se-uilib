@@ -22,7 +22,7 @@
 			on:check={() => console.log("Checked")}
 			name="checkbox-example"
 			disabled={args.disabled}
-			checked={args.checked}
+			selected={args.checked}
 			error={args.error}>
 			<span slot="label">Label</span>
 		</dpdhl-radio-button>

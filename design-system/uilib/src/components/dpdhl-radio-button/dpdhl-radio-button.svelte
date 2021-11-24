@@ -106,11 +106,11 @@
 	}
 
 	.checkmark.disabled {
-		background-color: var(--color-gray10);
+		background-color: var(--color-gray08);
 	}
 
 	.item:hover input ~ .checkmark {
-		background-color: #ccc;
+		background-color: var(--color-gray08);
 	}
 
 	/* Checkmark when checked */
