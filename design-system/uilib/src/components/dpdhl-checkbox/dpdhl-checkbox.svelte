@@ -60,10 +60,17 @@
 		class:indeterminate={_indeterminate}
 		class:error={_error}
 	/>
-	<dpdhl-typography>{_label}</dpdhl-typography>
+	<span class="label">
+		<dpdhl-typography>{_label}</dpdhl-typography>
+	</span>
 </label>
 
 <style>
+
+	.label {
+		padding-left: 1rem;
+		line-height: 24px;
+	}
 	input {
 		position: 		relative;
 		cursor: 		pointer;
