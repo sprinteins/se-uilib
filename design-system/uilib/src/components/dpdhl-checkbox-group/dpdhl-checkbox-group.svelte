@@ -13,13 +13,12 @@
         component.dispatchEvent && component.dispatchEvent(new CustomEvent(name, { detail }))
     }
 
-    let selected = '20';
+    let selected = [];
 	
     function handleSelect(event) {
-        selected = event.detail.value
-        dispatch('select', {
-			value: event.detail.value
-		})
+        let selectedItem = event.detail.value
+        console.log(selectedItem);
+        dispatch('select', { selected })
     }
 
     const _disabled = false
@@ -33,11 +32,11 @@
 
 <span class="container">
     {#each items as item}
-        <dpdhl-checkbox 
-            on:select={handleSelect}
-            selected={selected===item.value}
-            value={item.value}
-            label={item.label}/>
+        <dpdhl-checkbox
+			on:check={handleSelect}
+			name="checkbox-example"
+            label={item.label}
+            value={item.value}/>
     {/each}
 </span>
 

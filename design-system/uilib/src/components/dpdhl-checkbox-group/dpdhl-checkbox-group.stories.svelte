@@ -5,17 +5,17 @@
 
     let selected = ''
 
-    function handleSelectItem(event) {
-        selected = event.detail.value
+    function handleSelectItems(event) {
+        selected = event.detail.selected
     }
 </script>
 
 
-<Meta title="11_Components/Radio Group" component={null}/>
+<Meta title="11_Components/Checkbox Group" component={null}/>
 
 <Template let:args>
     <div class="container">
-        <dpdhl-checkbox-group items={args.items} on:select={handleSelectItem} />
+        <dpdhl-checkbox-group items={args.items} on:select={handleSelectItems} />
     </div>
     <p>Selected Item: {selected} </p>
 </Template>
