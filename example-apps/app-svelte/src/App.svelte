@@ -1,8 +1,11 @@
-<script>
+<script lang="ts">
 
-	import { HelloWorld, ThemeDPDHL, ThemeBase } from '@dp/ui-lib'
-import ThemeBases from '@dp/ui-lib/src/themes/theme-base/theme-bases.svelte';
-import ThemeDpdhl from '@dp/ui-lib/src/themes/theme-dpdhl/theme-dpdhl.svelte';
+	// import { HelloWorld, ThemeDPDHL, ThemeBase } from '@sprinteins/dpdhl-uilib'
+	// import ThemeBases from '@sprinteins/dpdhl-uilib/src/themes/theme-base/theme-bases.svelte';
+	// import ThemeDpdhl from '@sprinteins/dpdhl-uilib/src/themes/theme-dpdhl/theme-dpdhl.svelte';
+	// import { DPDHLButton } from '@sprinteins/dpdhl-uilib/src/components/dpdhl-button'
+	
+	import ThemeDPDHL from '@sprinteins/dpdhl-uilib/src/themes/desktop/theme-desktop.svelte'
 
 	export let name
 </script>
@@ -11,14 +14,16 @@ import ThemeDpdhl from '@dp/ui-lib/src/themes/theme-dpdhl/theme-dpdhl.svelte';
 	<h1>Hello {name}!</h1>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 	
-	<button>simple</button>
+	<!-- <DPDHLButton>DPDHL Button</DPDHLButton> -->
 
-	<ThemeBases>
+	<button>simple</button>
+	
+	<!-- <ThemeBases> -->
 		<button>in theme base</button>
-		<ThemeDpdhl>
+		<ThemeDPDHL>
 			<button primary="true">in theme DPDHL</button>
-		</ThemeDpdhl>
-	</ThemeBases>
+		</ThemeDPDHL>
+	<!-- </ThemeBases> -->
 </main>
 
 <style>
