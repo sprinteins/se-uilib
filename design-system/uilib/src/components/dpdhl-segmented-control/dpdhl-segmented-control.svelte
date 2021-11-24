@@ -5,16 +5,23 @@
 <script lang="ts">
 	import { setContext, onDestroy } from 'svelte';
 	import { writable } from 'svelte/store';
-    import { makeEvent } from '../../x/util/dispatch';
+	import { createEventDispatcher } from 'svelte';
+	import { get_current_component } from "svelte/internal";
 
 	const items = [];
 	let selectedItem = writable(null);
 
-    let container;
+	const component = get_current_component()
+	const svelteDispatch = createEventDispatcher()
+
+	export function dispatch(name, detail = null) {
+		svelteDispatch(name, detail)
+		component.dispatchEvent && component.dispatchEvent(new CustomEvent(name, { detail }))
+	}
 
     function handleSelect(id) {
         console.log('id: ', id)
-        container.dispatchEvent(makeEvent('select', id));
+        dispatch('select', id)
     }
 
 	setContext(ITEMS, {
@@ -41,7 +48,7 @@
 
 <svelte:options tag="dpdhl-segmented-control" />
 
-<div class="tabs" bind:this={container}>
+<div class="tabs">
     <div class="tab-list">
 	    <slot></slot>
     </div>
