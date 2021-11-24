@@ -17,9 +17,9 @@
 <Template let:args>
     <div class="container">
         <DPDHLSegmentedControl on:select={handleSelect}>
-            <DPDHLSegmentedControlItem>Item 1</DPDHLSegmentedControlItem>
-            <DPDHLSegmentedControlItem>Item 2</DPDHLSegmentedControlItem>
-            <DPDHLSegmentedControlItem>Item 3</DPDHLSegmentedControlItem>
+            <DPDHLSegmentedControlItem>Menu 1 - a long one</DPDHLSegmentedControlItem>
+            <DPDHLSegmentedControlItem>Menu 2</DPDHLSegmentedControlItem>
+            <DPDHLSegmentedControlItem>Menu 3</DPDHLSegmentedControlItem>
         </DPDHLSegmentedControl>
     </div>
 
