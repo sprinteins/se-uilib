@@ -16,8 +16,12 @@
     let selected = [];
 	
     function handleSelect(event) {
-        let selectedItem = event.detail.value
-        console.log(selectedItem);
+        let selectedItem = event.detail;
+        if (selected.includes(selectedItem)) {
+            selected = selected.filter(item => item !== selectedItem)
+        } else {
+            selected = [...selected, selectedItem]
+        }
         dispatch('select', { selected })
     }
 

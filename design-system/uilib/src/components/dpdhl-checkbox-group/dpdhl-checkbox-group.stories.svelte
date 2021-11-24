@@ -3,7 +3,7 @@
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
     import '@sprinteins/dpdhl-uilib'
 
-    let selected = ''
+    let selected = []
 
     function handleSelectItems(event) {
         selected = event.detail.selected
@@ -17,7 +17,7 @@
     <div class="container">
         <dpdhl-checkbox-group items={args.items} on:select={handleSelectItems} />
     </div>
-    <p>Selected Item: {selected} </p>
+    <p>Selected Item: {selected.join(', ')} </p>
 </Template>
 
 <Story name="Primary" args={{
