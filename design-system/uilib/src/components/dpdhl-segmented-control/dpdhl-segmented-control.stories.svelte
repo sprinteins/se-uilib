@@ -7,7 +7,6 @@
     let selectedItem = 0;
 
     function handleSelect(event) {
-        console.log('event', event.detail)
         selectedItem = event.detail
     }
 </script>
@@ -24,7 +23,7 @@
         </DPDHLSegmentedControl>
     </div>
 
-    <p>Selected:{selectedItem}</p>
+    <p>Selected: {selectedItem}</p>
 
 </Template>
 

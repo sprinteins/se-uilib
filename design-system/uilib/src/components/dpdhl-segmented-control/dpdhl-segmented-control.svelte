@@ -20,7 +20,6 @@
 	}
 
     function handleSelect(id) {
-        console.log('id: ', id)
         dispatch('select', id)
     }
 
