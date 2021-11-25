@@ -1,46 +1,56 @@
+<script context="module" lang="ts">
+	export const ITEMS = {};
+</script>
+
 <script lang="ts">
-    import type { RadioItem } from './radio-item'
-    import "../dpdhl-icon";
-    import "../dpdhl-typography"
-    import { createEventDispatcher } from 'svelte';
-    import { get_current_component } from "svelte/internal";
+	import { setContext, onDestroy } from 'svelte';
+	import { writable } from 'svelte/store';
+	import { createEventDispatcher } from 'svelte';
+	import { get_current_component } from "svelte/internal";
 
-    const component = get_current_component()
-    const svelteDispatch = createEventDispatcher()
+	const items = [];
+	let selectedItem = writable(null);
 
-    export function dispatch(name, detail) {
-        svelteDispatch(name, detail)
-        component.dispatchEvent && component.dispatchEvent(new CustomEvent(name, { detail }))
+	const component = get_current_component()
+	const svelteDispatch = createEventDispatcher()
+
+	export function dispatch(name, detail = null) {
+		svelteDispatch(name, detail)
+		component.dispatchEvent && component.dispatchEvent(new CustomEvent(name, { detail }))
+	}
+
+    function handleSelect(value) {
+        dispatch('select', value)
     }
 
-    let selected = '20';
-	
-    function handleSelect(event) {
-        selected = event.detail.value
-        dispatch('select', {
-			value: event.detail.value
-		})
-    }
-
-    const _disabled = false
-    const _error = false
-
-    export let items: RadioItem[] = []
-
+	setContext(ITEMS, {
+		registerItem: item => {
+			items.push(item);
+			selectedItem.update(current => current || item);
+			onDestroy(() => {
+				const i = items.indexOf(item);
+				items.splice(i, 1);
+				selectedItem.update(current => 
+					current === item 
+					? (items[i] || items[items.length - 1]) 
+					: current);
+			});
+		},
+		selectItem: item => {
+			const i = items.indexOf(item);
+			console.log('item: ', item);
+			selectedItem.set(item.value);
+            handleSelect(item.value)
+		},
+		selectedItem: selectedItem,
+	});
 </script>
 
 <svelte:options tag="dpdhl-radio-group" />
 
-<span class="container">
-    {#each items as item}
-        <dpdhl-radio-button 
-            on:select={handleSelect}
-            selected={selected===item.value}
-            value={item.value}
-            label={item.label}/>
-    {/each}
-</span>
-
+<div class="container">
+	<slot></slot>
+</div>
 
 <style>
     .container {
@@ -48,5 +58,4 @@
         flex-direction: column;
         gap:            1rem;
     }
-
 </style>
