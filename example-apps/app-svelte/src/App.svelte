@@ -1,29 +1,13 @@
 <script lang="ts">
-
-	// import { HelloWorld, ThemeDPDHL, ThemeBase } from '@sprinteins/dpdhl-uilib'
-	// import ThemeBases from '@sprinteins/dpdhl-uilib/src/themes/theme-base/theme-bases.svelte';
-	// import ThemeDpdhl from '@sprinteins/dpdhl-uilib/src/themes/theme-dpdhl/theme-dpdhl.svelte';
-	// import { DPDHLButton } from '@sprinteins/dpdhl-uilib/src/components/dpdhl-button'
 	
-	import ThemeDPDHL from '@sprinteins/dpdhl-uilib/src/themes/desktop/theme-desktop.svelte'
+	import '@sprinteins/dpdhl-uilib'
 
-	export let name
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-	
-	<!-- <DPDHLButton>DPDHL Button</DPDHLButton> -->
-
-	<button>simple</button>
-	
-	<!-- <ThemeBases> -->
-		<button>in theme base</button>
-		<ThemeDPDHL>
-			<button primary="true">in theme DPDHL</button>
-		</ThemeDPDHL>
-	<!-- </ThemeBases> -->
+		<dpdhl-theme-desktop>
+			<dpdhl-button type="primary">in theme DPDHL</dpdhl-button>
+		</dpdhl-theme-desktop>
 </main>
 
 <style>
