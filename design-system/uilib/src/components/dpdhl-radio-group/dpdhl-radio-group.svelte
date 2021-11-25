@@ -37,9 +37,7 @@
 			});
 		},
 		selectItem: item => {
-			const i = items.indexOf(item);
-			console.log('item: ', item);
-			selectedItem.set(item.value);
+			selectedItem.set(item);
             handleSelect(item.value)
 		},
 		selectedItem: selectedItem,

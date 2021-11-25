@@ -7,29 +7,16 @@
 
     const item = { value, label };
 	const { registerItem, selectItem, selectedItem } = getContext(ITEMS);
-    console.log('selectedItem: ', selectedItem);
-    console.log('value: ', value);
+
 	registerItem(item);
+
 </script>
 
 <svelte:options tag="dpdhl-radio-item" />
 
-
-<!-- <span 
-	class="item" 
-	class:selected="{$selectedItem === item}" 
-	on:click="{() => selectItem(item)}">
-		<slot></slot>
-</span> -->
-
 <dpdhl-radio-button 
     on:select={() => selectItem(item)}
-    selected={selectedItem.value === value}
+    selected={$selectedItem === item}
     value={value}
     label={label}/>
 
-<!-- <dpdhl-radio-button 
-    on:select={handleSelect}
-    selected={selected===item.value}
-    value={item.value}
-    label={item.label}/> -->
