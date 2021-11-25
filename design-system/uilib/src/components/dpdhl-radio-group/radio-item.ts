@@ -1,4 +1,4 @@
-export interface RadioButtonItem {
+export interface RadioItem {
     label: string;
     value: string;
 }

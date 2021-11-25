@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { RadioButtonItem } from './radio-button-item'
+    import type { RadioItem } from './radio-item'
     import "../dpdhl-icon";
     import "../dpdhl-typography"
     import { createEventDispatcher } from 'svelte';
@@ -25,7 +25,7 @@
     const _disabled = false
     const _error = false
 
-    export let items: RadioButtonItem[] = []
+    export let items: RadioItem[] = []
 
 </script>
 
