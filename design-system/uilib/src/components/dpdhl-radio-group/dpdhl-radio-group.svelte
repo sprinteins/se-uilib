@@ -26,7 +26,6 @@
 	setContext(ITEMS, {
 		registerItem: item => {
 			items.push(item);
-			selectedItem.update(current => current || item);
 			onDestroy(() => {
 				const i = items.indexOf(item);
 				items.splice(i, 1);
