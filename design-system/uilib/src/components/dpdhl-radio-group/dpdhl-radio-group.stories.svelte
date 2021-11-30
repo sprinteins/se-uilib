@@ -12,14 +12,14 @@
 </script>
 
 
-<Meta title="11_Components/Radio Group 1" component={null}/>
+<Meta title="11_Components/Radio Group" component={null}/>
 
 <Template let:args>
     <div class="container">
         <DPDHLRadioGroup on:select={handleSelect}>
-            <DPDHLRadioItem value="option1" label="Option 1">Menu 1 - a long one</DPDHLRadioItem>
-            <DPDHLRadioItem value="option2" label="Option 2">Menu 2</DPDHLRadioItem>
-            <DPDHLRadioItem value="option3" label="Option 3">Menu 3</DPDHLRadioItem>
+            <DPDHLRadioItem value="option1">Menu 1 - a long one</DPDHLRadioItem>
+            <DPDHLRadioItem value="option2">Menu 2</DPDHLRadioItem>
+            <DPDHLRadioItem value="option3">Menu 3</DPDHLRadioItem>
         </DPDHLRadioGroup>
     </div>
 

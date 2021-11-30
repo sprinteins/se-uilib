@@ -21,9 +21,6 @@
 	export let value = "";
 	$: _value = value;
 
-	export let label = "";
-	$: _label = label;
-
 	export let selected = false;
 	$: _selected = selected;
 
@@ -57,7 +54,9 @@
 		class:disabled={_disabled}
 		class:error={_error}>
 	</span>
-	<dpdhl-typography variant="body1" class="label">{_label}</dpdhl-typography>
+	<dpdhl-typography variant="body1" class="label">
+		<slot></slot>
+	</dpdhl-typography>
 </span>
 
 

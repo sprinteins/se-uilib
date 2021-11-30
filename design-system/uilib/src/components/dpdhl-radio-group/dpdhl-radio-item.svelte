@@ -5,7 +5,7 @@
     export let value = "";
     export let label = "";
 
-    const item = { value, label };
+    const item = { value };
 	const { registerItem, selectItem, selectedItem } = getContext(ITEMS);
 
 	registerItem(item);
@@ -17,6 +17,8 @@
 <dpdhl-radio-button 
     on:select={() => selectItem(item)}
     selected={$selectedItem === item}
-    value={value}
-    label={label}/>
+    value={value}>
+    <slot></slot>
+</dpdhl-radio-button>
+
 
