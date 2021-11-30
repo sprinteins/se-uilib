@@ -4,18 +4,17 @@
 
     export let value = "";
 
-    const item = { value };
 	const { registerItem, selectItem, selectedItem } = getContext(ITEMS);
 
-	registerItem(item);
+	registerItem(value);
 
 </script>
 
 <svelte:options tag="dpdhl-checkbox-item" />
 
 <dpdhl-checkbox 
-    on:check={() => selectItem(item)}
-    checked={$selectedItem === item}
+    on:check={() => selectItem(value)}
+    checked={$selectedItem === value}
     value={value}>
     <slot></slot>
 </dpdhl-checkbox>
