@@ -9,7 +9,7 @@
 	import { get_current_component } from "svelte/internal";
 
 	const items = [];
-	let selectedItem = writable(null);
+	let selectedItems = writable([]);
 
 	const component = get_current_component()
 	const svelteDispatch = createEventDispatcher()
@@ -19,8 +19,8 @@
 		component.dispatchEvent && component.dispatchEvent(new CustomEvent(name, { detail }))
 	}
 
-    function handleSelect(value) {
-        dispatch('select', value)
+    function handleSelect(items) {
+        dispatch('select', items)
     }
 
 	setContext(ITEMS, {
@@ -29,17 +29,25 @@
 			onDestroy(() => {
 				const i = items.indexOf(item);
 				items.splice(i, 1);
-				selectedItem.update(current => 
-					current === item 
-					? (items[i] || items[items.length - 1]) 
+				selectedItems.update(current => 
+					current.includes(item) 
+					? current.filter(i => i !== item)
 					: current);
 			});
 		},
 		selectItem: item => {
-			selectedItem.set(item);
-            handleSelect(item.value)
+            selectedItems.update(current => {
+                let selected = [...current];
+                if (current.includes(item)) {
+                    selected = selected.filter(i => i !== item)
+                } else {
+                    selected = [...selected, item]
+                }
+                return selected;
+            })
+            handleSelect($selectedItems)
 		},
-		selectedItem: selectedItem,
+		selectedItem: selectedItems,
 	});
 </script>
 
