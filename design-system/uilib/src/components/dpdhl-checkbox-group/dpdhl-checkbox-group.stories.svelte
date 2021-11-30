@@ -2,10 +2,12 @@
 <script>
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
     import '@sprinteins/dpdhl-uilib'
+    import { DPDHLCheckboxGroup, DPDHLCheckboxItem } from './index'
 
     let selected = []
 
     function handleSelectItems(event) {
+        console.log(event.detail)
         selected = event.detail.selected
     }
 </script>
@@ -15,19 +17,22 @@
 
 <Template let:args>
     <div class="container">
-        <dpdhl-checkbox-group items={args.items} on:select={handleSelectItems} />
+        <DPDHLCheckboxGroup on:select={handleSelectItems}>
+            <DPDHLCheckboxItem value="option1">Menu 1 - a long one</DPDHLCheckboxItem>
+            <DPDHLCheckboxItem value="option2">Menu 2</DPDHLCheckboxItem>
+            <DPDHLCheckboxItem value="option3">Menu 3</DPDHLCheckboxItem>
+        </DPDHLCheckboxGroup>
     </div>
-    <p>Selected Item: {selected.join(', ')} </p>
+
+    <p>Selected Items: {selected.join(', ')} </p>
+
 </Template>
 
-<Story name="Primary" args={{
-    items:[
-        { label:'Option 1', value: 'option-1' },
-        { label:'Option 2', value: 'option-2' },
-        { label:'Option 3', value: 'option-3' },
-    ]
-}}/>
+
+<Story name="Primary" args={{}}/>
 
 <style>
-
+    .container {
+        padding-left: 1rem;
+    }
 </style>

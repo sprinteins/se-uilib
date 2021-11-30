@@ -14,9 +14,6 @@
 	export let name = "";
 	$: _name = name;
 
-	export let label = "";
-	$: _label = label;
-
 	export let checked = false;
 	$: _checked = checked;
 
@@ -61,7 +58,9 @@
 		class:error={_error}
 	/>
 	<span class="label">
-		<dpdhl-typography>{_label}</dpdhl-typography>
+		<dpdhl-typography>
+			<slot></slot>
+		</dpdhl-typography>
 	</span>
 </label>
 
