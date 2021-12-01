@@ -37,6 +37,7 @@
 		if (_disabled) {
 			event.preventDefault();
 		} else {
+			_checked = !_checked;
 			dispatch('check', value)
 		};
 	}
@@ -44,14 +45,13 @@
 
 </script>
 
-<span class="container">
+<span class="container" class:disabled={_disabled} on:click={handleClick}>
 	<input
 		{value}
 		id={_name}
 		name={_name}
 		type="checkbox"
 		bind:checked={_checked}
-		on:click={handleClick}
 		bind:indeterminate={_indeterminate}
 		class:disabled={_disabled}
 		class:indeterminate={_indeterminate}
@@ -69,7 +69,13 @@
 	.container {
 		display: flex;
 		flex-direction: row;
+		cursor: pointer;
 	}
+
+	.container.disabled {
+		cursor: not-allowed;
+	}
+
 	.label {
 		margin-left: 1rem;
 		line-height: 24px;
@@ -122,20 +128,17 @@
 	/* box disabled */
 	input.disabled:not(:checked):before {
 		background-color: 	var(--color-gray10);
-		cursor: 			not-allowed;
 		border: 			1px solid var(--color-gray10);
 		color: 				grey;
 	}
 	/* box checked disabled */
 	input.disabled:checked:before {
 		background-color: 	var(--color-gray10);
-		cursor: 			not-allowed;
 		color: 				grey;
 		border: 			1px solid var(--color-gray10);
 	}
 	/* check disabled */
-		input.disabled:checked:after {
-		cursor: 			not-allowed;
+	input.disabled:checked:after {
 		content: 			"";
 		display: 			block;
 		width: 				0.4375rem;
