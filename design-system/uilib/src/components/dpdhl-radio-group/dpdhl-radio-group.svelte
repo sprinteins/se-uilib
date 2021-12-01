@@ -53,6 +53,6 @@
     .container {
         display:        flex;
         flex-direction: column;
-        gap:            1.5rem;
+        gap:            var(--radio-group__items-gap, 1.5rem);
     }
 </style>

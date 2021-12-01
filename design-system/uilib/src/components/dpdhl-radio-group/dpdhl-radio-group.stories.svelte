@@ -12,10 +12,17 @@
 </script>
 
 
-<Meta title="11_Components/Radio Group" component={null}/>
+<Meta 
+title="11_Components/Radio Group" 
+component={null}
+argTypes={{
+    itemsGap: {
+        name: "Gap between items [rem]", 
+    }
+}}/>
 
 <Template let:args>
-    <div>
+     <div style="--radio-group__items-gap: {args.itemsGap}rem;">
         <DPDHLRadioGroup on:select={handleSelect}>
             <DPDHLRadioItem value="option1">Option 1</DPDHLRadioItem>
             <DPDHLRadioItem value="option2">Option 2</DPDHLRadioItem>
@@ -31,5 +38,7 @@
 
 <style></style>
 
-<Story name="Primary" args={{}}/>
+<Story name="Primary" args={{
+    itemsGap: 1.5
+}}/>
 
