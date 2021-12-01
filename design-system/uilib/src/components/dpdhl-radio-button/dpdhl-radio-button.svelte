@@ -43,7 +43,7 @@
 </script>
 
 
-<div class="item" on:click={handleClick}>
+<div class="item" on:click={handleClick} class:disabled={_disabled}>
 	<input 
 		checked={_selected} 
 		type="checkbox" 
@@ -79,6 +79,10 @@
 		-moz-user-select:		none;
 		-ms-user-select:		none;
 		user-select:			none;
+	}
+
+	.item.disabled {
+		cursor: not-allowed;
 	}
 
 	.label {
