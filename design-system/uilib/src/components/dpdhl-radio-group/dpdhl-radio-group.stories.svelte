@@ -15,11 +15,13 @@
 <Meta title="11_Components/Radio Group" component={null}/>
 
 <Template let:args>
-    <div class="container">
+    <div>
         <DPDHLRadioGroup on:select={handleSelect}>
-            <DPDHLRadioItem value="option1">Menu 1 - a long one</DPDHLRadioItem>
-            <DPDHLRadioItem value="option2">Menu 2</DPDHLRadioItem>
-            <DPDHLRadioItem value="option3">Menu 3</DPDHLRadioItem>
+            <DPDHLRadioItem value="option1">Option 1</DPDHLRadioItem>
+            <DPDHLRadioItem value="option2">Option 2</DPDHLRadioItem>
+            <DPDHLRadioItem value="option3" disabled={true}>Disabled option</DPDHLRadioItem>
+            <DPDHLRadioItem value="option4" error={true}>Error option</DPDHLRadioItem>
+            <DPDHLRadioItem value="option5">Long option - This text explains the basic theory underlying core remote sensing semulacre processing operations and provides extensive hands-on exercises using propositional logic.</DPDHLRadioItem>
         </DPDHLRadioGroup>
     </div>
 
@@ -27,11 +29,7 @@
 
 </Template>
 
-<style>
-    .container {
-        padding-left: 1rem;
-    }
-</style>
+<style></style>
 
 <Story name="Primary" args={{}}/>
 

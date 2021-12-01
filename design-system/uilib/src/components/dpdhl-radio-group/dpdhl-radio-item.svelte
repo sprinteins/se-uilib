@@ -2,8 +2,9 @@
 	import { getContext } from 'svelte';
 	import { ITEMS } from './dpdhl-radio-group.svelte';
 
-    export let value = "";
-    export let label = "";
+    export let value        = "";
+    export let disabled     = false;
+    export let error        = false;
 
     const item = { value };
 	const { registerItem, selectItem, selectedItem } = getContext(ITEMS);
@@ -17,7 +18,9 @@
 <dpdhl-radio-button 
     on:select={() => selectItem(item)}
     selected={$selectedItem === item}
-    value={value}>
+    {value}
+    {disabled}
+    {error}>
     <slot></slot>
 </dpdhl-radio-button>
 
