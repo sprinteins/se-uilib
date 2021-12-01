@@ -51,7 +51,7 @@
 	});
 </script>
 
-<svelte:options tag="dpdhl-checkbox-group" />
+<svelte:options tag="dpdhl-checkbox-group"/>
 
 <div class="container">
 	<slot></slot>

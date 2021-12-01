@@ -2,7 +2,10 @@
 	import { getContext } from 'svelte';
 	import { ITEMS } from './dpdhl-checkbox-group.svelte';
 
-    export let value = "";
+    export let value            = "";
+    export let disabled         = false;
+    export let indeterminate    = false;
+    export let error            = false;
 
 	const { registerItem, selectItem, selectedItem } = getContext(ITEMS);
 
@@ -15,7 +18,10 @@
 <dpdhl-checkbox 
     on:check={() => selectItem(value)}
     checked={$selectedItem === value}
-    value={value}>
+    {value}
+    {disabled}
+    {indeterminate}
+    {error}>
     <slot></slot>
 </dpdhl-checkbox>
 

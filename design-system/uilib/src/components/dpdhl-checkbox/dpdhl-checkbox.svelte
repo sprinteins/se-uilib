@@ -1,4 +1,4 @@
-<svelte:options tag={"dpdhl-checkbox"} />
+<svelte:options tag="dpdhl-checkbox" />
 
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
