@@ -44,7 +44,7 @@
 
 </script>
 
-<label>
+<span class="container">
 	<input
 		{value}
 		id={_name}
@@ -58,24 +58,30 @@
 		class:error={_error}
 	/>
 	<span class="label">
-		<dpdhl-typography>
+		<!-- <dpdhl-typography> -->
 			<slot></slot>
-		</dpdhl-typography>
+		<!-- </dpdhl-typography> -->
 	</span>
-</label>
+</span>
 
 <style>
 
+	.container {
+		display: flex;
+		flex-direction: row;
+	}
 	.label {
-		padding-left: 1rem;
+		margin-left: 1rem;
 		line-height: 24px;
+		padding-top: 0.34rem;
+		word-wrap: 	normal;
 	}
 	input {
 		position: 		relative;
 		cursor: 		pointer;
-		width: 			1.5rem;
 		height: 		1.5rem;
-		-moz-appearance:none;
+		-moz-appearance:	none;
+	    margin-right: 		1rem;
 	}
 
 	/* box */

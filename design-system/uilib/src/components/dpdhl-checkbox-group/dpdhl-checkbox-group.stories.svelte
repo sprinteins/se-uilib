@@ -17,12 +17,12 @@
 <Template let:args>
     <div>
         <DPDHLCheckboxGroup on:select={handleSelectItems}>
-            <DPDHLCheckboxItem value="option1">Menu 1 - a long one</DPDHLCheckboxItem>
-            <DPDHLCheckboxItem value="option2">Menu 2</DPDHLCheckboxItem>
-            <DPDHLCheckboxItem value="option3">Menu 3</DPDHLCheckboxItem>
+            <DPDHLCheckboxItem value="option1">Option 1 - This text explains the basic theory underlying core remote sensing semulacre processing operations and provides extensive hands-on exercises using propositional logic.</DPDHLCheckboxItem>
+            <DPDHLCheckboxItem value="option2">Option 2</DPDHLCheckboxItem>
+            <DPDHLCheckboxItem value="option3">Option 3</DPDHLCheckboxItem>
         </DPDHLCheckboxGroup>
     </div>
-    <p>Selected Items: {selected.length ? selected.join(', ') : ""} </p>
+    <p>Selected Items: {selected.length && selected.join(', ')} </p>
 </Template>
 
 
