@@ -12,10 +12,17 @@
 </script>
 
 
-<Meta title="11_Components/Checkbox Group" component={null}/>
+<Meta 
+title="11_Components/Checkbox Group" 
+component={null}
+argTypes={{
+    itemsGap: {
+      name: "Gap between items [rem]", 
+    },
+}}/>
 
 <Template let:args>
-    <div>
+    <div style="--checkbox-group__items-gap: {args.itemsGap}rem;">
         <DPDHLCheckboxGroup on:select={handleSelectItems}>
             <DPDHLCheckboxItem value="option1">Option 1</DPDHLCheckboxItem>
             <DPDHLCheckboxItem value="option2">Option 2</DPDHLCheckboxItem>
@@ -29,6 +36,8 @@
 </Template>
 
 
-<Story name="Primary" args={{}}/>
+<Story name="Primary" args={{
+    itemsGap: 1.5
+}}/>
 
 <style></style>

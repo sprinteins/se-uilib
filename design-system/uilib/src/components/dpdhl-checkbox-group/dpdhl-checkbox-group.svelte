@@ -61,6 +61,6 @@
     .container {
         display:        flex;
         flex-direction: column;
-        gap:            1rem;
+        gap:            var(--checkbox-group__items-gap, 1.5rem);
     }
 </style>
