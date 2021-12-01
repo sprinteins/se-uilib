@@ -43,7 +43,7 @@
 </script>
 
 
-<span class="item" on:click={handleClick}>
+<div class="item" on:click={handleClick}>
 	<input 
 		checked={_selected} 
 		type="checkbox" 
@@ -54,10 +54,10 @@
 		class:disabled={_disabled}
 		class:error={_error}>
 	</span>
-	<dpdhl-typography variant="body1" class="label">
+	<div class="label">
 		<slot></slot>
-	</dpdhl-typography>
-</span>
+	</div>
+</div>
 
 
 <style>
@@ -79,11 +79,9 @@
 		-moz-user-select:		none;
 		-ms-user-select:		none;
 		user-select:			none;
-		height:					2rem;
 	}
 
 	.label {
-		position: absolute;
 		padding-top: 	0.125rem;
 		padding-left: 	2.5rem;
 		font-size: 		1rem;
