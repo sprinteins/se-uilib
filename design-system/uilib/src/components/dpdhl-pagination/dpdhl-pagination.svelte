@@ -39,7 +39,7 @@
 			});
 		},
 		selectItem: item => {
-			const i = items.indexOf(item);
+			const i = items.indexOf(item) + 1;
 			selectedItem.set(item);
             handleSelect(i)
 		},
