@@ -3,15 +3,18 @@
 </script>
 
 <script lang="ts">
-	import { setContext, onDestroy } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { createEventDispatcher } from 'svelte';
 	import { get_current_component } from "svelte/internal";
 
-	const items = [];
-	let selectedItem = writable(null);
-
+	export let count = 12;
 	export let defaultpage = 2;
+	export let maxpages = 10;
+
+	$: from = 0;
+	$: to = from + maxpages;
+
+	$: selectedItem = defaultpage || 1;
 
 	const component = get_current_component()
 	const svelteDispatch = createEventDispatcher()
@@ -25,40 +28,61 @@
         dispatch('select', id)
     }
 
-	setContext(ITEMS, {
-		registerItem: item => {
-			items.push(item);
-			selectedItem.update(current => defaultpage || current || item);
-			onDestroy(() => {
-				const i = items.indexOf(item);
-				items.splice(i, 1);
-				selectedItem.update(current => 
-					current === item 
-					? (items[i] || items[items.length - 1]) 
-					: current);
-			});
-		},
-		selectItem: item => {
-			const i = items.indexOf(item) + 1;
-			selectedItem.set(item);
-            handleSelect(i)
-		},
-		selectedItem: selectedItem,
-	});
+	// function setPaginationBoundaries() {
+	// 	from.update(_ => {
+	// 		let margin = Math.floor(maxpages/2);
+	// 		let first = selectedItem - margin;
+	// 		if (first <= 0) {
+	// 			return 1;
+	// 		} else return first;
+	// 	})
+	// 	to.update(_ => {
+	// 		const last = $from + maxpages
+	// 		// if (last > ITEMS.length)
+	// 		console.log(ITEMS)
+	// 	})
+	// }
+
+	function selectItem(idx) {
+		console.log('idx: ', idx)
+		selectedItem = idx;
+		handleSelect(idx);
+	}
 </script>
 
-<svelte:options tag="dpdhl-segmented-control" />
+<svelte:options tag="dpdhl-pagination" />
 
-<div class="tabs">
-    <div class="tab-list">
-	    <slot></slot>
-    </div>
+<div class="pagination-list">
+	{#each Array(count) as _, idx}
+		<span 
+			class="item" 
+			class:selected="{selectedItem === idx + 1}" 
+			on:click="{() => selectItem(idx + 1)}">
+				{idx + 1}
+				<slot></slot>
+		</span>
+	{/each}
 </div>
 
 <style>
-    .tab-list {
+    .pagination-list {
         cursor:         pointer;
         display:        inline-grid;
         grid-auto-flow: column;
 	}
+
+	.item {
+        padding:        0.75rem;
+        font-weight:    700;
+        font-size:      0.875rem;
+        line-height:    0.5rem;
+    }
+
+    .item.selected {
+        border-bottom: 2px solid var(--color-dhlred);
+    }
+
+    .item:hover {
+        background-color: var(--color-dhlred-light);
+    }
 </style>

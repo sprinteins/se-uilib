@@ -1,7 +1,7 @@
 
 <script lang="ts">
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
-    import { DPDHLPagination, DPDHLPaginationItem } from './index'
+    import { DPDHLPagination } from './index'
     import '@sprinteins/dpdhl-uilib'
 
     let selectedItem = "";
@@ -15,13 +15,12 @@
 <Meta title="11_Components/Pagination" component={null}/>
 
 <Template let:args>
-        <DPDHLPagination on:select={handleSelect} defaultpage={args.defaultPage}>
-            {#each Array(args.pages) as _, idx}
-               <DPDHLPaginationItem value={idx + 1}></DPDHLPaginationItem>
-            {/each}
-        </DPDHLPagination>
-
-
+        <dpdhl-pagination 
+            on:select={handleSelect} 
+            defaultpage={args.defaultPage} 
+            maxpages={args.maxPages}
+            count={args.count}>
+        </dpdhl-pagination>
     <p>Selected: {selectedItem}</p>
 
 </Template>
@@ -30,7 +29,8 @@
 </style>
 
 <Story name="Primary" args={{
-    pages: 12,
-    defaultPage: 2
+    count: 12,
+    maxPages: 10,
+    defaultPage: 2,
 }}/>
 
