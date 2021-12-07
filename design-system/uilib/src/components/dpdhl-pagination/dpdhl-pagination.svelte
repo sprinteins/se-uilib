@@ -28,25 +28,23 @@
         dispatch('select', id)
     }
 
-	// function setPaginationBoundaries() {
-	// 	from.update(_ => {
-	// 		let margin = Math.floor(maxpages/2);
-	// 		let first = selectedItem - margin;
-	// 		if (first <= 0) {
-	// 			return 1;
-	// 		} else return first;
-	// 	})
-	// 	to.update(_ => {
-	// 		const last = $from + maxpages
-	// 		// if (last > ITEMS.length)
-	// 		console.log(ITEMS)
-	// 	})
-	// }
+	function setPaginationBoundaries() {
+		let margin = Math.floor(maxpages/2);
+		let first = selectedItem - margin;
+		// if (count - first < maxpages) {
+		// 	first = count - maxpages;
+		// }
+		from = first <= 0 ? 1 : first;
+		const last = from + maxpages - 1;
+		to = last > count ? count : last;
+		console.log('from: ', from)
+		console.log('to: ', to)
+	}
 
 	function selectItem(idx) {
-		console.log('idx: ', idx)
 		selectedItem = idx;
 		handleSelect(idx);
+		setPaginationBoundaries();
 	}
 </script>
 
