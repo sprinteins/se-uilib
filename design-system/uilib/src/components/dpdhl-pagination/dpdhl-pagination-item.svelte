@@ -2,10 +2,10 @@
 	import { getContext } from 'svelte';
 	import { ITEMS } from './dpdhl-pagination.svelte';
 
-	const item = {};
+    export let value;
 	const { registerItem, selectItem, selectedItem } = getContext(ITEMS);
 
-	registerItem(item);
+	registerItem(value);
 </script>
 
 <svelte:options tag="dpdhl-pagination-item" />
@@ -31,8 +31,9 @@
 
 <span 
 	class="item" 
-	class:selected="{$selectedItem === item}" 
-	on:click="{() => selectItem(item)}">
-		<slot></slot>
+	class:selected="{$selectedItem === value}" 
+	on:click="{() => selectItem(value)}">
+		{value}
+        <slot></slot>
 </span>
 

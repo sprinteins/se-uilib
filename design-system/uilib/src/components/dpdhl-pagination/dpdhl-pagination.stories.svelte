@@ -4,7 +4,7 @@
     import { DPDHLPagination, DPDHLPaginationItem } from './index'
     import '@sprinteins/dpdhl-uilib'
 
-    let selectedItem = 0;
+    let selectedItem = "";
 
     function handleSelect(event) {
         selectedItem = event.detail
@@ -15,25 +15,22 @@
 <Meta title="11_Components/Pagination" component={null}/>
 
 <Template let:args>
-    <div class="container">
-        <DPDHLPagination on:select={handleSelect}>
+        <DPDHLPagination on:select={handleSelect} defaultpage={args.defaultPage}>
             {#each Array(args.pages) as _, idx}
-               <DPDHLPaginationItem>{idx+1}</DPDHLPaginationItem>
+               <DPDHLPaginationItem value={idx + 1}></DPDHLPaginationItem>
             {/each}
         </DPDHLPagination>
-    </div>
+
 
     <p>Selected: {selectedItem}</p>
 
 </Template>
 
 <style>
-    .container {
-        padding-left: 1rem;
-    }
 </style>
 
 <Story name="Primary" args={{
-    pages: 12
+    pages: 12,
+    defaultPage: 2
 }}/>
 

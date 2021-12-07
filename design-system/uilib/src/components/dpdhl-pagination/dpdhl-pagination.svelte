@@ -11,6 +11,8 @@
 	const items = [];
 	let selectedItem = writable(null);
 
+	export let defaultpage = 2;
+
 	const component = get_current_component()
 	const svelteDispatch = createEventDispatcher()
 
@@ -26,7 +28,15 @@
 	setContext(ITEMS, {
 		registerItem: item => {
 			items.push(item);
-			selectedItem.update(current => current || item);
+			selectedItem.update(current => {
+				console.log('current: ', current);
+				console.log('default page: ', defaultpage);
+				console.log('$selectedItem: ', $selectedItem);
+				if (item === defaultpage) {
+					return defaultpage
+				}
+				return (current || item)
+			});
 			onDestroy(() => {
 				const i = items.indexOf(item);
 				items.splice(i, 1);
