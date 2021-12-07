@@ -17,9 +17,9 @@
 <Template let:args>
     <div class="container">
         <DPDHLPagination on:select={handleSelect}>
-            <DPDHLPaginationItem>1</DPDHLPaginationItem>
-            <DPDHLPaginationItem>2</DPDHLPaginationItem>
-            <DPDHLPaginationItem>3</DPDHLPaginationItem>
+            {#each Array(args.pages) as _, idx}
+               <DPDHLPaginationItem>{idx+1}</DPDHLPaginationItem>
+            {/each}
         </DPDHLPagination>
     </div>
 
@@ -33,5 +33,7 @@
     }
 </style>
 
-<Story name="Primary" args={{}}/>
+<Story name="Primary" args={{
+    pages: 12
+}}/>
 
