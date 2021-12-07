@@ -28,15 +28,7 @@
 	setContext(ITEMS, {
 		registerItem: item => {
 			items.push(item);
-			selectedItem.update(current => {
-				console.log('current: ', current);
-				console.log('default page: ', defaultpage);
-				console.log('$selectedItem: ', $selectedItem);
-				if (item === defaultpage) {
-					return defaultpage
-				}
-				return (current || item)
-			});
+			selectedItem.update(current => defaultpage || current || item);
 			onDestroy(() => {
 				const i = items.indexOf(item);
 				items.splice(i, 1);
