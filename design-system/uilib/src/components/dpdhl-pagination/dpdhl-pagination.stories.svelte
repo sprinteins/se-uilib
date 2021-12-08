@@ -30,7 +30,7 @@
 
 <Story name="Primary" args={{
     count: 12,
-    maxPages: 10,
+    maxPages: 7,
     defaultPage: 2,
 }}/>
 

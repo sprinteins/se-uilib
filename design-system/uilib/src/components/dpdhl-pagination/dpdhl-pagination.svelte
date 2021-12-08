@@ -3,13 +3,12 @@
 </script>
 
 <script lang="ts">
-	import { writable } from 'svelte/store';
 	import { createEventDispatcher } from 'svelte';
 	import { get_current_component } from "svelte/internal";
 
 	export let count = 12;
 	export let defaultpage = 2;
-	export let maxpages = 10;
+	export let maxpages = 7;
 
 	$: from = 0;
 	$: to = from + maxpages;
@@ -31,14 +30,18 @@
 	function setPaginationBoundaries() {
 		let margin = Math.floor(maxpages/2);
 		let first = selectedItem - margin;
-		// if (count - first < maxpages) {
-		// 	first = count - maxpages;
-		// }
-		from = first <= 0 ? 1 : first;
-		const last = from + maxpages - 1;
-		to = last > count ? count : last;
-		console.log('from: ', from)
-		console.log('to: ', to)
+		if (first > count - maxpages) {
+			first = count - maxpages + 1;
+		}
+		if (first <= 0) {
+			first = 1;
+		}
+		let last = first + maxpages - 1;
+		from = first;
+		to = last;
+
+		console.log('first: ', first)
+		console.log('last: ', last)
 	}
 
 	function selectItem(idx) {
