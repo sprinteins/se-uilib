@@ -32,15 +32,16 @@
     }
 
 	function setPaginationBoundaries() {
-		let margin = Math.floor(maxpages/2);
+		let max = Number(maxpages);
+		let margin = Math.floor(max/2);
 		let first = selectedItem - margin;
-		if (first > count - maxpages) {
-			first = count - maxpages + 1;
+		if (first > count - max) {
+			first = count - max + 1;
 		}
 		if (first <= 0) {
 			first = 1;
 		}
-		let last = first + maxpages - 1;
+		let last = first + max - 1;
 		from = first;
 		to = last;
 	}
