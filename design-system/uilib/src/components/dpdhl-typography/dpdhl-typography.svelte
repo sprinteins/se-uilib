@@ -50,6 +50,9 @@
 {:else if variant === "label"}
     <span class="label"> <slot /> </span>
 
+{:else if variant === "tag"}
+    <span class="tag"> <slot /> </span>
+
 {:else}
     <span> <slot /> </span>
 
@@ -131,6 +134,12 @@
     }
     .label {
         font-size:   0.875rem;
+        font-family: var(--font-bold);
+        margin:      0;
+        padding:     0;
+    }
+    .tag{
+        font-size:   0.75rem;
         font-family: var(--font-bold);
         margin:      0;
         padding:     0;
