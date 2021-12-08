@@ -21,6 +21,7 @@ function App() {
     const Tbody = adapt('dpdhl-tbody');
     const Tabs = adapt('dpdhl-tabs')
     const Tab = adapt('dpdhl-tab')
+    const Pagination = adapt('dpdhl-pagination')
 
     const [log, setLog] = useState('')
 
@@ -125,6 +126,12 @@ function App() {
                             </Tabs>
                         </div>
 
+                    <Pagination
+                        on:select={(event: { detail: any; }) => console.log('Selected', event.detail)}
+                        defaultpage={2}
+                        maxpages={10}
+                        count={12}>
+                    </Pagination>
                 </div>
 
             </Theme>
