@@ -125,7 +125,7 @@ function App() {
                     </div>
                     <div>
                         <Pagination
-                            on:select={(event: { detail: any; }) => console.log('Selected', event.detail)}
+                            onSelect={(event: { detail: any; }) => console.log('Selected: ', event.detail)}
                             defaultpage={2}
                             maxpages={10}
                             count={12}>
