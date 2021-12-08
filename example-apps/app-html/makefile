@@ -6,3 +6,6 @@ run: ## Copies the library and starts the webserver
 
 build: ## Build the project
 	@yarn build
+
+lib: #not used, only for the test script
+	@echo ""
