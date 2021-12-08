@@ -6,9 +6,9 @@
   "license": "MIT",
   "scripts": {
     "test-apps": "./scripts/npm-test-apps.sh",
+    "update-snapshots": "./scripts/npm-update-snapshots.sh",
     "cy:open": "cypress open",
-    "cy:run": "cypress run",
-    "cy:update": "cypress run --env updateSnapshots=true"
+    "cy:run": "cypress run"
   },
   "dependencies": {
     "@types/mocha": "^8.2.3",
