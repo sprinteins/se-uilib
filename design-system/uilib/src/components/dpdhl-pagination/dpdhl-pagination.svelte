@@ -6,18 +6,19 @@
 	import { createEventDispatcher } from 'svelte';
 	import { get_current_component, onMount } from "svelte/internal";
 
-	export let count = 12;
-	export let defaultpage = 0;
-	export let maxpages = 10;
+	export let count 		= 12;
+	export let maxpages 	= 10;
+	export let defaultpage 	= 1;
+	$: _defaultpage = defaultpage;
+	$: selectedItem = _defaultpage || 1;
 
 	$: from = 0;
 	$: to = 0;
 
 	onMount(async () => {
 		setPaginationBoundaries();
+		selectedItem = _defaultpage || 1;
 	});
-
-	$: selectedItem = defaultpage || 1;
 
 	const component = get_current_component()
 	const svelteDispatch = createEventDispatcher()
@@ -26,10 +27,6 @@
 		svelteDispatch(name, detail)
 		component.dispatchEvent && component.dispatchEvent(new CustomEvent(name, { detail }))
 	}
-
-    function handleSelect(id) {
-        dispatch('select', id)
-    }
 
 	function setPaginationBoundaries() {
 		let max = Number(maxpages);
@@ -48,7 +45,7 @@
 
 	function selectItem(idx) {
 		selectedItem = idx;
-		handleSelect(idx);
+		dispatch('select', idx)
 		setPaginationBoundaries();
 	}
 
@@ -80,7 +77,7 @@
 	{#each [...Array(to - from + 1)].map((_, i) => from + i) as n}
 		<span 
 			class="item" 
-			class:selected="{selectedItem === n}" 
+			class:selected="{Number(selectedItem) === n}" 
 			on:click="{() => selectItem(n)}">
 				{n}
 				<slot></slot>
