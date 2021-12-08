@@ -1,7 +1,6 @@
 
 <script lang="ts">
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
-    import { DPDHLPagination } from './index'
     import '@sprinteins/dpdhl-uilib'
 
     let selectedItem = "";
@@ -9,6 +8,7 @@
     function handleSelect(event) {
         selectedItem = event.detail
     }
+
 </script>
 
 

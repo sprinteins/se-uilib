@@ -9,15 +9,15 @@
 	export let count 		= 12;
 	export let maxpages 	= 10;
 	export let defaultpage 	= 1;
-	$: _defaultpage = defaultpage;
-	$: selectedItem = _defaultpage || 1;
+	
+	$: selectedItem = defaultpage || 1;
 
 	$: from = 0;
 	$: to = 0;
 
 	onMount(async () => {
 		setPaginationBoundaries();
-		selectedItem = _defaultpage || 1;
+		selectedItem = defaultpage || 1;
 	});
 
 	const component = get_current_component()
