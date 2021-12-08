@@ -77,7 +77,7 @@
 	{#each [...Array(to - from + 1)].map((_, i) => from + i) as n}
 		<span 
 			class="item" 
-			class:selected="{Number(selectedItem) === n}" 
+			class:selected={Number(selectedItem) === n}
 			on:click="{() => selectItem(n)}">
 				{n}
 				<slot></slot>
