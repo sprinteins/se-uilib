@@ -28,7 +28,7 @@ makepids=()
 for app in "${apps[@]}"
 do
     cd $ROOT/example-apps/app-${app}
-    make lib && make run | sed -e "s/^/${app}: : /;" &
+    make run | sed -e "s/^/${app}: : /;" &
     makepids+=($!)
 done
 
@@ -40,7 +40,7 @@ done
 
 ### TEST ###
 cd $DIR/..
-cypress run --spec "./**/002-apps/**/*.spec.ts"
+cypress run --env updateSnapshots=true --spec "./**/002-apps/**/*.spec.ts"
 
 ### STOP APPS ###
 for makepid in "${makepids[@]}"

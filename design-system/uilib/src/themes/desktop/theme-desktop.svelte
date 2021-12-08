@@ -41,15 +41,26 @@
         --color-gray08:     #ebebeb;
         --color-gray05:     #f2f2f2;
         
-        --color-dhlred:       #D40511;
-        --color-dhlred-light: #FEE7E8;
+        --color-dhlred:        #D40511;
+        --color-dhlred-light:  #FEE7E8;
+        --color-dhlred-bright: #F4C0C3;
 
-        --color-green-bright: #76BD22;
-        --color-green-light:  #E5F2EB;
-        --color-green-dark:   #007c39;
+        --color-green-bright:   #76BD22;
+        --color-green-bright-rgb: 118, 189, 34;
+        --color-green-light:    #E5F2EB;
+        --color-green-dark:     #007c39;
 
         --color-steel-gray-medium: #E5E8E9;
         --color-steel-gray-light:  #F5F7F8;
+
+        --color-blue:        #0099FF;
+        --color-blue-bright: #A6DBFF;
+
+        --color-yellow-bright: #F7E59E;
+        --color-yellow-dark:   #D2A800;
+
+        --color-orange-bright: #F3D5B5;
+        --color-orange:        #FE8A00;
         
         --color-primary:   var(--color-postyellow);
         --color-secondary: var(--color-white);
