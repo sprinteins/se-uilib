@@ -4,14 +4,20 @@
 
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	import { get_current_component } from "svelte/internal";
+	import { get_current_component, onMount } from "svelte/internal";
 
 	export let count = 12;
-	export let defaultpage = 2;
-	export let maxpages = 7;
+	export let defaultpage = 0;
+	export let maxpages = 10;
 
 	$: from = 0;
-	$: to = from + maxpages;
+	$: to = 0;
+
+	onMount(async () => {
+		setPaginationBoundaries();
+		console.log(from, ' -> ', to)
+		console.log([...Array(to - from + 1)].map((_, i) => from + i))
+	});
 
 	$: selectedItem = defaultpage || 1;
 
@@ -39,9 +45,6 @@
 		let last = first + maxpages - 1;
 		from = first;
 		to = last;
-
-		console.log('first: ', first)
-		console.log('last: ', last)
 	}
 
 	function selectItem(idx) {
@@ -54,12 +57,13 @@
 <svelte:options tag="dpdhl-pagination" />
 
 <div class="pagination-list">
-	{#each Array(count) as _, idx}
+	<!-- iterate over an array of numbers [from .. to] -->
+	{#each [...Array(to - from + 1)].map((_, i) => from + i) as n}
 		<span 
 			class="item" 
-			class:selected="{selectedItem === idx + 1}" 
-			on:click="{() => selectItem(idx + 1)}">
-				{idx + 1}
+			class:selected="{selectedItem === n}" 
+			on:click="{() => selectItem(n)}">
+				{n}
 				<slot></slot>
 		</span>
 	{/each}
