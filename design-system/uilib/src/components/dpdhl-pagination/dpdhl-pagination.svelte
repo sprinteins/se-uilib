@@ -106,6 +106,7 @@
         font-weight:    700;
         font-size:      0.875rem;
         line-height:    0.5rem;
+		min-width: 		0.75rem;
     }
 
 	.item.disabled {
