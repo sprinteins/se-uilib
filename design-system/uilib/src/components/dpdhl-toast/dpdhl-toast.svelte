@@ -16,19 +16,20 @@ import { makeEvent } from "../../x/util/dispatch";
 	export let open = true;
 	$: _open = open;
 
-	export let message: string;
-	$: _message = message;
-
 	export let title: string;
 	$: _title = title;
+
+	export let message: string;
+	$: _message = message;
 
 	export let type: string = Type.error;
 
 	export let fullWidth: boolean = true;
 
 	let toast: HTMLElement;
-	function closeToast() {
-		toast.dispatchEvent(makeEvent("closeToast", null));
+	
+	function handleClose() {
+		toast.dispatchEvent(makeEvent("close", null));
 	}
 </script>
 
@@ -52,7 +53,7 @@ import { makeEvent } from "../../x/util/dispatch";
 			</div>
 		</div>
 		<dpdhl-icon
-			on:click={closeToast}
+			on:click={handleClose}
 			width={16}
 			height={16}
 			color="#FFF"
@@ -81,7 +82,6 @@ import { makeEvent } from "../../x/util/dispatch";
 		bottom:			0;
 		left:			0;
 		right:			0;
-
 	}
 
 	main.notification {
@@ -113,6 +113,7 @@ import { makeEvent } from "../../x/util/dispatch";
 	div.text-container {
 		display: 		flex;
 		flex-direction: 	column;
+		text-align: left;
 	}
 
 	div.content-container {

@@ -42,7 +42,7 @@
 >
 	<dpdhl-toast
 		{open}
-		on:closeToast={handleClose}
+		on:close={handleClose}
 		type={args.type}
 		title={args.title}
 		message={args.message}
