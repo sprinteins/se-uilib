@@ -15,8 +15,6 @@
 
 	onMount(async () => {
 		setPaginationBoundaries();
-		console.log(from, ' -> ', to)
-		console.log([...Array(to - from + 1)].map((_, i) => from + i))
 	});
 
 	$: selectedItem = defaultpage || 1;
@@ -52,12 +50,32 @@
 		handleSelect(idx);
 		setPaginationBoundaries();
 	}
+
+	function selectPrevious() {
+		if (selectedItem > 1) {
+			selectItem(selectedItem - 1);
+		}
+	}
+
+	function selectNext() {
+		if (selectedItem < count) {
+			selectItem(selectedItem + 1)
+		}
+	}
 </script>
 
 <svelte:options tag="dpdhl-pagination" />
 
 <div class="pagination-list">
-	<!-- iterate over an array of numbers [from .. to] -->
+	
+	<span 
+		class="item" 
+		class:disabled={selectedItem <= 1}
+		on:click={selectPrevious}>
+			{'<'}
+	</span>
+
+	<!-- iterate over an array of numbers [from .. to] -->	
 	{#each [...Array(to - from + 1)].map((_, i) => from + i) as n}
 		<span 
 			class="item" 
@@ -67,6 +85,13 @@
 				<slot></slot>
 		</span>
 	{/each}
+
+	<span 
+		class="item" 
+		class:disabled={selectedItem >= count}
+		on:click={selectNext}>
+			{'>'}
+	</span>
 </div>
 
 <style>
@@ -83,11 +108,20 @@
         line-height:    0.5rem;
     }
 
+	.item.disabled {
+		color: var(--color-gray45);
+		cursor: not-allowed;
+	}
+
     .item.selected {
         border-bottom: 2px solid var(--color-dhlred);
     }
 
     .item:hover {
         background-color: var(--color-dhlred-light);
+    }
+
+	.item:hover.disabled {
+        background-color: var(--color-gray08);
     }
 </style>
