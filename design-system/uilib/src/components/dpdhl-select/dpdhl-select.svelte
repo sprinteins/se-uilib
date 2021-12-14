@@ -56,7 +56,7 @@
 		});
 	}
 
-	let open = true;
+	let open = false;
 	function toggleOpen() {
 		open = !open;
 	}
