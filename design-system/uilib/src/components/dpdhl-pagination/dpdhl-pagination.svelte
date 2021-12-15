@@ -10,7 +10,7 @@
 	export let maxpages 	= 10;
 	export let defaultpage 	= 1;
 	
-	$: selectedItem = defaultpage || 1;
+	$: selectedItem = defaultpage;
 
 	$: from = 0;
 	$: to = 0;
@@ -73,7 +73,7 @@
 			{'<'}
 	</span>
 
-	<!-- iterate over an array of numbers [from .. to] -->	
+	<!-- iterate over an array of numbers [from ... to] -->	
 	{#each [...Array(to - from + 1)].map((_, i) => from + i) as n}
 		<span 
 			class="item" 
