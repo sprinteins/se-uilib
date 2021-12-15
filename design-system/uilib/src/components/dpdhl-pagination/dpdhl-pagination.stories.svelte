@@ -15,18 +15,17 @@
 <Meta title="11_Components/Pagination" component={null}/>
 
 <Template let:args>
-        <dpdhl-pagination 
-            on:select={handleSelect} 
-            defaultpage={args.defaultPage} 
-            maxpages={args.maxPages}
-            count={args.count}>
-        </dpdhl-pagination>
+    <dpdhl-pagination 
+        on:select={handleSelect} 
+        defaultpage={args.defaultPage} 
+        maxpages={args.maxPages}
+        count={args.count}>
+    </dpdhl-pagination>
     <p>Selected: {selectedItem}</p>
 
 </Template>
 
-<style>
-</style>
+<style></style>
 
 <Story name="Primary" args={{
     count: 12,
