@@ -24,6 +24,7 @@ function App() {
     const Pagination = adapt('dpdhl-pagination')
 
     const [log, setLog] = useState('')
+    const [selectedPage, setSelectedPage] = useState(1)
 
     const menuItems = [
         { label: "Menu 1", click: () => { alert('You have selected "Menu 1"') }},
@@ -39,7 +40,7 @@ function App() {
         {title:"Row title", column1: "Table cell", column2: "Table cell"},
     ]
     const tableHeaders = ["","Column title 1", "Column title 2"]
-
+    
     return (
         <div className="App">
             <h1>React App</h1>
@@ -125,8 +126,8 @@ function App() {
                     </div>
                     <div>
                         <Pagination
-                            onSelect={(event: { detail: any; }) => console.log('Selected: ', event.detail)}
-                            defaultpage={2}
+                            onSelect={(event: { detail: any; }) => setSelectedPage(event.detail)}
+                            defaultpage={selectedPage}
                             maxpages={10}
                             count={12}>
                         </Pagination>
