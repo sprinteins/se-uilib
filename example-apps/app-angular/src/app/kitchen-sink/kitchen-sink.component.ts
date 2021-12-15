@@ -16,7 +16,6 @@ export class KitchenSinkComponent {
     }
 
     handleSelect(event: CustomEvent) {
-        console.log(`switched to: ${event.detail}`)
         this.log = `switched to ${event.detail}`
     }
 
