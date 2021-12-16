@@ -3,40 +3,21 @@
 The goal of this project is to show how to use the Svelte components in a React project.
 
 
-## How to add new component
+## How to use web components in React
 
-- Import UI library and adapter function:
-
-```js script
-import '@sprinteins/dpdhl-uilib';
-import {adapt} from "./adapter";
-```
-
-- Initialise a component using an adapter function and a name of the component:
+- Import component from "@sprinteins/dpdhl-uilib/react":
 
 ```js script
-const Pagination = adapt('dpdhl-pagination')
+import { Pagination } from '@sprinteins/dpdhl-uilib/react' 
 ```
 
-- Next step is to transform svelte component into React syntax. 
-Callback functions like On:select should be renamed to onSelect.
-
-Svelte:
-
-```js script
-on:select={(event) => { /* do something with event.detail */ }} 
-```
-
-React:
-```js script
-onSelect={(event) => { /* do something with event.detail */ }} 
-```
+- Transform Svelte component into React syntax. Callback functions (for example, on:select) should be renamed to camel case (onSelect).
 
 The rest of the props should be passed as usual.
 
-####The result:
+#### Example:
 
-Before (Svelte component in Svelte project):
+Component in Svelte:
 
 ```js script
 <dpdhl-pagination 
@@ -47,7 +28,7 @@ Before (Svelte component in Svelte project):
 </dpdhl-pagination>
 ```
 
-After (Svelte component in React):
+Component in React:
 
 ```js script
 <Pagination
