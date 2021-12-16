@@ -29,14 +29,13 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 
-## Adding new component
+## Using web components in Angular project
 
-To use a Svelte component in Angular we have to adapt it to Angular syntax.
+To use a web component in Angular we have to adapt it to Angular syntax.
 
 - Callback functions like on:select should be formatted like (select).
 
 Before:
-
 ```js script
 on:select={(event) => { /* do something with event.detail */ }} 
 ```
@@ -65,7 +64,7 @@ defaultpage="2"
 
 ####The result:
 
-Before (Svelte component in Svelte project):
+Web component in Svelte:
 
 ```js script
 <dpdhl-pagination 
@@ -76,7 +75,7 @@ Before (Svelte component in Svelte project):
 </dpdhl-pagination>
 ```
 
-After (Svelte component in Angular):
+Web component in Angular:
 
 ```js script
 <dpdhl-pagination
