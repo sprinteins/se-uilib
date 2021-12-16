@@ -31,7 +31,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Using web components in Angular project
 
-To use a web component in Angular we have to adapt it to Angular syntax.
+To use a web component in Angular adapt it to Angular syntax.
 
 - Callback functions like on:select should be formatted like (select).
 
@@ -45,7 +45,7 @@ After:
 (select)="handleSelect($event)"
 ```
 
-Create a function to receive data within the parent component.
+Use a function to receive data within the parent component.
 
 ```js script
 handleSelect(event: CustomEvent) {
