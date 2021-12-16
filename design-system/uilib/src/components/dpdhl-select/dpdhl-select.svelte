@@ -100,7 +100,7 @@
 	{#if label}
 		<span class="label">{label}</span>
 	{/if}
-	<div class="root" class:open bind:this={root}>
+	<div class="select-container" class:open bind:this={root}>
 		<div class="select" class:open class:error={_error}>
 			<div class="dropdown" on:click={toggleOpen}>
 				<span class="content">
@@ -161,7 +161,7 @@
 		--border-color: var(--color-gray45);
 	}
 
-	.root {
+	.select-container {
 		position: relative;
 		display: inline-block;
 		width: 100%;
