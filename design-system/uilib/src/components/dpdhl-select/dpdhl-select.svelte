@@ -96,65 +96,65 @@
 	}
 
 </script>
-
-{#if label}
-  	<span class="label">{label}</span>
-{/if}
-<div class="root" class:open bind:this={root}>
-	<div class="select" class:open class:error={_error}>
-		<div class="dropdown" on:click={toggleOpen}>
-			<span class="content">
-				{#if multiple}
-					{#if !selectedItems.length}
-						<dpdhl-copy class="input-placeholder" class:error={_error}>{placeholder}</dpdhl-copy>
+<main>
+	{#if label}
+		<span class="label">{label}</span>
+	{/if}
+	<div class="root" class:open bind:this={root}>
+		<div class="select" class:open class:error={_error}>
+			<div class="dropdown" on:click={toggleOpen}>
+				<span class="content">
+					{#if multiple}
+						{#if !selectedItems.length}
+							<dpdhl-copy class="input-placeholder" class:error={_error}>{placeholder}</dpdhl-copy>
+						{:else}
+							<dpdhl-copy class="selected">
+								{selectedItems.map((item) => item.label).join(", ")}
+							</dpdhl-copy>
+						{/if}
 					{:else}
-						<dpdhl-copy class="selected">
-							{selectedItems.map((item) => item.label).join(", ")}
-						</dpdhl-copy>
+						{#if !selectedItem || !selectedItem.value}
+							<dpdhl-copy class="input-placeholder" class:error={_error}>{placeholder}</dpdhl-copy>
+						{:else}
+							<dpdhl-copy class="selected">{selectedItem.label}</dpdhl-copy>
+						{/if}
 					{/if}
-				{:else}
-					{#if !selectedItem || !selectedItem.value}
-						<dpdhl-copy class="input-placeholder" class:error={_error}>{placeholder}</dpdhl-copy>
-					{:else}
-						<dpdhl-copy class="selected">{selectedItem.label}</dpdhl-copy>
-					{/if}
-				{/if}
-			</span>
-			<span class="chevron">
-				<dpdhl-icon
-				width="16"
-				height="16"
-				color="var(--color-dhlred)"
-				icon="chevron_down"
-				/>
-			</span>
+				</span>
+				<span class="chevron">
+					<dpdhl-icon
+					width="16"
+					height="16"
+					color="var(--color-dhlred)"
+					icon="chevron_down"
+					/>
+				</span>
+			</div>
 		</div>
+
+		<ul class:error={_error} class:open={open}>
+			{#each items as item}
+				<li on:click={() => onItemClick(item)}>
+					<dpdhl-copy class="item-label">{item.label}</dpdhl-copy>
+					{#if (multiple && selectedItems.includes(item)) 
+						|| (!multiple && item === selectedItem)}
+						<dpdhl-icon icon="checkmark" width="16" height="16" color="var(--color-dhlred)" />
+					{/if}
+				</li>
+			{/each}
+		</ul>
 	</div>
-
-	<ul class:error={_error} class:open={open}>
-		{#each items as item}
-			<li on:click={() => onItemClick(item)}>
-				<dpdhl-copy class="item-label">{item.label}</dpdhl-copy>
-				{#if (multiple && selectedItems.includes(item)) 
-					|| (!multiple && item === selectedItem)}
-					<dpdhl-icon icon="checkmark" width="16" height="16" color="var(--color-dhlred)" />
-				{/if}
-			</li>
-		{/each}
-	</ul>
-</div>
-
-<div
-	use:initItemRegistration
-	class="container"
-	use:clickOutside
-	on:click_outside={handleClickOutside}
->
-  	<slot />
-</div>
-{#if helpertext}
-  	<span class="helper-text">{helpertext}</span>
-{/if}
+	<div
+		use:initItemRegistration
+		class="container"
+		use:clickOutside
+		on:click_outside={handleClickOutside}
+	>
+		<slot />
+	</div>
+	{#if helpertext}
+		<span class="helper-text">{helpertext}</span>
+	{/if}
+</main>
 
 <style>
 	:host {
@@ -165,6 +165,10 @@
 		position: relative;
 		display: inline-block;
 		width: 100%;
+	}
+
+	main {
+		text-align: left;
 	}
 
 	.select {
@@ -313,6 +317,6 @@
 		font-weight: 700;
 		font-size: 14px;
 		line-height: 1rem;
-
+		text-align: left;
 	}
 </style>
