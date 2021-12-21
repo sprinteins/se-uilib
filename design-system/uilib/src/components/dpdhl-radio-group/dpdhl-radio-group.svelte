@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte'
-	import { makeEvent } from '../../x/util/dispatch';
+	import { makeEvent } from '../../x/util/dispatch'
     import "../dpdhl-icon"
     import { KeyItemAdded } from './dpdhl-radio-item.svelte'
     
@@ -60,11 +60,6 @@
         });
     }
 
-    let open = true;
-    function toggleOpen(){
-        open = !open;
-    }
-
     let selectedItem: Item = placholderItem;
     onMount(() => {
         selectedItem = placholderItem;
@@ -79,8 +74,7 @@
 </script>
 <svelte:options tag="dpdhl-radio-group" />
 
-<div class="root" class:open bind:this={root}>
-
+<div bind:this={root} class="root">
 	{#each items as item}
 		<dpdhl-radio-button 
 			on:select={() => onItemClick(item)}
@@ -94,12 +88,12 @@
 </div>
 
 
-<div bind:this={container} class="container">
+<div bind:this={container}>
     <slot />
 </div>
 
 <style>
-	.container {
+	.root {
         display:        flex;
         flex-direction: column;
         gap:            var(--radio-group__items-gap, 1.5rem);
