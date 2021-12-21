@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
 	import "@sprinteins/dpdhl-uilib";
+	import { action } from "@storybook/addon-actions";
 
 </script>
 
@@ -19,7 +20,7 @@
 >
   	<main>
 		<dpdhl-radio-button
-			on:check={() => console.log("Checked")}
+			on:select={action("Selected")}
 			name="checkbox-example"
 			disabled={args.disabled}
 			selected={args.checked}
