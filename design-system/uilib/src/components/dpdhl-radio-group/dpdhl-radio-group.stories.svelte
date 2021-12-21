@@ -8,6 +8,7 @@
 
     function handleSelect(event) {
         selectedItem = event.detail
+        console.log(event.detail)
     }
 </script>
 

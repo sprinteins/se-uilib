@@ -5,23 +5,15 @@
 <script lang="ts">
 	import { setContext, onDestroy } from 'svelte';
 	import { writable } from 'svelte/store';
-	import { createEventDispatcher } from 'svelte';
-	import { get_current_component } from "svelte/internal";
+	import { makeEvent } from '../../x/util/dispatch';
 
 	const items = [];
 	let selectedItem = writable(null);
 
-	const component = get_current_component()
-	const svelteDispatch = createEventDispatcher()
-
-	export function dispatch(name, detail = null) {
-		svelteDispatch(name, detail)
-		component.dispatchEvent && component.dispatchEvent(new CustomEvent(name, { detail }))
+	let root: HTMLDivElement;
+	function handleSelect(value) {
+		root.dispatchEvent(makeEvent('select', value))
 	}
-
-    function handleSelect(value) {
-        dispatch('select', value)
-    }
 
 	setContext(ITEMS, {
 		registerItem: item => {
@@ -45,7 +37,7 @@
 
 <svelte:options tag="dpdhl-radio-group" />
 
-<div class="container">
+<div class="container" bind:this={root}>
 	<slot></slot>
 </div>
 
