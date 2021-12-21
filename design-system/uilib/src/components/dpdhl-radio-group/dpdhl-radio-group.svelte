@@ -39,16 +39,10 @@
                 return;
             }
             el.setAttribute('registered','');
-            
-
-            // Label
             const label = el.getAttribute('label')
             const value = el.getAttribute('value')
-			// const disabled = el.getAttribute('disabled')
-			// const error = el.getAttribute('error')
-			const disabled = false;
-			const error = false
-			console.log('error: ', error)
+			const disabled = el.getAttribute('disabled') === "true";
+			const error = el.getAttribute('error') === "true";
             if(items){ 
                 items[ei] = {
                     label,
