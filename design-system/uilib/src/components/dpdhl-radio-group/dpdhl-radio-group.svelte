@@ -1,51 +1,108 @@
-<script context="module" lang="ts">
-	export const ITEMS = {};
-</script>
-
 <script lang="ts">
-	import { setContext, onDestroy } from 'svelte';
-	import { writable } from 'svelte/store';
+    import { onMount } from 'svelte'
 	import { makeEvent } from '../../x/util/dispatch';
+    import "../dpdhl-icon"
+    import { KeyItemAdded } from './dpdhl-radio-item.svelte'
+    
+    export let placeholder = ""
+    $: placholderItem = {
+        label: placeholder,
+        value: undefined,
+		disabled: false,
+		error: false
+    }
 
-	const items = [];
-	let selectedItem = writable(null);
+    interface Item {
+        label: string
+        value: unknown,
+		disabled: boolean,
+		error: boolean
+    }
 
-	// TODO: adding type throws a parsing error
-	let root // : HTMLDivElement; 
-	function handleSelect(value) {
-		root.dispatchEvent(makeEvent('select', value))
-	}
+    let container: HTMLElement
+    let items: Item[] = []
+    let assignedElements: HTMLElement[] = []
 
-	setContext(ITEMS, {
-		registerItem: item => {
-			items.push(item);
-			onDestroy(() => {
-				const i = items.indexOf(item);
-				items.splice(i, 1);
-				selectedItem.update(current => 
-					current === item 
-					? (items[i] || items[items.length - 1]) 
-					: current);
-			});
-		},
-		selectItem: item => {
-			selectedItem.set(item);
-            handleSelect(item.value)
-		},
-		selectedItem: selectedItem,
-	});
+    onMount(() => {
+        registerItems();
+        container.addEventListener(KeyItemAdded, registerItems)
+    })    
+
+    function registerItems(){
+        const slot = container.childNodes[0] as HTMLSlotElement
+
+        assignedElements = slot.assignedElements() as HTMLElement[]
+
+        assignedElements.forEach( (el, ei)  => {
+            const alreadyRegistered = el.hasAttribute('registered')
+            if( alreadyRegistered ){
+                return;
+            }
+            el.setAttribute('registered','');
+            
+
+            // Label
+            const label = el.getAttribute('label')
+            const value = el.getAttribute('value')
+			// const disabled = el.getAttribute('disabled')
+			// const error = el.getAttribute('error')
+			const disabled = false;
+			const error = false
+			console.log('error: ', error)
+            if(items){ 
+                items[ei] = {
+                    label,
+                    value,
+					disabled,
+					error
+                }
+            }
+        });
+    }
+
+    let open = true;
+    function toggleOpen(){
+        open = !open;
+    }
+
+    let selectedItem: Item = placholderItem;
+    onMount(() => {
+        selectedItem = placholderItem;
+    })
+
+    let root: HTMLDivElement;
+    function onItemClick(item: Item){
+        selectedItem = item;
+        root.dispatchEvent(makeEvent('select', item.value))
+    }
+
 </script>
-
 <svelte:options tag="dpdhl-radio-group" />
 
-<div class="container" bind:this={root}>
-	<slot></slot>
+<div class="root" class:open bind:this={root}>
+
+	{#each items as item}
+		<dpdhl-radio-button 
+			on:select={() => onItemClick(item)}
+			selected={selectedItem === item}
+			value={item.value}
+			disabled={item.disabled}
+			error={item.error}>
+			{item.label}
+		</dpdhl-radio-button>
+	{/each}
+</div>
+
+
+<div bind:this={container} class="container">
+    <slot />
 </div>
 
 <style>
-    .container {
+	.container {
         display:        flex;
         flex-direction: column;
         gap:            var(--radio-group__items-gap, 1.5rem);
     }
+
 </style>
