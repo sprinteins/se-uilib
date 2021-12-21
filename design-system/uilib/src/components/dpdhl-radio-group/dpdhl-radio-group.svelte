@@ -10,7 +10,8 @@
 	const items = [];
 	let selectedItem = writable(null);
 
-	let root: HTMLDivElement;
+	// TODO: adding type throws a parsing error
+	let root // : HTMLDivElement; 
 	function handleSelect(value) {
 		root.dispatchEvent(makeEvent('select', value))
 	}
