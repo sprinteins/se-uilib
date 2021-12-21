@@ -23,14 +23,15 @@ argTypes={{
 }}/>
 
 <Template let:args>
-     <div style="--radio-group__items-gap: {args.itemsGap}rem;">
-        <DPDHLRadioGroup on:select={handleSelect}>
-            <DPDHLRadioItem value="option1">Option 1</DPDHLRadioItem>
-            <DPDHLRadioItem value="option2">Option 2</DPDHLRadioItem>
-            <DPDHLRadioItem value="option3" disabled={true}>Disabled option</DPDHLRadioItem>
-            <DPDHLRadioItem value="option4" error={true}>Error option</DPDHLRadioItem>
-            <DPDHLRadioItem value="option5">Long option - This text explains the basic theory underlying core remote sensing semulacre processing operations and provides extensive hands-on exercises using propositional logic.</DPDHLRadioItem>
-        </DPDHLRadioGroup>
+    <!-- TODO: svelte-tags <dpdhl-radio-item> don't work. -->
+    <div style="--radio-group__items-gap: {args.itemsGap}rem;">
+        <dpdhl-radio-group on:select={handleSelect}>
+            <dpdhl-radio-item value="option1">Option 1</dpdhl-radio-item>
+            <dpdhl-radio-item value="option2">Option 2</dpdhl-radio-item>
+            <dpdhl-radio-item value="option3" disabled={true}>Disabled option</dpdhl-radio-item>
+            <dpdhl-radio-item value="option4" error={true}>Error option</dpdhl-radio-item>
+            <dpdhl-radio-item value="option5">Long option - This text explains the basic theory underlying core remote sensing semulacre processing operations and provides extensive hands-on exercises using propositional logic.</dpdhl-radio-item>
+        </dpdhl-radio-group>
     </div>
 
     <p>Selected: {selectedItem}</p>
