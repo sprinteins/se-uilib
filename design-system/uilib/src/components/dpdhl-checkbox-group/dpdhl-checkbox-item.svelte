@@ -1,28 +1,21 @@
-<script lang="ts">
-	import { getContext } from 'svelte';
-	import { ITEMS } from './dpdhl-checkbox-group.svelte';
-
-    export let value            = "";
-    export let disabled         = false;
-    export let indeterminate    = false;
-    export let error            = false;
-
-	const { registerItem, selectItem, selectedItem } = getContext(ITEMS);
-
-	registerItem(value);
-
+<script context='module' lang='ts'>
+    export const KeyItemAdded = 'itemadded'
 </script>
+<script lang='ts'>
+    import { onMount } from 'svelte'
 
+    let contentRef: HTMLElement
+    function itemAdded(){
+        if(!contentRef) { return }
+        contentRef.dispatchEvent(new CustomEvent(KeyItemAdded,{
+            bubbles: true,
+            composed: true,
+        }))
+    }
+    onMount(itemAdded);
+</script>
 <svelte:options tag="dpdhl-checkbox-item" />
 
-<dpdhl-checkbox 
-    on:check={() => selectItem(value)}
-    checked={$selectedItem === value}
-    {value}
-    {disabled}
-    {indeterminate}
-    {error}>
-    <slot></slot>
-</dpdhl-checkbox>
-
-
+<span>
+    <slot />
+</span>

@@ -3,19 +3,10 @@
 	import { makeEvent } from '../../x/util/dispatch'
     import "../dpdhl-icon"
     import { KeyItemAdded } from './dpdhl-checkbox-item.svelte'
-    
-    export let placeholder = ""
-    $: placholderItem = {
-        label: placeholder,
-        value: undefined,
-		disabled: false,
-		error: false,
-		indeterminate: false
-    }
 
     interface Item {
         label: string
-        value: unknown,
+        value: string,
 		disabled: boolean,
 		error: boolean,
 		indeterminate: boolean
@@ -23,7 +14,7 @@
 
     let container: HTMLElement
     let items: Item[] = []
-	let selectedItems: Item[] = []
+	let selectedItems: string[] = []
     let assignedElements: HTMLElement[] = []
 
     onMount(() => {
@@ -59,30 +50,13 @@
         });
     }
 
-    let selectedItem: Item = placholderItem;
-    onMount(() => {
-        selectedItem = placholderItem;
-    })
-
     let root: HTMLDivElement;
     function onItemClick(item: Item) {
-		console.log(item)
-		// selectedItems.update(current => {
-        //         let selected = [...current];
-        //         if (current.includes(item)) {
-        //             selected = selected.filter(i => i !== item)
-        //         } else {
-        //             selected = [...selected, item]
-        //         }
-        //         return selected;
-        //     })
-		console.log('selected: ', selectedItems);
-		if (selectedItems.includes(item)) {
-			selectedItems = [...selectedItems.filter(i => i !== item)]
+		if (selectedItems.includes(item.value)) {
+			selectedItems = [...selectedItems.filter(i => i !== item.value)]
 		} else {
-			selectedItems = [...selectedItems, item]
+			selectedItems = [...selectedItems, item.value]
 		}
-		console.log('selected: ', selectedItems);
         root.dispatchEvent(makeEvent('select', selectedItems))
     }
 
@@ -93,10 +67,11 @@
 	{#each items as item}
 		<dpdhl-checkbox
 			on:check={() => onItemClick(item)}
-			selected={selectedItems.includes(item)}
+			selected={selectedItems.includes(item.value)}
 			value={item.value}
 			disabled={item.disabled}
-			error={item.error}>
+			error={item.error}
+			indeterminate={item.indeterminate}>
 			{item.label}
 		</dpdhl-checkbox>
 	{/each}
