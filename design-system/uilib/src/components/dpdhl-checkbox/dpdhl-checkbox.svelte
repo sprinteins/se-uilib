@@ -58,9 +58,7 @@
 		class:error={_error}
 	/>
 	<span class="label">
-		<!-- <dpdhl-typography> -->
-			<slot></slot>
-		<!-- </dpdhl-typography> -->
+		<slot></slot>
 	</span>
 </span>
 
