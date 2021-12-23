@@ -9,7 +9,6 @@
 
 <Meta title="11_Components/Radio Group" component={null} />
 
-<!-- https://www.dpdhl-brands.com/dpdhl-group/en/guides/touchpoints/user-interface/components/select.html -->
 <Template let:args>
 </Template>
 
