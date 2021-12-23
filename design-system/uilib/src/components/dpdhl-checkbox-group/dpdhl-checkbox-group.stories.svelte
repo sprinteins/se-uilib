@@ -24,7 +24,7 @@
 
 <Template let:args>
     <div style="--checkbox-group__items-gap: {args.itemsGap}rem;">
-        <dpdhl-checkbox-group placeholder="Select field" on:select={handleSelectItems}>
+        <dpdhl-checkbox-group on:select={handleSelectItems}>
             <dpdhl-checkbox-item label="Option A" value="option-a" />
             <dpdhl-checkbox-item label="Option B" value="option-b" disabled={true}/>
             <dpdhl-checkbox-item label="Option C" value="option-c" error={true}/>
