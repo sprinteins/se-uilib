@@ -111,4 +111,14 @@
         </dpdhl-tabs>
     </div>
 
+    <!-- TODO: radio group isn't displayed -->
+    <div style="width: 500px;">
+        <dpdhl-radio-group (select)="handleCheckboxSelect($event)">
+            <dpdhl-radio-item label="Option A" value="option-a"></dpdhl-radio-item>
+            <dpdhl-radio-item label="Option B" value="option-b" disabled="true"></dpdhl-radio-item>
+            <dpdhl-radio-item label="Option C" value="option-c" error="true"></dpdhl-radio-item>
+            <dpdhl-radio-item label="Option C" value="option-c" error="true"></dpdhl-radio-item>
+        </dpdhl-radio-group>
+    </div>
+
 </div>
