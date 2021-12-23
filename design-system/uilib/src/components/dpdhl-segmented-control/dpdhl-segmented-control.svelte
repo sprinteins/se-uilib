@@ -1,64 +1,107 @@
-<script context="module" lang="ts">
-	export const ITEMS = {};
-</script>
-
 <script lang="ts">
-	import { setContext, onDestroy } from 'svelte';
-	import { writable } from 'svelte/store';
-	import { createEventDispatcher } from 'svelte';
-	import { get_current_component } from "svelte/internal";
-
-	const items = [];
-	let selectedItem = writable(null);
-
-	const component = get_current_component()
-	const svelteDispatch = createEventDispatcher()
-
-	export function dispatch(name, detail = null) {
-		svelteDispatch(name, detail)
-		component.dispatchEvent && component.dispatchEvent(new CustomEvent(name, { detail }))
-	}
-
-    function handleSelect(id) {
-        dispatch('select', id)
+    import { onMount } from 'svelte'
+	import { makeEvent } from '../../x/util/dispatch'
+    import "../dpdhl-icon"
+    import { KeyItemAdded } from './dpdhl-segmented-control-item.svelte'
+    
+    export let placeholder = ""
+    $: placholderItem = {
+        label: placeholder,
+        value: undefined
     }
 
-	setContext(ITEMS, {
-		registerItem: item => {
-			items.push(item);
-			selectedItem.update(current => current || item);
-			onDestroy(() => {
-				const i = items.indexOf(item);
-				items.splice(i, 1);
-				selectedItem.update(current => 
-					current === item 
-					? (items[i] || items[items.length - 1]) 
-					: current);
-			});
-		},
-		selectItem: item => {
-			const i = items.indexOf(item);
-			selectedItem.set(item);
-            handleSelect(i)
-		},
-		selectedItem: selectedItem,
-	});
-</script>
+    interface Item {
+        label: string
+        value: unknown
+    }
 
+    let container: HTMLElement
+    let items: Item[] = []
+    let assignedElements: HTMLElement[] = []
+
+    onMount(() => {
+        registerItems();
+        container.addEventListener(KeyItemAdded, registerItems)
+    })    
+
+    function registerItems(){
+        const slot = container.childNodes[0] as HTMLSlotElement
+
+        assignedElements = slot.assignedElements() as HTMLElement[]
+
+        assignedElements.forEach( (el, ei)  => {
+            const alreadyRegistered = el.hasAttribute('registered')
+            if( alreadyRegistered ){
+                return;
+            }
+            el.setAttribute('registered','');
+            const label = el.getAttribute('label')
+            const value = el.getAttribute('value')
+            if(items){ 
+                items[ei] = {
+                    label,
+                    value
+                }
+            }
+        });
+    }
+
+    let selectedItem: Item = placholderItem;
+    onMount(() => {
+        selectedItem = placholderItem;
+    })
+
+    let root: HTMLDivElement;
+    function onItemClick(item: Item){
+        selectedItem = item;
+        root.dispatchEvent(makeEvent('select', item.value))
+    }
+
+</script>
 <svelte:options tag="dpdhl-segmented-control" />
 
-<div class="tabs">
-    <div class="tab-list">
-	    <slot></slot>
-    </div>
+<div bind:this={root} class="root">
+	{#each items as item}
+		<span 
+			class="item"
+			on:click={() => onItemClick(item)}
+			class:selected={selectedItem === item}>
+			{item.label}
+		</span>
+	{/each}
+</div>
+
+
+<div bind:this={container}>
+    <slot />
 </div>
 
 <style>
-    .tab-list {
+	.root {
         cursor:         pointer;
         display:        inline-grid;
         grid-auto-flow: column;
         border:         1px solid var(--color-postyellow);
         border-radius:  2px;
-	}
+    }
+
+	.item {
+        padding:        0.75rem;
+        font-weight:    700;
+        font-size:      0.875rem;
+        line-height:    0.5rem;
+        border-right:   1px solid var(--color-postyellow);
+    }
+	.item:last-child {
+        border-right: none;
+    }
+
+    .item.selected {
+        background-color: var(--color-postyellow);
+    }
+
+    .item:hover {
+        background-color: var(--color-postyellow);
+    }
+
 </style>
