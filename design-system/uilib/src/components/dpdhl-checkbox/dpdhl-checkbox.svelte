@@ -31,6 +31,9 @@
 			event.preventDefault();
 			return;
 		}
+		if (_indeterminate) {
+			_indeterminate = false;
+		}
 		root.dispatchEvent(makeEvent('check', value ))	
 	}
 
