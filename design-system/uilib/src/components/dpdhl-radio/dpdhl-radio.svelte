@@ -31,8 +31,8 @@
 
 </script>
 
-<main bind:this={root}>
-<div class="item" on:click={handleClick} class:disabled={_disabled}>
+
+<div class="item" on:click={handleClick} class:disabled={_disabled} bind:this={root}>
 	<input 
 		checked={_selected} 
 		type="checkbox" 
@@ -47,7 +47,6 @@
 		<slot></slot>
 	</div>
 </div>
-</main>
 
 <style>
 
