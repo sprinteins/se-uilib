@@ -1,4 +1,4 @@
-<svelte:options tag={"dpdhl-radio-button"} />
+<svelte:options tag="dpdhl-radio" />
 
 <script lang="ts">
 

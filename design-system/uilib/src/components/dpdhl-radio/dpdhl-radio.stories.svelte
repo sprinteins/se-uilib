@@ -5,7 +5,7 @@
 
 </script>
 
-<Meta title="11_Components/Radio Button" component={null} />
+<Meta title="11_Components/Radio" component={null} />
 
 <Template let:args />
 
@@ -19,14 +19,14 @@
 	let:args
 >
   	<main>
-		<dpdhl-radio-button
+		<dpdhl-radio
 			on:select={action("Selected")}
-			name="checkbox-example"
+			name="radio-example"
 			disabled={args.disabled}
 			selected={args.checked}
 			error={args.error}>
-			<span slot="label">Label</span>
-		</dpdhl-radio-button>
+			<span>Label</span>
+		</dpdhl-radio>
   	</main>
 </Story>
 

@@ -70,14 +70,14 @@
 
 <div bind:this={root} class="root">
 	{#each items as item}
-		<dpdhl-radio-button 
+		<dpdhl-radio 
 			on:select={() => onItemClick(item)}
 			selected={selectedItem === item}
 			value={item.value}
 			disabled={item.disabled}
 			error={item.error}>
 			{item.label}
-		</dpdhl-radio-button>
+		</dpdhl-radio>
 	{/each}
 </div>
 
