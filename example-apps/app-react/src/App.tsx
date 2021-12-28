@@ -128,7 +128,7 @@ function App() {
                         </div>
 
                         <div>
-                            <CheckboxGroup onSelect={(event: { detail: any }) => console.log('Selected: ', event.detail)}>
+                            <CheckboxGroup onSelect={(event: { detail: any }) => {}}>
                                 <CheckboxItem label="Option A" value="option-a" />
                                 <CheckboxItem label="Option B" value="option-b" disabled/>
                                 <CheckboxItem label="Option C" value="option-c" error/>
