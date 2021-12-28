@@ -4,14 +4,6 @@
     import "../dpdhl-icon"
     import { KeyItemAdded } from './dpdhl-radio-item.svelte'
     
-    export let placeholder = ""
-    $: placholderItem = {
-        label: placeholder,
-        value: undefined,
-        disabled: false,
-        error: false
-    }
-
     interface Item {
         label: string
         value: unknown,
@@ -54,10 +46,7 @@
         });
     }
 
-    let selectedItem: Item = placholderItem;
-    onMount(() => {
-        selectedItem = placholderItem;
-    })
+    let selectedItem: Item;
 
     let root: HTMLDivElement;
     function onItemClick(item: Item){
