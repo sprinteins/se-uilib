@@ -76,7 +76,7 @@
 		cursor: 		pointer;
 		height: 		1.5rem;
 		-moz-appearance:	none;
-	    margin-right: 		1rem;
+		margin-right: 		1rem;
 	}
 
 	/* box */
