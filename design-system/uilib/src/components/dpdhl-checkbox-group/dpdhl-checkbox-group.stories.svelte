@@ -13,7 +13,7 @@
 
 <Meta title="11_Components/Checkbox Group" component={null} argTypes={{
     itemsGap: {
-      name: "Gap between items [rem]", 
+        name: "Gap between items [rem]", 
     },
 }}/>
 

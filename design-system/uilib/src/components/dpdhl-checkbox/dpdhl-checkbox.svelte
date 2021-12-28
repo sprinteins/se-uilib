@@ -131,7 +131,7 @@
 	}
 	/* box checked disabled */
 	input.disabled:checked:before {
-		background-color: 	var(--color-gray10);
+		background-color: 		var(--color-gray10);
 		color: 				grey;
 		border: 			1px solid var(--color-gray10);
 	}
@@ -152,7 +152,7 @@
 	}
 
 	input.indeterminate:before {
-		border: 			1px solid var(--color-postyellow);
+		border: 		1px solid var(--color-postyellow);
 		background-color: 	var(--color-postyellow);
 	}
 
@@ -163,7 +163,7 @@
 		width: 			0.5rem;
 		height: 		0.2rem;
 		border: 		solid var(--color-white);
-		border-width: 	1px 0 0 0;
+		border-width: 		1px 0 0 0;
 		position: 		absolute;
 		top: 			0.8rem;
 		left: 			0.5625rem;
