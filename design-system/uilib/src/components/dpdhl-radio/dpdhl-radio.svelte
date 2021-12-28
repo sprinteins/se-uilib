@@ -61,9 +61,9 @@
 	}
 
 	.item {
-		display: 				block;	
-		position: 				relative;
-		cursor: 				pointer;
+		display: 			block;	
+		position: 			relative;
+		cursor: 			pointer;
 		-webkit-user-select:		none;
 		-moz-user-select:		none;
 		-ms-user-select:		none;

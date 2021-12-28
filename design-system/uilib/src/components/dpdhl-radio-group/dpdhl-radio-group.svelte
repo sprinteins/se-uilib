@@ -41,8 +41,8 @@
             el.setAttribute('registered','');
             const label = el.getAttribute('label')
             const value = el.getAttribute('value')
-			const disabled = el.getAttribute('disabled') === "true";
-			const error = el.getAttribute('error') === "true";
+            const disabled = el.getAttribute('disabled') === "true";
+            const error = el.getAttribute('error') === "true";
             if(items){ 
                 items[ei] = {
                     label,
