@@ -127,7 +127,7 @@ function App() {
                             </Tabs>
                         </div>
                         <div>
-                            <RadioGroup onSelect={(event: { detail: any }) => console.log('Selected: ', event.detail)}>
+                            <RadioGroup onSelect={(event: { detail: any }) => {}}>
                                 <RadioItem label="Option A" value="option-a" />
                                 <RadioItem label="Option B" value="option-b" disabled />
                                 <RadioItem label="Option C" value="option-c" error />

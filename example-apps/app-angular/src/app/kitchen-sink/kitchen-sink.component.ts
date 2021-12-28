@@ -13,9 +13,7 @@ export class KitchenSinkComponent {
         this.log = `clicked on ${buttonName}`
     }
 
-    handleCheckboxSelect(event: { detail: any}) {
-        console.log(event.detail)
-    }
+    handleRadioSelect(event: { detail: any}) {}
 
     menuItems = [
         { label: "Menu 1", click: () => { alert('You have selected "Menu 1"') }},
