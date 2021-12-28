@@ -3,14 +3,7 @@
     import { makeEvent } from '../../x/util/dispatch'
     import "../dpdhl-icon"
     import { KeyItemAdded } from './dpdhl-checkbox-item.svelte'
-
-    interface Item {
-        label: string
-        value: string,
-        disabled: boolean,
-        error: boolean,
-        indeterminate: boolean
-    }
+    import type { Item } from './Item';
 
     let container: HTMLElement
     let items: Item[] = []

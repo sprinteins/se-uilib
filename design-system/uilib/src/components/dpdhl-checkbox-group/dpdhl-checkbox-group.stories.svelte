@@ -1,6 +1,5 @@
 <script>
     import { Meta, Template, Story } from '@storybook/addon-svelte-csf'
-    
     import '@sprinteins/dpdhl-uilib'
 
     let selected = []
