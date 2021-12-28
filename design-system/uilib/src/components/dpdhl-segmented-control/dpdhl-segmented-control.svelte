@@ -3,12 +3,6 @@
 	import { makeEvent } from '../../x/util/dispatch'
     import "../dpdhl-icon"
     import { KeyItemAdded } from './dpdhl-segmented-control-item.svelte'
-    
-    export let placeholder = ""
-    $: placholderItem = {
-        label: placeholder,
-        value: undefined
-    }
 
     interface Item {
         label: string
@@ -46,10 +40,7 @@
         });
     }
 
-    let selectedItem: Item = placholderItem;
-    onMount(() => {
-        selectedItem = placholderItem;
-    })
+    let selectedItem: Item;
 
     let root: HTMLDivElement;
     function onItemClick(item: Item){
