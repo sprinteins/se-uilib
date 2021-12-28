@@ -14,15 +14,12 @@
 
 
 <Story name="Primary" args={{}}>
-    <dpdhl-segmented-control on:select={(event) =>  {
-        console.log(event.detail)
-        selected = event.detail
-         }}>
+    <dpdhl-segmented-control defaultid={1} on:select={(event) => selected = event.detail}>
         <dpdhl-segmented-control-item label="Option A" value="option-a" />
         <dpdhl-segmented-control-item label="Option B" value="option-b" disabled={true}/>
         <dpdhl-segmented-control-item label="Option C" value="option-c" error={true}/>
     </dpdhl-segmented-control>
-    <div class="selected">Selected: {selected}</div>
+    <div class="selected">Selected Id: {selected}</div>
 </Story>
 
 

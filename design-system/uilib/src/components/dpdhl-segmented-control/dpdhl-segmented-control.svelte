@@ -13,9 +13,14 @@
     let items: Item[] = []
     let assignedElements: HTMLElement[] = []
 
+	export let defaultid = 0;
+
+	let selectedItem: Item;
+
     onMount(() => {
         registerItems();
-        container.addEventListener(KeyItemAdded, registerItems)
+        container.addEventListener(KeyItemAdded, registerItems);
+		selectedItem = items[defaultid];
     })    
 
     function registerItems(){
@@ -40,12 +45,12 @@
         });
     }
 
-    let selectedItem: Item;
+
 
     let root: HTMLDivElement;
     function onItemClick(item: Item){
-        selectedItem = item;
-        root.dispatchEvent(makeEvent('select', item.value))
+		selectedItem = item
+        root.dispatchEvent(makeEvent('select', items.indexOf(item)))
     }
 
 </script>
