@@ -71,7 +71,7 @@
 <div bind:this={root} class="root">
 	{#each items as item}
 		<dpdhl-radio 
-			on:select={() => onItemClick(item)}
+			on:check={() => onItemClick(item)}
 			selected={selectedItem === item}
 			value={item.value}
 			disabled={item.disabled}

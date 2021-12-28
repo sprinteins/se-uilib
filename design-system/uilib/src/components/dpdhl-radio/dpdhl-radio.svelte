@@ -1,22 +1,12 @@
 <svelte:options tag="dpdhl-radio" />
 
 <script lang="ts">
+	import { makeEvent } from "../../x/util/dispatch";
 
 	/**
 	 * A Radio Button Component
 	 * @component
 	 */
-
-	import { createEventDispatcher } from 'svelte';
-    import { get_current_component } from "svelte/internal";
-
-    const component = get_current_component()
-    const svelteDispatch = createEventDispatcher()
-
-    export function dispatch(name, detail) {
-        svelteDispatch(name, detail)
-        component.dispatchEvent && component.dispatchEvent(new CustomEvent(name, { detail }))
-    }
 	
 	export let value = "";
 	$: _value = value;
@@ -30,19 +20,18 @@
 	export let error = false;
 	$: _error = error;
 
+	let root: HTMLDivElement;
 	function handleClick(event) {
 		if (_disabled) {
 			event.preventDefault();
 		} else {
-			dispatch('select', {
-				value: _value
-			})
+			root.dispatchEvent(makeEvent('check', _value ))
 		};
 	}
 
 </script>
 
-
+<main bind:this={root}>
 <div class="item" on:click={handleClick} class:disabled={_disabled}>
 	<input 
 		checked={_selected} 
@@ -58,7 +47,7 @@
 		<slot></slot>
 	</div>
 </div>
-
+</main>
 
 <style>
 

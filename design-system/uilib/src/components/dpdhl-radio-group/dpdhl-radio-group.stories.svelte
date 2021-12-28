@@ -14,7 +14,7 @@
 
 
 <Story name="Primary" args={{}}>
-    <dpdhl-radio-group on:select={(event) =>  selected = event.detail}>
+    <dpdhl-radio-group on:select={(event) => selected = event.detail}>
         <dpdhl-radio-item label="Option A" value="option-a" />
         <dpdhl-radio-item label="Option B" value="option-b" disabled={true}/>
         <dpdhl-radio-item label="Option C" value="option-c" error={true}/>
