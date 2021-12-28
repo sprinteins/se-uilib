@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte'
-	import { makeEvent } from '../../x/util/dispatch'
+    import { makeEvent } from '../../x/util/dispatch'
     import "../dpdhl-icon"
     import { KeyItemAdded } from './dpdhl-radio-item.svelte'
     
@@ -8,15 +8,15 @@
     $: placholderItem = {
         label: placeholder,
         value: undefined,
-		disabled: false,
-		error: false
+        disabled: false,
+        error: false
     }
 
     interface Item {
         label: string
         value: unknown,
-		disabled: boolean,
-		error: boolean
+        disabled: boolean,
+        error: boolean
     }
 
     let container: HTMLElement
@@ -47,8 +47,8 @@
                 items[ei] = {
                     label,
                     value,
-					disabled,
-					error
+                    disabled,
+                    error
                 }
             }
         });

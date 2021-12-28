@@ -24,9 +24,9 @@
 	function handleClick(event) {
 		if (_disabled) {
 			event.preventDefault();
-		} else {
-			root.dispatchEvent(makeEvent('check', _value ))
-		};
+			return;
+		}
+		root.dispatchEvent(makeEvent('check', _value ))	
 	}
 
 </script>
@@ -64,7 +64,7 @@
 		display: 				block;	
 		position: 				relative;
 		cursor: 				pointer;
-		-webkit-user-select:	none;
+		-webkit-user-select:		none;
 		-moz-user-select:		none;
 		-ms-user-select:		none;
 		user-select:			none;
@@ -75,9 +75,9 @@
 	}
 
 	.label {
-		padding-top: 	0.125rem;
-		padding-left: 	2.5rem;
-		font-size: 		1rem;
+		padding-top:	0.125rem;
+		padding-left:	2.5rem;
+		font-size:	1rem;
 	}
 
 	.checkmark {
@@ -87,7 +87,7 @@
 		height:			1.375rem;
 		width:			1.375rem;
 		color:			var(--color-postyellow);
-		border-radius:	50%;
+		border-radius:		50%;
 		border:			1px solid var(--color-gray45);
 	}
 
@@ -127,7 +127,7 @@
 		left:			0.375rem;
 		width:			0.625rem;
 		height:			0.625rem;
-		border-radius:	50%;
+		border-radius:		50%;
 		background:		var(--color-postyellow);
 	}
 
