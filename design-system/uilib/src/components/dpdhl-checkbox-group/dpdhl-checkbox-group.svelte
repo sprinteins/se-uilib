@@ -1,20 +1,20 @@
 <script lang="ts">
     import { onMount } from 'svelte'
-	import { makeEvent } from '../../x/util/dispatch'
+    import { makeEvent } from '../../x/util/dispatch'
     import "../dpdhl-icon"
     import { KeyItemAdded } from './dpdhl-checkbox-item.svelte'
 
     interface Item {
         label: string
         value: string,
-		disabled: boolean,
-		error: boolean,
-		indeterminate: boolean
+        disabled: boolean,
+        error: boolean,
+        indeterminate: boolean
     }
 
     let container: HTMLElement
     let items: Item[] = []
-	let selectedItems: string[] = []
+    let selectedItems: string[] = []
     let assignedElements: HTMLElement[] = []
 
     onMount(() => {
@@ -35,16 +35,16 @@
             el.setAttribute('registered','');
             const label = el.getAttribute('label')
             const value = el.getAttribute('value')
-			const disabled = el.getAttribute('disabled') === "true";
-			const error = el.getAttribute('error') === "true";
-			const indeterminate = el.getAttribute('indeterminate') === "true";
+            const disabled = el.getAttribute('disabled') === "true";
+            const error = el.getAttribute('error') === "true";
+            const indeterminate = el.getAttribute('indeterminate') === "true";
             if(items){ 
                 items[ei] = {
                     label,
                     value,
-					disabled,
-					error,
-					indeterminate
+                    disabled,
+                    error,
+                    indeterminate
                 }
             }
         });
@@ -52,11 +52,11 @@
 
     let root: HTMLDivElement;
     function onItemClick(item: Item) {
-		if (selectedItems.includes(item.value)) {
-			selectedItems = [...selectedItems.filter(i => i !== item.value)]
-		} else {
-			selectedItems = [...selectedItems, item.value]
-		}
+        if (selectedItems.includes(item.value)) {
+            selectedItems = [...selectedItems.filter(i => i !== item.value)]
+        } else {
+            selectedItems = [...selectedItems, item.value]
+        }
         root.dispatchEvent(makeEvent('select', selectedItems))
     }
 

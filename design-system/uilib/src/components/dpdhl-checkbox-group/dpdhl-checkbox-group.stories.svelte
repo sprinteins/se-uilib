@@ -17,7 +17,6 @@
     },
 }}/>
 
-<!-- https://www.dpdhl-brands.com/dpdhl-group/en/guides/touchpoints/user-interface/components/select.html -->
 <Template let:args>
 </Template>
 
