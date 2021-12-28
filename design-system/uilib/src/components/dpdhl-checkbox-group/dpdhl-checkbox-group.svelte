@@ -67,7 +67,7 @@
 	{#each items as item}
 		<dpdhl-checkbox
 			on:check={() => onItemClick(item)}
-			selected={selectedItems.includes(item.value)}
+			checked={selectedItems.includes(item.value)}
 			value={item.value}
 			disabled={item.disabled}
 			error={item.error}

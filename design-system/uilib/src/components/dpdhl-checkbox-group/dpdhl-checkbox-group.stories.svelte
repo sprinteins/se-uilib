@@ -27,7 +27,7 @@
             <dpdhl-checkbox-item label="Option A" value="option-a" />
             <dpdhl-checkbox-item label="Option B" value="option-b" disabled={true}/>
             <dpdhl-checkbox-item label="Option C" value="option-c" error={true}/>
-            <dpdhl-checkbox-item label="Option C" value="option-c" indeterminate={true}/>
+            <dpdhl-checkbox-item label="Option D" value="option-d" indeterminate={true}/>
         </dpdhl-checkbox-group>
     </div>
     <p>Selected Items: {selected.length && selected.join(', ')} </p>
