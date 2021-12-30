@@ -3,8 +3,8 @@
 </script>
 
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-	import { get_current_component, onMount } from "svelte/internal";
+	import { onMount } from "svelte/internal";
+	import { makeEvent } from '../../x/util/dispatch';
 
 	export let count 		= 12;
 	export let maxpages 	= 10;
@@ -19,14 +19,6 @@
 		setPaginationBoundaries();
 		selectedItem = defaultpage;
 	});
-
-	const component = get_current_component()
-	const svelteDispatch = createEventDispatcher()
-
-	export function dispatch(name, detail = null) {
-		svelteDispatch(name, detail)
-		component.dispatchEvent && component.dispatchEvent(new CustomEvent(name, { detail }))
-	}
 
 	function setPaginationBoundaries() {
 		let max = Number(maxpages);
@@ -43,9 +35,10 @@
 		to = last;
 	}
 
+	let root: HTMLDivElement;
 	function selectItem(idx) {
 		selectedItem = idx;
-		dispatch('select', idx)
+		root.dispatchEvent(makeEvent('select', idx))
 		setPaginationBoundaries();
 	}
 
@@ -64,15 +57,13 @@
 
 <svelte:options tag="dpdhl-pagination" />
 
-<div class="pagination-list">
-	
+<div class="pagination-list" bind:this={root}>
 	<span 
 		class="item" 
 		class:disabled={selectedItem <= 1}
 		on:click={selectPrevious}>
 			{'<'}
 	</span>
-
 	<!-- iterate over an array of numbers [from ... to] -->	
 	{#each [...Array(to - from + 1)].map((_, i) => from + i) as n}
 		<span 
@@ -83,7 +74,6 @@
 				<slot></slot>
 		</span>
 	{/each}
-
 	<span 
 		class="item" 
 		class:disabled={selectedItem >= count}
