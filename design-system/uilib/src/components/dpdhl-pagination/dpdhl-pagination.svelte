@@ -10,14 +10,14 @@
 	export let maxpages 	= 10;
 	export let defaultpage 	= 1;
 	
-	$: selectedItem = defaultpage;
+	let selectedItem = defaultpage;
 
-	$: from = 0;
-	$: to = 0;
+	let from = 0;
+	let to = 0;
 
 	onMount(async () => {
 		setPaginationBoundaries();
-		selectedItem = defaultpage || 1;
+		selectedItem = defaultpage;
 	});
 
 	const component = get_current_component()
