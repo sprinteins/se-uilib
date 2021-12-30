@@ -12,12 +12,8 @@
     :host {
         --unit:             16px;
         --border-radius:    4px;
-
-        --padding-left-right: 16px;
-        --padding-top-bottom: 18px;
         
         --font-size:            16px;
-        --line-height:          20px;
         --font-regular:         "DeliveryRegular";
         --font-italic:          "DeliveryItalic"; 
         --font-bold:            "DeliveryBold";
