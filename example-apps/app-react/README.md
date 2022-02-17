@@ -1,7 +1,6 @@
 # Example project with ReactJS
 
-The goal of this project is to show how to use the Svelte components in a React project.
-
+The goal of this project is to show how to use the UI components in a React project.
 
 ## How to use web components in React
 
