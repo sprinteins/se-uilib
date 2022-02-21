@@ -17,9 +17,9 @@
 
 <style>
     main{
-        height: 4em;
+        height: var(--app-bar__height, 4em);
 
-        background-color: var(--color-postyellow);
+        background-color: var(--app-bar__background-color, var(--color-postyellow));
 
         display:        flex;
         flex-direction: row;

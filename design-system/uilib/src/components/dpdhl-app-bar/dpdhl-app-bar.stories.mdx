@@ -1,0 +1,39 @@
+<!--- Checkbox.stories.mdx -->
+
+import { Story, Preview } from '@storybook/addon-docs/blocks';
+
+
+<Meta title="11_Components/App Bar/Docs" component={null} />
+
+# App Bar
+
+
+<Preview args={{disabled:false}}>
+    <dpdhl-theme-desktop>
+        <dpdhl-app-bar>
+            <h3 slot="left">Page Title (Left Slot)</h3>
+            <h4 slot="middle">Middle Slot</h4>
+            <h4 slot="right">11:12 (Right Slot)</h4>
+        </dpdhl-app-bar>
+    </dpdhl-theme-desktop>
+</Preview>
+
+## General CSS APIs
+
+| Variable                      | Default Value             | Description               |
+|-------------------------------|---------------------------|---------------------------|
+| `--app-bar__height`           | `4em`                     | The height of the App Bar |
+| `--app-bar__background-color` | `var(--color-postyellow)` | The background color      |
+
+
+<Preview args={{disabled:false}}>
+    <dpdhl-theme-desktop>
+        <span style={{"--app-bar__height":"2em", "--app-bar__background-color":"grey" }}>
+            <dpdhl-app-bar>
+                <h3 slot="left">Page Title (Left Slot)</h3>
+                <h4 slot="middle">Middle Slot</h4>
+                <h4 slot="right">11:12 (Right Slot)</h4>
+            </dpdhl-app-bar>
+        </span>
+    </dpdhl-theme-desktop>
+</Preview>
