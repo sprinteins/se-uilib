@@ -21,6 +21,8 @@ function App() {
     const Tbody = adapt('dpdhl-tbody');
     const Tabs = adapt('dpdhl-tabs')
     const Tab = adapt('dpdhl-tab')
+    const RadioGroup = adapt('dpdhl-radio-group')
+    const RadioItem = adapt('dpdhl-radio-item')
 
     const [log, setLog] = useState('')
 
@@ -123,6 +125,13 @@ function App() {
                                     luctus et ultrices posuere cubilia curae
                                 </Tab>
                             </Tabs>
+                        </div>
+                        <div>
+                            <RadioGroup onSelect={(event: { detail: any }) => {}}>
+                                <RadioItem label="Option A" value="option-a" />
+                                <RadioItem label="Option B" value="option-b" disabled />
+                                <RadioItem label="Option C" value="option-c" error />
+                            </RadioGroup>
                         </div>
 
                 </div>
