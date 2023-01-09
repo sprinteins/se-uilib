@@ -28,9 +28,9 @@
         height:        calc( 100% - 2 * var(--padding) );
         width:         calc( 100% - 2 * var(--padding) );
 
-        display:               grid;
-        grid-template-columns: 1fr;
-        grid-template-rows:    1fr auto 1fr;
+        display:               flex;
+        flex-direction:        column;
+        justify-content:       space-between;
         gap:                   1rem;
     }
 
