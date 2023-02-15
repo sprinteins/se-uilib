@@ -170,4 +170,8 @@
         height: 1.5rem;
     }
 
+    button:disabled {
+        cursor: not-allowed;
+    }
+
 </style>
