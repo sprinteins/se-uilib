@@ -1,1 +1,1 @@
-declare module "@sprinteins/dpdhl-uilib/react"
+declare module "@sprinteins/se-uilib/react"
