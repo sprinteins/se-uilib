@@ -1,5 +1,5 @@
 {
-  "name": "@sprinteins/dpdhl-uilib",
+  "name": "@sprinteins/se-uilib",
   "version": "0.0.11",
   "publishConfig": {
     "access": "public"
